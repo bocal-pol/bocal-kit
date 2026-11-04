@@ -1,0 +1,2 @@
+# Force LF line endings for shell scripts (otherwise the shebang breaks under Git Bash)
+*.sh text eol=lf
