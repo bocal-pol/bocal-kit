@@ -112,18 +112,45 @@ through `team-dev`. A level-2 agent never calls level 0.
 
 ## 4. Git workflow
 
-`main` and `develop` are protected — a direct push is refused by the `pre-tool-use.sh` hook *and*
-by `permissions.deny`.
+This is a public repository — you don't have push access to it, and you shouldn't try to get it.
+Contribute through a fork:
 
-```bash
-git checkout develop
-git pull origin develop
-git checkout -b feature/short-name
-```
+1. **Fork** [`bocal-pol/bocal-kit`](https://github.com/bocal-pol/bocal-kit) to your own GitHub
+   account (the "Fork" button on the repo page).
+2. **Clone your fork** locally:
+   ```bash
+   git clone https://github.com/<your-username>/bocal-kit.git
+   cd bocal-kit
+   ```
+3. **Add the original repo as `upstream`**, so you can stay in sync with it:
+   ```bash
+   git remote add upstream https://github.com/bocal-pol/bocal-kit.git
+   ```
+4. **Branch from an up-to-date `develop`**:
+   ```bash
+   git fetch upstream
+   git checkout -b feature/short-name upstream/develop
+   ```
+5. **Push to your own fork**, never to the original repo (you have no write access there anyway):
+   ```bash
+   git push -u origin feature/short-name
+   ```
+6. **Open a Pull Request** on GitHub from `<your-username>/bocal-kit:feature/short-name` toward
+   `bocal-pol/bocal-kit:develop`.
 
 One branch = one single goal. Prefixes: `feature/*`, `bugfix/*`, `hotfix/*`.
 
-Merging happens **via a Pull Request toward `develop`**, never locally.
+`main` and `develop` on the original repo are protected and only merged into via a reviewed Pull
+Request — never pushed to directly, by anyone, maintainer included.
+
+Keeping your fork current before starting new work:
+
+```bash
+git fetch upstream
+git checkout develop
+git merge upstream/develop
+git push origin develop
+```
 
 ### Commit messages — strict Conventional Commits
 
