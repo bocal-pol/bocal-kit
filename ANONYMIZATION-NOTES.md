@@ -37,3 +37,14 @@ repository.
 Everything else ported in this pass (structure + root docs) was either already generic business
 context (e.g. references to a public-sector domain, which is a business-context detail, not
 identifying data) or didn't require a judgment call.
+
+## Agents porting pass — additional decisions
+
+- **`pilgrimage-route-agent`** (ported from the source's pilgrimage-trail persona agent): the
+  source bound this agent to one specific private side-project by name, with references to that
+  project's internal file tree (specific submodule path, specific document filenames). Generalized
+  the persona into a reusable "pilgrimage trip-planning project" role — kept the domain expertise,
+  the on-the-ground realism discipline, the trail-log response format, and the skill-orchestration
+  table in full, but replaced the named private project and its exact internal paths with generic
+  equivalents ("a trip plan document," "stage files," etc.) that any user adopting this agent can
+  map to their own project structure.
