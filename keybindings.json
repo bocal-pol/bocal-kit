@@ -1,0 +1,10 @@
+[
+  {
+    "description": "Submit the message (default)",
+    "key": "enter"
+  },
+  {
+    "description": "New line in the message (default)",
+    "key": "shift+enter"
+  }
+]

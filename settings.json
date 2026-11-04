@@ -1,0 +1,70 @@
+{
+  "permissions": {
+    "allow": [
+      "Read",
+      "Glob",
+      "Grep",
+      "AskUserQuestion",
+      "EnterPlanMode",
+      "ExitPlanMode",
+      "Edit(~/.claude/skills/**)",
+      "Edit(~/.claude/agents/**)",
+      "Bash(docker exec *)",
+      "Bash(docker compose *)",
+      "Bash(git add *)",
+      "Bash(git commit -m *)",
+      "Bash(git ls-tree *)",
+      "Bash(git status*)",
+      "Bash(git diff*)",
+      "Bash(git log*)",
+      "Bash(npx tsc *)",
+      "mcp__playwright__browser_snapshot",
+      "mcp__playwright__browser_console_messages",
+      "mcp__playwright__browser_fill_form",
+      "mcp__playwright__browser_take_screenshot"
+    ],
+    "deny": [
+      "Bash(git push origin main*)",
+      "Bash(git push origin master*)",
+      "Bash(git push origin develop*)",
+      "Bash(git push --force*)",
+      "Bash(git push -f *)",
+      "Read(**/.credentials.json)"
+    ],
+    "defaultMode": "plan"
+  },
+  "model": "claude-sonnet-5",
+  "includeCoAuthoredBy": false,
+  "theme": "dark",
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "startup|clear|compact",
+        "hooks": [
+          { "type": "command", "command": "bash ~/.claude/memory.sh" }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          { "type": "command", "command": "bash ~/.claude/stop.sh" }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Bash|PowerShell",
+        "hooks": [
+          { "type": "command", "command": "bash ~/.claude/pre-tool-use.sh" }
+        ]
+      },
+      {
+        "matcher": "Skill",
+        "hooks": [
+          { "type": "command", "command": "bash ~/.claude/skill-log.sh" }
+        ]
+      }
+    ]
+  }
+}

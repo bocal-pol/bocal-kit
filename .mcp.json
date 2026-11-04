@@ -1,0 +1,24 @@
+{
+  "mcpServers": {
+    "context7": {
+      "command": "npx",
+      "args": ["-y", "@upstash/context7-mcp"]
+    },
+    "sequential-thinking": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-sequential-thinking"]
+    },
+    "playwright": {
+      "command": "npx",
+      "args": ["-y", "@playwright/mcp@latest"]
+    },
+    "hf-image": {
+      "type": "http",
+      "url": "https://huggingface.co/mcp?gradio=mcp-tools/Z-Image-Turbo"
+    },
+    "hf-t2v": {
+      "type": "http",
+      "url": "https://huggingface.co/mcp?gradio=Lightricks/ltx-video-distilled"
+    }
+  }
+}
