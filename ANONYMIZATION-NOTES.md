@@ -37,3 +37,9 @@ repository.
 Everything else ported in this pass (structure + root docs) was either already generic business
 context (e.g. references to a public-sector domain, which is a business-context detail, not
 identifying data) or didn't require a judgment call.
+
+## semgrep
+Source hardcoded two personal machine paths referencing a private project ("SiteV26",
+`C:\Projet\SiteV26\InfraDocker\...` and `D:\site26\SiteV26\InfraDocker\...`). Replaced the whole
+"known paths" detection logic with a generic grep-based auto-detection of a compose file declaring
+a `semgrep` service, rather than porting the private paths as "known paths" for a public audience.
