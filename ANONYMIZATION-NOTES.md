@@ -51,3 +51,10 @@ each skill, replaced that section with a generalized "Implementation example —
 real idea-management product" section that keeps the transferable methodological content
 (which fields/axes are useful, the general mechanism) but drops the private project's name,
 concrete class names, and ADR references.
+
+## threat-intelligence
+Source referenced "CERT.be / Centre pour la Cybersécurité Belgique" as a mandatory source tied to
+the "contexte institutionnel de ce dépôt" (the repo's institutional/public-sector context).
+Generalized to "A national/regional CERT relevant to the deployment's jurisdiction" with guidance
+to check it when the project has a public-sector or regulated context — keeps the useful practice,
+drops the specific national/institutional identifier.
