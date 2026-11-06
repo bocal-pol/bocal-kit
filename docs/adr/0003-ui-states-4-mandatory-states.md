@@ -2,7 +2,7 @@
 
 - **Status**: accepted — canonical ADR on the topic
 - **Date**: 2026-08-21
-- **Amended on**: 2026-09-17 — absorbs [ADR 0032](0032-4-etats-ui-loading-error-empty-success.md), which covered the same topic and is now marked superseded
+- **Amended on**: 2026-09-17 — absorbs [ADR 0032](0032-4-mandatory-ui-states-superseded.md), which covered the same topic and is now marked superseded
 
 ## Context
 
