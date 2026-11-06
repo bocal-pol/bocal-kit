@@ -12,6 +12,14 @@ repository.
   its keyword bindings is excluded.
 - **`skills/family-context/`** (if present in the source agent/skill set) — personal-scope content,
   excluded by default per the source repo's own convention; not applicable to a public fork.
+- **`image-templates/EXAMPLE-template.md`, `image-templates/spotify-playlist-cover.md`,
+  `image-templates/spotify-playlist-catalog.md`** — not ported. The source `image-templates/README.md`
+  itself distinguishes "personal" templates (no reserved prefix, created by the user to replay a
+  character/style) from "bundled" `format-*`/`modifiers-*` files (versioned with the `imagine`
+  skill, meant to ship with it). Only the 27 `format-*` and 19 `modifiers-*` bundled files were
+  ported — the personal templates (an example character, and the maintainer's own Spotify
+  playlist-cover style) are the same category of content as `personal-agents.json`: real,
+  user-specific creative assets, not generic shippable capability.
 
 ## Name substitutions
 
