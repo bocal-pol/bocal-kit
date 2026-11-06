@@ -3,7 +3,17 @@
 Tracking what's left after the structure + root-docs porting pass. See `PORTING-NOTES.md` for
 context.
 
-- [ ] Port all agents into `agents/*.md`, renamed per `RENAME-MAP.md`, translated to English.
+- [x] Port agents into `agents/*.md` — **complete**. All 39 real agents ported, renamed,
+      translated to English, anonymized, committed on `feature/port-agents`, pushed to origin.
+      `team-dev` and `team-selector` are **skills**, not agents (confirmed: not present in
+      `claude-config/agents/`, listed instead in the source's skills index) — ported in the
+      skills pass, not here. Notable generalizations beyond straight translation (see
+      `ANONYMIZATION-NOTES.md` for full detail): `pilgrimage-route-agent`, `race-engineering-agent`,
+      `algorave-agent`, `survival-logistics-agent`, `creativity-theory-agent`, and
+      `legal-compliance-agent` had their source content's private-project or single-jurisdiction
+      specifics generalized into reusable, jurisdiction-neutral mechanisms. `ict-director-agent`
+      and `public-procurement-agent` had internal personal-profile folder paths
+      (`ProfilTechnique/`, `ProfilReseau/`, `ProfilDirICT/`) replaced with generic placeholders.
 - [ ] Port all skills into `skills/*/SKILL.md`, renamed per `RENAME-MAP.md`, translated to English.
 - [ ] Port `skills/.router.json` and `skills/SKILLS_INDEX.md`, updated with the new names.
 - [ ] Port `docs/adr/*.md`, translated to English, numbering preserved.

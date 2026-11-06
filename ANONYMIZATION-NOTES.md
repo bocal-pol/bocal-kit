@@ -12,6 +12,14 @@ repository.
   its keyword bindings is excluded.
 - **`skills/family-context/`** (if present in the source agent/skill set) — personal-scope content,
   excluded by default per the source repo's own convention; not applicable to a public fork.
+- **`image-templates/EXAMPLE-template.md`, `image-templates/spotify-playlist-cover.md`,
+  `image-templates/spotify-playlist-catalog.md`** — not ported. The source `image-templates/README.md`
+  itself distinguishes "personal" templates (no reserved prefix, created by the user to replay a
+  character/style) from "bundled" `format-*`/`modifiers-*` files (versioned with the `imagine`
+  skill, meant to ship with it). Only the 27 `format-*` and 19 `modifiers-*` bundled files were
+  ported — the personal templates (an example character, and the maintainer's own Spotify
+  playlist-cover style) are the same category of content as `personal-agents.json`: real,
+  user-specific creative assets, not generic shippable capability.
 
 ## Name substitutions
 
@@ -37,3 +45,73 @@ repository.
 Everything else ported in this pass (structure + root docs) was either already generic business
 context (e.g. references to a public-sector domain, which is a business-context detail, not
 identifying data) or didn't require a judgment call.
+
+## Skills porting pass — additional decisions
+
+### semgrep
+Source hardcoded two personal machine paths referencing a private project ("SiteV26",
+`C:\Projet\SiteV26\InfraDocker\...` and `D:\site26\SiteV26\InfraDocker\...`). Replaced the whole
+"known paths" detection logic with a generic grep-based auto-detection of a compose file declaring
+a `semgrep` service, rather than porting the private paths as "known paths" for a public audience.
+
+### creativity-theory-* (7 skills, ported from szikra-*)
+Source skills each had a "Szikrataku anchoring" section tied to a private personal side project
+(a specific idea-management app name, its real service/class names, specific ADR numbers). For
+each skill, replaced that section with a generalized "Implementation example — applying this to a
+real idea-management product" section that keeps the transferable methodological content
+(which fields/axes are useful, the general mechanism) but drops the private project's name,
+concrete class names, and ADR references.
+
+### threat-intelligence
+Source referenced "CERT.be / Centre pour la Cybersécurité Belgique" as a mandatory source tied to
+the "contexte institutionnel de ce dépôt" (the repo's institutional/public-sector context).
+Generalized to "A national/regional CERT relevant to the deployment's jurisdiction" with guidance
+to check it when the project has a public-sector or regulated context — keeps the useful practice,
+drops the specific national/institutional identifier.
+
+## Agents porting pass — additional decisions
+
+- **`pilgrimage-route-agent`** (ported from the source's pilgrimage-trail persona agent): the
+  source bound this agent to one specific private side-project by name, with references to that
+  project's internal file tree (specific submodule path, specific document filenames). Generalized
+  the persona into a reusable "pilgrimage trip-planning project" role — kept the domain expertise,
+  the on-the-ground realism discipline, the trail-log response format, and the skill-orchestration
+  table in full, but replaced the named private project and its exact internal paths with generic
+  equivalents ("a trip plan document," "stage files," etc.) that any user adopting this agent can
+  map to their own project structure.
+
+- **`race-engineering-agent`** and **`algorave-agent`**: no personal-identifier content, but both
+  were persona agents tied to the source's private hobby context. Ported as-is (motorsport/Rubik's
+  cube expertise, Strudel live-coding), since neither referenced any private project or identifying
+  detail — only straight translation was needed.
+
+- **`survival-logistics-agent`** (ex-`survivaliste-agent`): the source was written entirely around
+  one specific country's law (weapons law article numbers, forestry-code articles, regional
+  hunting-season calendars, a specific government emergency-number set). Generalized every legal
+  reference into an explicitly-flagged example structure ("adapt to your jurisdiction," "check your
+  local forestry authority") rather than deleting the content — the mechanism (Rule of 3, weighed
+  BOB, calorie budgeting) is universal even though the specific legal figures are not.
+
+- **`legal-compliance-agent`** (ex-`policier-agent`): same treatment as above, more heavily —
+  the entire persona was built around one country's weapons law and forestry code, with specific
+  article numbers and administrative vocabulary. Rewrote every legal section as an explicitly-
+  labeled "EXAMPLE, verify locally" structure, replaced the country-specific emergency numbers with
+  a generic instruction to use the reader's own country's numbers, and kept the advisor persona,
+  the risk-assessment format, and the response structure intact.
+
+- **`creativity-theory-agent`** (ex-`szikra-agent`): the source was almost entirely scoped to one
+  specific private application (its own monorepo, ADRs, enums, and a course document specific to
+  that product). Generalized into a reusable idea-management methodology persona: kept the six
+  cited creativity theories (Johnson, Koestler, Wallas, Luhmann, Robinson & Schroeder, Edmondson) in
+  full, the Spark Notebook response format, and the theory/code guardrail discipline, but replaced
+  every concrete reference to the private product's specific status enum values, ADR numbers, file
+  paths, and course document with generic placeholders a reader can map onto their own
+  idea-management product. The 7 child `szikra-*` skills this agent orchestrates were renamed to
+  `creativity-theory-*` for consistency and are expected to receive the same generalization
+  treatment when ported in the skills pass.
+
+- **`ict-director-agent`** (ex-`ict-agent`) and **`public-procurement-agent`** (ex-`marches-agent`):
+  both referenced internal personal-profile folder names (`ProfilTechnique/`, `ProfilReseau/`,
+  `ProfilDirICT/`) used to organize the source's own multi-profile ICT setup. Replaced with generic
+  placeholder names (`<technical-profile>/`, `<network-profile>/`, `<director-profile>/`) and a note
+  that these only matter if the adopting project runs multiple ICT sub-profiles.
