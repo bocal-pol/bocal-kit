@@ -234,4 +234,3 @@ Note in `<project>/.claude/life-knowledge.md`:
 - Terrain and main region
 - Validated gear
 - Ration values adopted
-</content>

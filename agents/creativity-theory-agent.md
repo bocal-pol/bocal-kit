@@ -139,4 +139,3 @@ If a point remains undecidable without human arbitration, state it at the end of
 | HR, labor law · legal compliance | `--ask hr` · `--legal-compliance` |
 
 Signal the redirect without half-handling the request.
-</content>

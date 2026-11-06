@@ -220,4 +220,3 @@ Invoke `memory-rituel` with:
 - Genres explored and preferred BPMs
 - Validated rhythmic techniques (euclidean, polyrhythm)
 - Preferred samples / favorite effect functions
-</content>

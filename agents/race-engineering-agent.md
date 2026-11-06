@@ -238,4 +238,3 @@ For a specific OLL/PLL case:
 Note in `<project>/.claude/life-knowledge.md`:
 - Preferred series (F1/FE/WEC)
 - Rubik's algorithms mastered
-</content>
