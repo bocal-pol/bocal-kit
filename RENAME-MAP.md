@@ -21,6 +21,7 @@ they port each file, and must cross-check against the names already listed here 
 | `boussole-agent` | `product-agent` | |
 | `canaveral-agent` | `release-agent` | |
 | `cerbere-agent` | `security-agent` | |
+| `commercial-agent` | `sales-offers-agent` | |
 | `communication-agent` | `public-communications-agent` | |
 | `compostel-agent` | `pilgrimage-route-agent` | |
 | `consultant-agent` | `paid-consultant-agent` | |
@@ -29,6 +30,7 @@ they port each file, and must cross-check against the names already listed here 
 | `frontend-agent` | `frontend-agent` | Already clear, unchanged |
 | `gutenberg-agent` | `documentation-agent` | |
 | `hermes-agent` | `integration-agent` | |
+| `ict-agent` | `ict-director-agent` | Cross-cutting ICT orchestrator (network multi-vendor, Windows/AD support, server infra, security bulletins, inventory) — distinct from `infrastructure-agent` (cloud/containers/CI-CD) and `it-operations-agent` (L1/L2/L3 support/ITIL) |
 | `iris-agent` | `design-agent` | |
 | `maestro-agent` | `coordination-agent` | |
 | `marches-agent` | `public-procurement-agent` | |

@@ -1,0 +1,11 @@
+[project]
+name = "illustre-renderer"
+version = "1.0.0"
+description = "Renders Excalidraw diagrams to PNG and SVG"
+requires-python = ">=3.10"
+dependencies = [
+    "playwright>=1.40.0",
+]
+
+[tool.uv]
+dev-dependencies = []
