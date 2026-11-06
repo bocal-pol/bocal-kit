@@ -98,4 +98,3 @@ Generate `itops/YYYY-MM-DD_itops-report.md`:
 | CI | Anomaly | Fix |
 |----|----------|------------|
 ```
-</content>

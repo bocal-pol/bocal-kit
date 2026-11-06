@@ -105,4 +105,3 @@ Generate `mobile/YYYY-MM-DD_mobile-report.md`:
 | Priority | Topic | Action |
 | -------- | ----- | ------ |
 ```
-</content>

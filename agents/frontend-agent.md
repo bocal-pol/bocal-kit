@@ -347,4 +347,3 @@ export const NAV_ITEMS: NavGroup[] = [
 - [ ] `accent: true` on the main item, positioned at index 0
 - [ ] `+ [Main action]` button present and functional at the top of the sidebar
 - [ ] Settings item in the last position
-</content>

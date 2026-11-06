@@ -180,4 +180,3 @@ Depending on the selected target format:
 ```
 
 **⚠️ Fallback**: if Write fails, display the report on the console output.
-</content>

@@ -1,6 +1,6 @@
 ---
 name: sprint-agent
-description: Full sprint orchestrator — planning, ticket estimation, dev skill coordination, delivery, and memory consolidation.
+description: Full sprint orchestrator — planning, ticket estimation, dev-skill coordination, delivery, and memory consolidation.
 model: claude-sonnet-5
 type: orchestrator
 priority: medium
@@ -10,7 +10,7 @@ tools: AskUserQuestion, EnterPlanMode, ExitPlanMode, Agent, Read, Skill
 
 # Sprint Agent
 
-Orchestrates a complete sprint: goal gathering, estimation, dev skill coordination, consolidation.
+Orchestrates a complete sprint: goal gathering, estimation, dev-skill coordination, consolidation.
 
 ## Workflow
 
@@ -19,7 +19,7 @@ Orchestrates a complete sprint: goal gathering, estimation, dev skill coordinati
 Enter plan mode. Collect via AskUserQuestion (one grouped question):
 
 1. Sprint goal (expected outcome at sprint end)
-2. List of tickets to process (title + short description for each)
+2. List of tickets to handle (title + short description for each)
 3. Team velocity (available story points)
 
 ExitPlanMode before any execution.
@@ -30,11 +30,11 @@ Invoke the `estimator` skill with the tickets collected in Phase 1.
 
 **Expected output**: story-point estimation table with risks.
 
-**⚠️ Fallback**: if `estimator` is unavailable, request a manual estimate via AskUserQuestion.
+**⚠️ Fallback**: if `estimator` is unavailable, ask for a manual estimate via AskUserQuestion.
 
 ### Phase 3 — Scrum organization
 
-Invoke the `scrum-master` skill to refine the backlog and produce ceremony artifacts (RAID log, agendas, metrics).
+Invoke the `scrum-master` skill to refine the backlog and produce the ceremony artifacts (RAID log, agendas, metrics).
 
 **Input**: Phase 1 tickets + Phase 2 estimation.
 
@@ -44,24 +44,24 @@ Invoke the `scrum-master` skill to refine the backlog and produce ceremony artif
 
 ### Phase 4 — Development
 
-Depending on ticket type, invoke the appropriate skills:
+Depending on ticket nature, invoke the appropriate skills:
 
 - Frontend tickets → `frontend-dev` if available
 - Backend tickets → `backend-dev` if available
 
-**⚠️ Fallback**: `frontend-dev` and `backend-dev` not yet created — TODO. Display the list of tickets to process manually along with the estimation result.
+**⚠️ Fallback**: `frontend-dev` and `backend-dev` not created — TODO. Display the list of tickets to handle manually along with the estimation result.
 
 ### Phase 5 — QA
 
 Invoke `qa-engineer` if available on the Phase 4 deliverables.
 
-**⚠️ Fallback**: `qa-engineer` not yet created — TODO. Display `⚠️ QA not automated — manual validation required`.
+**⚠️ Fallback**: `qa-engineer` not created — TODO. Display `⚠️ QA not automated — manual validation required`.
 
 ### Phase 6 — Documentation
 
 Invoke `tech-writer` if available on the delivered features.
 
-**⚠️ Fallback**: `tech-writer` not yet created — TODO. Display `⚠️ Documentation to complete manually`.
+**⚠️ Fallback**: `tech-writer` not created — TODO. Display `⚠️ Documentation to complete manually`.
 
 ### Phase 7 — SDD Converge
 
@@ -69,12 +69,12 @@ Invoke the `sdd-converge` skill with the list of tasks delivered in Phase 4.
 
 **Input**: list of completed tickets + path to `spec/tasks.md` if available.
 
-**Expected output**: report `spec/convergence-YYYY-MM-DD.md` — spec/code gaps, stack drift, at-risk criteria.
+**Expected output**: `spec/convergence-YYYY-MM-DD.md` report — spec/code gaps, stack drift, at-risk criteria.
 
-**⚠️ Fallback**: if `sdd-converge` is unavailable or the `spec/` folder is absent, display `⚠️ sdd-converge not run — manual spec-compliance check required`.
+**⚠️ Fallback**: if `sdd-converge` is unavailable or the `spec/` folder is absent, display `⚠️ sdd-converge not executed — manual spec-compliance verification required`.
 
 ### Phase 8 — Memory consolidation
 
-Invoke `memory-ritual` to consolidate sprint outputs into project memory.
+Invoke `memory-rituel` to consolidate the sprint outputs into project memory.
 
-**⚠️ Fallback**: if `memory-ritual` is unavailable, display `⚠️ memory-ritual unavailable — manual consolidation recommended`.
+**⚠️ Fallback**: if `memory-rituel` is unavailable, display `⚠️ memory-rituel unavailable — manual consolidation recommended`.

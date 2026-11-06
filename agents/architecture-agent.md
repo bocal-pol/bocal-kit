@@ -143,4 +143,3 @@ Generate `architecture/architecture-agent/YYYY-MM-DD_architecture-report.md` wit
 - **Decision Log**: summary table of all ADRs (Decision | Context | Discarded alternative | Date)
 
 → Ready for project-bootstrap-agent (sdd-tasks)
-</content>

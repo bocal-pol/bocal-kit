@@ -108,4 +108,3 @@ Generate `integration/YYYY-MM-DD_integration-report.md`:
 ## Rollback procedures
 (circuit breaker + dead letter queues)
 ```
-</content>

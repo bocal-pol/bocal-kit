@@ -450,4 +450,3 @@ Figma: [Yes/No] | Canva: [Yes/No]
 ## Identified gaps
 [Uncovered dimensions and reasons]
 ```
-</content>

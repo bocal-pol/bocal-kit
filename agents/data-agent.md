@@ -204,4 +204,3 @@ Invoke `memory-rituel` with:
 - Modeling patterns used (Star Schema, Medallion, Data Vault)
 - Data quality scores (if available)
 - ML models in production
-</content>
