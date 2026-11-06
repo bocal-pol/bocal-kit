@@ -43,3 +43,11 @@ Source hardcoded two personal machine paths referencing a private project ("Site
 `C:\Projet\SiteV26\InfraDocker\...` and `D:\site26\SiteV26\InfraDocker\...`). Replaced the whole
 "known paths" detection logic with a generic grep-based auto-detection of a compose file declaring
 a `semgrep` service, rather than porting the private paths as "known paths" for a public audience.
+
+## creativity-theory-* (7 skills, ported from szikra-*)
+Source skills each had a "Szikrataku anchoring" section tied to a private personal side project
+(a specific idea-management app name, its real service/class names, specific ADR numbers). For
+each skill, replaced that section with a generalized "Implementation example — applying this to a
+real idea-management product" section that keeps the transferable methodological content
+(which fields/axes are useful, the general mechanism) but drops the private project's name,
+concrete class names, and ADR references.
