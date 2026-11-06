@@ -48,3 +48,39 @@ identifying data) or didn't require a judgment call.
   table in full, but replaced the named private project and its exact internal paths with generic
   equivalents ("a trip plan document," "stage files," etc.) that any user adopting this agent can
   map to their own project structure.
+
+- **`race-engineering-agent`** and **`algorave-agent`**: no personal-identifier content, but both
+  were persona agents tied to the source's private hobby context. Ported as-is (motorsport/Rubik's
+  cube expertise, Strudel live-coding), since neither referenced any private project or identifying
+  detail — only straight translation was needed.
+
+- **`survival-logistics-agent`** (ex-`survivaliste-agent`): the source was written entirely around
+  one specific country's law (weapons law article numbers, forestry-code articles, regional
+  hunting-season calendars, a specific government emergency-number set). Generalized every legal
+  reference into an explicitly-flagged example structure ("adapt to your jurisdiction," "check your
+  local forestry authority") rather than deleting the content — the mechanism (Rule of 3, weighed
+  BOB, calorie budgeting) is universal even though the specific legal figures are not.
+
+- **`legal-compliance-agent`** (ex-`policier-agent`): same treatment as above, more heavily —
+  the entire persona was built around one country's weapons law and forestry code, with specific
+  article numbers and administrative vocabulary. Rewrote every legal section as an explicitly-
+  labeled "EXAMPLE, verify locally" structure, replaced the country-specific emergency numbers with
+  a generic instruction to use the reader's own country's numbers, and kept the advisor persona,
+  the risk-assessment format, and the response structure intact.
+
+- **`creativity-theory-agent`** (ex-`szikra-agent`): the source was almost entirely scoped to one
+  specific private application (its own monorepo, ADRs, enums, and a course document specific to
+  that product). Generalized into a reusable idea-management methodology persona: kept the six
+  cited creativity theories (Johnson, Koestler, Wallas, Luhmann, Robinson & Schroeder, Edmondson) in
+  full, the Spark Notebook response format, and the theory/code guardrail discipline, but replaced
+  every concrete reference to the private product's specific status enum values, ADR numbers, file
+  paths, and course document with generic placeholders a reader can map onto their own
+  idea-management product. The 7 child `szikra-*` skills this agent orchestrates were renamed to
+  `creativity-theory-*` for consistency and are expected to receive the same generalization
+  treatment when ported in the skills pass.
+
+- **`ict-director-agent`** (ex-`ict-agent`) and **`public-procurement-agent`** (ex-`marches-agent`):
+  both referenced internal personal-profile folder names (`ProfilTechnique/`, `ProfilReseau/`,
+  `ProfilDirICT/`) used to organize the source's own multi-profile ICT setup. Replaced with generic
+  placeholder names (`<technical-profile>/`, `<network-profile>/`, `<director-profile>/`) and a note
+  that these only matter if the adopting project runs multiple ICT sub-profiles.
