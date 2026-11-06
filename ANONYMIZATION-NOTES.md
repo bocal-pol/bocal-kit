@@ -37,3 +37,24 @@ repository.
 Everything else ported in this pass (structure + root docs) was either already generic business
 context (e.g. references to a public-sector domain, which is a business-context detail, not
 identifying data) or didn't require a judgment call.
+
+## semgrep
+Source hardcoded two personal machine paths referencing a private project ("SiteV26",
+`C:\Projet\SiteV26\InfraDocker\...` and `D:\site26\SiteV26\InfraDocker\...`). Replaced the whole
+"known paths" detection logic with a generic grep-based auto-detection of a compose file declaring
+a `semgrep` service, rather than porting the private paths as "known paths" for a public audience.
+
+## creativity-theory-* (7 skills, ported from szikra-*)
+Source skills each had a "Szikrataku anchoring" section tied to a private personal side project
+(a specific idea-management app name, its real service/class names, specific ADR numbers). For
+each skill, replaced that section with a generalized "Implementation example — applying this to a
+real idea-management product" section that keeps the transferable methodological content
+(which fields/axes are useful, the general mechanism) but drops the private project's name,
+concrete class names, and ADR references.
+
+## threat-intelligence
+Source referenced "CERT.be / Centre pour la Cybersécurité Belgique" as a mandatory source tied to
+the "contexte institutionnel de ce dépôt" (the repo's institutional/public-sector context).
+Generalized to "A national/regional CERT relevant to the deployment's jurisdiction" with guidance
+to check it when the project has a public-sector or regulated context — keeps the useful practice,
+drops the specific national/institutional identifier.
