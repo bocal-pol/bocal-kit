@@ -51,10 +51,15 @@ fi
 # The separator allows a space and `:` (for `HEAD:main`) but not `/`, so a
 # branch named `feature/main-...` doesn't get blocked.
 #
+# `origin` is a required literal in this pattern, not optional: the rule
+# targets the main repo remote, never a secondary mirror-replication remote a
+# contributor might have configured locally — pushing main/master/develop to
+# such a remote is exactly what a replication mechanism is supposed to do.
+#
 # Exemption: GIT_ALLOW_PROTECTED_PUSH=1, for history-maintenance operations
 # explicitly approved by the user. That's the path to take rather than
 # neutralizing this file.
-PROTECTED='git[[:space:]]+push([^"]*)[[:space:]:](origin[[:space:]]+)?(-f[[:space:]]+|--force[[:space:]]+)?(main|master|develop)([[:space:]:"\\]|$)'
+PROTECTED='git[[:space:]]+push([^"]*)[[:space:]:]origin[[:space:]]+(-f[[:space:]]+|--force[[:space:]]+)?(main|master|develop)([[:space:]:"\\]|$)'
 FORCE='git[[:space:]]+push([^"]*)(--force([[:space:]]|$)|--force-with-lease|[[:space:]]-f([[:space:]]|$))'
 
 if [ "${GIT_ALLOW_PROTECTED_PUSH:-}" != "1" ]; then
