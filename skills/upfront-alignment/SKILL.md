@@ -147,6 +147,15 @@ Return:
 - The files created/updated (`CONTEXT.md` / `CONTEXT-MAP.md`, ADR).
 - The **green light** or the remaining **blocking unknowns** before implementing — an abuse case with no identified control (axis 6) is a blocking unknown like any other.
 
+**This summary becomes the delegation prompt** to the implementation agent (`team-dev` Phase 2):
+write it as such rather than as an interview write-up. Concretely (Anthropic, *prompt library*) —
+state the expected **outcome** rather than the steps to get there (Phase 1's scope already supplies
+the what, no need to prescribe the how); include a **verification command** whenever Phase 1
+identified one (an edge-case test, an audit command); cite the `CONTEXT.md` term or file as a
+reference rather than rephrasing it; quantify any measurable target identified in Phase 1 (perf,
+threshold, deadline). An alignment summary made only of vague intent isn't ready to be delegated,
+even if every decision branch of the interview is resolved.
+
 ## Fallback
 
 If the skill is unavailable: run the interview from memory (intent → scope → edge cases → alternatives → unknowns) and record at least the key vocabulary in `CONTEXT.md`.
