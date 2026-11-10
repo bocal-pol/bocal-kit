@@ -264,6 +264,48 @@ spec:
             summary: "Error budget 90% exhausted — freeze deployments"
 ```
 
+### Phase 3bis — Distributed tracing (OpenTelemetry)
+
+> ⚠️ **Tracing rule**: instrument the backend with OpenTelemetry as soon as a user journey
+> crosses more than one service or several layers (controller → service → repository →
+> DB/external API) — without distributed traces, finding which exact request is slow in a
+> call chain forces guessing instead of measuring.
+
+```yaml
+# otel-collector-config.yaml — minimal collector
+receivers:
+  otlp:
+    protocols:
+      grpc:
+      http:
+
+processors:
+  batch:
+
+exporters:
+  # To Grafana Tempo, Jaeger, or Datadog APM, depending on the stack already in place
+  otlp:
+    endpoint: "tempo:4317"
+    tls:
+      insecure: true
+
+service:
+  pipelines:
+    traces:
+      receivers: [otlp]
+      processors: [batch]
+      exporters: [otlp]
+```
+
+- **Instrumented backend**: an OpenTelemetry SDK per language (`@opentelemetry/sdk-node`,
+  `OpenTelemetry.Instrumentation` for .NET, `opentelemetry-php`) — prioritize auto-instrumentation
+  for HTTP/DB over custom spans.
+- **Correlation**: propagate `trace_id` into every log (`Log::info()`/`ILogger` with the active
+  span's context) — see `skills/logging-architect/SKILL.md` for the full `request_id`/`trace_id`
+  correlation between frontend and backend; don't duplicate it here.
+- **Visualization**: Grafana + Tempo (consistent with Prometheus already in Phase 3), or the
+  APM already chosen in Phase 1 (Datadog/New Relic) if the project has one.
+
 ### Phase 4 — Post-Mortem Template (Blameless)
 
 > ⚠️ **Blameless rule**: name the **team**, never an individual. The goal is systemic improvement,
