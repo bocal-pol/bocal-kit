@@ -290,6 +290,60 @@ output "public_subnet_ids" {
 }
 ```
 
+#### Performance — CDN and region colocation
+
+> ⚠️ **Edge latency rule**: decide these two points when choosing the region (Phase 1), not
+> later — fixing them afterward means a data migration.
+
+- **Colocated app/DB region**: `var.availability_zones` (above) must match the region of the
+  database the app queries — an app in `eu-west-1` querying an RDS instance in `us-east-1` adds
+  network latency to every request, invisible in dev and costly in production.
+- **CDN on static assets**: serve images, JS, and CSS through CloudFront (AWS), Cloudflare, or
+  an equivalent, rather than directly from the origin server — without a CDN, every user far
+  from the hosting region downloads these files with the full network latency to the origin.
+
+```hcl
+# modules/cdn/main.tf — minimal CloudFront in front of a static-assets S3 bucket
+resource "aws_cloudfront_distribution" "static_assets" {
+  enabled             = true
+  default_root_object = "index.html"
+
+  origin {
+    domain_name = aws_s3_bucket.static_assets.bucket_regional_domain_name
+    origin_id   = "s3-static-assets"
+
+    s3_origin_config {
+      origin_access_identity = aws_cloudfront_origin_access_identity.main.cloudfront_access_identity_path
+    }
+  }
+
+  default_cache_behavior {
+    allowed_methods        = ["GET", "HEAD"]
+    cached_methods          = ["GET", "HEAD"]
+    target_origin_id        = "s3-static-assets"
+    viewer_protocol_policy   = "redirect-to-https"
+    compress                 = true  # Automatic Brotli/gzip
+
+    forwarded_values {
+      query_string = false
+      cookies { forward = "none" }
+    }
+
+    min_ttl     = 0
+    default_ttl = 86400    # 1 day — versioned assets (hash in the filename)
+    max_ttl     = 31536000 # 1 year
+  }
+
+  restrictions {
+    geo_restriction { restriction_type = "none" }
+  }
+
+  viewer_certificate { cloudfront_default_certificate = true }
+
+  tags = local.common_tags
+}
+```
+
 ### Phase 4 — IAM Least Privilege
 
 > ⚠️ **IAM rule**: never a wildcard (`*`) in `actions` or `resources` except for a documented absolute necessity. `DenyRootAccount` + `DenyLeavingOrg` SCP on the management account. MFA mandatory for root and high-privilege accounts.
