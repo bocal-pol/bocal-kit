@@ -313,6 +313,30 @@ Repositories **abstract data access** — services call the repository, never El
 - **Service calls the repository via injection**: never Eloquent/DB directly
 - **Full example** → see the `dto-architect` skill (IRepository + IDemandeRepository + DemandeRepository + RepositoryServiceProvider)
 
+## ⚡ Performance — backend checklist to check on EVERY deliverable
+
+N+1, targeted SELECT, and indexes are already covered above (Projections, Repositories,
+Migrations sections). The points below are not — check them before delivery:
+
+- [ ] **Async jobs**: every slow operation (mail, export, PDF, AI call) runs through
+  `Queue::push()` (already shown in Services above) — never synchronously inside the HTTP request.
+  A synchronous call to this kind of operation blocks the response for the full duration of the task.
+- [ ] **Compression**: Brotli or gzip enabled on HTML/JSON responses (`web.php` middleware or
+  Nginx/Apache server config). Without it, every response weighs 2 to 4 times more to transfer.
+- [ ] **AI streaming**: every long AI-generation response is streamed token by token
+  (`StreamedResponse`), never returned as one block after full generation —
+  otherwise the user waits for the entire text before seeing the first letter.
+- [ ] **Pagination**: every list endpoint uses `.paginate()` (already shown in Phase 3,
+  `getAll()`) — never an unbounded `.get()` on a table that can grow.
+- [ ] **Redis cache on hot data**: anything read often and rarely changed (reference data,
+  configuration, aggregates) goes through `Cache::remember()` with an explicit TTL — no repeated
+  DB query for stable data.
+
+> Connection pooling, external API timeouts, retry/backoff, rate limiting, and graceful degradation
+> are already covered by the **Resilience under load** checklist in the global `CLAUDE.md` — don't
+> duplicate it here. The carbon angle of these same optimizations (images, CDN, aggressive cache) is in
+> `skills/green-it/SKILL.md` Phase 3 — refer to it instead of rewriting it.
+
 ## 📦 DTOs, Controllers, Models & Migrations — delegated to `dto-architect`
 
 Every API endpoint produces OR consumes a DTO. **No Eloquent Model is ever exposed in a response**.

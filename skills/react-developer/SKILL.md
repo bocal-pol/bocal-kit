@@ -190,6 +190,41 @@ export const featureKeys = {
 };
 ```
 
+### Phase 5bis — Frontend performance — checklist to check on EVERY deliverable
+
+Query caching (TanStack Query), code splitting (`lazy()`, Phase 8), and ad-hoc memoization
+(`React.memo`, Phase 3) are already covered above. The points below are not:
+
+- [ ] **Skeleton loading**: every component that depends on a query (`isLoading`) shows a
+  skeleton of the final shape, never a spinner alone — a spinner makes the page look slower
+  than it is, a skeleton makes it look already ready.
+- [ ] **Debounce**: every search/autocomplete field that triggers a request uses a debounce
+  (`useDeferredValue` or a custom `useDebouncedValue` hook, ~300ms) — without it, every keystroke
+  triggers an unneeded network call.
+- [ ] **Optimistic UI**: every TanStack Query mutation on a reversible action (delete, edit)
+  updates the cache via `onMutate` before the server response, with a rollback in `onError`
+  — without this, the user waits for the network response to see the effect of their click.
+- [ ] **Independent requests in parallel**: several independent `useQuery` calls fire together
+  (React parallelizes them natively) — never a sequential `await` on hooks whose data does not
+  depend on one another.
+- [ ] **Images**: WebP/AVIF format with `srcset` sized to the screen, `loading="lazy"` attribute
+  on every image below the fold — a full-resolution JPG loaded with priority delays the display
+  of useful content.
+- [ ] **Virtualized long lists** (`@tanstack/react-virtual` or equivalent) once a list can
+  exceed ~100 rows — without virtualization, the entire DOM renders even off-screen.
+- [ ] **Fonts**: self-hosted in WOFF2, at most 2 weights, declared with `font-display: swap`
+  — a third-party font loaded from an external CDN adds a blocking network dependency.
+- [ ] **Third-party scripts** (analytics, chat, pixels) loaded after initial interactivity
+  (`defer`, deferred post-mount injection) — never in the `<head>` at initial load.
+- [ ] **Real Core Web Vitals**: if a RUM tool is available in the project (e.g. Sentry,
+  Vercel Analytics), real users' LCP/INP/CLS metrics are tracked — a synthetic test alone does
+  not capture real users' network/device conditions.
+
+> Systematic re-render memoization (beyond the `React.memo` already shown in Phase 3) and
+> SSR/SSG rendering are to be evaluated case by case per project — no general rule imposed here.
+> The carbon angle of these same optimizations (images, cache, no polling) is in
+> `skills/green-it/SKILL.md` Phase 3 — refer to it instead of rewriting it.
+
 ### Phase 6 — Zustand (UI state)
 
 > ⚠️ **UI state rule**: Zustand for UI state only (modals, selections, filters, pagination) — NOT for server data · slices separated by domain · `immer` for complex mutations
