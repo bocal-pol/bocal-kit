@@ -2,7 +2,7 @@
 
 Structural decisions for this ecosystem and the cross-cutting conventions applied to every project.
 
-- **74 ADRs** — 0000 to 0073, one superseded (0032) and one partially superseded (0048 §2, by 0062)
+- **75 ADRs** — 0000 to 0074, one superseded (0032) and one partially superseded (0048 §2, by 0062)
 - **Template**: [0000-template.md](0000-template.md) — includes the "when an ADR is justified" rule
 - An ADR is never deleted: an abandoned decision moves to `superseded by` or `deprecated` status
 
@@ -22,6 +22,7 @@ Structural decisions for this ecosystem and the cross-cutting conventions applie
 | [0058](0058-settings-permissions-by-class.md) | `settings.json` permissions as generic classes | accepted | Config |
 | [0059](0059-laravel-security-guardrails.md) | Laravel: mandatory API Resources, default auth, secret-free logs | accepted | Laravel backend |
 | [0069](0069-legal-pages-multi-jurisdiction-eu.md) | `legal-pages`: multi-jurisdiction EU support | accepted | Legal pages |
+| [0074](0074-skillspector-skill-mcp-scan.md) | SkillSpector: security scan for third-party skills/agents/MCP | accepted | Skills, agents, MCP |
 
 ## Frontend, UX, and design
 
