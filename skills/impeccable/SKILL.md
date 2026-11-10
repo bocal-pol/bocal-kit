@@ -164,6 +164,22 @@ After any UI file modification, check these anti-patterns:
 - Removed focus outline with no replacement (`:focus { outline: none }`)
 - `z-index > 9999` with no justification
 
+**Floor (inspired by nutlope/hallmark, non-waivable):**
+- `transition: all` — target the animated properties explicitly
+- Animating `width`, `height`, `top` or `left` (expensive, jank) — prefer `transform`/`opacity`
+- `overflow-x: hidden` or `100vw` on `html`/`body` — use `overflow-x: clip` instead (avoids breaking
+  scroll-into-view focus)
+- An eyebrow or tracked-capitals / small-caps label above a heading — labels, captions, table
+  headers and tags stay in normal case, body text size
+- Template punctuation: meta strings joined by middle dots, arrows glued to link text, decorative
+  status dots with no function
+- An invented number, testimonial, logo or logo wall — any social proof must come from real data
+  supplied by the user, never generated
+- A hero whose headline, one-sentence pitch and primary action don't fit visible at 1280×800
+  without scrolling
+- An uncapped container on large screens — at 1920px the gutters should grow, never the reading
+  measure or the grid width
+
 Each violated rule → flag with context (file, approximate line) and propose a fix.
 
 **Suppression**: an anti-pattern can be ignored on a case-by-case basis with
