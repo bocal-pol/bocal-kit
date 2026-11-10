@@ -62,6 +62,29 @@ npm install package@latest
 # See changelogs before applying
 ```
 
+### Phase 3bis — Unused dependencies (weight angle, not staleness)
+
+> Different from the previous phases: a dependency can be perfectly up to date and still serve
+> no purpose — every unused package adds weight to the bundle the user downloads without
+> providing any value.
+
+Detection depending on the manifest present:
+
+- `package.json` → `npx depcheck 2>/dev/null` — lists declared dependencies never imported in
+  the code
+- `composer.json` → `composer-unused 2>/dev/null` (if installed) — otherwise report
+  `⚠️ composer-unused not installed — manual detection required`
+
+```
+### Unused dependencies detected
+| Package | Size (if available) | Last reference in code |
+|---------|----------------------|--------------------------|
+```
+
+Only propose removal after confirming no dynamic import (conditional `require()`, a plugin
+loaded by string name) uses it — `depcheck`/`composer-unused` can produce false positives on
+this kind of usage.
+
 ### Phase 4 — Conditional persistence
 
 - **Standalone**: create the folder via Bash (`mkdir -p reports/dependency-updater`), write `reports/dependency-updater/YYYY-MM-DD_dependency-updater.md`
