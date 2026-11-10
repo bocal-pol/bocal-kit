@@ -33,6 +33,7 @@ experiments).
 | [naiersaidane/claude-mastery](https://github.com/bocal-pol/claude-mastery) | `upfront-alignment`, `illustre`, `investigue` | Claude Mastery training skills reused as a base for several guided-interview disciplines |
 | [nextlevelbuilder/ui-ux-pro-max-skill](https://github.com/bocal-pol/ui-ux-pro-max-skill) | `ux-designer`, `design-system` | Cross-platform UI/UX design intelligence |
 | [mattpocock/skills](https://github.com/bocal-pol/skills-pocock) | General `SKILL.md` structuring conventions | Style reference for writing skills |
+| [nutlope/hallmark](https://github.com/bocal-pol/hallmark) | Floor rules added to `impeccable` | Non-waivable anti-AI-slop gates (targeted transitions, overflow-x clip, eyebrow/tracked-caps ban, capped container) |
 
 ## Note on `public-apis`
 
