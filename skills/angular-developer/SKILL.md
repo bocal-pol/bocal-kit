@@ -179,6 +179,40 @@ export class FeatureListComponent {
 export default FeatureListComponent;
 ```
 
+### Phase 4bis — Frontend performance — checklist to check on EVERY deliverable
+
+Systematic `OnPush` (the skill's absolute rule) and lazy routing (Phase 6) already cover
+re-renders and code splitting. The points below are not covered yet:
+
+- [ ] **Skeleton loading**: every container that depends on an `rxResource`/`isLoading` shows a
+  skeleton of the final shape (`@if (features.isLoading()) { <app-skeleton /> }`), never a
+  spinner alone — a spinner makes the page look slower than it is.
+- [ ] **Debounce**: every search field that triggers a request uses `debounceTime(300)` +
+  `distinctUntilChanged()` on the Observable, or an equivalent signal — without it, every
+  keystroke triggers an unneeded network call.
+- [ ] **Optimistic UI**: every reversible action (delete, edit) on the NGXS store updates the
+  local state before the HTTP response, with a rollback in `catchError` (pattern already
+  sketched in Phase 5 with `ErrorHandlerService`) — without this, the user waits for the
+  network response to see the effect of their click.
+- [ ] **Independent requests in parallel**: `forkJoin` or several separate `rxResource` calls
+  for data that does not depend on one another — never a sequential `switchMap` chain when
+  parallelism is possible.
+- [ ] **Images**: WebP/AVIF format with `NgOptimizedImage` (built-in native lazy loading) — a
+  full-resolution JPG loaded with priority delays the display of useful content.
+- [ ] **Virtualized long lists** (`@angular/cdk/scrolling` `CdkVirtualScrollViewport`) once a
+  list can exceed ~100 rows — without virtualization, the entire DOM renders even off-screen.
+- [ ] **Fonts**: self-hosted in WOFF2, at most 2 weights (via `ng-cli-maison` if the project
+  already uses it) — a third-party font loaded from an external CDN adds a blocking network
+  dependency.
+- [ ] **Third-party scripts** (analytics, chat, pixels) loaded after initial interactivity,
+  never in `index.html` at initial load.
+- [ ] **Real Core Web Vitals**: if a RUM tool is available in the project, real users'
+  LCP/INP/CLS metrics are tracked — a synthetic test alone does not capture real users'
+  network/device conditions.
+
+> The carbon angle of these same optimizations (images, cache, no polling) is in
+> `skills/green-it/SKILL.md` Phase 3 — refer to it instead of rewriting it.
+
 ### Phase 5 — NGXS store
 
 > ⚠️ **Store rule**: one action = one business verb · `patchState` only (never direct `setState` except reset) · static `@Selector()` · `catchError` mandatory on every HTTP action

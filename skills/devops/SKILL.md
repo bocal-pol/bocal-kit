@@ -495,6 +495,22 @@ spec:
           value: 50
           periodSeconds: 30
 ---
+# Service — load balances traffic across the HPA replicas above
+# Without a Service, the extra replicas created by the HPA receive no traffic:
+# horizontal scaling is useless if nothing routes requests to the new pods.
+apiVersion: v1
+kind: Service
+metadata:
+  name: app
+  namespace: production
+spec:
+  type: ClusterIP
+  selector:
+    app: app
+  ports:
+    - port: 80
+      targetPort: 3000
+---
 # PodDisruptionBudget — guarantees availability during maintenance
 apiVersion: policy/v1
 kind: PodDisruptionBudget
