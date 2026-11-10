@@ -42,6 +42,11 @@ installing any external skill/MCP (see Auto-invocation).
 
 ## Prerequisites
 
+**Per-machine local install**: the CLI tool (`skillspector`) is not vendored into this
+repo (ADR 0074 decision) — it must be installed once on every machine that uses it. The
+skill itself is available to any agent as soon as this repo is synced, but the binary
+stays absent until this step is done.
+
 1. **Python 3.12+** with `uv` (recommended) or `pip`. Check: `python3 --version`.
 2. **CLI install** (once per machine):
    ```bash
@@ -61,6 +66,45 @@ installing any external skill/MCP (see Auto-invocation).
 want to install it immediately → `SKILLSPECTOR_UNAVAILABLE`. Document "Skill-
 Spector scan not run — manual skill/MCP review only" in the report and never
 silently block a task on its absence.
+
+### Known issue — missing `uv` and no precompiled YARA wheel
+
+On a Windows machine without `uv`, `pip install git+...` fails if the default Python
+version is too recent to have a precompiled `yara-python` wheel (e.g. Python 3.14 as of
+2026-11: no wheel published, building from source requires Visual Studio Build Tools,
+absent by default). Verified workaround:
+
+1. List available interpreters: `py -0` (Windows) — look for one version below (e.g.
+   3.13) that has a published wheel: `pip index versions yara-python`.
+2. Install with that exact interpreter: `py -3.13 -m pip install --user
+   "git+https://github.com/bocal-pol/SkillSpector.git"`.
+3. The binary installs under `%APPDATA%\Python\Python3XX\Scripts\skillspector.exe`
+   (Windows) rather than the standard PATH — call it by its full path, or add it to the
+   machine's PATH once validated.
+
+### Known issue — file output (`--output`) unavailable on Windows
+
+`--output FILE` systematically fails on Windows ("Safe file output is unsupported on
+this platform" — the tool's POSIX no-follow constraint). Redirect stdout instead:
+
+```bash
+skillspector scan TARGET --no-llm --format json > report.json
+```
+
+**Parsing trap**: in `--recursive` mode, the tool writes log lines ("Multi-skill
+directory detected", "Scanning X/N"...) to the same stream as the JSON when stdout and
+stderr are combined (`2>&1` or `tee`). Redirect stderr separately (`2> log.txt`), or
+locate the file's first `{` line before parsing (`grep -n '^{$' report.json`) and
+truncate everything before it.
+
+### Known issue — `--max-skills` above the default (32) can fail
+
+Observed on this repo (197 skills): any `--max-skills` value above the default (32) can
+fail with "discovery was incomplete... scan this input without --max-skills", regardless
+of execution context (direct terminal, background, redirection). No usage-side fix
+found — verified workaround: scan in batches of 32 skills max (copy skills in groups of
+32 into temporary folders, scan each separately without `--max-skills`, consolidate the
+reports). Before repeating this workaround, check whether a newer tool release fixes it.
 
 ## Expected input
 
@@ -129,20 +173,26 @@ reservation).
 ### Phase 6 — Auditing the existing skills folder
 
 To audit every skill already present (e.g. this repo's `skills/`, or
-`~/.claude/skills/`) rather than a single skill being imported:
+`~/.claude/skills/`) rather than a single skill being imported, try the direct
+command first:
 
 ```bash
-skillspector scan ./skills/ --recursive --max-skills 250 --no-llm --format json --output "$OUTPUT_PATH"
+skillspector scan ./skills/ --recursive --max-skills 250 --no-llm --format json > report.json
 ```
 
-The default `--max-skills 32` is too low for this repo's skill count — raise it
-explicitly. Read the aggregate report: it lists a score per scanned skill and
-flags any coverage omission (see upstream README § Recursive Collection
-Scanning). For every skill reported as `CAUTION`/`DO_NOT_INSTALL`, apply Phase 4
-(re-verification) before proposing a fix to the user — never fix an existing
-skill without explicit validation, since some findings reflect a skill's
-legitimate content (e.g. a pentest skill that mentions `subprocess`/`exec` by
-the nature of its topic).
+If this fails ("scan this input without --max-skills" — see the known issue above),
+apply the batch-of-32 workaround: split the skill list into groups of 32
+(`ls skills/ | sort`, then `sed -n` by range), copy each group into a temporary
+folder, scan each one without `--max-skills` (the default 32 then works), then
+consolidate the individual JSON reports into an overview.
+
+Read the aggregate report (or each batch report): it lists a score per scanned
+skill and flags any coverage omission (see upstream README § Recursive
+Collection Scanning). For every skill reported as `CAUTION`/`DO_NOT_INSTALL`,
+apply Phase 4 (re-verification) before proposing a fix to the user — never fix
+an existing skill without explicit validation, since some findings reflect a
+skill's legitimate content (e.g. a pentest skill that mentions
+`subprocess`/`exec` by the nature of its topic).
 
 ## Auto-invocation
 
