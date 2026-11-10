@@ -409,6 +409,32 @@ Agent(subagent_type: "<name>-agent",
 context + subagent prompt). If the harness doesn't know the `subagent_type` (the agent is absent on
 this machine), apply that mode's fallback.
 
+#### Delegation prompt wording
+
+The `prompt` passed to `Agent(...)` is not a plain pass-through of the target — its quality decides
+whether the delegated agent delivers correctly on the first pass or loops through back-and-forth.
+Before launching an agent, apply these five habits (Anthropic, *prompt library* — not a new phase,
+a wording discipline inside the phases that already exist):
+
+1. **Describe the outcome, not the steps.** State what the agent must produce ("add rate limiting
+   to the public API, existing tests must still pass"), never a step-by-step instruction list —
+   let the agent find the relevant files itself.
+2. **Give it a way to verify.** Every delegation prompt carries a command or test the agent can run
+   itself to judge its own work (`npm test`, `php artisan test`, a verification query), so it
+   iterates instead of stopping after one attempt.
+3. **Point to a reference when one exists.** A file, pattern, or module already compliant in the
+   project (`GRAPH_CONTEXT.hot_files`, a deliverable from a previous phase) — the agent matches its
+   work to it instead of inventing a convention.
+4. **Quantify the target when it's measurable.** Performance, coverage, bundle size: give the
+   numeric threshold in the prompt, not a qualitative phrasing ("fast", "lightweight").
+5. **Hand over the raw artifact, not a summary.** Error logs, a previous agent's report, a tool's
+   output: paste the full content into the prompt rather than paraphrasing it — the agent reads
+   the source, not a description of the source.
+
+These five points apply to **every** `Agent(...)` call below and in `--full`
+(Phases B/C/D) — they don't replace `unlazy`'s GATES or the `Context` already prescribed by the
+*Dispatch convention*, they discipline its wording.
+
 #### `--auto <description>`
 
 Free mode — the user describes their need without choosing a mode. `team-selector` chooses the
