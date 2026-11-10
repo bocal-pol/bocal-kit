@@ -79,8 +79,10 @@ Via `AskUserQuestion`, have each candidate decided (apply / log / reject). Then:
 
 - **Touches a skill** → an `OBS-NNN` entry in `~/.claude/memory/skill-observations/log.md`,
   **collision-safe protocol**: read the max number, assert absence, write N+1, verify the count.
-  `improve-skills` will consume it. Exact format (`stop.sh` and `improve-skills` parse these
-  fields, don't change their shape):
+  `improve-skills` will consume it, and must run its **Phase 6 — Verification and publication
+  after a fix** (SkillSpector scan + fork PR) once the fix or creation has been written — see
+  [`skills/improve-skills`](../improve-skills/SKILL.md). Exact format (`stop.sh` and
+  `improve-skills` parse these fields, don't change their shape):
 
   ```markdown
   ### OBS-012

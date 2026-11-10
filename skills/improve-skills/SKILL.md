@@ -6,7 +6,8 @@ user-invocable: true
 type: utility
 priority: low
 scope: cross
-dependencies: []
+dependencies:
+  - skillspector
 conflicts: []
 ---
 
@@ -88,3 +89,27 @@ changes.
 ### Phase 5 — Application
 
 Rewrite the approved files with Write. Confirm the path of each modified file.
+
+### Phase 6 — Verification and publication after a fix
+
+**Applies only** when Phase 0 processed an observation coming from `friction-retro` (a skill fix or
+creation following a captured error or friction) — not to a voluntary structural review with no
+underlying pending observation. A skill fix born from an error isn't any safer than a third-party
+skill until it's been checked the same way: run it through the same guardrails as an external
+import.
+
+1. **SkillSpector scan** — call the Skill tool with `skillspector` on each skill modified or created
+   in this phase (`TARGET` = its folder). Read `risk_assessment.recommendation`:
+   - `SAFE` → continue straight to step 2.
+   - `CAUTION` → list the findings to the user, ask for explicit confirmation before continuing.
+   - `DO_NOT_INSTALL` → **block**: don't open a PR, re-check the Critical/High findings by reading
+     the flagged file and line directly, send the skill back to Phase 3 for correction, and only
+     retry this phase afterward.
+   - If `skillspector` is unavailable: note "SkillSpector scan not run" in the final report and
+     continue — never block silently on its absence.
+
+2. **Publish through the fork workflow** — per `CONTRIBUTING.md` §4: branch from an up-to-date
+   `develop`, commit with Conventional Commits, push to your own fork (never to
+   `bocal-pol/bocal-kit` directly), open a Pull Request toward `develop`. There is no further
+   mirror to propagate to from here — `bocal-kit` is itself one of the two public mirrors of a
+   private source configuration, not a source to mirror onward.
