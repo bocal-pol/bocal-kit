@@ -34,6 +34,9 @@
     "defaultMode": "plan"
   },
   "model": "claude-sonnet-5",
+  "worktree": {
+    "baseRef": "head"
+  },
   "includeCoAuthoredBy": false,
   "theme": "dark",
   "hooks": {
