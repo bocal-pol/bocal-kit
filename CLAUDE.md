@@ -109,6 +109,21 @@ tools: Glob, Grep, Read, Write, Bash, AskUserQuestion, Skill
   to the real agent. Never copy instructions into it — that's what made the two versions diverge in
   the past.
 
+### Optional `isolation: worktree` field
+
+An agent can declare `isolation: worktree` in its frontmatter (after `scope`, before `tools`):
+Claude Code then always runs it in its own git worktree, files isolated from the main checkout.
+Reserved for Level-2 agents **that write code** and may be dispatched in parallel with another
+agent from a different domain on the same repository (collision risk on a shared file — a DTO, a
+monorepo config). Never on a mostly-reading agent (audit, reporting): the resulting worktree stays
+locked until manually merged, friction with no real benefit. Detail, pitfalls, and the equivalent
+manual method (several `claude -w` terminals): the [`worktree-agents`](skills/worktree-agents/SKILL.md)
+skill, ADR 0075.
+
+Prerequisite: `worktree.baseRef: "head"` in `settings.json` (repository root) — without this
+setting, a subagent worktree branches from the remote's default branch, not from the in-progress
+`feature/*` branch, contradicting the Global Git Workflow below.
+
 ## Agent hierarchy — multi-level orchestration
 
 A 3-level structure to avoid a flat system and guarantee consistent delegation.
