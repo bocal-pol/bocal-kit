@@ -2,7 +2,7 @@
 
 Structural decisions for this ecosystem and the cross-cutting conventions applied to every project.
 
-- **75 ADRs** — 0000 to 0074, one superseded (0032) and one partially superseded (0048 §2, by 0062)
+- **76 ADRs** — 0000 to 0075, one superseded (0032) and one partially superseded (0048 §2, by 0062)
 - **Template**: [0000-template.md](0000-template.md) — includes the "when an ADR is justified" rule
 - An ADR is never deleted: an abandoned decision moves to `superseded by` or `deprecated` status
 
@@ -88,6 +88,7 @@ Structural decisions for this ecosystem and the cross-cutting conventions applie
 | [0050](0050-skill-md-writing-conventions.md) | SKILL.md writing conventions beyond the frontmatter | accepted | All skills |
 | [0052](0052-entry-points-outside-team-dev.md) | Business entry points outside the `team-dev` hierarchy | accepted | IT support + procurement |
 | [0054](0054-project-specific-domain-skills.md) | Project-specific domain skills hosted in the global config | accepted | Domain-specific skills |
+| [0075](0075-worktree-isolation-level2-agents.md) | `worktree` isolation for Level-2 agents writing code in parallel | accepted | backend/frontend/mobile/infrastructure-agent |
 
 ## Environment and configuration
 
@@ -123,7 +124,7 @@ Structural decisions for this ecosystem and the cross-cutting conventions applie
 
 Some ADRs complement each other and read together:
 
-- **Orchestration** — 0014 (hierarchy) → 0015 (router) → 0047 (leaf isolation) → 0052 (IT/procurement exception)
+- **Orchestration** — 0014 (hierarchy) → 0015 (router) → 0047 (instruction isolation) → 0075 (worktree file isolation) → 0052 (IT/procurement exception)
 - **Session cost** — 0016 (tiering) + 0019 (compaction) + 0046 (subagents & MCP) + 0053 (MCP fleet)
 - **Skills** — 0021 (frontmatter) + 0050 (SKILL.md body)
 - **Memory** — 0024 (system) + 0051 (`<private>`, collision-safe) + 0057 (naming)

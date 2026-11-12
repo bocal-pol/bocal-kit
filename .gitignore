@@ -36,6 +36,9 @@ CLAUDE.local.md
 # ─── Ephemeral working files (unlazy gates, scratch) ──────────────────────────
 .claude/tmp/
 
+# ─── Isolated session/subagent worktrees (isolation: worktree) ────────────────
+.claude/worktrees/
+
 # ─── IDE locks and runtime state ──────────────────────────────────────────────
 ide/
 

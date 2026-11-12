@@ -5,6 +5,7 @@ model: claude-sonnet-5
 type: orchestrator
 priority: high
 scope: frontend
+isolation: worktree
 tools: Glob, Grep, Read, Write, Bash, AskUserQuestion, EnterPlanMode, ExitPlanMode, Skill
 ---
 
