@@ -108,10 +108,11 @@ Then write the file with the Write tool.
 
 Before writing the file, systematically check:
 
-**Frontmatter — 8 mandatory fields**
+**Frontmatter — 7 mandatory fields**
 - [ ] `name` present, kebab-case, matches the folder name
 - [ ] `model` present with a full identifier (`claude-opus-5`, `claude-sonnet-5`, `claude-haiku-4-5-20251001`) — never a short version (`opus`, `sonnet`)
 - [ ] `user-invocable` defined
+- [ ] `tools` is a minimal, justified list
 - [ ] `type` present, value among `orchestrator|framework|domain|utility|context|specialized`
 - [ ] `priority` present, value among `high|medium|low`
 - [ ] `scope` present, value among `backend|frontend|infra|mobile|data|security|cross`
