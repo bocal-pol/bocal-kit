@@ -952,6 +952,28 @@ The user can show them again via Filament's native "Toggle columns" button.
 - **If invoked from `backend-agent`**: return the artifacts in Markdown.
 - **If invoked standalone**: write the files directly into `app/` and `database/`.
 
+### Phase 11 — Filament Wizard (cross-step dependencies)
+
+> ⚠️ **Wizard rule**: in a `Wizard\Step`, never use `default()` to pre-fill a field from data
+> entered in an earlier step — Filament computes every `default()` at the form's/action's
+> initial mount, before any user input, never when navigating between steps. Use
+> `Step::afterValidation(fn (Get $get, Set $set) => ...)` on the step that PRECEDES the one to
+> pre-fill: this hook runs right after that step validates, with its data already reliable, and
+> can write directly into the next step's fields.
+
+> ⚠️ **`FileUpload` read before final submission**: any closure (`options()`, `default()`,
+> `content()`) that reads a `FileUpload` field from an earlier step BEFORE the action's final
+> submission receives a `Livewire\Features\SupportFileUploads\TemporaryUploadedFile` object (a
+> real path on the *Livewire* temp disk, via `getRealPath()`) — never the final path on the
+> configured disk, which only exists AFTER dehydration, when `action()` runs. Handle both forms
+> explicitly (`instanceof TemporaryUploadedFile` vs. a plain string after dehydration).
+
+> ⚠️ **Test harness limitation**: `Livewire::test()->callAction($name, data: [...])` fills a
+> Wizard's entire schema in one pass, without navigating the steps — any `default()`/`options()`
+> that depends on an earlier step is never exercised by this harness, whether it works in a real
+> browser or not. Test this dependency either by reflecting directly on the private methods, or
+> manually in a browser — never trust a green `callAction()` test for this specific case.
+
 ### Phase 12 — Memory
 
 > ⚠️ Skip if invoked from `backend-agent`.
