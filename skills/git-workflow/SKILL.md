@@ -16,6 +16,28 @@ Installs local Git protections and documents the workflow in the current project
 
 ## Workflow
 
+### Step 0 — Bootstrapping an empty repo
+
+If `git rev-parse --git-dir` fails, or the repo exists but has no base branch yet (`main`/
+`develop` missing), the protected-branches + PR convention doesn't apply yet: there is no target
+branch to open a PR against, and the `pre-commit`/`pre-tool-use` hook that blocks direct pushes
+to `main`/`develop` also blocks this very first bootstrap, since it has no usable exemption from
+a single isolated tool call (`GIT_ALLOW_PROTECTED_PUSH=1` must exist in the **hook's** own
+environment, not just in the command).
+
+The only practical path to bootstrap an empty GitHub repo, without going through the hook:
+
+```bash
+# Announce this explicitly to the user before using this path — it bypasses the
+# branch-protection hook.
+gh api repos/<owner>/<repo>/git/refs -f ref='refs/heads/main' -f sha='<first-commit-sha>'
+gh api repos/<owner>/<repo>/git/refs -f ref='refs/heads/develop' -f sha='<first-commit-sha>'
+gh api repos/<owner>/<repo> -X PATCH -f default_branch=main
+```
+
+Caution: pushing a `feature/*` branch first on an empty repo makes it the repo's default branch
+automatically — fix that with the last command above once `main` exists.
+
 ### Step 1 — Detect project state
 
 ```bash
