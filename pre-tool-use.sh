@@ -40,17 +40,11 @@ SCAN=$(printf '%s' "$COMMAND" | sed -E 's/"[^"]*"//g; s/'"'"'[^'"'"']*'"'"'//g')
 # Rule from CLAUDE.md: single author and contributor on every commit.
 # This check deliberately stays on $INPUT (not $SCAN): the co-authorship
 # to detect lives precisely INSIDE the quoted commit message.
-# Scoped to commands that actually write a message (commit or PR): a plain
-# verification command (git log, grep, echo) that MENTIONS the pattern without
-# writing it must not be blocked — recurrence observed 2026-10-26, see
-# hindsight.md 2026-10-02.
-if printf '%s' "$COMMAND" | grep -qE 'git[[:space:]]+commit|gh[[:space:]]+pr[[:space:]]+(create|edit)'; then
-  if printf '%s' "$INPUT" | grep -qiE 'co-authored-by[^"]*(claude|anthropic)|generated with \[claude'; then
-    echo "Commit refused: it contains a Claude or Anthropic co-authorship line." >&2
-    echo "Cause: the repo convention requires a single author." >&2
-    echo "Fix: remove the Co-authored-by line and any generation mention." >&2
-    exit 2
-  fi
+if printf '%s' "$INPUT" | grep -qiE 'co-authored-by[^"]*(claude|anthropic)|generated with \[claude'; then
+  echo "Commit refused: it contains a Claude or Anthropic co-authorship line." >&2
+  echo "Cause: the repo convention requires a single author." >&2
+  echo "Fix: remove the Co-authored-by line and any generation mention." >&2
+  exit 2
 fi
 
 # ─── 2. Protected branches and force-push ─────────────────────────────────────
