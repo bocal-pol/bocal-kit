@@ -16,6 +16,17 @@
 
 ## Entries
 
+### 2026-10-26 — PATH-based tool detection is frozen at session startup
+
+- **Context**: `git` was not on the PATH at session startup. After making it callable mid-session,
+  every hook call kept failing with "Git Bash wasn't found" — the harness had frozen that
+  detection at startup. Hooks stayed degraded — blocking by default — for the rest of the
+  session, even though `bash.exe` was present at the expected path.
+- **Lesson**: a tool added to the PATH mid-session does not re-enable hooks that depend on it —
+  the session must be restarted for detection to run again. The harness's error message ("wasn't
+  found") doesn't distinguish "absent" from "detected absent once, at startup": when a hook stays
+  degraded after fixing a PATH issue, restart before digging further.
+
 ### 2026-09-17 — A committed fix is not a deployed fix
 
 - **Context**: the morning audit marked batch 2 (team-dev, security-agent, CLAUDE.md, personal
