@@ -409,14 +409,6 @@ Agent(subagent_type: "<name>-agent",
 context + subagent prompt). If the harness doesn't know the `subagent_type` (the agent is absent on
 this machine), apply that mode's fallback.
 
-**Background-dispatched agent vs. synchronous**: a subagent dispatched in the background (the
-default case for `Agent(...)`) cannot use an interactive tool — `AskUserQuestion`,
-`EnterPlanMode`/`ExitPlanMode` — even if its frontmatter declares them, since it cannot block
-waiting for a human answer before its completion notification. For any open decision likely to
-need one (brand identity, final name, legal basis…), either accept upfront that the agent will
-settle it as a "reasonable documented decision + TO DETERMINE flag," or dispatch it
-synchronously/foreground instead.
-
 #### Delegation prompt wording
 
 The `prompt` passed to `Agent(...)` is not a plain pass-through of the target — its quality decides
