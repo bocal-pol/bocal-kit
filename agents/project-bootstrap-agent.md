@@ -60,13 +60,19 @@ No secrets in the catalog. Store INTEGRATIONS.
 
 Phase 6b — Legal and accessibility compliance (conditional):
 If APP_SPEC or DATA_DICTIONARY indicates external forms, payment, or external users with personal
-data collection: invoke `compliance-officer` (legal bases + minimization, lightweight version — not
-the full violations cycle) then invoke `legal-pages` with this context to produce **drafts** of a
-privacy policy, terms of service, and a consent banner. Store LEGAL_COMPLIANCE.
+data collection: if `.claude/country.md` doesn't exist yet, ask for the jurisdiction in one
+question (ISO country code, or `EU`/`WORLD`) and write it there — a convention shared with
+`legal-pages`/`dpo-toolkit`, never to be asked again on this project. Invoke `compliance-officer`
+(legal bases + minimization, lightweight version — not the full violations cycle) then invoke
+`legal-pages` with this context to produce **drafts** of a privacy policy, terms of service, and
+a consent banner. If the data collected looks sensitive, large-scale, or involves profiling/
+systematic monitoring, also invoke `dpo-toolkit` for a draft processing register (and a DPIA if
+the necessity test triggers one). Store LEGAL_COMPLIANCE.
 If the project is an internal tool with no public exposure and no external personal data: silent
 skip, note `⏭️ Legal section not produced — internal tool with no public exposure (Phase 6b)`.
-⚠️ Fallback: if `compliance-officer` or `legal-pages` is unavailable, note the gap and continue
-without blocking the following phases — these are bootstrap drafts, not a blocking deliverable.
+⚠️ Fallback: if `compliance-officer`, `legal-pages` or `dpo-toolkit` is unavailable, note the gap
+and continue without blocking the following phases — these are bootstrap drafts, not a blocking
+deliverable.
 
 Phase 7 — Error Journal (init):
 Invoke the `error-journal` skill in "init" mode (empty registry).
