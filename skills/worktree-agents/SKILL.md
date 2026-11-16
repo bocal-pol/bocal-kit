@@ -121,6 +121,16 @@ of this choice and the agents deliberately left out of scope.
   work on conflict, not overwrite one with the other.
 - **Verify after merging**: the merge session must re-run the project's test/run command before
   committing to the target branch — a conflict-free git merge is not proof the result works.
+- **Monorepo with multiple submodules**: `git worktree add` never clones/initializes submodules
+  into the new worktree — the submodules' `.git` gitlinks resolve (via their relative `gitdir:
+  ../.git/modules/<name>`) outside the worktree, into the main repo. The harness's isolation
+  guard-rail detects this write-leak risk and **refuses to create the worktree**, even when the
+  requested task touches no submodule at all. No `isolation: "none"` parameter exists on the
+  `Agent` tool to disable isolation declared in an agent's frontmatter on a one-off basis —
+  absent that, plan a fallback agent with no declared isolation (dispatch to `general-purpose` +
+  an explicitly named skill, e.g. `laravel-developer` or `react-developer`) for when
+  `backend-agent`/`frontend-agent`/`mobile-agent`/`infrastructure-agent` fail for this specific
+  reason.
 
 ## Further reading
 
