@@ -2,7 +2,7 @@
 
 Structural decisions for this ecosystem and the cross-cutting conventions applied to every project.
 
-- **76 ADRs** — 0000 to 0075, one superseded (0032) and one partially superseded (0048 §2, by 0062)
+- **77 ADRs** — 0000 to 0076, one superseded (0032) and one partially superseded (0048 §2, by 0062)
 - **Template**: [0000-template.md](0000-template.md) — includes the "when an ADR is justified" rule
 - An ADR is never deleted: an abandoned decision moves to `superseded by` or `deprecated` status
 
@@ -89,6 +89,7 @@ Structural decisions for this ecosystem and the cross-cutting conventions applie
 | [0052](0052-entry-points-outside-team-dev.md) | Business entry points outside the `team-dev` hierarchy | accepted | IT support + procurement |
 | [0054](0054-project-specific-domain-skills.md) | Project-specific domain skills hosted in the global config | accepted | Domain-specific skills |
 | [0075](0075-worktree-isolation-level2-agents.md) | `worktree` isolation for Level-2 agents writing code in parallel | accepted | backend/frontend/mobile/infrastructure-agent |
+| [0076](0076-shared-country-md-jurisdiction.md) | `.claude/country.md`, a jurisdiction file shared between `legal-pages`/`compliance-officer`/`dpo-toolkit` | accepted | dpo-toolkit, legal-pages, project-bootstrap-agent |
 
 ## Environment and configuration
 
@@ -132,5 +133,5 @@ Some ADRs complement each other and read together:
 - **Monorepo** — 0042 (duplication) + 0043 (test harness)
 - **Secrets & config** — 0002 (secrets) + 0026 (hooks) + 0058 (permissions)
 - **Git workflow** — 0020 (branches, commits) + 0073 (local validation before PR)
-- **Legal compliance** — 0069 (multi-jurisdiction `legal-pages`) → 0070 (bootstrap integration, complements 0056)
+- **Legal compliance** — 0069 (multi-jurisdiction `legal-pages`) → 0070 (bootstrap integration, complements 0056) → 0076 (shared `country.md`, `dpo-toolkit` register/DPIA)
 - **Perceived UX before production** — 0071 (reactivity/confirmation) + 0072 (`ai-visitor-simulation`), both complementary to 0003/0005/0006/0011 without duplicating them

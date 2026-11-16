@@ -8,6 +8,7 @@ priority: medium
 scope: security
 dependencies:
   - legal-pages
+  - dpo-toolkit
 conflicts: []
 ---
 
@@ -100,6 +101,11 @@ Check for each processing activity:
 | R-06 | Breach | Breach notification procedure < 72h documented | ✓/✗ |
 | R-07 | DPO | Designated DPO contact if applicable (> 250 employees or large-scale processing) | ✓/✗ |
 | R-08 | ROPA | Record of Processing Activities present and up to date | ✓/✗ |
+
+R-07/R-08 only check **presence**, never content. If `✗` (or if a DPIA might be required —
+profiling, sensitive data, systematic monitoring, large scale), invoke the Skill tool with
+`dpo-toolkit` to produce the real content of the register and, if needed, the DPIA — do not try
+to draft this content here.
 
 Targeted grep per pillar:
 - R-03: search `retention`, `ttl`, `expir`, `delete`, `purge`, `archive`

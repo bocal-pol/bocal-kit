@@ -240,6 +240,7 @@ To create your own: `/po-creator`, which adds the agent and its registry entry.
 | `iam-engineer` | IAM review — OAuth2, OIDC, RBAC, ABAC, JWT, SSO |
 | `compliance-officer` | GDPR, ISO 27001, NIS2 compliance |
 | `legal-pages` | Privacy policy, Terms, cookies, refund — multi-jurisdiction EU, editable Filament pattern |
+| `dpo-toolkit` | Real Record of Processing Activities (RoPA) and DPIA — jurisdiction via `.claude/country.md`, Belgium covered in depth |
 | `vulnerability-management` | CVSS scoring, prioritization, remediation plan |
 
 ### Architecture
