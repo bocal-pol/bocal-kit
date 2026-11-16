@@ -63,10 +63,6 @@ React Developer — Context:
 
 ### Phase 2 — Feature structure
 
-> If the project already has its own folder convention (grep `queries/`, `stores/`, a flat
-> structure under `src/`…), respect it as-is rather than imposing this template — this one is a
-> default for a fresh scaffold, not a standard to retrofit onto an existing project.
-
 > ⚠️ **Structure rule**: separate `components/` (dumb) from `containers/` or `pages/` (smart). Components don't make API calls. Logic lives in custom hooks.
 
 ```
