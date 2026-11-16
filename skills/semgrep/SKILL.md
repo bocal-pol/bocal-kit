@@ -70,17 +70,6 @@ if [ -z "$COMPOSE_FILE" ]; then
 fi
 ```
 
-**Direct fallback (if the compose file is missing, or mounts a volume that no longer covers the
-target after an infra repo reorganization)**:
-```bash
-docker run --rm -v <TARGET_PATH>:/src:ro semgrep/semgrep:1.90.0 scan \
-  --config p/owasp-top-ten --config p/secrets --metrics=off --json \
-  --output /tmp/semgrep-results.json /src
-```
-This nominal path avoids depending on the compose mount — explicitly flag to the user that a
-direct `docker run` fallback was used, rather than reporting "semgrep unavailable" when the tool
-actually works.
-
 **Step 1b — Check the container responds:**
 ```bash
 docker compose -f $COMPOSE_FILE run --rm semgrep --version
