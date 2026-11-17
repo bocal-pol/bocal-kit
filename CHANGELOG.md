@@ -20,6 +20,11 @@ be added or enriched without being a breaking change.
 
 ### Added
 
+- `unlazy`: `NOT YET:` section in `GATES.md`, symmetric to `ABANDON:` — bounds over-completion
+  (unrequested work an agent would do "to be thorough") the way `ABANDON:` bounds
+  under-completion (an unproven gate explicitly waived). Step 6 (final report audit) now checks
+  that nothing listed under `NOT YET:` happened along the way. Inspired by the "Not required
+  yet" convention found in `bocal-pol/ai-hero` course material.
 - `session-token-hardening`: prescriptive remediation for session cookies (HttpOnly, Secure,
   SameSite, `__Host-` prefix, ID regeneration after login/privilege elevation, CHIPS
   partitioning) and JWT (server-side algorithm allowlist against `alg:none` and RS256/HS256
