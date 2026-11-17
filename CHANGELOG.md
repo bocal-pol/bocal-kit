@@ -131,8 +131,38 @@ be added or enriched without being a breaking change.
 
 ---
 
-## Before this changelog
+## History before the public fork
 
-This repository's own history starts here. Its content is forked from a private configuration with
-a longer prior history — see that repository's own changelog for anything predating this public
-release.
+This repository's own version history starts at [1.0.0]. The source configuration (a private
+repository with a longer history, 2026-06-11 to 2026-09-17) is not reproduced here version by
+version — fake `0.x.0` releases would claim this repository existed before it did. This section is
+a short narrative summary instead. For full detail, see the source repository's own changelog.
+
+The source repository's first commit (2026-06-11) held an initial Laravel code audit; its findings
+were only turned into a firm rule much later (see `security-agent`'s "no raw Model in a response"
+rule, below). A first structuring wave (2026-06-23) added named functional agents, a cross-session
+memory system (`primer.md`, `hindsight.md`, a dated lessons file), and a first set of behavioral
+guardrails against over-engineering.
+
+Through July, a cross-stack DTO convention (`dto-architect`) took shape, then the project's
+largest foundational wave landed (mid-July): a three-tier model policy (Haiku / Sonnet / Opus by
+task type), three security permission modes (`safe` / `dev` / `audit`, `safe` by default), a global
+Git workflow with mandatory local checks before any pull request, a required `SKILL.md` frontmatter
+schema, and a session-hygiene policy (token budget, regular compaction).
+
+August brought free hosted image/video generation (replacing a paid provider), a minimal-code
+discipline for all code changes, a full IT-support skill set, a first security pass on the
+security-auditor agent, and the project's major product-interaction patterns — each with its own
+decision record: progressive self-customization for consumer apps, a non-modal pattern for
+reversible-action feedback, named-item transparency before a cascading delete, a "never ask for
+data you already have" rule, full keyboard-shortcut coverage, and an information-architecture rule
+for navigation sidebars.
+
+September added a security-audit cross-check between what a decision record claims and what the
+code actually implements (closing a gap where documented controls had never been built), an
+end-of-session retrospective skill, and a personal Product Owner for a project on idea-creation
+theory. The final pre-publication wave (September 16-17) added mandatory direct re-verification of
+any Critical/High finding a sub-agent reports before acting on it, a subagent/MCP usage discipline,
+a tag to keep sensitive content out of cross-session memory, and the switch of `~/.claude` to a
+git checkout rather than a manually synced copy — the change that made this public fork possible
+in the first place.
