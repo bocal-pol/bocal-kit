@@ -20,6 +20,21 @@ be added or enriched without being a breaking change.
 
 ### Added
 
+- Project `Stop` hook (`.claude/audit-reminder.ps1`): blocks session end and asks to run the
+  `claude-api` skill's `prompt-audit` argument when CLAUDE.md, primer.md, hindsight.md, `skills/`
+  or `agents/` have a real content diff not yet audited — a marker per change set avoids asking
+  twice for the same batch. Detects via `git diff --name-only` (+ `--cached` + `ls-files
+  --others`), never `git status --porcelain` alone: `core.autocrlf` reports hundreds of
+  line-ending-only false positives with no real content change.
+
+### Changed
+
+- Migrated from Claude 5 to Claude 5.5 (`claude-opus-5-5` / `claude-sonnet-5-5` /
+  `claude-haiku-5-5`) across 324 `model:` frontmatters (skills + agents), `CLAUDE.md`,
+  `CONTRIBUTING.md`, `settings.json`, and the `ai-product-engineer` pricing example. Mirrors the
+  same drift fixed upstream in `claude-config` (ADR 0016 revision) — new ADR 0016 revision entry
+  added here too.
+
 - `unlazy`: `NOT YET:` section in `GATES.md`, symmetric to `ABANDON:` — bounds over-completion
   (unrequested work an agent would do "to be thorough") the way `ABANDON:` bounds
   under-completion (an unproven gate explicitly waived). Step 6 (final report audit) now checks
