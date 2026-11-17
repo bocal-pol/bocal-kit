@@ -1,7 +1,7 @@
 ---
 name: godot-animation
 description: "Godot 4.7 animation API: `AnimationPlayer`, `AnimationTree` state machines, `AnimatedSprite2D` and `create_tween()` Tweens, with a headless state test. Auto-invoke when `travel()` does nothing, an animation doesn't play, a tween snaps backward, or the log says \"Animation not found\". Not for easing choice (`game-feel`), sprite art (`create-game-assets`), or Unity (`unity-animation`)."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: framework
 priority: medium
 scope: cross

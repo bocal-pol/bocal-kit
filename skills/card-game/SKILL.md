@@ -1,7 +1,7 @@
 ---
 name: card-game
 description: "Designs a card game or deckbuilder in any engine: cards as data with a single effect interpreter, deck zones, a trigger stack, and seeded shuffles. Auto-invoke for a Slay the Spire- or Balatro-like game or a TCG, or cards that duplicate or shuffles that feel biased. Not for grid dungeons (`roguelike`) or board puzzles (`puzzle`)."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: domain
 priority: medium
 scope: cross

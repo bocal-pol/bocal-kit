@@ -1,7 +1,7 @@
 ---
 name: analytics-engineer
 description: "Analytics Engineer — dbt (Data Build Tool), stg_/int_/fct_/dim_ naming convention, schema.yml tests (not_null/unique/accepted_values/relationships), incremental models, SCD Type 2 snapshots, macros, freshness monitoring. Auto-invoke on: dbt, data build tool, analytics model, stg_ int_ fct_ dim_, data mart, analytics transformation, fact table, dimension table, incremental model, dbt snapshot, dbt test, dbt documentation."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 type: framework
 priority: medium

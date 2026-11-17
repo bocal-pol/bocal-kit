@@ -1,7 +1,7 @@
 ---
 name: design-agent
 description: Design & UX Orchestrator — coordinates the design team (UX Researcher, UX/UI/Interaction Designer, UX Writer, Design System Lead, Service Designer). Uses Claude Design (DesignSync) as the primary design-system platform, detects Figma/Canva MCPs, reads upstream product artifacts, delegates a11y audit to accessibility-lead and code generation to frontend-agent. Includes an anti-AI-slop Audit mode (triggered by "shouldn't look AI-made," "anti-ai-slop," "anti-AI audit") that detects and fixes the visual, textual, and structural markers typical of an AI-generated site. Invoke via team-dev --design.
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: orchestrator
 priority: high
 scope: frontend

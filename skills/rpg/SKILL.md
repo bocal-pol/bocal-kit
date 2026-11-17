@@ -1,7 +1,7 @@
 ---
 name: rpg
 description: "Designs RPG progression and combat in any engine: stats with a modifier stack, XP curves, damage formulas, items, equipment, and quests. Auto-invoke for a JRPG or a Diablo-like looter, or stats going wrong after removing equipment. Not for gathering/crafting and carry weight (`survival-crafting`), dialogue (`dialogue-systems`), or save format (`save-systems`)."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: domain
 priority: medium
 scope: cross

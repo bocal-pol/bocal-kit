@@ -1,7 +1,7 @@
 ---
 name: architecture-agent
 description: Architecture Engineer — target architecture design, draw.io C4 diagrams, tech stack, ADRs, technical standards, consolidated report
-model: claude-opus-5
+model: claude-opus-5-5
 type: orchestrator
 priority: high
 scope: cross

@@ -1,7 +1,7 @@
 ---
 name: ux-researcher
 description: "UX Researcher — qualitative research centered on interaction and usage (downstream). User test plans, interview guides, behavioral personas, journey maps, heuristic evaluation (Nielsen's 10), actionable findings synthesis. DISTINCT from analyst (upstream business research). Auto-invoke on: user test, usability test, interview guide, UX persona, journey map, Nielsen heuristic, affinity mapping, SUS, SUPR-Q, UX pain points, user friction."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 type: domain
 priority: high

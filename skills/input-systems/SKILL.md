@@ -1,7 +1,7 @@
 ---
 name: input-systems
 description: "Engine-agnostic input architecture with Godot InputMap code: named actions, stick deadzones, buffered presses, and rebinding with conflict detection. Auto-invoke for gamepad support or a rebind menu, or a drifting stick, WASD on AZERTY, or a dropped press. Not for coyote time (`platformer`) nor Unity and Unreal input assets (`unity-input-system`, `unreal-enhanced-input`)."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: domain
 priority: medium
 scope: cross

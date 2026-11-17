@@ -1,7 +1,7 @@
 ---
 name: phaser-arcade-physics
 description: "Movement and collisions with Arcade Physics under Phaser 4: bodies, velocity, gravity, colliders vs overlaps, groups, and projectile pools. Auto-invoke for a Phaser platformer or top-down controller, or a sprite that ignores physics, an `onFloor()` that is always false, or bodies that pass through walls. Not for scenes and the loader (`phaser-core`), coyote time (`platformer`), or tunnelling theory (`physics-tuning`)."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: framework
 priority: medium
 scope: cross

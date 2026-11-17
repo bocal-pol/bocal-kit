@@ -1,7 +1,7 @@
 ---
 name: roblox-luau
 description: "Luau scripting on Roblox: services via game:GetService, Instance types, Script/LocalScript/ModuleScript, the task library, and selene/luau-lsp checks. Auto-invoke when a LocalScript never fires, a client reads nil right after joining, or legacy wait() needs replacing. Not for remotes (`roblox-networking`), persistence (`roblox-datastores`), or editing a live place (`roblox-studio-workflow`)."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: framework
 priority: high
 scope: cross

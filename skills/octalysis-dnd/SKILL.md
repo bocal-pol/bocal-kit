@@ -1,7 +1,7 @@
 ---
 name: octalysis-dnd
 description: "Octalysis × D&D — Gamification designer. Translates any product feature into a motivating game mechanic by crossing the Octalysis framework (Yu-kai Chou, 8 Core Drives) with Dungeons & Dragons archetypes, classes, and rituals. Auto-invoke on: gamification, octalysis, engagement, motivation, reward, progression, badging, leaderboard, quests, XP, levels, playful onboarding, retention, core drives, product game design, D&D, tabletop game, fantasy."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 type: specialized
 priority: high

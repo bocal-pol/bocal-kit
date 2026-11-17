@@ -1,7 +1,7 @@
 ---
 name: memory-ritual
 description: Consolidation ritual for the current project's Claude memory system. Triggers on /memory-ritual, or if the user says "consolidate my memory", "memory is disorganized", "clean up the memories". Merges duplicates, archives the obsolete, promotes repeated patterns into rules, and reorganizes MEMORY.md with a table of contents by type.
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 type: utility
 priority: medium

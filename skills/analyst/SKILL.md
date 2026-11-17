@@ -1,7 +1,7 @@
 ---
 name: analyst
 description: "Business Analyst / UX Researcher — market research, needs analysis, Project Brief writing, brainstorming, personas, user research, market research. Auto-invoke on mention of: needs analysis, project brief, user research, brainstorming, market research, personas, user research."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 type: domain
 priority: high

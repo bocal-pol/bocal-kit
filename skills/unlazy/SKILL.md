@@ -5,7 +5,7 @@ description: >
   substantial work, break the task into a Depth Tree, run verifications, and
   refuse to report "done" while a required gate is unproven. Trigger on
   /unlazy, "tree N", "do not stop until done", "gates", or any substantial task.
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: utility
 priority: high
 scope: cross

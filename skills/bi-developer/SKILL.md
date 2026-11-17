@@ -1,7 +1,7 @@
 ---
 name: bi-developer
 description: "BI Developer & Data Analyst — Star schema, SCD Type 2, OLAP cubes, analytical queries, Power BI DAX, Tableau calculated fields, KPI definition, ad-hoc analysis. Focus parameter: analysis (exploratory analysis) / bi (dashboards + cubes) / full (default). Auto-invoke on: Power BI, Tableau, dashboard, OLAP cube, DAX, star schema, fact table, dimension table, KPI, reporting, data analysis, data analyst, BI, analytical measure, data visualization."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 type: framework
 priority: medium

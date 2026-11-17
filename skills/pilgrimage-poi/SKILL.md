@@ -1,7 +1,7 @@
 ---
 name: pilgrimage-poi
 description: Points of interest along a pilgrimage route — religious heritage, civil heritage (fortifications, castles), remarkable landscapes, natural curiosities. Helps avoid missing anything between two stages.
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: framework
 priority: medium
 scope: cross

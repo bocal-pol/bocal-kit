@@ -1,7 +1,7 @@
 ---
 name: unity-tilemap-2d
 description: "Unity 6.3 LTS 2D tilemaps: Tile Palette, Tilemap Collider 2D with Composite Collider, Rule Tiles, and runtime `SetTile`. Auto-invoke to paint or generate a tile level, seams between tile colliders, a missing RuleTile, or hex/isometric grids. Not for level design (`level-design`), generation (`procedural-gen`), movement (`unity-physics`), or Godot (`godot-tilemap`)."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: framework
 priority: medium
 scope: cross

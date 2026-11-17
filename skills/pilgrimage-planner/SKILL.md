@@ -1,7 +1,7 @@
 ---
 name: pilgrimage-planner
 description: Orchestrator for a long-distance multi-country pilgrimage project. Coordinates the pilgrimage-* skills (route, gear, lodging, food, poi, prep) to produce a complete, coherent travel plan. Parameterizable by leg. Invoke via /pilgrimage-planner [leg].
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: orchestrator
 priority: high
 scope: cross

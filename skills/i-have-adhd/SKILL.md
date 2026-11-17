@@ -2,7 +2,7 @@
 name: i-have-adhd
 description: "Action-first session mode — ADHD-optimized responses: action first, numbered steps, zero pleasantries, lists ≤ 5 items"
 type: utility
-model: claude-haiku-4-5-20251001
+model: claude-haiku-5-5
 priority: low
 scope: cross
 dependencies: []

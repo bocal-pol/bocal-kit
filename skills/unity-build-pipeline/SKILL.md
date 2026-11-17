@@ -1,7 +1,7 @@
 ---
 name: unity-build-pipeline
 description: "Configures and ships Unity 6.3 LTS player builds: Build Profiles, IL2CPP vs. Mono, managed stripping with link.xml, scripted BuildPlayer, Addressables, and CI/headless builds. Auto-invoke to automate a Unity build or a `MissingMethodException` that only appears in the player. Not for an oversized build (`unity-build-size`) nor uploading to a store (`steam-publish`, `itch-publish`)."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: framework
 priority: medium
 scope: cross

@@ -1,7 +1,7 @@
 ---
 name: unreal-packaging
 description: "Packages and ships Unreal Engine 5 (UE 5.8) projects: Shipping builds, cook, pak/IoStore, and `RunUAT BuildCookRun` with UAT and cook log reading. Auto-invoke for a packaged build with a black screen, a map missing from the build, a \"BUILD FAILED\", or an AutomationTool exit code. Not for store uploads (`steam-publish`, `itch-publish`) nor gameplay compile errors (`unreal-cpp-gameplay`)."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: framework
 priority: medium
 scope: cross

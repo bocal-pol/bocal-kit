@@ -1,7 +1,7 @@
 ---
 name: data-scientist
 description: "Data Scientist & ML Engineer — Feature engineering, model selection, MLflow experiment tracking, production deployment, drift monitoring (PSI/KS), CI/CD for ML. Focus parameter: science (modeling) / mlops (deployment+monitoring) / full (default). Auto-invoke on: machine learning, ML model, scikit-learn, XGBoost, regression, classification, clustering, feature engineering, MLflow, drift, MLOps, model deployment, model monitoring, ML pipeline, model registry."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 type: domain
 priority: high

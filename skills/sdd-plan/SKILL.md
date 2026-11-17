@@ -1,7 +1,7 @@
 ---
 name: sdd-plan
 description: "Spec-Driven Development — Plan Phase. Consumes spec.md and produces plan.md (stack, architecture, technical constraints, ADRs). Invoke from architecture-agent after the architecture. Auto-invoke on mention of: SDD plan, sdd-plan, spec-kit plan.md."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: false
 type: utility
 priority: high

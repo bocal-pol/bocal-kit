@@ -1,7 +1,7 @@
 ---
 name: game-dev-agent
 description: Studio Director — Video Game Dev Group Orchestrator. Coordinates the virtual team (Lead Gameplay Programmer, Technical Artist, Game Designer, Physics Engineer) and, for a project targeting a specific engine or topic (Godot, Unity, Unreal, Roblox, web engines, genres, publishing workflows), routes via `game-dev-router` to the dedicated video game skill catalog. Invoke via team-dev --game-dev.
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: specialized
 priority: low
 scope: cross

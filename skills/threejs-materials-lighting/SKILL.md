@@ -1,7 +1,7 @@
 ---
 name: threejs-materials-lighting
 description: "Lights and shades three.js r187 video-game scenes: standard, physical, and unlit materials, lights, shadows, HDR environment lighting, and tone mapping. Auto-invoke when a mesh renders black or washed out, shadows are missing or full of acne, or `EffectComposer` darkens the image. Not for renderer setup (`threejs-scene-setup`), model loading (`threejs-gltf-loading`), custom shaders (`shader-programming`), or lighting decorative design scenes (`threejs-3d`)."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: framework
 priority: medium
 scope: cross

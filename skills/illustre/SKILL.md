@@ -1,7 +1,7 @@
 ---
 name: illustre
 description: "Generates valid Excalidraw diagrams (schemas, process flows, slides, comparisons) then exports them to PNG and SVG via Python/Playwright. Auto-invoke on: create a schema, make a diagram, generate an illustration, excalidraw, visual diagram, architecture schema, flowchart, visual slides."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 type: specialized
 priority: medium

@@ -1,7 +1,7 @@
 ---
 name: delivery-manager
 description: "Delivery Manager — flow management, cross-team unblocking, capacity planning, DORA metrics, stakeholder management. Includes the Resource Manager dimension. Auto-invoke on mention of: delivery manager, flow management, cumulative flow, WIP limits, delivery blockers, capacity planning, DORA metrics, throughput, lead time, escalation matrix, stakeholder management."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 type: domain
 priority: medium

@@ -1,7 +1,7 @@
 ---
 name: godot-gdscript
 description: "GDScript 2.0 for Godot 4.7: static typing, `@export`/`@onready`, `await`/coroutines, and porting 3.x code. Auto-invoke on a `.gd` parse error (\"Cannot infer the type\"), a coroutine that never resumes, a null `@onready` variable, or breakage after a version migration. Not for signals (`godot-signals-groups`), scenes (`godot-nodes-scenes`), C# (`godot-csharp`), or CI tests (`godot-gdscript-headless-testing`)."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: framework
 priority: high
 scope: cross

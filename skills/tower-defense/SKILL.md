@@ -1,7 +1,7 @@
 ---
 name: tower-defense
 description: "Designs a tower defense in any engine: lane or maze paths, wave pacing, targeting, counters, gold economy, with a curve checker. Auto-invoke for a Bloons- or Kingdom Rush-like game, or late waves that are impossible/trivial, or a dominant tower. Not for the pathfinding itself (`game-ai`) or base building in survival (`survival-crafting`)."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: domain
 priority: medium
 scope: cross

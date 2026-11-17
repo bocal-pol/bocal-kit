@@ -1,7 +1,7 @@
 ---
 name: game-designer
 description: "Game Designer — balancing, progression curves, UX and Game Feel. Expert in \"Juiciness\" (coyote time, input buffering, squash & stretch, screenshake, hitstop). Keeps the game from being boring. Auto-invoke on: game feel, juiciness, balancing, progression, coyote time, input buffer, screenshake, hitstop, squash stretch, difficulty curve, game UX, balancing, game design, fun factor."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 type: domain
 priority: high

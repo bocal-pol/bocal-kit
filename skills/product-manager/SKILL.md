@@ -1,7 +1,7 @@
 ---
 name: product-manager
 description: "Product Manager / Product Owner — writing the PRD, MoSCoW prioritization, user stories, acceptance criteria, product roadmap, backlog. Auto-invoke on mention of: PRD, product requirements, feature prioritization, backlog, user stories, acceptance criteria, product roadmap, MoSCoW."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 type: domain
 priority: high

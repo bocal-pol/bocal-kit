@@ -1,7 +1,7 @@
 ---
 name: creative-director-agent
 description: "Creative director — direct verdict on a flyer, an ad, a page, a post: publish, fix, or redo. Never a compliment to soften the blow. Invoke via team-dev --creative-director."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: specialized
 priority: low
 scope: cross

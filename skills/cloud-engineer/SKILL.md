@@ -1,7 +1,7 @@
 ---
 name: cloud-engineer
 description: "Cloud Engineer / IaC Terraform — Terraform modules (main/variables/outputs), S3+DynamoDB remote state, per-environment workspaces, least-privilege IAM, mandatory FinOps tagging, rollback via terraform state. Multi-cloud: AWS (primary), Azure, GCP. Golden Ops Rules: Idempotence (terraform plan before apply), Zero Manual Command (everything via IaC), Systematic Rollback. Auto-invoke on: Terraform, IaC, infrastructure as code, AWS, Azure, GCP, cloud, S3, EC2, RDS, EKS, IAM, FinOps, cost optimization, tagging, remote state, Terraform workspace, cloud architect."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 type: framework
 priority: medium

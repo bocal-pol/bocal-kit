@@ -1,7 +1,7 @@
 ---
 name: threejs-gltf-loading
 description: "Loads glTF/GLB models in three.js r187 and plays their animations: `GLTFLoader`, DRACO/Meshopt/KTX2 decoders, `AnimationMixer` cross-fades, and `SkeletonUtils` clones. Auto-invoke when a model is invisible or tiny, decoder files 404, animations never play, or clones share a single skeleton. Not for scene setup (`threejs-scene-setup`) or lighting (`threejs-materials-lighting`)."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: framework
 priority: medium
 scope: cross

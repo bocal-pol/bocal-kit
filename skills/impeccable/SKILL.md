@@ -1,7 +1,7 @@
 ---
 name: impeccable
 description: "UI quality review with 24 design commands and 61 deterministic anti-slop rules. Auto-invoke on: UI quality review, interface audit, improve design, fix visual, AI-slop, purple gradient, polish, bolder, quieter, distill, UX critique, interface accessibility audit, impeccable."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 type: utility
 priority: high

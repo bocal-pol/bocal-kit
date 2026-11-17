@@ -1,7 +1,7 @@
 ---
 name: integration-developer
 description: "Integration Developer — REST/GraphQL connectors, ESB (MuleSoft/Apache Camel), messaging (Kafka/RabbitMQ/Azure Service Bus), EDI (EDIFACT/X12), API lifecycle management (versioning/portal). Focus parameter: api / esb / messaging / edi / full. Auto-invoke on: integration, connector, API Gateway, MuleSoft, Camel, Kafka, RabbitMQ, Azure Service Bus, EDI, EDIFACT, X12, B2B, middleware, ESB, idempotency, circuit breaker, messaging, event-driven, webhook, API portal."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 type: framework
 priority: medium

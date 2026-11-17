@@ -1,7 +1,7 @@
 ---
 name: itch-publish
 description: "Publish and update games on itch.io with the butler CLI: butler push to user/game:channel, per-channel platform tags, HTML5 builds, --userversion, and CI uploads. Auto-invoke for \"upload to itch\", an HTML5 game that downloads instead of playing, a blank page or 403, or \"invalid target\". Not for Steam (`steam-publish`) nor for jam scope (`game-jam`), nor for itch.io SDK calls in the game itself — a known gap not covered by any existing skill."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: utility
 priority: medium
 scope: cross

@@ -1,7 +1,7 @@
 ---
 name: dev-observability
 description: "Drives a project's dev-only product observability tools (PostHog for analytics/feature flags, Uptime Kuma for uptime monitoring) via a separate, strictly opt-in Docker compose. Auto-invoke on mention of: launch dev tools, open PostHog, check monitoring, track this event, add an Uptime Kuma check, dev observability tools."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 type: utility
 priority: medium

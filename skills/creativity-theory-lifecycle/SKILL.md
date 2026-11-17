@@ -1,7 +1,7 @@
 ---
 name: creativity-theory-lifecycle
 description: "Audit a feature, screen, or data model against the 10-point design checklist from the theoretical synthesis (module 7) and against the real state machine. Produces a compliant / gap / blocking verdict per point. Auto-invoke on: idea box audit, idea lifecycle, idea state machine, design checklist, idea-management feature review, idea status, idea transition, terminal state."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: domain
 priority: medium
 scope: cross

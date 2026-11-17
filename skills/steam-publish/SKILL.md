@@ -1,7 +1,7 @@
 ---
 name: steam-publish
 description: "Publish or update a game on Steam with Steamworks and SteamPipe: depots, app_build .vdf scripts, steamcmd uploads, beta branches, SetLive, store review and Coming Soon. Auto-invoke for steamcmd, ContentBuilder, \"Failed to get application info\", Steam Deck Verified, or \"ship this on Steam\". Not for itch.io (`itch-publish`) nor for Steamworks SDK calls in the game's own code — a known gap not covered by any existing skill."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: utility
 priority: medium
 scope: cross

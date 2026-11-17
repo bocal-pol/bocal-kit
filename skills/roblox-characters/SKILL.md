@@ -1,7 +1,7 @@
 ---
 name: roblox-characters
 description: "Roblox player characters: CharacterAdded lifecycle, Humanoid and HumanoidRootPart, R6/R15/custom rigs, respawn, and Tools. Auto-invoke when a character script breaks after respawn, animations don't play or replicate, or sprint code conflicts with the Humanoid. Not for hit validation (`roblox-networking`), forces and raycasts (`roblox-physics`), or cameras (`camera-systems`)."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: framework
 priority: medium
 scope: cross

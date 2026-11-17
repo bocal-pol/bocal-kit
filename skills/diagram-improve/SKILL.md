@@ -1,7 +1,7 @@
 ---
 name: diagram-improve
 description: "Analyzes a diagram-design repo (GitHub or local) to identify patterns, palettes, and conventions to adopt, then improves existing skills/agents that produce diagrams (illustre, architect, graphify, threejs-3d, ux-designer, architecture-agent, design-agent). Updates relevant ADRs and audit reports. Invoke with: 'improve our diagram skills', 'analyze this diagram repo', 'diagram-improve <url>', or a GitHub URL of a design repo."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 argument-hint: "[repo-url] [--apply] [--audit-doc <path>]"
 type: utility
@@ -68,7 +68,7 @@ For each skill to improve:
    checkout if the environment is a git clone rather than the live `~/.claude`)
 
 Priority fixes (independent of the analyzed repo):
-- **graphify S1**: add complete frontmatter if missing (model: claude-sonnet-5, type: utility,
+- **graphify S1**: add complete frontmatter if missing (model: claude-sonnet-5-5, type: utility,
   priority: high, scope: cross, dependencies: [], conflicts: [project-graph])
 - **graphify / project-graph S14**: add `conflicts: [project-graph]` in graphify and
   `conflicts: [graphify]` in project-graph

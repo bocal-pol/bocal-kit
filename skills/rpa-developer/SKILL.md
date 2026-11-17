@@ -1,7 +1,7 @@
 ---
 name: rpa-developer
 description: "RPA Developer & Low-Code — UiPath workflows, Power Automate flows, process automation (web navigation, scraping, Excel/PDF processing, SAP), exception handling, orchestration. Low-Code: Power Apps, OutSystems, Mendix — data models, business logic, connectors. Auto-invoke on: RPA, UiPath, Power Automate, process automation, robotic process automation, workflow, bot, scraping, Power Apps, OutSystems, Mendix, no-code, low-code, Excel automation, SAP automation."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 type: specialized
 priority: medium

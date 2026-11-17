@@ -1,7 +1,7 @@
 ---
 name: appsec
 description: "Application Security Engineer for security code review, SAST/DAST analysis, OWASP Top 10 compliance, and threat modeling. Auto-invoke when the user mentions: security review, vulnerability, CVE, OWASP, SAST, DAST, threat modeling, SQL injection, XSS, CSRF, flaw, security audit, application security. (Distinction: appsec = in-depth manual static review with OWASP contextualization; pentest = full systematic audit with dynamic tests and dependencies.)"
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 type: framework
 priority: high

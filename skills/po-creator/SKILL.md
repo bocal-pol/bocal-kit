@@ -1,7 +1,7 @@
 ---
 name: po-creator
 description: "Personal Product Owner creator — interactive guide to define a new PO (persona, domain, keywords), generates the agent file in ~/.claude/agents/ and registers it in personal-agents.json. Auto-invoke on: create a PO, new product owner, add a PO, new persona, create a personal agent, create an expert."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 type: utility
 priority: medium
@@ -81,7 +81,7 @@ Generate `~/.claude/agents/{id}-agent.md` with the following structure:
 ---
 name: {id}-agent
 description: {one-sentence description of the domain and triggers}. Invoke via team-dev --{id} or from an orchestrator agent.
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: specialized
 priority: low
 scope: cross

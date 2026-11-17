@@ -1,7 +1,7 @@
 ---
 name: devops
 description: "DevOps / Platform / Build & Release Engineer + DevSecOps — CI/CD pipelines (GitHub Actions, GitLab CI, Jenkins), rootless multi-stage Docker, K8s manifests with limits/HPA/PDB, secrets management (External Secrets Operator / Vault), DevSecOps (Trivy/SAST/DAST), self-service IDP. Golden Ops Rules: Idempotence, Zero Manual Command, Systematic Rollback. Auto-invoke on: CI/CD, pipeline, GitHub Actions, GitLab CI, Docker, Dockerfile, Kubernetes, K8s, automated deployment, DevSecOps, Trivy, SAST, secrets, Vault, External Secrets, HPA, Deployment."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 type: framework
 priority: medium

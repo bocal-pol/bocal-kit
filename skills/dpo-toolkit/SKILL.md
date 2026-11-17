@@ -1,7 +1,7 @@
 ---
 name: dpo-toolkit
 description: "Produces the real content of the documents a DPO must keep: Record of Processing Activities (RoPA, GDPR art. 30) and Data Protection Impact Assessment (DPIA, GDPR art. 35) — per processing activity, with a 9-criteria necessity test. Resolves jurisdiction from the project's `.claude/country.md` (ISO country code, or a region — EU/WORLD) ; for a region, applies the strictest known rule among the countries covered in depth. Belgium is covered in depth (law of 30/07/2018, APD/GBA, CCT 68/81, Camera Law) ; any other country gets the generic GDPR baseline with an explicit warning about uncovered local specifics. Auto-invoke on: RoPA, record of processing activities, processing register, DPIA, data protection impact assessment, data protection officer, DPO, prior consultation with the supervisory authority, GDPR art. 30, GDPR art. 35. Never replaces human legal validation — every generated document carries a mandatory review warning."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 type: domain
 priority: medium

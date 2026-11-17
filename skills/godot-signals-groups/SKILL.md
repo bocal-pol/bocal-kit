@@ -1,7 +1,7 @@
 ---
 name: godot-signals-groups
 description: "Godot 4.7 signals and groups: typed signals, `connect()` with Callables, one-shot and deferred connections, an event bus as autoload, and `call_group` broadcasts. Auto-invoke when nodes need to communicate without a direct reference, a handler fires twice or never, or the log shows \"already connected\". Not for GDScript syntax (`godot-gdscript`) or autoload setup (`godot-nodes-scenes`)."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: framework
 priority: high
 scope: cross

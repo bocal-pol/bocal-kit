@@ -1,7 +1,7 @@
 ---
 name: investigate
 description: "INTERACTIVE 4-phase bug investigation with a stop and user validation at each step: locate → 3 ranked falsifiable hypotheses → targeted logs without fixing → minimal fix (3-strikes rule). Mode team-dev --investigate. Triggers on 'investigate', 'why is this crashing', 'analyze this bug with me', 'root cause', 'let's look together'. For an autonomous diagnosis with no intermediate validation (agents, --fix), use debug."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 type: utility
 priority: high

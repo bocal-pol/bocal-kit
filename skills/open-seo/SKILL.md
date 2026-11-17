@@ -2,7 +2,7 @@
 name: open-seo
 description: Live SEO via the DataForSEO MCP — 9 workflows (keyword research, site audit, rank tracking, competitor analysis, backlinks…) with an HTML report
 type: specialized
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 priority: medium
 scope: cross
 dependencies:

@@ -1,7 +1,7 @@
 ---
 name: creativity-theory-zettelkasten
 description: "Luhmann's Zettelkasten (1981), Ahrens's smart notes (2017), Matuschak's evergreen notes. Idea atomicity, backlinks before a graph view, note levels, minimal reformulation on entry. Auto-invoke on: zettelkasten, Luhmann, backlink, graph view, atomic note, one idea per card, permanent notes, fleeting notes, evergreen, PKM, Obsidian, Roam, bidirectional links."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: domain
 priority: medium
 scope: cross

@@ -1,7 +1,7 @@
 ---
 name: gauntlet-council
 description: "Cross-judgment of a deliverable (code, text, design, decision) by multiple agents: a panel of 5 judges with distinct personas (security, architecture, product, performance, maintainability) renders an independent verdict per angle, then a Builder/Critic cycle fixes each identified gap until validation or explicit abandonment after 3 passes. Explicit invocation only — never automatic, expensive in agents/tokens. Triggers on /gauntlet-council, 'put this through the council', 'cross-judgment', 'run a gauntlet on this', 'panel of judges'. Fully independent of team-dev: delegates to no team-dev agent and is referenced nowhere in it."
-model: claude-opus-5
+model: claude-opus-5-5
 user-invocable: true
 type: orchestrator
 priority: high
