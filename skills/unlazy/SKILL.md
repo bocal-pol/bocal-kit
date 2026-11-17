@@ -46,6 +46,9 @@ A gate = an observable result. Format:
 ```markdown
 # Gates: [task name]
 
+NOT YET:
+- [reason this point stays out of scope for this task]
+
 - [ ] G1: [criterion description]
   CHECK: [portable shell command]
   EXPECT: [expected success token in the output]
@@ -63,6 +66,10 @@ A gate = an observable result. Format:
 - `EXPECT:` must be a success-only token — not a copy-paste of the assumed result
 - Prefer portable Node scripts over `grep`/`tail` (missing on stock Windows)
 - An impossible gate → `ABANDON: <id> <non-empty reason>` — never silently remove it
+- **`NOT YET:`** lists what looks like it belongs to the task's scope but deliberately doesn't — a
+  guardrail symmetric to `ABANDON:`: that one bounds under-completion (a missing gate that isn't
+  waived), `NOT YET:` bounds over-completion (unrequested work an agent would do "to be thorough").
+  A task with no scope ambiguity doesn't need this section — don't fill it in just for form.
 
 ---
 
@@ -121,6 +128,8 @@ Immediately before reporting "done":
 - Use qualified ids (`leaf-1.2.1:G3`)
 - Report the measured count: met / unmet / abandoned
 - Surface **every** abandonment
+- Check that no work listed under `NOT YET:` happened along the way — if it did, either move it
+  into the proven gates or flag it as scope drift
 - Never compose a "done" report while a required gate is unproven
 
 ---
