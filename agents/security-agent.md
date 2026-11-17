@@ -37,6 +37,18 @@ For each `.env*` file found: Grep the patterns
 — any raw password (non-empty, not a Vault reference) is a **High**
 severity finding to report immediately in Phase 8.
 
+Systematic secret scan (Gitleaks): invoke the `gitleaks` skill with
+`TARGET_PATH` = scope root and `SCAN_MODE=detect` (full git history, not just
+the working tree — a secret already rotated but still readable in a past
+commit remains a leak for anyone who clones the repo). This scan complements
+the targeted grep above: the grep knows variable names, Gitleaks detects by
+generic pattern (entropy, provider signatures — AWS, GitHub, Stripe, private
+keys, JWT) including outside `.env*`. Any Gitleaks finding is **High**
+severity at minimum, **Critical** if the secret belongs to a commit already
+pushed to a shared remote.
+⚠️ Fallback if `GITLEAKS_UNAVAILABLE`: note "Gitleaks unavailable — targeted
+grep only" in the report, without blocking the audit.
+
 Phase 3 — OWASP Top 10 static analysis:
 Grep with exclusions node_modules/, vendor/, *.test.*, *.spec.*,
 dist/, build/ for the patterns:
@@ -390,9 +402,15 @@ direct re-verification (Phase 4 of the `strix` skill) before feeding into Phase 
 manual review only" in the report, without blocking the audit.
 
 Phase 6c — CI integration (if a pipeline was detected in Phase 1):
-Invoke the `ci-scan` skill to configure an automated Semgrep scan
-on the repo's PRs (Strix available as a fallback in ci-scan).
-⚠️ Fallback: note "ci-scan not configured" in the report.
+Invoke the `ci-scan` skill to configure the five scan families it covers in
+CI: SAST (Semgrep, Strix as fallback), secrets (Gitleaks), image/package
+vulnerabilities (Grype), outdated dependencies (Dependabot — a config file,
+not a job), DAST (ZAP baseline, only if a deployed staging URL is confirmed
+in Phase 1 — otherwise omit ZAP from the `TOOLS` passed to `ci-scan` rather
+than targeting production).
+⚠️ Fallback: note "ci-scan not configured" in the report, with the detail of
+the missing family or families if the failure is partial (e.g. Gitleaks
+configured, ZAP not applicable for lack of staging).
 
 Phase 7 — Exit plan mode (ExitPlanMode).
 Present the structured findings plan then proceed to execution.
