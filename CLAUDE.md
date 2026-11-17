@@ -385,6 +385,12 @@ One branch = one single goal.
 - Push only the `feature/*` / `bugfix/*` / `hotfix/*` branch
 - Open a Pull Request toward `develop` (never merge locally)
 - **Forbidden**: `git push origin main`, `git push origin develop`, local merge into develop
+- **Always pass `--base develop` explicitly to `gh pr create`.** Without this flag, the command
+  silently targets the repository's default branch (`main`), not `develop`. Before any
+  `gh pr merge`, check `gh pr view <n> --json baseRefName` and merge only if the resolved base
+  is `develop` (except for an explicit `develop`→`main` catch-up PR the user requested). Real
+  incident on 2026-11-17: a PR created without `--base` merged directly into `main` on three
+  repositories before it was caught, each requiring a catch-up PR.
 
 ### Local validation before any Pull Request (mandatory)
 
