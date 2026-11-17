@@ -1,7 +1,7 @@
 ---
 name: open-source-lead
 description: "Open Source Program Manager & Inner Source Lead — OSS strategy, license compatibility matrix (MIT/Apache/GPL/LGPL/AGPL), SBOM (Software Bill of Materials), contribution policy, InnerSource governance, OSS security scanning (Dependabot/OWASP). Auto-invoke on: open source, OSS, MIT license, Apache 2.0, GPL, LGPL, AGPL, software license, SBOM, Software Bill of Materials, InnerSource, open source contribution, open source strategy, fork, copyleft."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 type: specialized
 priority: medium

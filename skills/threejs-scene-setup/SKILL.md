@@ -1,7 +1,7 @@
 ---
 name: threejs-scene-setup
 description: "Sets up and debugs a three.js r187 scene for games or pure 3D: import maps, `Scene`, `PerspectiveCamera`, `WebGLRenderer`, `setAnimationLoop` with `Timer`, `OrbitControls`, and `WebGPURenderer`. Auto-invoke on `Failed to resolve module specifier three`, a black canvas, or nothing animating in a video-game context. Not for GLB loading (`threejs-gltf-loading`), materials (`threejs-materials-lighting`), React Three Fiber, or decorative design/marketing 3D scenes for designers (`threejs-3d`)."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: framework
 priority: high
 scope: cross

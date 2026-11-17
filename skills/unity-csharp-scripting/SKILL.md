@@ -1,7 +1,7 @@
 ---
 name: unity-csharp-scripting
 description: "Writes and fixes Unity 6.3 LTS C# gameplay scripts: MonoBehaviour lifecycle, serialization, .meta/GUID discipline, and command-line tests. Auto-invoke for a new script, a .cs rename, a \"Missing script\" error, or a field missing from the Inspector. Not for physics (`unity-physics`), input (`unity-input-system`), data assets (`unity-scriptableobjects`), or builds (`unity-build-pipeline`)."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: framework
 priority: high
 scope: cross

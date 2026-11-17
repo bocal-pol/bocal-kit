@@ -1,7 +1,7 @@
 ---
 name: iam-engineer
 description: "Design and audit of authentication and authorization systems — OAuth2, OIDC, RBAC, ABAC, JWT, SSO, permissions. Auto-invoke on mention of: IAM, authentication, authorization, RBAC, OAuth, JWT, SSO, permissions, access management, access control."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 type: framework
 priority: high

@@ -1,7 +1,7 @@
 ---
 name: create-skill
 description: Create a new Claude Code custom skill (SKILL.md). Use when the user wants to create a new skill, automate a recurring task with a slash command, or build a reusable Claude behavior. Triggers on phrases like "create a skill", "new skill", "make a skill", "add a slash command".
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 type: utility
 priority: medium
@@ -76,7 +76,7 @@ Generate the file with this **complete and mandatory** structure:
 ---
 name: <name>
 description: <precise description with trigger phrases for auto-invocation>
-model: <claude-opus-5|claude-sonnet-5|claude-haiku-4-5-20251001>
+model: <claude-opus-5-5|claude-sonnet-5-5|claude-haiku-5-5>
 user-invocable: true|false
 type: <orchestrator|framework|domain|utility|context|specialized>
 priority: <high|medium|low>
@@ -110,7 +110,7 @@ Before writing the file, systematically check:
 
 **Frontmatter — 8 mandatory fields**
 - [ ] `name` present, kebab-case, matches the folder name
-- [ ] `model` present with a full identifier (`claude-opus-5`, `claude-sonnet-5`, `claude-haiku-4-5-20251001`) — never a short version (`opus`, `sonnet`)
+- [ ] `model` present with a full identifier (`claude-opus-5-5`, `claude-sonnet-5-5`, `claude-haiku-5-5`) — never a short version (`opus`, `sonnet`)
 - [ ] `user-invocable` defined
 - [ ] `type` present, value among `orchestrator|framework|domain|utility|context|specialized`
 - [ ] `priority` present, value among `high|medium|low`

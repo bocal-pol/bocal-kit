@@ -1,7 +1,7 @@
 ---
 name: unreal-enhanced-input
 description: "Unreal Engine 5 (UE 5.8) player input with Enhanced Input: Input Actions (IA_), Mapping Contexts (IMC_), `ETriggerEvent` bindings, and remappable keys. Auto-invoke to wire movement/aim/fire, build a rebind menu, or an input that doesn't respond, stops after a respawn, or fires every frame. Not for engine-agnostic input design (`input-systems`) or the Character class (`unreal-cpp-gameplay`)."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: framework
 priority: medium
 scope: cross

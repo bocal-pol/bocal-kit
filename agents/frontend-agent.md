@@ -1,7 +1,7 @@
 ---
 name: frontend-agent
 description: Principal Frontend Director — orchestrates Angular 21+ or React 18+ development depending on the project, and drives version migrations. Invoke via team-dev --frontend [target].
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: orchestrator
 priority: high
 scope: frontend

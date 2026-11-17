@@ -1,7 +1,7 @@
 ---
 name: game-docs
 description: "Write and maintain a game's design docs: a one-page GDD with a feature index and short per-feature notes, kept in sync with the code. Auto-invoke for \"write a GDD\", \"spec this mechanic\", or to update docs after a playtest or a code change. Not for building a game when no docs were requested (`prototype-fast`, `game-jam`), nor for technical code documentation (`tech-writer`) nor for level plans (`level-design`)."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: utility
 priority: medium
 scope: cross

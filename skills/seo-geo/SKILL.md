@@ -1,7 +1,7 @@
 ---
 name: seo-geo
 description: "SEO/GEO Frontend — generates and audits robots.txt, sitemap.xml, llms.txt, llms-full.txt, manifest.webmanifest, SEO meta tags, Open Graph, Schema.org JSON-LD, GEO tags, hreflang, canonical. Auto-invoke on: SEO, GEO, robots.txt, sitemap, llms.txt, Open Graph, Schema.org, JSON-LD, meta tags, canonical, hreflang, manifest, PWA, indexing, crawl, SEO ranking, LLM discovery."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 type: domain
 priority: high

@@ -1,7 +1,7 @@
 ---
 name: repomix-mcp
 description: "Pack a third-party repo or a large monorepo into one file (XML/MD/JSON, Tree-sitter compression) for fast review before analysis. Auto-invoke on mention of: repomix, pack a repo, bundle a repository, ingest a third-party repo, analyze a large monorepo, consolidated repo context."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: utility
 priority: low
 scope: cross

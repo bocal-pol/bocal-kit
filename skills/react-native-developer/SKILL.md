@@ -1,7 +1,7 @@
 ---
 name: react-native-developer
 description: React Native development — screens, Zustand/Redux, React Navigation, Expo or bare workflow, Jest + Testing Library. Invoke to create or audit React Native code.
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 argument-hint: "[--build|--review] [description]"
 type: framework

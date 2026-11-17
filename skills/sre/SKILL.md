@@ -1,7 +1,7 @@
 ---
 name: sre
 description: "SRE / Observability Engineer + DBA + Backup — SLO/SLI/SLA + error budgets, Prometheus AlertingRules + RecordingRules, post-mortem template, Grafana dashboards, DBA tuning (EXPLAIN ANALYZE, pgBouncer, replication), backup/restore (3-2-1 rule). Golden Ops Rules: Idempotence, Zero Manual Command, Systematic Rollback. Auto-invoke on: SLO, SLI, SLA, error budget, alerting, Prometheus, Grafana, Datadog, PagerDuty, post-mortem, incident, observability, monitoring, DBA, PostgreSQL tuning, replication, backup, restore, pgBouncer, EXPLAIN ANALYZE."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 type: framework
 priority: high

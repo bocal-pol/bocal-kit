@@ -1,7 +1,7 @@
 ---
 name: creativity-theory-securite-psy
 description: "Psychological safety (Edmondson 1999), organizational silence (Morrison & Milliken 2000), the value of debate (Nemeth 2004). Private draft, anonymity, judgment-free status phrasing, rejecting negative voting, a participation indicator. Auto-invoke on: psychological safety, organizational silence, anonymity, anonymous submission, private draft, negative vote, idea ranking, rejected status, daring to suggest, fear of judgment, constructive criticism."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: domain
 priority: medium
 scope: cross

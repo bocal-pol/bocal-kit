@@ -1,7 +1,7 @@
 ---
 name: sdd-specify
 description: "Spec-Driven Development — Specify Phase. Produces spec.md (problem, users, constraints with no tech stack) and constitution.md (project principles). Invoke from product-agent before PRD drafting; existing-project mode (brownfield): constitution from evidence, first change scoped. Auto-invoke on mention of: SDD specification, spec-kit, spec.md, spec driven, adopt SDD on an existing project."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: false
 type: utility
 priority: high

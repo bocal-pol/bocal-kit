@@ -1,7 +1,7 @@
 ---
 name: design-system
 description: "Design System Lead — 3-level token architecture (primitive→semantic→component), P0/P1/P2 component catalog, theming strategy, DS governance, legacy migration plan, Storybook documentation. Auto-invoke on: design system, design tokens, component library, Storybook, theming, DS governance, legacy design migration, atomic design, shared component, design token."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 type: domain
 priority: high

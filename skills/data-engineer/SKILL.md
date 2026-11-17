@@ -1,7 +1,7 @@
 ---
 name: data-engineer
 description: "Data Engineer — Medallion Architecture (Bronze/Silver/Gold), ETL/ELT pipelines, PySpark, Airflow/Prefect orchestration, SQL optimization (EXPLAIN ANALYZE + indexes), Great Expectations, partitioning. Covers big data and advanced SQL development. Auto-invoke on: data pipeline, ETL, ELT, ingestion, PySpark, Spark, data lake, Airflow, DAG, stored procedures, SQL optimization, partitioning, indexing, data migration."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 type: framework
 priority: medium

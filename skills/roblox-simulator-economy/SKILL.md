@@ -1,7 +1,7 @@
 ---
 name: roblox-simulator-economy
 description: "Roblox simulator/tycoon/idle economies in Luau: upgrade cost curves, income per second, rebirth pacing, big-number display, and paid-egg odds. Auto-invoke for baseCost or rebirth numbers, or unearned currency granted to a player. Not for DataStores (`roblox-datastores`), remote rate limits (`roblox-networking`), shop layout (`roblox-ui`), or tower-defense wave economies."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: framework
 priority: medium
 scope: cross

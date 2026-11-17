@@ -1,7 +1,7 @@
 ---
 name: enterprise-architect
 description: "Enterprise Architect — aligning the IS with company strategy, urbanization, capability mapping, transformation roadmap. Auto-invoke on mention of: IS urbanization, enterprise architecture, TOGAF, capability map, application mapping, IS roadmap, digital transformation."
-model: claude-opus-5
+model: claude-opus-5-5
 user-invocable: true
 type: domain
 priority: high

@@ -1,7 +1,7 @@
 ---
 name: threat-intelligence
 description: "Security watch: detects OWASP Top 10 changes (a new version, a modified category) and new CVEs/security advisories affecting the technologies actually in use (the current project's stack, or a global ecosystem list). Auto-invoke on: security watch, CVE watch, new flaw, what's new in security, new OWASP version, security advisory. Referenced by web-search as a consumer of contextual research."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 argument-hint: "[project|ecosystem]"
 type: utility

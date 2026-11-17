@@ -1,7 +1,7 @@
 ---
 name: godot-ui-control
 description: "Godot 4.7 `Control` node API for menus and HUDs: anchors, Containers, Theme and StyleBox, focus neighbors and stretch settings, with a headless layout check. Auto-invoke when a Godot UI overlaps or drifts on resize, buttons ignore the gamepad, or an invisible panel swallows clicks. Not for engine-agnostic UI rules (`game-ui-ux`, load both) or rebinding (`input-systems`)."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: framework
 priority: medium
 scope: cross

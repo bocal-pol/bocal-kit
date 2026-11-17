@@ -1,7 +1,7 @@
 ---
 name: phaser-core
 description: "Configures and debugs Phaser 4 games (and pinned Phaser 3.90): Game config, Scene lifecycle, loader, scene transitions, and Phaser 3 to 4 migration. Auto-invoke when code imports `phaser`, on a black screen, `undefined` assets in `create`, or a HUD scene hidden behind the game. Not for colliders (`phaser-arcade-physics`), HUD layout (`game-ui-ux`), or PixiJS (`pixijs-rendering`)."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: framework
 priority: high
 scope: cross

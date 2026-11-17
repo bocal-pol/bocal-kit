@@ -1,7 +1,7 @@
 ---
 name: performance-optimization
 description: "Find and fix framerate problems by measurement in Godot, Unity, Unreal, or Roblox: CPU- vs. GPU-bound, then the single biggest fix (draw calls, pooling, GC spikes). Auto-invoke for low FPS, stutter, a first-use hitch, or requests to optimize or profile. Not for build size (`unity-build-size`), physics jitter (`physics-tuning`), or network lag (`roblox-networking`, `godot-multiplayer`)."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: domain
 priority: medium
 scope: cross

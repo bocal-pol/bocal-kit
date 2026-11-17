@@ -1,7 +1,7 @@
 ---
 name: procedural-gen
 description: "Engine-agnostic procedural generation in Python with Godot and Unity mappings: seeded RNG, dungeon layouts, wave function collapse, noise terrain, and loot tables. Auto-invoke for a dungeon generator, WFC or Perlin terrain, or seeds that give different maps. Not for roguelike run structure (`roguelike`), deckbuilders (`card-game`), or painting tiles (`godot-tilemap`, `unity-tilemap-2d`)."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: domain
 priority: medium
 scope: cross

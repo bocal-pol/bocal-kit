@@ -1,7 +1,7 @@
 ---
 name: godot-2d-movement
 description: "Godot 4.7 `CharacterBody2D` movement in GDScript: platformer run/jump, top-down 8-direction movement, slopes and one-way platforms, with a headless landing test. Auto-invoke when a 2D controller doesn't move, walks through the floor, or `is_on_floor()` is always false. Not for coyote time and jump feel (`platformer`), RigidBody2D, raycasts or 3D (`godot-physics`), or tile-based levels (`godot-tilemap`)."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: framework
 priority: high
 scope: cross

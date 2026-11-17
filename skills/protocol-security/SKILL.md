@@ -1,7 +1,7 @@
 ---
 name: protocol-security
 description: "Security audit of RPC protocols and asynchronous messaging: gRPC, GraphQL, Kafka, RabbitMQ, webhooks, pub/sub, event bus — peer identity, topic/queue isolation, replay/order/idempotence, misplaced trust in routing or the envelope. Auto-invoke on mention of: Kafka security, RabbitMQ security, gRPC security, topic isolation, message replay, unauthenticated webhook, ESB security, message broker security."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 type: framework
 priority: medium

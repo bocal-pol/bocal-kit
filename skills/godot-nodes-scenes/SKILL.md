@@ -1,7 +1,7 @@
 ---
 name: godot-nodes-scenes
 description: "Godot 4.7 scene tree: reusable `.tscn` scenes, `instantiate()`, autoloads, and checking for broken `res://` paths and uids. Auto-invoke for spawning bullets or enemies, or on \"Node not found\", \"previously freed instance\", or a project broken after moving files, even if the user just says the project is broken. Not for GDScript syntax (`godot-gdscript`) or signals (`godot-signals-groups`)."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: framework
 priority: high
 scope: cross

@@ -1,7 +1,7 @@
 ---
 name: encode-correction
 description: Claude behavior correction — encodes a correction into the right environment file (CLAUDE.md, memory, skill, settings). Invoke via /encode-correction [description of the behavior to correct]. Auto-invoke when the user says "no not like that", "stop doing", "don't do that anymore", "I don't want you to", "fix your behavior", "remember this", "I always want you to", "I never want you to".
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 argument-hint: "[description of the behavior to correct]"
 type: utility

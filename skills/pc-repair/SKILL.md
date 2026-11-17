@@ -1,7 +1,7 @@
 ---
 name: pc-repair
 description: Diagnosis and repair of Windows workstations — BSOD, slowness, boot issues, OS corruption, disks, RAM, overheating. Full access to diagnostic tools, PowerShell, multi-machine scripts. Automatic incident-pattern pre-check.
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 aliases: ["/pc"]
 argument-hint: "<symptom or target machine>"

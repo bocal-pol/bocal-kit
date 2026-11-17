@@ -1,7 +1,7 @@
 ---
 name: tech-writer
 description: "Technical Writer — root and modular READMEs, API documentation (OpenAPI/GraphQL/REST), user guides, documentation index, style guide. Ref. Diátaxis (How-to / Reference / Explanation). Auto-invoke on mention of: README, technical documentation, API docs, user guides, swagger, OpenAPI, GraphQL docs, developer documentation, documentation style guide."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 type: domain
 priority: high

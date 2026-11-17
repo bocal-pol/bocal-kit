@@ -1,7 +1,7 @@
 ---
 name: integration-architect
 description: "Integration Architect — integration strategy (API-led/EDA/ESB), OpenAPI/AsyncAPI contracts, saga/outbox/CQRS patterns, middleware. Auto-invoke on mention of: system integration, API-led connectivity, event-driven architecture, EDA, saga pattern, outbox pattern, CQRS, event sourcing, OpenAPI, AsyncAPI, ESB, iPaaS, event broker, Kafka, RabbitMQ, Azure Service Bus."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 type: domain
 priority: high

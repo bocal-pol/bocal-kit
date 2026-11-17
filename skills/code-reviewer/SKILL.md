@@ -1,7 +1,7 @@
 ---
 name: code-reviewer
 description: "In-depth code review — potential bugs, code smells, readability, project conventions, performance, basic security, missing tests; P0-P3 scoring and a 0-4 grid. Auto-invoke on: code review, code analysis, PR review, pull request, find bugs, detect code smells, improve readability, refactoring, technical debt. Absorbs the former code-review skill (merged 2026-09-17)."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 argument-hint: "[file|folder|glob|PR branch]"
 type: domain

@@ -10,7 +10,7 @@ description: >-
   its visibility", "add this to my 21st profile/bento", "update my profile
   page". For finding and installing existing items use `21st-cli-use`; for
   turning a project's design tokens into a theme use `21st-design-sync`.
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 type: framework
 priority: medium

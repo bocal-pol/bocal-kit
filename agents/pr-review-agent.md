@@ -1,7 +1,7 @@
 ---
 name: pr-review-agent
 description: Full PR review orchestrator — code review, security analysis, consolidated report, and memory consolidation.
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: orchestrator
 priority: high
 scope: cross

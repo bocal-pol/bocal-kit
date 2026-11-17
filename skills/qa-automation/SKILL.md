@@ -1,7 +1,7 @@
 ---
 name: qa-automation
 description: "QA Automation Engineer — Playwright/Cypress/Selenium script generation, E2E tests via the Playwright MCP, page-object strategy, screenshots and logs. Auto-invoke on mention of: automated tests, E2E scripts, Playwright, Cypress, Selenium, test automation, end-to-end tests."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 type: framework
 priority: high

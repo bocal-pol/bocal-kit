@@ -1,7 +1,7 @@
 ---
 name: legal-pages
 description: "Generates the published legal documents for a web project for a European Union country (configurable, generic EU default; France/Luxembourg/Netherlands/Germany/other EU country as options): cookie consent banner, privacy policy, legal notices, Terms of Use, Terms of Sale with 14-day withdrawal, refund policy, and consumer mediator. Auto-invoke on mention of: cookies, consent banner, legal notices, privacy policy, Terms of Use, Terms of Sale, privacy policy, cookie banner, publisher, host, consumer mediator, right of withdrawal, refund policy, form consent."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 type: domain
 priority: medium

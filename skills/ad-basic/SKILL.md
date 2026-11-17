@@ -1,7 +1,7 @@
 ---
 name: ad-basic
 description: Active Directory — user account, group, and OU management, password reset, unlock, expiration, membership audit. Unrestricted AD PowerShell.
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 aliases: ["/ad"]
 argument-hint: "[action: reset|unlock|create|disable|move|audit] [username or OU]"

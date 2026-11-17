@@ -1,7 +1,7 @@
 ---
 name: areopage
 description: "Decision support through a plurality of honest viewpoints: a panel of reasoning profiles (boldness, caution, analysis, pragmatism, values) answers in parallel and in full isolation a personal or professional decision question, then a clerk faithfully compiles positions, agreements, disagreements and collective blind spots into a neutral report — never a verdict, never a single recommendation, the decision stays entirely with the user. Explicit invocation only — never automatic, expensive in agents/tokens. Triggers on /areopage, \"help me decide\", \"panel of viewpoints\", \"shed light on this decision\", \"areopagus\". Fully independent of team-dev and of gauntlet-council: delegates to no team-dev agent and shares no verdict mechanism with gauntlet-council."
-model: claude-opus-5
+model: claude-opus-5-5
 user-invocable: true
 type: specialized
 priority: high

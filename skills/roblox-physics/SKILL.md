@@ -1,7 +1,7 @@
 ---
 name: roblox-physics
 description: "Roblox physics and spatial queries: assemblies, constraints, collision groups, Raycast/Shapecast, and network ownership. Auto-invoke when parts fall through the floor or jitter, Touched is unreliable, a ray hits the shooter itself, or BodyMovers need replacing. Not for hit legitimacy (`roblox-networking`), Humanoid movement (`roblox-characters`), or engine-agnostic tuning (`physics-tuning`)."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: framework
 priority: medium
 scope: cross

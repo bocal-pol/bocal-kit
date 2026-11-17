@@ -1,7 +1,7 @@
 ---
 name: user-call
 description: Phone support for non-technical users — generates simple jargon-free questions to ask the user, translates their answers into a technical diagnosis, guides them step by step with simple visual instructions.
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 aliases: ["/uc"]
 argument-hint: "[quick description of the reported issue]"

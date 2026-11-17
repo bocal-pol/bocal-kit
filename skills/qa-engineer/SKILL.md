@@ -1,7 +1,7 @@
 ---
 name: qa-engineer
 description: "QA Engineer / QA Lead — test plans, Jira-like Given/When/Then test cases, coverage matrix, regression plan. Auto-invoke on mention of: test plan, test case, test coverage, test plan, test scenarios, test matrix, regression, test suite."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 type: domain
 priority: medium

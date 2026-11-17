@@ -1,7 +1,7 @@
 ---
 name: innovation-manager
 description: "Innovation Manager / R&D Lead — technology radar (adopt/trial/assess/hold), POC evaluation matrix, build-buy-partner-open decision, innovation workshop facilitation, patent landscape, H1/H2/H3 horizon planning. Auto-invoke on: innovation, R&D, tech watch, technology radar, POC, proof of concept, build vs buy, horizon planning, innovation lab, technology disruption, tech trends, emerging tech."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 type: specialized
 priority: medium

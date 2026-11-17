@@ -1,7 +1,7 @@
 ---
 name: onboarding
 description: "Generates a complete onboarding guide for new team members — architecture, stack, conventions, workflows, required access. Auto-invoke on mention of: onboarding, getting-started guide, new developer, getting started, project documentation."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 type: utility
 priority: medium

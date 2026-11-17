@@ -1,7 +1,7 @@
 ---
 name: animate-lemo
 description: "Directs and produces a short film made entirely in code, in one of the ~66 visual styles of the Lemo-Opuscar library (e.g. Impasto Oil Painting, Watercolor Brush, Ukiyo-e, Satellite Briefing, Exploded Teardown). Auto-invoke on: coded film, short film, styled video, animated promo, animated explainer, archive footage cut into a style, 'make me a film in this style', a film request with no style chosen yet (help pick one), changing an existing style or making a new one from scratch, listing the available styles. Not for plain editing, trimming, or converting the user's existing video files, and not for a generic short clip (see the `animate` skill for that, based on Hugging Face LTX-Video)."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 argument-hint: "[style <slug>|deps [voice] [music]]"
 type: specialized

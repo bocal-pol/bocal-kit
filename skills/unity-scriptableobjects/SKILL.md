@@ -1,7 +1,7 @@
 ---
 name: unity-scriptableobjects
 description: "Unity 6.3 LTS data and decoupling with ScriptableObject: `CreateAssetMenu` config assets, shared runtime variables, event channels, and .asset files created from code. Auto-invoke to replace singletons, data-driven objects/maps, or values that must survive exiting Play mode. Not for saving progress (`save-systems`) or Godot Resources (`godot-resources`)."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: framework
 priority: medium
 scope: cross

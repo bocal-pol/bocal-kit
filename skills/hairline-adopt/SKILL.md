@@ -2,7 +2,7 @@
 name: hairline-adopt
 description: "Turns an existing SVG (icon, logo, illustration) into an interactive Hairline figure that responds to the cursor, by rebuilding the object on hairline-create's vendored engine — never by animating or tracing the original SVG. Auto-invoke on mention of: make this logo interactive, animate this SVG Hairline-style, turn this icon into a figure."
 argument-hint: "<file.svg> [what the cursor should do]"
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 type: specialized
 priority: low

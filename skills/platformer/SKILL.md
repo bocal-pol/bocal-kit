@@ -1,7 +1,7 @@
 ---
 name: platformer
 description: "Designs 2D platformer jump feel in any engine: coyote time, jump buffer, variable height, fall gravity, wall jumps, hazards and checkpoints, with a jump calculator (`scripts/jump_tuner.py`). Auto-invoke for a Mario- or Celeste-like game, or a jump that feels soft, heavy, or does not trigger at a platform edge. Not for generic input buffering (`input-systems`), generic juice (`game-feel`), or top-down movement without gravity (engine movement skill)."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: domain
 priority: medium
 scope: cross

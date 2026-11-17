@@ -34,7 +34,7 @@ A skill lives in `skills/<name>/SKILL.md`. The folder name and the `name` field 
 ---
 name: laravel-developer
 description: "Laravel Developer — Laravel 9+, Eloquent, Sanctum… Auto-invoke on: Laravel, Eloquent, Artisan, migration, controller."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: framework
 priority: high
 scope: backend
@@ -51,7 +51,7 @@ conflicts:
 | --- | --- |
 | `name` | kebab-case, identical to the folder name |
 | `description` | **Oriented around concrete triggers** — this is what decides whether Claude proposes the skill spontaneously. **Quote it** as soon as it contains a `: ` or starts with a special character |
-| `model` | A **full** identifier: `claude-opus-5`, `claude-sonnet-5`, or `claude-haiku-4-5-20251001`. Never bare `sonnet` |
+| `model` | A **full** identifier: `claude-opus-5-5`, `claude-sonnet-5-5`, or `claude-haiku-5-5`. Never bare `sonnet` |
 | `type` | `orchestrator` · `framework` · `domain` · `utility` · `context` · `specialized` |
 | `priority` | `high` (specialized, prioritized by the router) · `medium` (generalist) · `low` (last resort) |
 | `scope` | `backend` · `frontend` · `infra` · `mobile` · `data` · `security` · `cross` (reserved for cross-cutting skills) |
@@ -86,7 +86,7 @@ An agent lives in `agents/<name>-agent.md`. It orchestrates, it doesn't implemen
 ---
 name: backend-agent
 description: Principal Backend Director — orchestrates Laravel 9+ or .NET 10+ depending on the project.
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 tools: Glob, Grep, Read, Write, Bash, AskUserQuestion, Skill
 ---
 ```

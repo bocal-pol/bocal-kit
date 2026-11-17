@@ -1,7 +1,7 @@
 ---
 name: frontend-updater
 description: "Frontend Updater — analyzes an Angular or React project's current version, compares it against a target version, scans the code for outdated patterns, and generates a prioritized migration report (Breaking → Important → Recommended). Auto-invoke on: Angular migration, Angular update, React upgrade, Angular 14 15 16 17 18 19 20 21, React 16 17 18 19, breaking changes, Angular deprecation, ViewEngine to Ivy, modules to standalone, class components to hooks, deprecated API."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 type: utility
 priority: low

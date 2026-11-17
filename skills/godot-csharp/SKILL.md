@@ -1,7 +1,7 @@
 ---
 name: godot-csharp
 description: "C#/.NET in Godot 4.7: partial node classes, PascalCase lifecycle, `[Export]`/`[Signal]`, signals as C# events, the `.csproj`, and calling GDScript. Auto-invoke for `.cs` scripts in Godot, porting GDScript to C#, a failed build, or a failed web/Android export. Not for GDScript (`godot-gdscript`), Unity C# (`unity-csharp-scripting`), or export presets (`godot-export`)."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: framework
 priority: medium
 scope: cross

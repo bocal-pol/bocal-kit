@@ -1,7 +1,7 @@
 ---
 name: imagine
 description: "High-quality image generation via Hugging Face Z-Image-Turbo: wave-based interview, personal templates (characters/styles), + a bundled catalog of 27 structural formats (blueprint, xray, explodedview, infographic, tinyworkers...) and ~290 aesthetic modifiers (ghibli, cyberpunk, watercolor...), combinable with each other. Auto-invoke on: generate an image, illustration, visual, concept art, image template, image prompt, character sheet, Z-Image, blueprint, xray, infographic."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 argument-hint: "[quick|deep|template <name>|list-templates|format <name>|list-formats|modifier <name>|list-modifiers [category]]"
 type: specialized

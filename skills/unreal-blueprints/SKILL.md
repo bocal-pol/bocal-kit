@@ -1,7 +1,7 @@
 ---
 name: unreal-blueprints
 description: "Blueprint visual scripting for Unreal Engine 5 (UE 5.8): Blueprint Classes vs. Level Blueprint, Event Graph, Cast, Interfaces, and Event Dispatchers. Auto-invoke for a BP graph, how one Blueprint calls another, a \"cast failed\", a slow Event Tick, or a Blueprint compile error. Not for C++ (`unreal-cpp-gameplay`), input assets (`unreal-enhanced-input`), or AI trees (`unreal-behavior-trees`)."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: framework
 priority: high
 scope: cross

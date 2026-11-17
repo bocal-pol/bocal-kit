@@ -27,7 +27,7 @@ for everyone — that belongs in this file.
 
 Every SKILL.md must follow:
 
-- `model`: full identifier required — `claude-opus-5` / `claude-sonnet-5` / `claude-haiku-4-5-20251001`
+- `model`: full identifier required — `claude-opus-5-5` / `claude-sonnet-5-5` / `claude-haiku-5-5`
 - **Never a `tools:` key in a SKILL.md**: that's an **agent** frontmatter key (`agents/*.md`),
   ignored by Claude Code in a skill. In a skill, `allowed-tools:` **pre-authorizes** the listed
   tools (removes the confirmation prompt, not a restriction) — use only with explicit justification;
@@ -94,7 +94,7 @@ skill, with the same values — without which nothing lets an agent be routed th
 ```yaml
 name: backend-agent               # same as the filename, without .md
 description: Principal Backend Director — orchestrates Laravel 9+ or .NET 10+.
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: orchestrator                # orchestrator | domain | specialized | utility (alias)
 priority: high                    # high | medium | low
 scope: backend
@@ -802,12 +802,12 @@ Permanent rules to limit waste. The 5 levers below, from most to least impactful
   multi-file read needs to be isolated from the main context, or (c) the scope exceeds a context
   window. Otherwise, handle it directly.
 - **Mandatory model tiering** in the frontmatter (`model:`):
-  - `claude-haiku-4-5-20251001` — **mechanical, bounded** tasks: lookup, verification, formatting,
+  - `claude-haiku-5-5` — **mechanical, bounded** tasks: lookup, verification, formatting,
     search, deterministic routing, git operations, file consolidation (e.g. `changelog`,
     `project-graph`, `dependency-updater`, `estimator`).
-  - `claude-sonnet-5` — **default**: domain expertise, development, any persisted
+  - `claude-sonnet-5-5` — **default**: domain expertise, development, any persisted
     synthesis/judgment. Also the default `model` in `settings.json`.
-  - `claude-opus-5` — reserved for heavy orchestration + architecture (`team-dev`, `architect`,
+  - `claude-opus-5-5` — reserved for heavy orchestration + architecture (`team-dev`, `architect`,
     `security-audit`).
   - `claude-fable-5-1` — never the default (cost); activate on demand via `/model` for a one-off
     session.

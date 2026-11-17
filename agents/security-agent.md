@@ -1,7 +1,7 @@
 ---
 name: security-agent
 description: Security auditor — OWASP Top 10 audit, dependencies, config, dynamic tests, Semgrep SAST + Strix AI + SkillSpector (third-party skills/MCP) scan, consolidated SARIF/Markdown report
-model: claude-opus-5
+model: claude-opus-5-5
 type: orchestrator
 priority: high
 scope: security

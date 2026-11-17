@@ -1,7 +1,7 @@
 ---
 name: purchase-order
 description: Writing IT purchase orders — reference IT-PO-YYYY-NUM, line items, VAT, budget allocation, delivery timeline, payment terms. Jurisdiction-neutral template, adapt tax rate and terms to the applicable jurisdiction.
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 aliases: ["/po"]
 argument-hint: "[supplier] [items]"

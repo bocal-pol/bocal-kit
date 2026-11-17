@@ -1,7 +1,7 @@
 ---
 name: debug
 description: "AUTONOMOUS 7-phase diagnostic methodology (reproduce, minimize, ranked hypotheses, instrument, fix, regression test, cleanup) to address a bug's root cause, not its symptom — without intermediate user validation; this is the mode called by stack agents (backend, frontend, mobile) and by team-dev --fix. Triggers on 'debug', 'fix this bug', 'regression', 'failing test', 'it's crashing'. For a step-by-step investigation validated by the user, use investigate."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 argument-hint: "[symptom / bug to diagnose]"
 type: utility

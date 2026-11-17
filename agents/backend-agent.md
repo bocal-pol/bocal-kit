@@ -1,7 +1,7 @@
 ---
 name: backend-agent
 description: Principal Backend Director — orchestrates Laravel 9+ or .NET 10+ development depending on the project. Invoke via team-dev --backend [target].
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: orchestrator
 priority: high
 scope: backend
