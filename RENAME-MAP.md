@@ -56,6 +56,7 @@ they port each file, and must cross-check against the names already listed here 
 
 | Original name | New name | Notes |
 | --- | --- | --- |
+| `arcade-router` | `game-dev-router` | |
 | `cadrage` | `upfront-alignment` | |
 | `retro` | `friction-retro` | |
 | `no` | `encode-correction` | |
