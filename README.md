@@ -438,6 +438,7 @@ To create your own: `/po-creator`, which adds the agent and its registry entry.
 | `memory-ritual` | Consolidates and reorganizes cross-session memory |
 | `project-graph` | Maps the project's architecture via Graphify |
 | `context7-mcp` | Up-to-date documentation via Context7 MCP (libraries, frameworks) |
+| `repomix-mcp` | Packs a third-party repo/monorepo into one file before analysis (CLI or MCP) |
 | `estimator` | Fibonacci story points, poker planning, risk identification |
 | `changelog` | CHANGELOG.md from commits (Conventional Commits / Keep a Changelog) |
 | `dependency-updater` | Outdated npm/pip/composer dependencies, breaking changes |
