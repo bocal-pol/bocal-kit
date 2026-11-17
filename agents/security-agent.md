@@ -436,6 +436,15 @@ Phase 9c — IAM Review (if Auth/Session findings were detected in Phase 3):
 Invoke the `iam-engineer` skill with the Phase 3 Auth/Session findings.
 ⚠️ Fallback: note "iam-engineer not run" in the report.
 
+Phase 9c bis — Session/token hardening (if a session cookie or JWT was detected in Phase 3):
+Invoke the `session-token-hardening` skill with the Phase 3 Auth/Session findings and the
+backend stack identified in Phase 1. Complements `iam-engineer` (broad OAuth/RBAC/JWT/session
+detection) with prescriptive, targeted remediation: cookie flags (HttpOnly/Secure/SameSite/
+`__Host-`), ID regeneration after login/privilege elevation, server-side JWT algorithm allowlist
+(protection against `alg:none` and RS256/HS256 confusion), with corrected code examples per
+stack. Findings feed directly into the final report phase.
+⚠️ Fallback: note "session-token-hardening not run" in the report.
+
 Phase 9d — Compliance (if regulatory constraints confirmed):
 Invoke the `compliance-officer` skill with the analyzed surface and
 the critical findings from phases 3-5.
