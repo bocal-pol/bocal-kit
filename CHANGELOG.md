@@ -135,8 +135,8 @@ be added or enriched without being a breaking change.
 
 This repository's own version history starts at [1.0.0]. The source configuration (a private
 repository with a longer history, 2026-06-11 to 2026-09-17) is not reproduced here version by
-version — fake `0.x.0` releases would claim this repository existed before it did. This section is
-a short narrative summary instead. For full detail, see the source repository's own changelog.
+version — fake `0.x.0` releases would claim this repository existed before it did. This section
+summarizes that period instead, in full.
 
 The source repository's first commit (2026-06-11) held an initial Laravel code audit; its findings
 were only turned into a firm rule much later (see `security-agent`'s "no raw Model in a response"
