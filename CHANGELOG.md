@@ -26,6 +26,17 @@ be added or enriched without being a breaking change.
   twice for the same batch. Detects via `git diff --name-only` (+ `--cached` + `ls-files
   --others`), never `git status --porcelain` alone: `core.autocrlf` reports hundreds of
   line-ending-only false positives with no real content change.
+- `security-agent`: three checks from the public "7 doors" checklist (Edmond Aouad) that were
+  missing from its already-broader OWASP coverage — an AI/third-party key exposed in the browser
+  bundle (`NEXT_PUBLIC_`/`VITE_`/`REACT_APP_`…) and production sourcemaps, a payment webhook check
+  (signature verification plus anti-replay/idempotency, dynamic scenario `D-WEBHOOK`), and signup
+  abuse controls (rate limiting, email verification before free credits, an AI spend cap, dynamic
+  scenario `D-SIGNUP`). Added a **continuous watch mode**: Phase 0a installs (through the
+  `update-config` skill) a `PostToolUse` hook in the audited project that scans only the changed
+  file and blocks (exit code 2) on a Critical/High finding; Phase 0b gives a lightweight
+  OPEN/CLOSED gate that domain agents can call after each implementation step, instead of waiting
+  for a final review. `backend-agent`, `frontend-agent`, and `mobile-agent` now call this gate
+  before marking any file that touches auth, payment, a webhook, or a public route as done.
 
 ### Changed
 

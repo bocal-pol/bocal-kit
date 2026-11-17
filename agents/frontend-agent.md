@@ -210,6 +210,22 @@ Invoke `angular-developer` or `react-developer` depending on the detected framew
 **Input**: framework + version + functional description + stack (Material/Tailwind/NGXS/Zustand…)
 **Expected output**: complete component(s) following conventions + tests
 
+Before declaring the deliverable done, check the browser-side security checklist:
+
+- [ ] No third-party API key (AI, payment in secret mode, mail) referenced from a component —
+  any billed provider call goes through a server route, never directly from the client
+- [ ] `NEXT_PUBLIC_`/`VITE_`/`REACT_APP_`/`EXPO_PUBLIC_` variables limited to genuinely public
+  values (an API URL, a Stripe publishable key) — never a secret or a role-bearing token
+- [ ] Client-side authorization check (`if (user.role === 'admin')`) always paired with an API
+  call that re-checks server-side — never the only protection
+- [ ] Production build with no publicly exposed source map (`GENERATE_SOURCEMAP=false` or
+  equivalent), unless debugging exposure is explicitly accepted
+
+For any component touching auth, an AI/payment call, or the admin area: invoke `security-agent`
+in watch mode (`security-agent.md` Phase 0b, reduced scope limited to that step's files) before
+moving to the next step. Skippable for a purely visual change with no network call or sensitive
+data.
+
 ⚠️ Fallback: if the skill is unavailable, document the conventions and generate manually.
 
 **Layout/page/section with a React/shadcn/Tailwind stack**: if a shadcn `components.json` is
