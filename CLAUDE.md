@@ -301,6 +301,25 @@ Application rules:
   is `~/.claude` — it doesn't make any MCP available in another project.
 - Also usable in **Claude.ai** by adding the same custom connectors (`huggingface.co/mcp?gradio=…`).
 
+## Playwright MCP — Advanced capabilities
+
+The `mcp__playwright__*` server exposes more than the navigation/click/screenshot tools already
+used by `qa-automation` and `argus-agent`. Four extra tool groups exist, opt-in per server config.
+Enable them only when the need appears, not after an error reveals a missing tool:
+
+- **`storage`** (cookies, `localStorage`, `sessionStorage`) — mechanical check of the cookie
+  consent banner required by the "Cookie policy" section below: read state before/after clicking
+  "Reject all", confirm no non-essential cookie is set before consent.
+- **`network`** (request interception and mocking) — deterministic E2E tests that do not depend on
+  a real third-party API; useful to `qa-automation` to stabilize otherwise flaky scenarios.
+- **`devtools`** (execution trace, video) — hard evidence attached to a QA report when a failure
+  does not reproduce on the first retry.
+- **`testing`** (native `browser_verify_*` assertions) — prefer this over a manual DOM check via
+  `browser_snapshot` for a simple assertion (presence, text, state).
+
+Do not enable these groups by default on a project with no current need for them — consistent with
+"MCP hygiene": an MCP tool loaded without a need adds dead weight to the session context.
+
 ## Sequential Thinking
 
 Use the **MCP server** `sequential-thinking` (not a skill: there is no
