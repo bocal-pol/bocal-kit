@@ -1,7 +1,7 @@
 ---
 name: worktree-agents
 description: "Isolates several Claude Code sessions working on the same repository at the same time — one git worktree per session, then a dedicated merge session. Auto-invoke on: agents in parallel, several Claude Code sessions, working on the same project at the same time, conflicts between agents, isolating a subagent, claude -w, worktree, merging agent branches."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 type: utility
 priority: medium

@@ -1,7 +1,7 @@
 ---
 name: data-architect
 description: "Data Architect — data modeling (conceptual/logical/physical), engine selection, governance, PII/GDPR by design. Auto-invoke on mention of: data modeling, database schema, ER diagram, DBMS choice, data governance, MDM, lineage, data catalog."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 type: domain
 priority: high

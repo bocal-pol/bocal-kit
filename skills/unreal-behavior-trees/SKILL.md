@@ -1,7 +1,7 @@
 ---
 name: unreal-behavior-trees
 description: "Unreal Engine 5 (UE 5.8) NPC AI with Behavior Trees, Blackboards, EQS, and StateTree: decorators with Observer Aborts, C++ BTTask nodes, and driving it all from an AIController. Auto-invoke for Unreal enemy AI, BT_, BB_, or EQS_ assets, an AI that \"gets stuck\", or a failing MoveTo. Not for engine-agnostic BT or utility code (`ai-behavior-trees-utility-ai`) nor the FSM vs. BT choice (`game-ai`)."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: framework
 priority: medium
 scope: cross

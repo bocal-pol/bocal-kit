@@ -3,7 +3,7 @@ name: ci-scan
 type: specialized
 priority: medium
 scope: security
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 dependencies:
   - semgrep
   - gitleaks

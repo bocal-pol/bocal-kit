@@ -1,7 +1,7 @@
 ---
 name: incident-pattern
 description: Automatic detector of serial outages — analyzes tickets from the last 48 hours to identify network, application, or hardware patterns. Triggers an alert and proposes an escalation if an incident cluster is detected.
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 aliases: []
 argument-hint: "[optional path to the tickets file]"

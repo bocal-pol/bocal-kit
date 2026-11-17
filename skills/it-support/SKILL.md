@@ -1,7 +1,7 @@
 ---
 name: it-support
 description: "IT Support & ITIL — L1/L2/L3 support (runbooks, escalation), Application Support Engineer (production investigation), ITIL Change Management (RFC, CAB), Problem Management (5 Whys RCA), CMDB/Asset Manager. Focus parameter: l1l2 / l3-app / itil / cmdb / full. Auto-invoke on: IT support, helpdesk, incident, ticket, ITIL, change management, RFC, CAB, problem management, RCA, CMDB, CMDB manager, asset management, application support, L1 L2 L3, support SLA, escalation, support runbook."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 type: domain
 priority: medium

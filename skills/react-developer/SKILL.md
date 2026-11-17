@@ -1,7 +1,7 @@
 ---
 name: react-developer
 description: "React Developer — React 18+ functional components, hooks, TanStack Query (server state), Zustand (UI state), strict TypeScript, Tailwind CSS, shadcn/ui, Vitest/Testing Library tests. Auto-invoke on: React component, React hook, TanStack Query, Zustand, React 18, JSX, TSX, functional component, useEffect, useState, custom hook, React Router."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 type: framework
 priority: high

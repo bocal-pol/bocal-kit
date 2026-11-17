@@ -1,7 +1,7 @@
 ---
 name: roblox-studio-workflow
 description: "Safely edit an existing Roblox place or Rojo project: find the source of truth and prove changes with the right test mode or Studio MCP (execute_luau). Auto-invoke when an agent edits a .rbxl or Rojo project, works via Studio MCP tools, or must report what was tested. Not for installing Studio MCP (official Roblox skill) or feature code itself (`roblox-luau`, `roblox-ui`)."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: framework
 priority: medium
 scope: cross

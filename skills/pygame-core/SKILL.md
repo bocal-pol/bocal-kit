@@ -1,7 +1,7 @@
 ---
 name: pygame-core
 description: "2D games in Python with pygame-ce (imported as `pygame`): event-update-draw loop, delta time, `Surface`/`Rect`/`FRect`, sprite groups, audio, and headless tests. Auto-invoke when the code imports `pygame`, or on a window that stops responding, speed that varies by machine, or a conflict between `pygame` and `pygame-ce`. Not for engine-agnostic rebinding/input (`input-systems`), saving (`save-systems`), or platformer jump feel — this skill owns the loop and the pygame API, not portable design."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: framework
 priority: medium
 scope: cross

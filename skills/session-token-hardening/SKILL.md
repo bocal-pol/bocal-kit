@@ -1,7 +1,7 @@
 ---
 name: session-token-hardening
 description: "Hardening of session cookies and JWT/API tokens — cookie flags (HttpOnly, Secure, SameSite, __Host- prefix), session ID regeneration, CHIPS partitioning, server-side JWT algorithm allowlist, protection against RS256/HS256 algorithm confusion and the alg:none attack. Prescriptive remediation with code examples per stack (Laravel Sanctum, Express/jsonwebtoken, .NET Microsoft.IdentityModel.Tokens). Auto-invoke on: session cookie, HttpOnly, Secure, SameSite, __Host-, cookie theft, session hijacking, JWT, alg none, algorithm confusion, algorithm allowlist, token rotation, session regeneration."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 type: framework
 priority: high

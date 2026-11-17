@@ -1,7 +1,7 @@
 ---
 name: fps-shooter
 description: "Designs first-person shooter combat in any engine: hitscan vs. projectiles, time-to-kill, damage falloff, recoil patterns, aim-down-sights sensitivity, and lag-compensated hits. Auto-invoke for a Doom- or Counter-Strike-like game, or weapons that feel weak or shots that don't register. Not for the camera rig (`camera-systems`), screen shake and hit-stop (`game-feel`), or the engine's raycast API."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: domain
 priority: medium
 scope: cross

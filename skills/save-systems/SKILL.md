@@ -1,7 +1,7 @@
 ---
 name: save-systems
 description: "Engine-agnostic save and load with Godot and Python code: what to serialize, slots and autosave, atomic writes and versioned migration. Auto-invoke for save/load or a continue button, or saves that corrupt after a crash or break after a patch. Not for Roblox DataStores (`roblox-datastores`), data assets (`godot-resources`, `unity-scriptableobjects`), or genre save screens (`rpg`, `visual-novel`)."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: domain
 priority: medium
 scope: cross

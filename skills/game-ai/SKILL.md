@@ -1,7 +1,7 @@
 ---
 name: game-ai
 description: "Designs engine-agnostic enemy and NPC AI: choosing FSM, behavior tree, utility, or GOAP, and building perception, steering, and A* pathfinding. Auto-invoke for patrol and chase, \"find a path to the player\", agents stuck in corners, or AI that sees through walls. Not for BT or utility code (`ai-behavior-trees-utility-ai`), Unreal AI (`unreal-behavior-trees`), or Unity NavMesh (`unity-navmesh`)."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: domain
 priority: medium
 scope: cross

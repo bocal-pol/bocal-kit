@@ -1,7 +1,7 @@
 ---
 name: dialogue-systems
 description: "Builds engine-agnostic branching dialogue with Ink, Yarn Spinner, or a small JSON graph runner: lines, choices, conditions, variables, and localization IDs. Auto-invoke for NPC conversations, dialogue trees, ambient lines, .ink or .yarn files, or dialogue that gets stuck. Not for visual novel backlog and skip (`visual-novel`), quests (`rpg`), nor text box widgets (`godot-ui-control`, `game-ui-ux`)."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: domain
 priority: medium
 scope: cross

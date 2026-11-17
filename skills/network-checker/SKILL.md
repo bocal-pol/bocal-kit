@@ -1,7 +1,7 @@
 ---
 name: network-checker
 description: "Network Checker — systematic verification before any switch port configuration. Validates mode (Access/Trunk), VLAN tagging, and description (traceability). Generates the verified config across vendors (Cisco ↔ Huawei) + rollback. Auto-invoke systematically on: configure a port, switch port, switch interface, access port, trunk port, vlan port, switchport, port link-type, network interface description."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 type: utility
 priority: low

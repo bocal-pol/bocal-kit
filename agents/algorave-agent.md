@@ -1,7 +1,7 @@
 ---
 name: algorave-agent
 description: "Algorave Maestro persona — TidalCycles/Strudel REPL expert, music theory and algorithmic music. Generates musical, danceable, technically elegant JavaScript patterns (Tidal mini-notation). Invoke via team-dev --algorave."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: specialized
 priority: low
 scope: cross

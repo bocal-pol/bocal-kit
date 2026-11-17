@@ -1,7 +1,7 @@
 ---
 name: unity-animation
 description: "Animates Unity 6.3 LTS characters with the Animator (Mecanim): states and transitions, blend trees, Avatar Mask layers, root motion, and humanoid IK. Auto-invoke to wire a `SetTrigger`, a transition that lags or never fires, root motion that slides, or an upper-body layer overriding the legs. Not for AI state machines (`game-ai`), juice (`game-feel`), or Godot (`godot-animation`)."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: framework
 priority: high
 scope: cross

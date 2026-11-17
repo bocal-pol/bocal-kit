@@ -1,7 +1,7 @@
 ---
 name: it-governance
 description: "IT Governance Manager — IT governance framework (COBIT 2019 / ITIL 4), formalized IT processes, metrics, committees, CMMI maturity plan. Auto-invoke on mention of: IT governance, COBIT, ITIL, CAB, change advisory board, IT steering committee, IT processes, incident management, problem management, change management, CMMI, process maturity, service level management."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 type: domain
 priority: medium

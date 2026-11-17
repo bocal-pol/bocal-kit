@@ -1,7 +1,7 @@
 ---
 name: level-design
 description: "Engine-agnostic level design with Godot controls: player metrics from the real controller, key/ability gating with anti-soft-lock checks, and pacing. Auto-invoke for laying out a level or metroidvania gates, or when players get lost or a key sits behind its own door. Not for generation (`procedural-gen`), painting tiles (`godot-tilemap`, `unity-tilemap-2d`), or jump tuning (`platformer`)."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: domain
 priority: medium
 scope: cross

@@ -1,7 +1,7 @@
 ---
 name: camera-systems
 description: "Builds and tunes game cameras, engine-agnostic with Godot and Cinemachine 3 mappings: 2D follow with deadzone and look-ahead, third-person orbit, first-person view, and split screen. Auto-invoke when the camera lags, shakes while following, shows past the level edge, clips through walls, or changes with framerate. Not for shake (`game-feel`) nor physics-step jitter (`physics-tuning`)."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: domain
 priority: medium
 scope: cross

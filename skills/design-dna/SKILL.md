@@ -8,7 +8,7 @@ description: >-
   "tokens from screenshot", "generate from JSON", "design DNA", "design
   system from reference", "visual profile", "visual effects", "JSON style guide".
   Invoke from design-agent if a visual reference or URL is provided.
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 argument-hint: "[structure|analyze <url_or_image>|generate <json>|full]"
 type: domain

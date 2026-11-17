@@ -1,7 +1,7 @@
 ---
 name: sprint-agent
 description: Full sprint orchestrator — planning, ticket estimation, dev-skill coordination, delivery, and memory consolidation.
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: orchestrator
 priority: medium
 scope: cross

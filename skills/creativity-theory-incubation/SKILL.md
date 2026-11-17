@@ -1,7 +1,7 @@
 ---
 name: creativity-theory-incubation
 description: "Creative incubation (Wallas 1926, Poincaré 1908, Sio & Ormerod 2009, Zeigarnik effect). Calibrate the rhythm and tone of reminders, defend a waiting state with no deadline, prevent an idea box from becoming a task box. Auto-invoke on: incubation, let it rest, maturation, spaced reminder, idea notification, Zeigarnik effect, illumination, open idea, task inbox, overdue counter."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: domain
 priority: medium
 scope: cross

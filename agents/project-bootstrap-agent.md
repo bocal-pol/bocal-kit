@@ -1,7 +1,7 @@
 ---
 name: project-bootstrap-agent
 description: Project bootstrap orchestrator — produces the complete intake kit (App Spec, Brand Brief, Data Dictionary, Feature Backlog, Integrations, Error Journal, + a legal/accessibility compliance section if forms/payment/external users are detected) before the product chain. Invoke via team-dev --project-bootstrap [description].
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: orchestrator
 priority: high
 scope: cross

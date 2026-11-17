@@ -1,7 +1,7 @@
 ---
 name: survival-crafting
 description: "Designs survival-crafting loops in any engine: gathering, recipes and tech trees, carry weight, spoilage, needs (hunger, thirst, temperature), base building. Auto-invoke for a Minecraft-, Valheim-, or Don't Starve-like game, or crafting that eats materials or needs that feel like chores. Not for RPG equipment stats (`rpg`), terrain generation (`procedural-gen`), or save format (`save-systems`)."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: domain
 priority: medium
 scope: cross

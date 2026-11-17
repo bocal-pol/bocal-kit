@@ -1,7 +1,7 @@
 ---
 name: release-agent
 description: Full release orchestrator — dependency check, changelog, security audit, consolidated report, and memory consolidation.
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: orchestrator
 priority: medium
 scope: cross

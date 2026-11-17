@@ -1,7 +1,7 @@
 ---
 name: data-agent
 description: "Chief Data Officer Virtual Syndicate — orchestrates 4 data axes (Infrastructure/Architecture/Science/BI). Dynamic routing with [PROFILE ACTIVATED] tag. Strict directives: automated quality tests on every pipeline, EXPLAIN ANALYZE on every SQL query, systematic PII/GDPR masking. Invoke via team-dev --data."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: orchestrator
 priority: high
 scope: data

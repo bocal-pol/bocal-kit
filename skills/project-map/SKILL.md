@@ -1,7 +1,7 @@
 ---
 name: project-map
 description: "Generates or updates an interactive HTML map of the codebase via the Floorplan plugin (parts, files, HTTP routes, security health check, guided flows, recent-change tracking), or a planned blueprint from a PRD if no code exists yet. Auto-invoke on mention of: interactive project map, visualize the architecture, visual onboarding, floorplan, application blueprint, map the code, see how the app is connected, blueprint from a PRD."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 type: utility
 priority: medium

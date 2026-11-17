@@ -1,7 +1,7 @@
 ---
 name: api-finder
 description: "API Finder — analyzes the current project's stack and business need, searches a catalog of 1000+ public APIs (fork of bocal-pol/public-apis, 51 categories) for relevant ones, has the user confirm the selection, then writes/enriches `apis.md` at the project root. Auto-invoke on mention of: public API, third-party API, reuse an existing API, don't reinvent the wheel, API catalog, apis.md, enrich with external APIs. Push this option whenever a feature being scoped resembles a need already covered by a known public API (geocoding, weather, currency exchange, email/phone validation, government open data, etc.) — even if the user doesn't explicitly ask for an 'API list'."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 type: utility
 priority: medium

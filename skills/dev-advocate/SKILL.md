@@ -1,7 +1,7 @@
 ---
 name: dev-advocate
 description: "Developer Advocate — DevEx scorecard, technical blog posts, talk outlines, sample repo manifest, contribution guidelines, technical social content. Auto-invoke on mention of: developer advocacy, DevEx, developer experience, technical blog, conference talk, sample code, CONTRIBUTING, developer community, DX audit."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 type: domain
 priority: medium

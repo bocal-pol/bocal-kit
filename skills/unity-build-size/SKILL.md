@@ -1,7 +1,7 @@
 ---
 name: unity-build-size
 description: "Finds and reduces what makes a Unity 6.3 LTS build oversized: Build Report reading, uncompressed textures, glTFast models, PCM audio, and per-platform levers. Auto-invoke when an APK, AAB, WebGL build, or Steam depot exceeds a size limit or the download feels too heavy. Not for framerate (`performance-optimization`), build scripts or stripping (`unity-build-pipeline`), nor uploading to a store (`steam-publish`)."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: framework
 priority: medium
 scope: cross

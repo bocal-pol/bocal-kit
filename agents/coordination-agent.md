@@ -1,7 +1,7 @@
 ---
 name: coordination-agent
 description: Coordination & Facilitation — organizational diagnosis, coordination of Agile/project/governance roles, consolidated report
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: orchestrator
 priority: medium
 scope: cross

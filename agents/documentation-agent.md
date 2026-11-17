@@ -1,7 +1,7 @@
 ---
 name: documentation-agent
 description: "Documentation Lead — full documentation strategy: technical writing, developer advocacy, knowledge management, training. Invoke via team-dev --documentation [target]."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: orchestrator
 priority: medium
 scope: cross

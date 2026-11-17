@@ -1,7 +1,7 @@
 ---
 name: ethical-ai
 description: "Ethical AI Officer — bias detection (demographic parity, equalized odds), EU AI Act risk categories, fairness metrics, model card template, AI red-teaming, training data governance. Auto-invoke on: AI bias, AI ethics, EU AI Act, AI Act, fairness, algorithmic fairness, algorithmic discrimination, model card, AI red-teaming, AI governance, responsible AI, AI and GDPR, AI and fundamental rights, high-risk AI system."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 type: specialized
 priority: medium

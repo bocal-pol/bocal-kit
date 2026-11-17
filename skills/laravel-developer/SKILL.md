@@ -1,7 +1,7 @@
 ---
 name: laravel-developer
 description: "Laravel Developer — Laravel 9+, PHP 8+, Eloquent ORM, Sanctum, business logic in Models (static methods), inline validation with Validator::make(), JSON responses via API Resource (JsonResource), OpenAPI L5-Swagger, PHPUnit, multi-connection DB. Auto-invoke on: Laravel, Eloquent, Artisan, Sanctum, Socialite, Laravel migration, Laravel controller, Eloquent model, Laravel route, Laravel middleware, PHP 8, composer."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 type: framework
 priority: high

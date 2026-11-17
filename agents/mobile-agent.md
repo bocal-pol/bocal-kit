@@ -1,7 +1,7 @@
 ---
 name: mobile-agent
 description: Principal Mobile Director — orchestrates Flutter or React Native development depending on the project, and drives version migrations. Invoke via team-dev --mobile [target].
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: orchestrator
 priority: high
 scope: mobile

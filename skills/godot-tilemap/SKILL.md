@@ -1,7 +1,7 @@
 ---
 name: godot-tilemap
 description: "Godot 4.7 tilemaps with `TileMapLayer`/`TileSet`: atlas sources, data layers, terrain autotiling, and runtime `set_cell`/`local_to_map`. Auto-invoke for a 2D tile-based level in Godot, tiles with no collision, a click hitting the wrong cell, or porting a deprecated `TileMap`. Not for Unity (`unity-tilemap-2d`), tile art (`create-game-assets`), or generation (`procedural-gen`)."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: framework
 priority: medium
 scope: cross

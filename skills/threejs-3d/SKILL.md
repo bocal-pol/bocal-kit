@@ -8,7 +8,7 @@ description: >-
   standalone. Triggers: "3D scene", "WebGL", "Three.js", "shader", "generative canvas",
   "particles", "post-processing", "bloom", "3D animated background", "R3F", "fiber",
   "GLSL", "3D visual effects".
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 argument-hint: "[scene|shader|postfx|canvas|r3f|quick <description>]"
 type: specialized

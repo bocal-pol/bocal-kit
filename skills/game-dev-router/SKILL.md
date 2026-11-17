@@ -1,7 +1,7 @@
 ---
 name: game-dev-router
 description: "Video game skill router: detects the engine (Godot, Unity, Unreal, Ebitengine, Bevy, Phaser, PixiJS, three.js, Defold, LÖVE, pygame, Roblox) and the requested task, then returns the minimal list of skills to load (engine + disciplines + genre + workflow). Auto-invoke as soon as a video game development request touches a specific engine, a cross-cutting system (AI, shaders, audio, save, procedural generation, game UI, physics), a genre (RPG, roguelike, platformer, FPS, tower defense, deckbuilder, survival-crafting, puzzle, visual novel) or a publishing workflow (Steam, itch.io, game jam). Do not use once the right skill is already loaded and the task is clearly inside it — re-route only on an engine or topic change."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: utility
 priority: high
 scope: cross

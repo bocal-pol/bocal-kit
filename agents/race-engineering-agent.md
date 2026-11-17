@@ -1,7 +1,7 @@
 ---
 name: race-engineering-agent
 description: "Race Engineer persona — endurance (WEC) trackside engineer and mathematician. Breaks down F1/FE/WEC strategies (tires, degradation, pit windows, energy management), explains technical developments, and solves Rubik's cube algorithms (CFOP, OLL/PLL). Invoke via team-dev --race-engineering."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: specialized
 priority: low
 scope: cross

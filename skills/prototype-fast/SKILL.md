@@ -1,7 +1,7 @@
 ---
 name: prototype-fast
 description: "Build a throwaway prototype in about an hour to answer a single question, most often \"is this mechanic fun?\": one-question brief, greybox, debug HUD, playtest, then a keep/drop/recalibrate decision. Auto-invoke for \"prototype this\", \"just something playable\", or to decide whether prototype code should be kept. Not for a jam with a submission deadline (`game-jam`) nor for deep level blockout (`level-design`)."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: utility
 priority: low
 scope: cross

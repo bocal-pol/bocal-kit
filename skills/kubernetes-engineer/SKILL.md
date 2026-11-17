@@ -1,7 +1,7 @@
 ---
 name: kubernetes-engineer
 description: "Kubernetes Engineer — Docker (multi-stage, distroless, docker-compose), K8s (manifests, Helm, namespaces), container hardening, named volumes, secrets management. Auto-invoke on mention of: docker, kubernetes, k8s, dockerfile, docker-compose, helm, container, pod, k8s deployment, ingress, persistent volume, multi-stage build, distroless, securitycontext, k8s namespace."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 type: framework
 priority: high

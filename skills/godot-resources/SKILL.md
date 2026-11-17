@@ -1,7 +1,7 @@
 ---
 name: godot-resources
 description: "Godot 4.7 data-oriented design with custom Resources: `class_name` and `@export` fields, `.tres` files, shared references vs. `duplicate_deep()`, uids, and threaded loading. Auto-invoke for items, stats or enemy configs as data, or when editing one enemy changes all enemies, or a `.tres` stops loading. Not for save slots (`save-systems`) or the C# version (`godot-csharp`)."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: framework
 priority: medium
 scope: cross

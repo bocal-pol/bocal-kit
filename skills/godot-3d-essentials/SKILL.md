@@ -1,7 +1,7 @@
 ---
 name: godot-3d-essentials
 description: "Godot 4.7 3D scene setup: `Camera3D`, lights, `WorldEnvironment` (sky, ambient, tonemap, fog), `StandardMaterial3D`, `GridMap` and local vs. global transforms, with a headless scene check. Auto-invoke when a 3D scene renders black or washed out, a mesh is invisible, or a child rotates on the wrong axis. Not for spatial shaders (`godot-shaders`), bodies and raycasts (`godot-physics`), or camera feel (`camera-systems`)."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: framework
 priority: medium
 scope: cross

@@ -1,7 +1,7 @@
 ---
 name: ebitengine-game
 description: "2D games in Go with Ebitengine v2: play-replay loop, input (keys/gamepad), pixel art scaling, text, audio, headless tests, and desktop/WASM/mobile builds. Auto-invoke when `go.mod` depends on `ebiten/v2`, or on blurry pixel art, a missed or doubled key press, frame-rate-linked speed, distorted sound, or an audio panic. Not for the Rust ECS (`bevy-ecs`), the Python loop (`pygame-core`), or Lua (`love2d-core`, `defold-core`); for portable design, see `game-feel`, `game-ui-ux`."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: framework
 priority: medium
 scope: cross

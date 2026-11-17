@@ -1,7 +1,7 @@
 ---
 name: switch-audit
 description: Network switch audit and configuration — Huawei VRP (primary), Cisco IOS/NX-OS, Juniper JunOS, Alcatel-Lucent SR-OS. VLAN, STP, LACP, ACL, hardening, diagnostics.
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 aliases: ["/sc"]
 argument-hint: "<hostname|config-file> [action: audit|vlan|stp|lacp|acl|hardening]"

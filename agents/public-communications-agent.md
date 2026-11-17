@@ -1,7 +1,7 @@
 ---
 name: public-communications-agent
 description: Institutional and press communications (public sector). Press releases, talking points, editorial line, crisis communication, media relations, key messages, public statements. Invoke via team-dev --ask public-communications or from an orchestrator agent.
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: domain
 priority: low
 scope: cross

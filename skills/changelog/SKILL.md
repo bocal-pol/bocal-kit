@@ -1,7 +1,7 @@
 ---
 name: changelog
 description: "Generates a structured CHANGELOG.md from git commits following Conventional Commits / Keep a Changelog. Auto-invoke on mention of: changelog, release notes, change history, version notes."
-model: claude-haiku-4-5-20251001
+model: claude-haiku-5-5
 user-invocable: true
 type: utility
 priority: medium

@@ -1,7 +1,7 @@
 ---
 name: printer-support
 description: Network and local printer support — stuck print queue, drivers, missing network printers, slow printing, configuration errors, GPO deployment. Pre-check with incident-pattern.
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 aliases: ["/print"]
 argument-hint: "<symptom or printer name>"

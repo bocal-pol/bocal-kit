@@ -1,7 +1,7 @@
 ---
 name: security-audit
 description: "Plan and run a complete security audit via Opus (OWASP Top 10 reconnaissance, dependencies, config, dynamic tests) then appsec and pentest. Triggers: security audit, security audit, OWASP analysis, security planning."
-model: claude-opus-5
+model: claude-opus-5-5
 user-invocable: true
 type: orchestrator
 priority: high
