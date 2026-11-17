@@ -1,7 +1,7 @@
 ---
 name: visual-novel
 description: "Builds visual novels and choice-driven stories in Ren'Py or any engine: routes and endings, save-anywhere, backlog, read-only skip, type-on text. Auto-invoke for a VN or dating sim, or loading at the wrong line, a skip that scrolls past unread text, or an unreachable ending. Not for dialogue in a larger game or Ink/Yarn (`dialogue-systems`) nor text-box widgets (`godot-ui-control`)."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: domain
 priority: medium
 scope: cross

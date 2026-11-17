@@ -1,7 +1,7 @@
 ---
 name: pilgrimage-prep
 description: Cross-cutting preparation for a long-distance pilgrimage — fitness, pilgrim credential, foot health, weather/season, overall budget. Valid for the entire journey to the destination.
-model: claude-haiku-4-5-20251001
+model: claude-haiku-5-5
 type: utility
 priority: medium
 scope: cross

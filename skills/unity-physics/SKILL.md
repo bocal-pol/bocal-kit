@@ -1,7 +1,7 @@
 ---
 name: unity-physics
 description: "Unity 6.3 LTS 2D and 3D physics: Rigidbody and Rigidbody2D, forces and linearVelocity, per-layer collision matrix, and raycasts. Auto-invoke when an object falls through the floor, `OnTriggerEnter` never fires, or a ground ray hits the player. Not for engine-agnostic tunneling tuning (`physics-tuning`), tilemap colliders (`unity-tilemap-2d`), or NavMesh (`unity-navmesh`)."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: framework
 priority: high
 scope: cross

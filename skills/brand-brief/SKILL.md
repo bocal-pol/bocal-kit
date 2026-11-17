@@ -1,7 +1,7 @@
 ---
 name: brand-brief
 description: "Brand Brief — brand identity brief for project bootstrap (mission, values, personality, tone & voice, positioning, visual identity logo/palette/typography/imagery). Auto-invoke on mention of: brand brief, brand identity, brand guidelines, tone and voice, brand personality, brand book."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 type: utility
 priority: medium

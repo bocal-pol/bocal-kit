@@ -1,7 +1,7 @@
 ---
 name: it-operations-agent
 description: Principal IT Operations Director — L1/L2/L3 support, application support, ITIL Change/Problem Management, CMDB/Asset Manager. Invoke via team-dev --it-operations [target].
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: orchestrator
 priority: medium
 scope: infra

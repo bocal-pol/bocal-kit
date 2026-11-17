@@ -1,7 +1,7 @@
 ---
 name: create-game-assets
 description: "Plans, generates or sources, and validates coherent game art: style guides, sprites, pixel art, tilesets, icons, and textures, with QA and license traceability. Auto-invoke to create or AI-generate game art, fix fake transparency, or check the Steam AI disclosure. Not for engine import (`godot-tilemap`, `godot-animation`, `unity-tilemap-2d`), UI layout (`game-ui-ux`), nor sound (`audio-design`)."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: domain
 priority: medium
 scope: cross

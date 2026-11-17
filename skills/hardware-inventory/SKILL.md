@@ -1,7 +1,7 @@
 ---
 name: hardware-inventory
 description: CMDB management for network and IT hardware fleet — switches, routers, servers, workstations, licenses, spares. CRUD, EOL/warranty audit, export. Stored in Markdown/CSV.
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 aliases: ["/inv"]
 argument-hint: "[action: add|update|list|audit|export] [type: switch|router|server|workstation|license|spare]"

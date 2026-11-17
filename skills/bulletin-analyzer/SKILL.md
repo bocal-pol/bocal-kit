@@ -1,7 +1,7 @@
 ---
 name: bulletin-analyzer
 description: Analyzes IT service bulletins (support and/or network technicians) to extract patterns, trends, recurring equipment, frequent users, workload. Produces a management-readable summary report.
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 aliases: []
 argument-hint: "[period: month|week|quarter] [team: support|network|all] [optional path]"

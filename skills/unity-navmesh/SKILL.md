@@ -1,7 +1,7 @@
 ---
 name: unity-navmesh
 description: "Unity 6.3 LTS pathfinding with the AI Navigation package: `NavMeshSurface` baking, `NavMeshAgent`, `NavMeshLink` jumps, and runtime rebakes. Auto-invoke when a Unity enemy needs to chase or patrol, an agent doesn't move or teleports, a path is partial, or the Bake tab is missing. Not for deciding when NPCs move (`game-ai`, `ai-behavior-trees-utility-ai`) nor force-driven movement (`unity-physics`)."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: framework
 priority: medium
 scope: cross

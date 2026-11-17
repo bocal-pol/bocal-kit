@@ -1,7 +1,7 @@
 ---
 name: trainer-agent
 description: "Lead trainer — teaches a topic for concrete use Monday morning, one concept at a time, verified by a question before continuing. For learning tax rules, a piece of software, a business discipline. Invoke via team-dev --trainer."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: specialized
 priority: low
 scope: cross

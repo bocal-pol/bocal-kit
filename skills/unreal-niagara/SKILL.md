@@ -1,7 +1,7 @@
 ---
 name: unreal-niagara
 description: "Niagara VFX for Unreal Engine 5 (UE 5.8): systems, emitters, User parameters, spawning from C++ or Blueprints, bounds, and GPU vs. CPU simulation. Auto-invoke for any Unreal particle effect, an NS_ asset, a muzzle flash or impact, or an effect that doesn't show, vanishes at the screen edge, or never stops. Not for Unity's VFX Graph, shader writing (`shader-programming`), or hit-stop (`game-feel`)."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: framework
 priority: medium
 scope: cross

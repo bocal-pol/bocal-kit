@@ -1,7 +1,7 @@
 ---
 name: shader-programming
 description: "Cross-engine shader technique in GLSL with HLSL equivalents: how dissolve, outline, fresnel rim, and post-process effects work, and porting GLSL to HLSL. Auto-invoke when an effect's math is the question, or for mobile artifacts or flicker. For writing a shader in a given engine, its own skill is enough (`godot-shaders`, `threejs-materials-lighting`, `pixijs-rendering`). Not for particles (`unreal-niagara`)."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: domain
 priority: medium
 scope: cross

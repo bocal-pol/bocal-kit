@@ -1,7 +1,7 @@
 ---
 name: git-workflow
 description: "Installs the standard Git workflow in a project — commit-msg and pre-commit hooks, README Git Workflow section, optional commitlint + Husky, GitHub branch protection recommendations. Auto-invoke on: new git project, configure git workflow, install git hooks, conventional commits, branch protection, husky, commitlint."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 type: utility
 priority: medium

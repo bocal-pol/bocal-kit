@@ -1,7 +1,7 @@
 ---
 name: audio-design
 description: "Engine-agnostic game audio technique: bus organization, decibel volume sliders, loudness, ducking music under dialogue, adaptive music and SFX variation, with Godot, Unity, and FMOD/Wwise mappings. Auto-invoke to mix a game, make music react to combat, fix repetitive footsteps or beat sync, or a mix that clips or pumps. Not for Godot's audio API (`godot-audio`)."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: domain
 priority: medium
 scope: cross

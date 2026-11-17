@@ -1,7 +1,7 @@
 ---
 name: angular-developer
 description: "Angular Developer — Angular 21+ standalone components, ChangeDetectionStrategy.OnPush, inject(), signals (input/output/computed/rxResource), NGXS store, Angular Material, Tailwind 4, ngx-translate, lazy routing with export default. Auto-invoke on: Angular component, standalone component, NGXS, Angular Material, ngx-translate, Angular signal, rxResource, inject(), OnPush, Angular reactive form, Angular routing, Angular 17 18 19 20 21."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 type: framework
 priority: medium

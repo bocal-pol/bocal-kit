@@ -1,7 +1,7 @@
 ---
 name: integration-agent
 description: Principal Integration Director — REST/GraphQL connectors, ESB (MuleSoft/Apache Camel), messaging (Kafka/RabbitMQ), EDI (EDIFACT/X12), API lifecycle management. Invoke via team-dev --integration [target].
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: orchestrator
 priority: high
 scope: backend

@@ -1,7 +1,7 @@
 ---
 name: game-feel
 description: "Adds engine-agnostic juice to a mechanic that already works: trauma-based screen shake, hit-stop, eased tweens, squash and stretch, and knockback. Auto-invoke when the game feels flat, weightless, or unsatisfying, or hits and jumps should feel satisfying. Not for coyote time (`platformer`), input buffering (`input-systems`), camera follow (`camera-systems`), or HUD layout (`game-ui-ux`)."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: domain
 priority: medium
 scope: cross

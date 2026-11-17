@@ -1,7 +1,7 @@
 ---
 name: puzzle
 description: "Designs grid and logic puzzles in any engine: match-3 cascades, Sokoban-style pushing, unique-solution grids (nonogram, Sudoku), exact undo, and solver-verified levels. Auto-invoke for a Candy Crush-, Sokoban-, or Picross-like game, or broken cascades, drifting undo, or unsolvable levels. Not for physics puzzles (`platformer`, `physics-tuning`) or card games (`card-game`)."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: domain
 priority: medium
 scope: cross

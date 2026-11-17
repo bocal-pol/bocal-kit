@@ -1,7 +1,7 @@
 ---
 name: cloud-security
 description: "Cloud security audit and design — IAM policies, Security Groups, secrets management, AWS/Azure/GCP compliance. Auto-invoke on mention of: cloud security, cloud IAM, public S3, security group, secrets manager, IAM policy, public bucket, cloud security, terraform, cloudformation, kubernetes, cloud infrastructure."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 type: framework
 priority: high

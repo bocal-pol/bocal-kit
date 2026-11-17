@@ -1,7 +1,7 @@
 ---
 name: integrations-catalog
 description: "Integrations Catalog — plain catalog of a project's external integrations at bootstrap time (third-party systems, protocol, auth, direction, criticality, SLA, owner). Auto-invoke on mention of: integrations, external systems, third-party APIs, SSO, webhooks, integration catalog, connectors."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 type: utility
 priority: medium

@@ -1,7 +1,7 @@
 ---
 name: computer-vision
 description: "Computer Vision & NLP Engineer — OpenCV, YOLO, PyTorch Vision/torchvision, image/video analysis pipelines, segmentation, OCR, object detection; NLP with HuggingFace Transformers, spaCy, text classification, NER, embeddings. Focus parameter: cv (vision) / nlp (language processing) / full (default). Auto-invoke on: computer vision, OpenCV, YOLO, object detection, segmentation, image processing, OCR, NLP, natural language processing, HuggingFace, transformers, BERT, spaCy, NER, text classification, text embeddings, sentiment analysis."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 type: specialized
 priority: medium

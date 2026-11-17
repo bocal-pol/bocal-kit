@@ -1,7 +1,7 @@
 ---
 name: physics-engineer
 description: "Physics/Math Engineer — Vectors, quaternions, ballistic trajectories, guided projectiles with target prediction, IK (Inverse Kinematics). Resolves video game trig/physics blockers. Auto-invoke on: trajectory, projectile, parabola, homing missile, guided missile, target prediction, quaternion, 3D rotation, inverse kinematics, ballistics, firing angle, slerp, look_at, position prediction, bezier."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 type: framework
 priority: medium

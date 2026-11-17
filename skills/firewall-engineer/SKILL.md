@@ -1,7 +1,7 @@
 ---
 name: firewall-engineer
 description: Network firewall configuration and audit — Fortinet FortiOS (priority), pfSense/OPNsense, Cisco ASA/FTD, Palo Alto PAN-OS. Rules, NAT, IPsec/SSL VPN, zones, policy routing, hardening.
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 aliases: ["/fw"]
 argument-hint: "[vendor] [goal: rule|nat|vpn|audit|zones|migration]"

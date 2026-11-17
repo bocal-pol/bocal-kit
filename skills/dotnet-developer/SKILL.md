@@ -1,7 +1,7 @@
 ---
 name: dotnet-developer
 description: ".NET Developer — .NET 10+, ASP.NET Core, Clean Architecture (Domain/Application/Infrastructure/Api), Result<T> pattern, EF Core Fluent API, FluentValidation, [Injectable] attribute, static Mappers + LINQ Expression Projections, .NET Aspire, Keycloak JWT. Auto-invoke on: .NET, C#, ASP.NET Core, Entity Framework Core, EF Core, Clean Architecture, CQRS, Minimal API, C# controller, DbContext, EF migration, FluentValidation, MediatR, .csproj, NuGet."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 type: framework
 priority: medium

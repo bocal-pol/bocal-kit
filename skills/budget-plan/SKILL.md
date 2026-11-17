@@ -1,7 +1,7 @@
 ---
 name: budget-plan
 description: Building IT budget plans — hardware/software investments, recurring costs, maintenance, services, contingency reserves. Multi-year projection, management summary note, actual vs. planned comparison.
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 aliases: []
 argument-hint: "[fiscal year] [scope: full|hardware|software|maintenance]"

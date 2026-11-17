@@ -1,7 +1,7 @@
 ---
 name: silent-failure-hunter
 description: "Hunts for silent failures — empty catches, swallowed errors, dangerous fallbacks, lost error propagation, I/O with no timeout/rollback. Auto-invoke on: silent error, empty catch, swallowed exception, dangerous fallback, unpropagated error, silent failure, swallowed error. Read-only review, never a direct fix."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 argument-hint: "[file|folder|glob|PR branch]"
 type: domain

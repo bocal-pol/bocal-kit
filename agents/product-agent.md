@@ -1,7 +1,7 @@
 ---
 name: product-agent
 description: Product orchestrator — produces a complete product package (Project Brief + PRD + Functional Specs)
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: orchestrator
 priority: high
 scope: cross

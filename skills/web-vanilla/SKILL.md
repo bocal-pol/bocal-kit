@@ -1,7 +1,7 @@
 ---
 name: web-vanilla
 description: Small standalone HTML/CSS/JS web tools — calculators, static dashboards, forms, viewers. No framework, no bundler. Internal use, self-contained (1-3 files). WCAG AA, responsive, dark mode.
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 aliases: ["/web"]
 argument-hint: "[description of the desired web tool]"

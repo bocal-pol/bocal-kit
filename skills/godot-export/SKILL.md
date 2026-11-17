@@ -1,7 +1,7 @@
 ---
 name: godot-export
 description: "Godot 4.7 project exports: `export_presets.cfg` templates and presets for desktop, Web and Android, command-line exports, and web COOP/COEP headers. Auto-invoke on \"No export template found\", a blank web build, a SharedArrayBuffer error, or missing files after export. Not for CI tests (`godot-gdscript-headless-testing`), store uploads (`steam-publish`, `itch-publish`), or netcode (`godot-multiplayer`)."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: framework
 priority: medium
 scope: cross

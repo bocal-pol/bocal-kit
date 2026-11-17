@@ -33,7 +33,7 @@
     ],
     "defaultMode": "plan"
   },
-  "model": "claude-sonnet-5",
+  "model": "claude-sonnet-5-5",
   "worktree": {
     "baseRef": "head"
   },

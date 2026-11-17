@@ -2,7 +2,7 @@
 name: hairline-create
 description: "Draws an isometric line-art figure that responds to the cursor, in the style and on the engine of @lucasmarkes/hairline (vendored in this skill, integrity verified by SHA-256 hash), delivered as a single standalone HTML file. Auto-invoke on mention of: Hairline figure, interactive isometric illustration, visual that responds to the cursor, create a Hairline figure."
 argument-hint: "[idea]"
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 type: specialized
 priority: low

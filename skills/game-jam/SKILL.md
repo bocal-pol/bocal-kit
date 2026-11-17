@@ -1,7 +1,7 @@
 ---
 name: game-jam
 description: "Scope and ship a game jam entry against a fixed deadline: read the jam rules, cut scope against the clock, keep a cut log, verify the build before submission. Auto-invoke for Ludum Dare, GMTK, Global Game Jam or any itch.io jam, a 48-hour game, or \"we're running out of time, what do we cut\". Not for a prototype with no deadline (`prototype-fast`) nor for the upload commands themselves (`itch-publish`)."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: utility
 priority: low
 scope: cross

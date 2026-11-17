@@ -1,7 +1,7 @@
 ---
 name: pixijs-rendering
 description: "Builds and debugs 2D browser rendering with PixiJS v8: async init, loading via `Assets`, Container/Sprite scene graph, pointer drag, and v7 to v8 migration. Auto-invoke when a game or playable ad uses `pixi.js`, on an empty canvas, clicks that never fire, or a drag that stops at the sprite's edge. Not for dashboards or charts, Phaser (`phaser-core`), or 3D (`threejs-scene-setup`)."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: framework
 priority: medium
 scope: cross

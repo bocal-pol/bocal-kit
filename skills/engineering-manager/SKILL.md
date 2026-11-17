@@ -1,7 +1,7 @@
 ---
 name: engineering-manager
 description: "Engineering Manager — people management, career ladder, 1:1s, performance evaluation, hiring, retention. Merges classic EM + VP Engineering via a scope parameter. Auto-invoke on mention of: engineering manager, career ladder, developer 1:1, performance evaluation, dev hiring, team retention, developer career plan, tech people management, engineering org."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 type: domain
 priority: high

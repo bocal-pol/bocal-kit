@@ -1,7 +1,7 @@
 ---
 name: unity-input-system
 description: "Wires Unity 6.3 LTS player input with the Input System package: .inputactions assets, action maps, PlayerInput, and control schemes. Auto-invoke when input does nothing or fires under a menu, `FindAction` returns null, the old Input class throws, or `Input.GetAxis` code needs porting. Not for engine-agnostic buffering, rebinding, or deadzones (`input-systems`) nor jump feel (`platformer`)."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: framework
 priority: high
 scope: cross

@@ -2,7 +2,7 @@
 name: public-procurement-agent
 description: Public procurement and ICT administration manager — vendor contracts, tender specifications, purchase orders, budget plans, technical-to-management translation, official correspondence. Generic public-sector context, adapt thresholds to your jurisdiction. Invoke via team-dev --public-procurement or from ict-director-agent.
 tools: Read, Write, WebFetch, AskUserQuestion, EnterPlanMode, ExitPlanMode, Skill
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: orchestrator
 priority: medium
 scope: cross

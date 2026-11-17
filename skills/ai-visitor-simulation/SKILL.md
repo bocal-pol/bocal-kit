@@ -1,7 +1,7 @@
 ---
 name: ai-visitor-simulation
 description: "Simulates AI visitors testing a web app before it goes to production: a first screenshot glance (understood in 5 seconds, spots the action button), then real navigation (clicks, forms, scrolling) on a representative sample, following a profile and patience unique to each persona. Produces an aggregated UX feedback report (comprehension, friction, conversion). Auto-invoke on mention of: user test, visitor test, simulate visitors, crowd test, pre-launch UX feedback, 5-second first glance, conversion test, usability test, pre-launch UX feedback."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 type: domain
 priority: high

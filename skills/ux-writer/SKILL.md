@@ -1,7 +1,7 @@
 ---
 name: ux-writer
 description: "UX Writer — Voice & tone guide, per-screen microcopy, actionable error-message library, in-app onboarding copy, UI glossary, translation/localization guidelines. Auto-invoke on: microcopy, UX error message, button label, placeholder, tooltip, onboarding text, voice tone, interface content, empty state text, notification text."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 type: domain
 priority: high

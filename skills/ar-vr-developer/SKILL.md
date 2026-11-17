@@ -1,7 +1,7 @@
 ---
 name: ar-vr-developer
 description: "AR / VR Developer — Unity XR Toolkit, WebXR / A-Frame, Unreal VR, spatial UX (comfort zones, locomotion), mandatory 90fps VR performance, AR plane detection, hand tracking, 3D interaction. Auto-invoke on: AR, VR, augmented reality, virtual reality, XR, Unity XR, WebXR, A-Frame, Unreal VR, Meta Quest, HoloLens, ARKit, ARCore, mixed reality, immersive, spatial 3D, hand tracking, VR locomotion."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 type: specialized
 priority: low

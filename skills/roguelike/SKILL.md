@@ -1,7 +1,7 @@
 ---
 name: roguelike
 description: "Designs the run structure of a roguelike/roguelite in any engine: permadeath, meta-progression, seeded/daily runs, energy-based turn order, symmetric field of view. Auto-invoke for a NetHack- or Hades-like game, or runs that feel unfair or cheap. Not for the dungeon generation algorithm itself (`procedural-gen`), roguelike deckbuilders (`card-game`), or RPGs with a persistent character (`rpg`)."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: domain
 priority: medium
 scope: cross

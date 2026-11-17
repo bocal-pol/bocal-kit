@@ -1,7 +1,7 @@
 ---
 name: pilgrimage-route
 description: "Stage breakdown for a pilgrimage route by leg. Produces distances, elevation, GPX waypoints, route crossings."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: framework
 priority: high
 scope: cross

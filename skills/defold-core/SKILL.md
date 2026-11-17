@@ -1,7 +1,7 @@
 ---
 name: defold-core
 description: "Defold 1.14 games in Lua: collections, game objects, input focus, `msg.post` messaging, factories, collection proxies, and Bob builds. Auto-invoke on `.collection`/`.script` files, an `on_input` that never fires, a proxy that never loads, or \"could not be found when dispatching message\". Not for LÖVE (`love2d-core`, also Lua but `main.lua`/`conf.lua`), HUD rules (`game-ui-ux`), or physics feel (`physics-tuning`)."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: framework
 priority: medium
 scope: cross

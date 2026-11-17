@@ -1,7 +1,7 @@
 ---
 name: creativity-theory-bisociation
 description: "Koestler's bisociation (1964) and forced-creativity techniques. Design a duo of ideas, a forced connection, apply the 7 SCAMPER operators, calibrate the randomness in link suggestions. Auto-invoke on: bisociation, idea of the day pairing, forced connection, SCAMPER, random input, thinking matrix, idea association, cross two ideas, link suggestion, controlled randomness."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: domain
 priority: medium
 scope: cross

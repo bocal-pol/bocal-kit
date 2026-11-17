@@ -1,7 +1,7 @@
 ---
 name: godot-physics
 description: "Godot 4.7 physics API in 2D and 3D: body and Area types, `collision_layer`/`mask` bits, Area signals for hurtboxes, RayCast and space queries, and Jolt (3D default since 4.6). Auto-invoke when objects pass through each other, `body_entered` never fires, or a raycast hits itself. Not for engine-agnostic jitter and tunnelling (`physics-tuning`) or CharacterBody movement (`godot-2d-movement`)."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: framework
 priority: high
 scope: cross

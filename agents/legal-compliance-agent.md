@@ -1,7 +1,7 @@
 ---
 name: legal-compliance-agent
 description: "Legal compliance advisor persona — checks jurisdiction-specific legal compliance for prepping, camping, hiking, storage, and home-security activities. Adapt the referenced laws to your own jurisdiction before relying on them. Invoke via team-dev --legal-compliance or from an orchestrator agent."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: specialized
 priority: low
 scope: cross

@@ -1,7 +1,7 @@
 ---
 name: refacto
 description: "Cross-stack refactoring skill — analyzes existing code (Backend .NET/Laravel, Frontend Angular/React, Mobile Flutter/RN, Integration) and migrates toward the target architecture (DTOs, Services/Interfaces, Repositories, Validators, Mappers, Projections, State/BLoCs). Auto-invoke on: refactoring, migrate to DTOs, existing architecture, restructure, extract service, legacy code."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 type: utility
 priority: high

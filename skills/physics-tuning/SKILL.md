@@ -1,7 +1,7 @@
 ---
 name: physics-tuning
 description: "Engine-agnostic physics tuning with Godot controls: fixed timestep and interpolation, CCD against tunneling, damping, solver iterations, and collision layer matrices. Auto-invoke when bodies shake, fast objects pass through walls, or physics feels mushy or wrong. Not for the engine's physics API (`godot-physics`, `unity-physics`, `roblox-physics`, `phaser-arcade-physics`) or jump feel (`platformer`)."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: domain
 priority: medium
 scope: cross
