@@ -1,7 +1,7 @@
 ---
 name: blockchain
 description: "Blockchain / Web3 Developer — Solidity smart contracts (OpenZeppelin), Hardhat/Foundry, ERC-20/721/1155, DeFi patterns, security (reentrancy/overflow/MEV), ethers.js/viem frontend integration, IPFS, contract audit. Auto-invoke on: Solidity, smart contract, DApp, blockchain, Ethereum, Web3, ERC-20, ERC-721, NFT, DeFi, Hardhat, Foundry, wagmi, ethers.js, viem, IPFS, Layer 2, Polygon, Arbitrum, OpenZeppelin."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 type: specialized
 priority: low

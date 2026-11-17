@@ -1,7 +1,7 @@
 ---
 name: bevy-ecs
 description: "Bevy ECS in Rust (Bevy 0.20): components, resources, `Query`/`Commands` systems, schedule ordering, `States`, observers, and headless tests. Auto-invoke when `Cargo.toml` depends on `bevy`, on a query-conflict panic (B0001/B0002), or on pre-0.20 code (`EventReader`, `SpriteBundle`). Not for engine-agnostic AI or generation (`game-ai`, `procedural-gen`), physics (`physics-tuning`), or shaders (`shader-programming`) — this skill owns the ECS, not the algorithms that run inside it."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: framework
 priority: medium
 scope: cross

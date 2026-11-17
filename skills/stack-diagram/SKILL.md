@@ -1,7 +1,7 @@
 ---
 name: stack-diagram
 description: "Produces architecture/tech-stack/service-topology diagrams with official brand logos (AWS, GCP, Azure, svgl, devicon), grouped containers, and clean orthogonal arrows, delivered as self-contained HTML, PNG, a React/TSX component, or an Artifact. Auto-invoke on: architecture diagram, tech stack schema, service topology, cloud diagram, stack overview, tech logos arranged into a diagram — even without a stated output format, even if the technologies aren't cloud services."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: specialized
 priority: medium
 scope: cross

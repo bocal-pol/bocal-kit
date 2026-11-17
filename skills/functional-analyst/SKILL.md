@@ -1,7 +1,7 @@
 ---
 name: functional-analyst
 description: "Functional Analyst — translates business needs into functional specifications for developers: use cases, business rules, flow diagrams, functional requirements. Auto-invoke on mention of: functional specifications, specs, use cases, business rules, functional requirements, flow diagrams."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 type: domain
 priority: high

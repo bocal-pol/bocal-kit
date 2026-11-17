@@ -1,7 +1,7 @@
 ---
 name: sdd-tasks
 description: "Spec-Driven Development — Tasks Phase. Consumes spec.md + plan.md and produces tasks.md (testable, independent, ordered tasks traced to the spec). Invoke from project-bootstrap-agent after the feature backlog. Auto-invoke on mention of: SDD tasks, sdd-tasks, spec-kit tasks.md, SDD breakdown."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: false
 type: utility
 priority: high

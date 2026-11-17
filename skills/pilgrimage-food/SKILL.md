@@ -1,7 +1,7 @@
 ---
 name: pilgrimage-food
 description: Resupply + regional specialties + hiking menus for a long-distance pilgrimage route. Combines calorie logic (3000-3500 kcal/day) with gastronomic discovery. Delegates to game-master-agent for camp recipes and cultural specialties.
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: framework
 priority: high
 scope: cross

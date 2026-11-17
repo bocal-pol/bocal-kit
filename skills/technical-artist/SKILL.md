@@ -1,7 +1,7 @@
 ---
 name: technical-artist
 description: "Technical Artist — HLSL/GLSL shaders (Godot .gdshader, Unity ShaderLab), particle systems, visual optimization. Produces ready-to-use shader files (copy-paste). Auto-invoke on: shader, .gdshader, .hlsl, particles, water, fire, distortion, outline, cel-shading, post-process, LOD, draw calls, GPUParticles, visual effect."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 type: framework
 priority: medium

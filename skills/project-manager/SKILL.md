@@ -1,7 +1,7 @@
 ---
 name: project-manager
 description: "Project Manager — structured project plan, WBS, Mermaid Gantt, RACI, risk register, budget, status reporting. Auto-invoke on mention of: project manager, project plan, WBS, work breakdown structure, Gantt, RACI, risk register, project milestones, project budget, status report, project traffic lights, project planning."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 type: domain
 priority: medium

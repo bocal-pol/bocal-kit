@@ -1,7 +1,7 @@
 ---
 name: godot-multiplayer
 description: "Godot 4.7 high-level multiplayer: ENet host/join, `@rpc` with `rpc_id()`, `MultiplayerSpawner` and `MultiplayerSynchronizer`, with a two-instance headless test. Auto-invoke for online or LAN co-op in Godot, or a rejected RPC, spawned nodes missing on clients, or state not syncing. Not for Roblox (`roblox-networking`), server exports (`godot-export`), or local split-screen (`camera-systems`)."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: framework
 priority: medium
 scope: cross

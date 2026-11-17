@@ -1,7 +1,7 @@
 ---
 name: godot-audio
 description: "Godot 4.7 audio API: 2D and 3D `AudioStreamPlayer`, bus layout, volume and mute via `AudioServer`, polyphony, import-time looping, and playback position for rhythm sync. Auto-invoke to wire SFX, music or volume sliders in Godot, or when a sound is silent, cut off, doesn't loop, or ignores its bus. Not for engine-agnostic mixing, ducking or adaptive music (`audio-design`)."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: framework
 priority: medium
 scope: cross

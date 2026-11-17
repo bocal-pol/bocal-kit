@@ -1,7 +1,7 @@
 ---
 name: game-ui-ux
 description: "Engine-agnostic design rules for game HUDs and menus: anchors and containers, scaling, safe areas, gamepad focus, event-driven HUDs instead of polling, and accessibility minimums. Auto-invoke for menus, health bars, or inventory screens that break on ultrawide or mobile. Pair with `godot-ui-control` or `roblox-ui`. Not for button juice (`game-feel`) or rebinding (`input-systems`)."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: domain
 priority: medium
 scope: cross

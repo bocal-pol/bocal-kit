@@ -1,7 +1,7 @@
 ---
 name: mobile-updater
 description: Mobile technology watch — obsolete Flutter/React Native patterns, prioritized migration report with commands. Invoke to analyze a mobile version upgrade or audit dependencies.
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 argument-hint: "[flutter|react-native] [target-version]"
 type: utility

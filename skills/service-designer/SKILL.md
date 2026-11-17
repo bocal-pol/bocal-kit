@@ -1,7 +1,7 @@
 ---
 name: service-designer
 description: "Service Designer — full service blueprint (frontstage/backstage/support), Mermaid ecosystem map, moments of truth, organizational bottlenecks, cross-team improvement plan. Auto-invoke on: service design, service blueprint, multi-channel journey, service orchestration, backstage process, ecosystem map, service touchpoints, moments of truth, omnichannel consistency, cross-channel journey."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 type: domain
 priority: medium

@@ -1,7 +1,7 @@
 ---
 name: ai-agent-security
 description: "Security audit of LLM/agent-based systems: indirect prompt injection, tool abuse (tool-argument injection), excessive trust granted to a sub-agent or MCP server, role/provenance confusion in context, persistent memory poisoning, user-approval binding. Auto-invoke on mention of: prompt injection, AI agent security, MCP security, LLM tool abuse, confused deputy agent, RAG security, sub-agent security, Claude skill security audit."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 type: framework
 priority: high

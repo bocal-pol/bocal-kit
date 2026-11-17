@@ -1,7 +1,7 @@
 ---
 name: contract-manager
 description: ICT vendor contract management — scope coverage, contacts, expiration, renewal alerts. Answers "is this covered?", "until when?", "who do I call?".
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 aliases: []
 argument-hint: "[action: check|list|expiring|add|update] [equipment or vendor]"

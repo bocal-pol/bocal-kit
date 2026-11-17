@@ -1,7 +1,7 @@
 ---
 name: ai-behavior-trees-utility-ai
 description: "Engine-agnostic behavior tree and utility AI code for NPCs in any language: Blackboard, reactive composites, decorators, and response-curve scoring. Auto-invoke when an enemy keeps chasing after losing sight, restarts its action every frame, or thrashes between choices. Not for FSMs, steering, or pathfinding (`game-ai`), nor Unreal's BT, EQS, and StateTree (`unreal-behavior-trees`)."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: domain
 priority: medium
 scope: cross

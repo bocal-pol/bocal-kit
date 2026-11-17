@@ -1,7 +1,7 @@
 ---
 name: roblox-networking
 description: "Roblox client-server networking and anti-cheat: RemoteEvent/RemoteFunction contracts, server authority, rate limits, hit validation, and replication. Auto-invoke when a remote trusts the client, an exploiter spams remotes or gains items, or hits register wrong. Not for Luau basics (`roblox-luau`), persistence (`roblox-datastores`), or force/raycast APIs (`roblox-physics`)."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: framework
 priority: high
 scope: cross

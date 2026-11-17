@@ -1,7 +1,7 @@
 ---
 name: pilgrimage-lodging
 description: Pilgrim lodging — pilgrim hostels, donation-based stays, youth hostels, refuges + legal wild camping per country. Delegates to legal-compliance-agent for wild-camping legality in the jurisdiction being crossed.
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: framework
 priority: high
 scope: cross

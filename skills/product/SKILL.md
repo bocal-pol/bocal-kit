@@ -1,7 +1,7 @@
 ---
 name: product
 description: "Full product orchestrator — sequentially invokes analyst, product-manager, and functional-analyst to produce a complete package (Project Brief + PRD + Functional Specs). Auto-invoke on mention of: full product package, complete analysis, brief + PRD + specs, run the product analysis."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 type: orchestrator
 priority: high

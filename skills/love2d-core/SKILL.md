@@ -1,7 +1,7 @@
 ---
 name: love2d-core
 description: "LÖVE (Love2D) 11.x games in Lua: `main.lua` callbacks, `conf.lua`, fixed steps, crisp pixel art scaling, `love.filesystem` saves, and scripted runs. Auto-invoke when `main.lua` calls `love.*`, or on blurry pixel art, the blue error screen, or framerate-linked speed. Not for Defold (`defold-core`, also Lua but `game.project`/`.script`) or engine-agnostic saving/input (`save-systems`, `input-systems`)."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: framework
 priority: medium
 scope: cross

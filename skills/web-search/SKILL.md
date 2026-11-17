@@ -1,7 +1,7 @@
 ---
 name: web-search
 description: Contextual web search for skills needing external information — analyst, threat-intelligence, dependency-updater. Invoked from other skills only, not directly invocable.
-model: claude-haiku-4-5-20251001
+model: claude-haiku-5-5
 user-invocable: false
 type: utility
 priority: medium

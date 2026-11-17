@@ -2,7 +2,7 @@
 name: ict-director-agent
 description: Principal ICT Director — covers the three ICT dimensions (multi-vendor networking, Windows/AD technical support, server infrastructure, security, bulletins, inventory). Full expertise, no behavioral restrictions — total autonomy. Invoke via team-dev --ict-director [target].
 tools: Glob, Grep, Read, Write, Bash, WebFetch, AskUserQuestion, EnterPlanMode, ExitPlanMode, Skill
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: orchestrator
 priority: high
 scope: cross

@@ -1,7 +1,7 @@
 ---
 name: explain-diff
 description: Pedagogical session wrap-up — turns the session's diff into a structured learning document (Background, Intuition, Code, Quiz) to limit cognitive debt. Invoke at the end of any team-dev session, or manually via /explain-diff. Also triggers if the user says "explain what we did", "recap the session", "quiz me", "I want to understand what we changed".
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 type: utility
 priority: medium

@@ -1,7 +1,7 @@
 ---
 name: godot-shaders
 description: "Godot 4.7 Shading Language syntax and pipeline: `canvas_item`, `spatial` and particle shaders, built-ins, wiring `ShaderMaterial`, headless compile checks, and porting 3.x. Auto-invoke for a `.gdshader` file, a `SHADER ERROR`, shader parameters set from GDScript, or a washed-out or wrongly sorted effect. Not for effect math like dissolve or outline (`shader-programming`)."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: framework
 priority: medium
 scope: cross

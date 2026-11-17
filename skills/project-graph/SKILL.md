@@ -1,7 +1,7 @@
 ---
 name: project-graph
 description: "Maps the current project's structure via Graphify and integrates the result into Claude's memory. Auto-invoke on mention of: project mapping, knowledge graph, project graph, graphify, project structure, project map."
-model: claude-haiku-4-5-20251001
+model: claude-haiku-5-5
 user-invocable: true
 type: utility
 priority: low

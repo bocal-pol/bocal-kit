@@ -1,7 +1,7 @@
 ---
 name: laravel-api
 description: Skill for Laravel API backend development — Eloquent, reflection-based dynamic routing, Sanctum, Microsoft OAuth, OpenAPI. Triggers on any PHP/Laravel API project.
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 type: framework
 priority: high

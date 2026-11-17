@@ -1,7 +1,7 @@
 ---
 name: green-it
 description: "Green IT & Sustainability Specialist — software eco-design, IT carbon footprint estimation (SCI formula, Cloud Carbon Footprint), optimization patterns (lazy loading, cache, TTL), eco-performance audit, Green IT maturity model. Auto-invoke on: Green IT, eco-design, IT carbon footprint, cloud carbon footprint, digital sustainability, sustainability, SCI, Software Carbon Intensity, Cloud Carbon Footprint, responsible digital, low-carbon code."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 type: specialized
 priority: medium

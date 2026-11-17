@@ -1,7 +1,7 @@
 ---
 name: unreal-cpp-gameplay
 description: "Unreal Engine 5 (UE 5.8) C++ gameplay code: UCLASS/UPROPERTY reflection, Gameplay Framework, GC-safe pointers, Build.cs, and command-line builds. Auto-invoke for GENERATED_BODY, Live Coding, an \"unresolved external symbol\", or a UHT error. Not for Blueprints (`unreal-blueprints`), Enhanced Input (`unreal-enhanced-input`), or packaging (`unreal-packaging`); engine source builds are out of scope."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: framework
 priority: high
 scope: cross

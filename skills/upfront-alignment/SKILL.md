@@ -1,7 +1,7 @@
 ---
 name: upfront-alignment
 description: "Upfront alignment before any non-trivial change: a discovery interview across 6 axes (intent, scope, edge cases, alternatives, unknowns, security risks) until every decision branch is resolved, then a shared vocabulary (CONTEXT.md, or CONTEXT-MAP.md in a multi-context setup) and an ADR for hard decisions. Use before implementing a new feature, a redesign, or a structuring decision, and when the user says 'alignment', 'scope this for me', 'before implementing', 'let's align', 'what do we mean by'. Don't use for an obvious rename or fix."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 argument-hint: "[description of the change]"
 type: utility

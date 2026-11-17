@@ -1,7 +1,7 @@
 ---
 name: version-checker
 description: "Detects the languages and frameworks used in a project, compares their current version to the latest stable release and their EOL status, with no code scan or migration plan. Auto-invoke on: check versions, which version, outdated version, check versions, up-to-date language, up-to-date framework, version watch, EOL, end of life."
-model: claude-haiku-4-5-20251001
+model: claude-haiku-5-5
 user-invocable: true
 type: utility
 priority: low

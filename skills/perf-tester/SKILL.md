@@ -1,7 +1,7 @@
 ---
 name: perf-tester
 description: "Performance Test Engineer — k6/JMeter/Locust load scenarios, p50/p95/p99 metrics, bottleneck identification. Auto-invoke on mention of: load testing, performance testing, load testing, stress test, k6, JMeter, Locust, latency metrics, scalability."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 type: framework
 priority: medium

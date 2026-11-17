@@ -1,7 +1,7 @@
 ---
 name: dto-architect
 description: "DTO Architect — source of truth for designing and using Data Transfer Objects across the whole stack (backend Laravel/.NET, frontend Angular/React, mobile Flutter/React Native, REST/GraphQL/Kafka integration). Defines placement, naming, validation, Entity↔DTO mapping, and the DTO/domain Model separation. Auto-invoke on: DTO, Data Transfer Object, Request/Response payload, API contract, entity mapping, ViewModel, Freezed, Zod, io-ts, class-validator, FluentValidation of a DTO."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 type: utility
 priority: high

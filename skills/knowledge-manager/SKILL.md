@@ -1,7 +1,7 @@
 ---
 name: knowledge-manager
 description: "Knowledge Manager — project wiki, FAQ, glossary, decision log, knowledge map, lessons learned. Human organizational memory (distinct from memory-rituel, which manages the AI agent's memory). Auto-invoke on mention of: wiki, project FAQ, glossary, knowledge base, lessons learned, decision log, knowledge map, knowledge capitalization."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 type: domain
 priority: medium

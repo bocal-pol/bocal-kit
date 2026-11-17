@@ -1,7 +1,7 @@
 ---
 name: godot-gdscript-headless-testing
 description: "Runs Godot 4.7 GDScript tests with `godot --headless` and a `SceneTree` runner that exits nonzero on failure, so CI can block a merge. Owns Godot tests in CI. Auto-invoke for GitHub Actions jobs, or a headless run that hangs or exits 0 despite `SCRIPT ERROR` lines. Not for CI export (`godot-export`), the GDScript language (`godot-gdscript`), or Unity tests (`unity-csharp-scripting`)."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: framework
 priority: medium
 scope: cross

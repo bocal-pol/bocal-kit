@@ -1,7 +1,7 @@
 ---
 name: spec-writer
 description: "Writing specification documents for public procurement — technical specifications, award criteria, administrative conditions. Jurisdiction-neutral template; thresholds and procedure names must be adapted to the applicable public procurement law."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 aliases: ["/spec"]
 argument-hint: "[procurement subject] [estimated amount]"

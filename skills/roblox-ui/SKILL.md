@@ -1,7 +1,7 @@
 ---
 name: roblox-ui
 description: "Roblox UI with ScreenGui and PlayerGui: ResetOnSpawn, UDim2 scale/offset, flexible UIListLayout, safe zones, StyleSheet, gamepad selection, and touch controls. Auto-invoke for a HUD, a shop or settings menu, or UI that clips on phone, resets on respawn, or loses gamepad focus. Also load `game-ui-ux`. Not for input mapping (`input-systems`) or purchase checks (`roblox-networking`)."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: framework
 priority: medium
 scope: cross

@@ -1,7 +1,7 @@
 ---
 name: animate
 description: "Short video generation (2-4 s) via Hugging Face LTX-Video: interviews on motion, camera, and duration, then a validated prompt before generation. Auto-invoke on: animate, video, clip, animation, image-to-video, text-to-video, camera movement, LTX, generate a video."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 argument-hint: "[quick|deep|from-image <url>|template <name>]"
 type: specialized

@@ -1,7 +1,7 @@
 ---
 name: roblox-datastores
 description: "Roblox persistence via DataStoreService: load on join, save on leave and in BindToClose, UpdateAsync vs SetAsync, session locks, and OrderedDataStore leaderboards. Auto-invoke for lost player data, duplicated items after a teleport, or 'too many requests' errors. Not for engine-agnostic saving (`save-systems`), Luau basics (`roblox-luau`), or economy numbers (`roblox-simulator-economy`)."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: framework
 priority: medium
 scope: cross

@@ -1,7 +1,7 @@
 ---
 name: flutter-developer
 description: Flutter/Dart development — screens, BLoC/Riverpod, go_router navigation, flutter_test tests. Invoke to create or audit Flutter code.
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 argument-hint: "[--build|--review] [description]"
 type: framework
