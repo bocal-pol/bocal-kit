@@ -66,6 +66,12 @@ Invoke `flutter-developer` or `react-native-developer` depending on the detected
 **Input**: framework + version + functional description + stack (Riverpod/BLoC/Expo/navigation…)
 **Expected output**: complete screen(s) following conventions + unit tests
 
+Before declaring the screen done, check: no third-party API key (AI, payment) hardcoded into
+the mobile bundle (an APK/IPA is as easy to disassemble as a web bundle) — any billed call goes
+through the backend; authorization checks are always re-verified server-side. For any screen
+touching auth or payment: invoke `security-agent` in watch mode (`security-agent.md` Phase 0b,
+reduced scope) before continuing.
+
 ⚠️ Fallback: if the skill is unavailable, document the conventions and generate manually.
 
 ### 3b — Update (--update)
