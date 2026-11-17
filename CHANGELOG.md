@@ -16,7 +16,57 @@ What counts as a **breaking** change (major): a `team-dev` mode removed or renam
 or merged, an agent renamed, a frontmatter convention that invalidates existing files. A skill can
 be added or enriched without being a breaking change.
 
-## [Unreleased] - Initial public English release
+## [Unreleased]
+
+## [1.3.0] - 2026-11-16
+
+### Added
+
+- `areopage`: decision panel skill.
+- `dpo-toolkit`: real processing register and DPIA, wired into `project-bootstrap-agent` (Phase 6b)
+  and `compliance-officer` (R-07/R-08 gaps); shared `.claude/country.md` jurisdiction convention
+  (ADR 0076).
+
+### Fixed
+
+- `create-skill`: `tools` removed from the required skill frontmatter fields.
+- `semgrep`: added a direct `docker run` fallback for stale compose mounts.
+- Co-authorship guard in hooks scoped to actual commit/PR writes.
+
+### Documentation
+
+- `git-workflow`: documented the empty-repo bootstrap path.
+- `laravel-developer`: documented Filament Wizard cross-step pitfalls.
+- `team-dev`: documented background sub-agent tool limitations.
+- `worktree-agents`: documented a submodule monorepo incompatibility.
+- `react-developer`: respects existing project folder conventions.
+- `hindsight`: logged frozen PATH detection at session startup.
+
+## [1.2.0] - 2026-11-12
+
+### Changed
+
+- `backend-agent`, `frontend-agent`, `mobile-agent`, `infrastructure-agent`: isolated in git
+  worktrees to avoid collisions when dispatched in parallel.
+
+## [1.1.0] - 2026-11-10
+
+### Added
+
+- `skillspector`: security scanner for third-party skills, agents, and MCP servers.
+- `impeccable`: non-waivable floor rules ported from hallmark.
+- `stack-diagram`: architecture diagram skill using real technology logos.
+- `animate-lemo`: coded short-film skill (Lemo-Opuscar format).
+- ASD-STE100 (Simplified Technical English) convention documented for English technical writing.
+- Web performance checklists added across the stack and infrastructure skills.
+- Anthropic prompt library wording discipline added to `team-dev` and `upfront-alignment`.
+
+### Fixed
+
+- `improve-skills`: now requires a skillspector scan and a fork PR after a fix.
+- Protected-branch guard scoped to `origin` only (was tripping on unrelated remotes).
+
+## [1.0.0] - 2026-11-06 - Initial public English release
 
 ### Added
 
