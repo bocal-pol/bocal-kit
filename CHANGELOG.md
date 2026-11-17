@@ -18,6 +18,16 @@ be added or enriched without being a breaking change.
 
 ## [Unreleased]
 
+### Added
+
+- `session-token-hardening`: prescriptive remediation for session cookies (HttpOnly, Secure,
+  SameSite, `__Host-` prefix, ID regeneration after login/privilege elevation, CHIPS
+  partitioning) and JWT (server-side algorithm allowlist against `alg:none` and RS256/HS256
+  confusion, `kid`/`jku` validation) with corrected code examples for Laravel Sanctum,
+  Express/`jsonwebtoken`, and .NET `Microsoft.IdentityModel.Tokens`. Coexists with
+  `iam-engineer` (broad OAuth/RBAC detection) without replacing it. `security-agent` now
+  invokes this skill in Phase 9c bis, alongside `iam-engineer` (Phase 9c).
+
 ## [1.3.0] - 2026-11-16
 
 ### Added
