@@ -27,6 +27,7 @@ they port each file, and must cross-check against the names already listed here 
 | `consultant-agent` | `paid-consultant-agent` | |
 | `directeur-creatif-agent` | `creative-director-agent` | |
 | `formateur-agent` | `trainer-agent` | |
+| `forge-agent` | `cli-forge-agent` | New in this pass; `cli-anything` and `cli-hub` skills keep their names |
 | `frontend-agent` | `frontend-agent` | Already clear, unchanged |
 | `gutenberg-agent` | `documentation-agent` | |
 | `hermes-agent` | `integration-agent` | |
