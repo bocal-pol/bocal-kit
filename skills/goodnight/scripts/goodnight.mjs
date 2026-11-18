@@ -96,6 +96,9 @@ function selftest() {
   check('G2 git diff --output refused', !d(fresh(95), 'Bash', { command: 'git diff --output=/tmp/x' }).allow);
   check('G2 git -c refused', !d(fresh(95), 'Bash', { command: 'git -c core.pager=evil status' }).allow);
   check('G2 night close allowed', d(fresh(95), 'Bash', { command: 'node ~/.claude/skills/goodnight/scripts/goodnight.mjs deactivate' }).allow);
+  check('G2 close through the bash wrapper allowed', d(fresh(95), 'Bash', { command: 'bash ~/.claude/skills/goodnight/scripts/goodnight.sh deactivate' }).allow);
+  check('G2 disguised bash wrapper refused', !d(fresh(95), 'Bash', { command: 'bash x/goodnight.sh deactivate && rm -rf /' }).allow);
+  check('G2 unknown interpreter refused', !d(fresh(95), 'Bash', { command: 'sh x/goodnight.sh deactivate' }).allow);
   check('G2 disguised close refused', !d(fresh(95), 'Bash', { command: 'node x/goodnight.mjs deactivate; rm -rf /' }).allow);
   check('G2 other subcommand refused', !d(fresh(95), 'Bash', { command: 'node x/goodnight.mjs activate --notes n' }).allow);
   check('G2 unknown tool refused', !d(fresh(95), 'WebFetch', { url: 'http://x' }).allow);
@@ -161,6 +164,11 @@ function selftest() {
     encoding: 'utf8', env: { ...process.env, GOODNIGHT_HOME: tmp },
   });
   check('G9 statusLine wrapper: writes the state', /5h 33%/.test(sline.stdout) && readJson(path.join(tmp, 'state.json'))?.five_hour?.pct === 33);
+  const cliSh = spawnSync('bash', [path.join(here, 'goodnight.sh'), 'status'], {
+    encoding: 'utf8', env: { ...process.env, GOODNIGHT_HOME: tmp },
+  });
+  let cj = null; try { cj = JSON.parse(cliSh.stdout); } catch { /* unreadable output */ }
+  check('G9 CLI wrapper: status answers in JSON, without depending on ~', cj !== null && typeof cj.ok === 'boolean');
   fs.rmSync(tmp, { recursive: true, force: true });
 
   let fail = 0;
