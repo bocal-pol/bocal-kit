@@ -1,0 +1,592 @@
+<!-- layout: 5 A4 posters (team-dev / ICT Director / standalone skills / built-in Claude Code / Product Owner), title band + category tile grid, built for a desk wall and for printing -->
+<meta name="claude:viewport-fit-sides" content="cover">
+<title>Claude Code Quick Reference</title>
+<style>
+  :root {
+    --ink: #1b1f24; --ink-soft: #4a525c; --paper: #ffffff;
+    --line: #d7dde3; --wash: #f4f6f8;
+    --mono: "JetBrains Mono", "Courier New", monospace;
+    --sans: "Inter", -apple-system, Segoe UI, sans-serif;
+    --display: "Space Grotesk", var(--sans);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ink: #e8ecef; --ink-soft: #aab2bb; --paper: #14181c; --line: #2c333a; --wash: #1b2024;
+    }
+  }
+  :root[data-theme="dark"] {
+    --ink: #e8ecef; --ink-soft: #aab2bb; --paper: #14181c; --line: #2c333a; --wash: #1b2024;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    background: var(--wash); color: var(--ink); font-family: var(--sans);
+    padding-block: 18px;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+  }
+
+  .deck { display: flex; flex-direction: column; align-items: center; gap: 14px; }
+
+  .page {
+    width: 100%; max-width: 210mm; background: var(--paper);
+    border: 1px solid var(--line); box-shadow: 0 2px 10px rgba(0,0,0,.06);
+    overflow: hidden; break-after: page; page-break-after: always;
+  }
+  .page:last-child { break-after: auto; page-break-after: auto; }
+
+  .band {
+    background: var(--band); color: var(--band-fg, #fff);
+    padding: 9mm 10mm 7mm;
+    display: flex; justify-content: space-between; align-items: flex-end; gap: 10px;
+    border-bottom: 5px solid var(--accent);
+  }
+  .band h1 {
+    font-family: var(--display); font-size: 27pt; margin: 0; letter-spacing: -0.01em; line-height: 1;
+  }
+  .band .sub { font-size: 8.3pt; opacity: .82; margin: 4px 0 0; max-width: 95mm; }
+  .band .cmd {
+    font-family: var(--mono); font-size: 8.3pt; background: rgba(255,255,255,.12);
+    border: 1px solid rgba(255,255,255,.3); border-radius: 3px; padding: 4px 8px; white-space: nowrap;
+  }
+
+  .body { padding: 7mm 10mm 8mm; font-size: 8.1pt; line-height: 1.3; }
+
+  .note {
+    background: var(--accent-soft); border-left: 3px solid var(--accent); border-radius: 0 3px 3px 0;
+    padding: 4px 8px; margin-bottom: 7px; font-size: 7.8pt; color: var(--ink);
+  }
+  .note b { color: var(--accent-ink, var(--ink)); }
+
+  .tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 7px; }
+  .tile { border: 1px solid var(--line); border-radius: 4px; overflow: hidden; break-inside: avoid; }
+  .tile h3 {
+    margin: 0; font-family: var(--sans); font-weight: 700; font-size: 7.3pt; text-transform: uppercase;
+    letter-spacing: 0.04em; color: #fff; padding: 3px 7px;
+  }
+  .tile .items { padding: 5px 7px 6px; }
+  .chip { margin-bottom: 3.5px; }
+  .chip .flag { font-family: var(--mono); font-weight: 700; font-size: 7.6pt; }
+  .chip .alias { font-family: var(--mono); color: var(--ink-soft); font-size: 6.8pt; }
+  .chip .desc { color: var(--ink-soft); display: block; font-size: 7.3pt; }
+  .chip .via { color: var(--ink-soft); font-size: 6.8pt; font-style: italic; }
+
+  .personas { margin-top: 8px; border-top: 1px dashed var(--line); padding-top: 6px; }
+  .personas h3 { margin: 0 0 4px; font-size: 7.3pt; text-transform: uppercase; letter-spacing: .05em; color: var(--ink-soft); }
+  .personas .row { display: flex; flex-wrap: wrap; gap: 4px; }
+  .pill { border: 1px solid var(--line); border-radius: 20px; padding: 2px 8px; font-size: 7.1pt; white-space: nowrap; }
+  .pill b { font-weight: 700; }
+
+  .usage {
+    margin-top: 7px; background: var(--ink); color: #fff; border-radius: 4px;
+    padding: 6px 9px; font-family: var(--mono); font-size: 7.6pt; line-height: 1.55;
+  }
+  .usage .lbl { font-family: var(--sans); font-size: 6.8pt; text-transform: uppercase; letter-spacing: .05em; opacity: .7; display: block; margin-bottom: 2px; }
+
+  footer.pf {
+    display: flex; justify-content: space-between; font-size: 6.6pt; color: var(--ink-soft);
+    border-top: 1px solid var(--line); padding: 4px 10mm 5mm; background: var(--paper);
+  }
+  footer.pf code { font-family: var(--mono); }
+
+  @media print {
+    body { background: var(--paper); padding: 0; }
+    .deck { gap: 0; }
+    .page { border: none; box-shadow: none; max-width: none; }
+    @page { size: A4; margin: 0; }
+  }
+</style>
+
+<div class="deck">
+
+<!-- ============ PAGE 1 — TEAM-DEV ============ -->
+<div class="page" style="--accent:#2d5a4a; --accent-soft:#e3ede8; --band:#152921;">
+  <div class="band">
+    <div>
+      <h1>TEAM‑DEV</h1>
+      <p class="sub">Main orchestrator for the dev cycle. It routes to the right agent, or runs a full cycle end to end.</p>
+    </div>
+    <div class="cmd">/team-dev &lt;mode&gt; [context]</div>
+  </div>
+  <div class="body">
+    <div class="note"><b>--full</b> runs scoping, architecture, build, quality and release in sequence, until no blocking finding remains. No manual steps.</div>
+
+    <div class="tiles">
+
+      <div class="tile" style="border-top:3px solid #2d5a4a;">
+        <h3 style="background:#2d5a4a;">Smart routing</h3>
+        <div class="items">
+          <div class="chip"><span class="flag">--auto</span><span class="desc">team-selector picks the agents for you</span></div>
+          <div class="chip"><span class="flag">--full</span><span class="desc">full cycle, start to end, no manual steps</span></div>
+          <div class="chip"><span class="flag">--audit</span><span class="desc">read-only → ranked remediation plan</span></div>
+          <div class="chip"><span class="flag">--ask</span> <span class="alias">&lt;skill&gt;</span><span class="desc">call a named skill directly</span></div>
+          <div class="chip"><span class="flag">--query</span><span class="desc">ask the project graph an architecture question</span></div>
+          <div class="chip"><span class="flag">--graph-impact</span><span class="desc">check a file's change impact</span></div>
+        </div>
+      </div>
+
+      <div class="tile" style="border-top:3px solid #3f6b3a;">
+        <h3 style="background:#3f6b3a;">Product &amp; architecture</h3>
+        <div class="items">
+          <div class="chip"><span class="flag">--bootstrap</span><span class="desc">project bootstrap kit (App Spec, Brand, Backlog)</span></div>
+          <div class="chip"><span class="flag">--product</span> <span class="alias">-prj</span><span class="desc">product scoping: brief, PRD, specs</span></div>
+          <div class="chip"><span class="flag">--architecture</span> <span class="alias">-arch</span><span class="desc">target architecture, ADRs, stack choice</span></div>
+          <div class="chip"><span class="flag">--sprint</span> <span class="alias">-sprint</span><span class="desc">sprint planning &amp; estimation</span></div>
+        </div>
+      </div>
+
+      <div class="tile" style="border-top:3px solid #7a3b3b;">
+        <h3 style="background:#7a3b3b;">Quality &amp; security</h3>
+        <div class="items">
+          <div class="chip"><span class="flag">--security</span> <span class="alias">-sec</span><span class="desc">full security audit, pentest, SSO</span></div>
+          <div class="chip"><span class="flag">--compliance</span> <span class="alias">-co</span><span class="desc">GDPR / ISO 27001 / NIS2 audit</span></div>
+          <div class="chip"><span class="flag">--gdpr</span> <span class="alias">-rg</span><span class="desc">GDPR audit, fix cycle to zero findings</span></div>
+          <div class="chip"><span class="flag">--pr-review</span> <span class="alias">-rev</span><span class="desc">code review / pull request</span></div>
+          <div class="chip"><span class="flag">--qa-lead</span> <span class="alias">-qa</span><span class="desc">tests, E2E Playwright, performance</span></div>
+          <div class="chip"><span class="flag">--bug</span> <span class="alias">-b</span><span class="desc">validate a bug, write the memory rule</span></div>
+          <div class="chip"><span class="flag">--fix</span> <span class="alias">-fx</span><span class="desc">QA retest after a bug fix</span></div>
+          <div class="chip"><span class="flag">--investigate</span><span class="desc">root-cause analysis in 4 phases</span></div>
+        </div>
+      </div>
+
+      <div class="tile" style="border-top:3px solid #2c5f72;">
+        <h3 style="background:#2c5f72;">Development — stack</h3>
+        <div class="items">
+          <div class="chip"><span class="flag">--backend</span> <span class="alias">-back</span><span class="desc">Laravel 9+ / .NET 10+ / API</span></div>
+          <div class="chip"><span class="flag">--frontend</span> <span class="alias">-front</span><span class="desc">Angular 21+ / React 18+, migrations</span></div>
+          <div class="chip"><span class="flag">--mobile</span> <span class="alias">-mob</span><span class="desc">Flutter / React Native</span></div>
+          <div class="chip"><span class="flag">--infrastructure</span> <span class="alias">-infra</span><span class="desc">infra, Docker/K8s, network, CI/CD, cloud</span></div>
+          <div class="chip"><span class="flag">--data</span> <span class="alias">-data</span><span class="desc">data engineering, BI, ML, pipelines</span></div>
+          <div class="chip"><span class="flag">--integration</span> <span class="alias">-integ</span><span class="desc">integration, ESB, Kafka, EDI, API gateway</span></div>
+          <div class="chip"><span class="flag">--cli-forge</span><span class="desc">agent-native CLI: cli-hub then cli-anything</span></div>
+        </div>
+      </div>
+
+      <div class="tile" style="border-top:3px solid #6b4a7a;">
+        <h3 style="background:#6b4a7a;">Design &amp; content</h3>
+        <div class="items">
+          <div class="chip"><span class="flag">--design</span> <span class="alias">-ux</span><span class="desc">UX/UI, design system</span></div>
+          <div class="chip"><span class="flag">--documentation</span> <span class="alias">-doc</span><span class="desc">full technical documentation</span></div>
+          <div class="chip"><span class="flag">--diagram</span><span class="desc">Excalidraw diagram, PNG/SVG export</span></div>
+          <div class="chip"><span class="flag">--seo</span><span class="desc">live SEO (open-seo) or static (seo-geo)</span></div>
+          <div class="chip"><span class="flag">--no-slop</span><span class="desc">edit or audit prose for AI slop</span></div>
+          <div class="chip"><span class="flag">--gamification</span><span class="desc">Octalysis × D&amp;D engagement analysis</span></div>
+        </div>
+      </div>
+
+      <div class="tile" style="border-top:3px solid #8a6a2b;">
+        <h3 style="background:#8a6a2b;">Operations &amp; more</h3>
+        <div class="items">
+          <div class="chip"><span class="flag">--onboarding</span><span class="desc">project onboarding guide</span></div>
+          <div class="chip"><span class="flag">--project-map</span><span class="desc">interactive HTML map of the codebase</span></div>
+          <div class="chip"><span class="flag">--dev-tools</span><span class="desc">PostHog / Uptime Kuma, dev only</span></div>
+          <div class="chip"><span class="flag">--deps</span><span class="desc">update dependencies</span></div>
+          <div class="chip"><span class="flag">--versions</span><span class="desc">check language/framework versions</span></div>
+          <div class="chip"><span class="flag">--it-operations</span> <span class="alias">-ops</span><span class="desc">IT ops, ITIL support, CMDB</span></div>
+          <div class="chip"><span class="flag">--coordination</span> <span class="alias">-agile</span><span class="desc">agile coordination &amp; management</span></div>
+          <div class="chip"><span class="flag">--game-dev</span><span class="desc">game development: gameplay, physics</span></div>
+          <div class="chip"><span class="flag">--release</span> <span class="alias">-rel</span><span class="desc">changelog &amp; release</span></div>
+          <div class="chip"><span class="flag">--adhd</span><span class="desc">action-first response mode for the session</span></div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="personas">
+      <h3>Personas — one-off calls, never pulled into --full</h3>
+      <div class="row">
+        <span class="pill"><b>--paid-consultant</b> costed advice</span>
+        <span class="pill"><b>--mentor</b> executive coaching</span>
+        <span class="pill"><b>--ceo-decision</b> decided call</span>
+        <span class="pill"><b>--socratic-method</b> questioning</span>
+        <span class="pill"><b>--devils-advocate</b> counter-argument</span>
+        <span class="pill"><b>--trainer</b> teaching</span>
+        <span class="pill"><b>--creative-director</b> visual verdict</span>
+        <span class="pill"><b>--game-master</b> tabletop RPG / cooking</span>
+        <span class="pill"><b>--survival</b> bivouac / prepping</span>
+        <span class="pill"><b>--race-engineering</b> F1 / Rubik's</span>
+        <span class="pill"><b>--legal-compliance</b> law &amp; security</span>
+        <span class="pill"><b>--pilgrimage-route</b> pilgrimage planning</span>
+        <span class="pill"><b>--creativity-theory</b> creativity</span>
+        <span class="pill"><b>--algorave</b> live-coded music</span>
+      </div>
+    </div>
+
+    <div class="usage">
+      <span class="lbl">Typical use</span>
+      /team-dev --backend "add a CSV export API"<br>
+      /team-dev -sec "audit before production release"
+    </div>
+  </div>
+  <footer class="pf"><span>Agents outside team-dev by design: <code>/ict-director</code> and <code>/procurement</code> — see page 2</span><span>1 / 5</span></footer>
+</div>
+
+<!-- ============ PAGE 2 — ICT DIRECTOR ============ -->
+<div class="page" style="--accent:#1f4e79; --accent-soft:#e1ebf4; --band:#0f2438;">
+  <div class="band">
+    <div>
+      <h1>ICT DIRECTOR</h1>
+      <p class="sub">Independent orchestrator. Full ICT service management: network, support, security, infrastructure, bulletins, inventory.</p>
+    </div>
+    <div class="cmd">/ict-director [--mode|-alias] [target]</div>
+  </div>
+  <div class="body">
+    <div class="note">
+      <b>Independent of team-dev</b> — call it directly as <code>/ict-director</code>. A leftover line in the
+      agent's own file still says <code>team-dev --ict-director</code>; that flag does not exist. Ignore it.
+    </div>
+
+    <div class="tiles">
+
+      <div class="tile" style="border-top:3px solid #1f4e79;">
+        <h3 style="background:#1f4e79;">Network &amp; infra</h3>
+        <div class="items">
+          <div class="chip"><span class="flag">--network</span> <span class="alias">-r</span><span class="desc">multi-vendor network design/config (Cisco, Huawei, Juniper)</span><span class="via">→ network-engineer + sysadmin</span></div>
+          <div class="chip"><span class="flag">--firewall</span> <span class="alias">-fw</span><span class="desc">Fortinet, pfSense, ASA, Palo Alto</span><span class="via">→ firewall-engineer</span></div>
+          <div class="chip"><span class="flag">--switch</span> <span class="alias">-sw</span><span class="desc">switch audit/config, Huawei VRP first</span><span class="via">→ switch-audit</span></div>
+        </div>
+      </div>
+
+      <div class="tile" style="border-top:3px solid #b5651d;">
+        <h3 style="background:#b5651d;">Support</h3>
+        <div class="items">
+          <div class="chip"><span class="flag">--support</span> <span class="alias">-sup</span><span class="desc">Windows / AD / PC / printers, ITIL L1-L3</span><span class="via">→ it-support (relayed via it-operations-agent)</span></div>
+        </div>
+      </div>
+
+      <div class="tile" style="border-top:3px solid #7a3b3b;">
+        <h3 style="background:#7a3b3b;">Security</h3>
+        <div class="items">
+          <div class="chip"><span class="flag">--security</span> <span class="alias">-sec</span><span class="desc">network security, audit, CVE</span><span class="via">→ security-agent (vulnerability-management)</span></div>
+        </div>
+      </div>
+
+      <div class="tile" style="border-top:3px solid #6b4a7a;">
+        <h3 style="background:#6b4a7a;">Bulletins &amp; reports</h3>
+        <div class="items">
+          <div class="chip"><span class="flag">--bulletins</span> <span class="alias">-bs</span><span class="desc">write + analyze service bulletins</span><span class="via">→ service-bulletin + bulletin-analyzer</span></div>
+          <div class="chip"><span class="flag">--report</span> <span class="alias">-rp</span><span class="desc">infra management report: uptime, incidents, capacity</span><span class="via">→ network-report</span></div>
+          <div class="chip"><span class="flag">--incident</span> <span class="alias">-ip</span><span class="desc">detect recurring failures across tickets</span><span class="via">→ incident-pattern</span></div>
+        </div>
+      </div>
+
+      <div class="tile" style="border-top:3px solid #2c7260;">
+        <h3 style="background:#2c7260;">Management &amp; purchasing</h3>
+        <div class="items">
+          <div class="chip"><span class="flag">--inventory</span> <span class="alias">-inv</span><span class="desc">CMDB for the network/IT fleet</span><span class="via">→ hardware-inventory</span></div>
+          <div class="chip"><span class="flag">--procurement</span> <span class="alias">-mkt</span><span class="desc">contracts, specs, purchase orders, budget</span><span class="via">→ public-procurement-agent</span></div>
+        </div>
+      </div>
+
+      <div class="tile" style="border-top:3px solid #5a5a5a;">
+        <h3 style="background:#5a5a5a;">Auto</h3>
+        <div class="items">
+          <div class="chip"><span class="flag">--auto</span> <span class="alias">-a</span><span class="desc">auto-pick the right sub-mode</span></div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="personas">
+      <h3>Technical layer used behind the scenes (not named in the dispatch table, but called)</h3>
+      <div class="row">
+        <span class="pill"><b>windows-admin</b> Windows Server/desktops</span>
+        <span class="pill"><b>ad-basic</b> AD accounts/groups</span>
+        <span class="pill"><b>pc-repair</b> desktop diagnosis</span>
+        <span class="pill"><b>printer-support</b> network printers</span>
+        <span class="pill"><b>network-checker</b> pre-change port check</span>
+        <span class="pill"><b>it-governance</b> COBIT/ITIL governance</span>
+        <span class="pill"><b>threat-intelligence</b> CVE watch</span>
+      </div>
+    </div>
+
+    <div class="usage">
+      <span class="lbl">Typical use</span>
+      /ict-director --switch "VLAN audit on building A core switch"<br>
+      /ict-director -sup "VPN down for a field agent"
+    </div>
+  </div>
+  <footer class="pf"><span>Same pattern as <code>/procurement</code> (contracts, specs, orders) — standalone agent, outside team-dev</span><span>2 / 5</span></footer>
+</div>
+
+<!-- ============ PAGE 3 — STANDALONE SKILLS ============ -->
+<div class="page" style="--accent:#8a5a2b; --accent-soft:#f2e6d8; --band:#2a1f14;">
+  <div class="band">
+    <div>
+      <h1>STANDALONE SKILLS</h1>
+      <p class="sub">Direct call. No agent in between. For the daily reflexes.</p>
+    </div>
+    <div class="cmd">/skill-name [argument]</div>
+  </div>
+  <div class="body">
+
+    <div class="tiles">
+
+      <div class="tile" style="border-top:3px solid #3f6b3a;">
+        <h3 style="background:#3f6b3a;">Scoping &amp; discipline</h3>
+        <div class="items">
+          <div class="chip"><span class="flag">/upfront-alignment</span><span class="desc">align intent, scope and risk before coding</span></div>
+          <div class="chip"><span class="flag">/new-app</span><span class="desc">scope an app idea before project-bootstrap-agent</span></div>
+          <div class="chip"><span class="flag">/unlazy</span><span class="desc">verifiable completion gates before "done"</span></div>
+          <div class="chip"><span class="flag">/minimal-code-discipline</span><span class="desc">minimal code, avoid over-engineering</span></div>
+          <div class="chip"><span class="flag">/karpathy-guidelines</span><span class="desc">guardrails against common LLM coding mistakes</span></div>
+        </div>
+      </div>
+
+      <div class="tile" style="border-top:3px solid #2c5f72;">
+        <h3 style="background:#2c5f72;">Memory &amp; continuous improvement</h3>
+        <div class="items">
+          <div class="chip"><span class="flag">/encode-correction</span><span class="desc">fix a Claude behavior, encode the rule</span></div>
+          <div class="chip"><span class="flag">/friction-retro</span><span class="desc">capture a friction point mid-session</span></div>
+          <div class="chip"><span class="flag">/memory-ritual</span><span class="desc">consolidate or clean up project memory</span></div>
+          <div class="chip"><span class="flag">/improve-skills</span><span class="desc">review an existing personal skill</span></div>
+        </div>
+      </div>
+
+      <div class="tile" style="border-top:3px solid #6b4a7a;">
+        <h3 style="background:#6b4a7a;">Decision &amp; advice</h3>
+        <div class="items">
+          <div class="chip"><span class="flag">/areopage</span><span class="desc">panel of 5 reasoning profiles, neutral report, no verdict</span><span class="via">costly in tokens — explicit call only</span></div>
+          <div class="chip"><span class="flag">/team-selector</span><span class="desc">pick which agents/skills to turn on</span></div>
+        </div>
+      </div>
+
+      <div class="tile" style="border-top:3px solid #7a3b3b;">
+        <h3 style="background:#7a3b3b;">Security, quality &amp; compliance</h3>
+        <div class="items">
+          <div class="chip"><span class="flag">/semgrep</span><span class="desc">local SAST code scan</span></div>
+          <div class="chip"><span class="flag">/skillspector</span><span class="desc">security scan of a third-party skill/agent/MCP</span></div>
+          <div class="chip"><span class="flag">/debug</span><span class="desc">autonomous bug diagnosis, root cause</span></div>
+          <div class="chip"><span class="flag">/investigate</span><span class="desc">step-by-step diagnosis, confirmed by you</span></div>
+          <div class="chip"><span class="flag">/dpo-toolkit</span><span class="desc">processing register (RoPA) + DPIA, GDPR art. 30/35</span></div>
+        </div>
+      </div>
+
+      <div class="tile" style="border-top:3px solid #1f4e79;">
+        <h3 style="background:#1f4e79;">Docs &amp; technical context</h3>
+        <div class="items">
+          <div class="chip"><span class="flag">/context7-mcp</span><span class="desc">up-to-date docs for a library or third-party API</span></div>
+          <div class="chip"><span class="flag">/git-workflow</span><span class="desc">install git hooks and conventions</span></div>
+        </div>
+      </div>
+
+      <div class="tile" style="border-top:3px solid #8a6a2b;">
+        <h3 style="background:#8a6a2b;">Visual creation &amp; content</h3>
+        <div class="items">
+          <div class="chip"><span class="flag">/imagine</span><span class="desc">image generation (Z-Image Turbo, via HF)</span></div>
+          <div class="chip"><span class="flag">/animate · /animate-lemo</span><span class="desc">short video (LTX-Video), or a fully coded short film (~66 styles)</span></div>
+          <div class="chip"><span class="flag">/stack-diagram</span><span class="desc">architecture/stack diagram with brand logos</span></div>
+          <div class="chip"><span class="flag">/create-skill</span><span class="desc">create a new custom skill</span></div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="usage" style="margin-top:14px;">
+      <span class="lbl">Typical use</span>
+      /upfront-alignment "add a PDF export to the reports"<br>
+      /areopage "should I take this job or not?"
+    </div>
+  </div>
+  <footer class="pf"><span>Full index: <code>skills/SKILLS_INDEX.md</code></span><span>3 / 5</span></footer>
+</div>
+
+<!-- ============ PAGE 4 — ALREADY IN CLAUDE CODE ============ -->
+<div class="page" style="--accent:#64748b; --accent-soft:#e8eaed; --band:#1f242b;">
+  <div class="band">
+    <div>
+      <h1>ALREADY IN CLAUDE</h1>
+      <p class="sub">Agents and skills the platform ships natively. Nothing to build — already there, every session, every machine.</p>
+    </div>
+    <div class="cmd">no command to type — triggers itself</div>
+  </div>
+  <div class="body">
+    <div class="note">
+      Not from this repo. These are core Claude Code or official Anthropic-pack agents and skills.
+      Most trigger themselves; you rarely need to name them.
+    </div>
+
+    <div class="tiles">
+
+      <div class="tile" style="border-top:3px solid #475569;">
+        <h3 style="background:#475569;">Built-in agents</h3>
+        <div class="items">
+          <div class="chip"><span class="flag">Explore</span><span class="desc">fast read-only code search</span></div>
+          <div class="chip"><span class="flag">Plan</span><span class="desc">architect — designs an implementation plan</span></div>
+          <div class="chip"><span class="flag">general-purpose</span><span class="desc">generalist, multi-step research</span></div>
+          <div class="chip"><span class="flag">claude-code-guide</span><span class="desc">questions about Claude Code / SDK / API</span></div>
+          <div class="chip"><span class="flag">statusline-setup</span><span class="desc">configures the status line</span></div>
+          <div class="chip"><span class="flag">claude</span><span class="desc">default catch-all when no agent matches</span></div>
+        </div>
+      </div>
+
+      <div class="tile" style="border-top:3px solid #6b4a7a;">
+        <h3 style="background:#6b4a7a;">Official Anthropic pack</h3>
+        <div class="items">
+          <div class="chip"><span class="flag">docs</span><span class="desc">create or edit a Claude Docs document</span></div>
+          <div class="chip"><span class="flag">docx</span><span class="desc">generate a Word file</span></div>
+          <div class="chip"><span class="flag">google-workspace</span><span class="desc">Google Docs/Sheets/Slides</span></div>
+          <div class="chip"><span class="flag">imagine</span><span class="desc">image generation, official pack</span><span class="via">⚠ same name as this repo's own /imagine (Z-Image/HF)</span></div>
+          <div class="chip"><span class="flag">imagine-templates</span><span class="desc">image prompt templates</span></div>
+          <div class="chip"><span class="flag">import-memory</span><span class="desc">import a memory history</span></div>
+          <div class="chip"><span class="flag">morning</span><span class="desc">morning brief / routine</span></div>
+          <div class="chip"><span class="flag">pdf</span><span class="desc">generate or read a PDF file</span></div>
+          <div class="chip"><span class="flag">pptx</span><span class="desc">generate a PowerPoint deck</span></div>
+          <div class="chip"><span class="flag">skill-creator</span><span class="desc">generic skill-creation assistant</span><span class="via">⚠ prefer /create-skill, repo conventions</span></div>
+          <div class="chip"><span class="flag">xlsx</span><span class="desc">generate an Excel file</span></div>
+        </div>
+      </div>
+
+      <div class="tile" style="border-top:3px solid #2c5f72;">
+        <h3 style="background:#2c5f72;">Artifact tooling</h3>
+        <div class="items">
+          <div class="chip"><span class="flag">artifact-design</span><span class="desc">design guidance, loaded before publishing a page</span></div>
+          <div class="chip"><span class="flag">artifact-diagramming</span><span class="desc">diagram know-how for Artifacts</span></div>
+          <div class="chip"><span class="flag">artifact-capabilities</span><span class="desc">Artifact runtime capabilities (data, storage)</span></div>
+          <div class="chip"><span class="flag">dataviz</span><span class="desc">charts, dashboards, data palettes</span></div>
+        </div>
+      </div>
+
+      <div class="tile" style="border-top:3px solid #8a6a2b;">
+        <h3 style="background:#8a6a2b;">Harness utilities</h3>
+        <div class="items">
+          <div class="chip"><span class="flag">update-config</span><span class="desc">configure settings.json: permissions, hooks, env</span></div>
+          <div class="chip"><span class="flag">keybindings-help</span><span class="desc">customize keyboard shortcuts</span></div>
+          <div class="chip"><span class="flag">fewer-permission-prompts</span><span class="desc">allowlist to cut confirmation prompts</span></div>
+          <div class="chip"><span class="flag">loop</span><span class="desc">run a prompt on a recurring interval</span></div>
+          <div class="chip"><span class="flag">schedule</span><span class="desc">scheduled cloud agents (cron)</span></div>
+          <div class="chip"><span class="flag">init</span><span class="desc">bootstrap a CLAUDE.md for a new project</span></div>
+          <div class="chip"><span class="flag">plugin-authoring</span><span class="desc">build a Claude Code interface mod</span></div>
+          <div class="chip"><span class="flag">run</span><span class="desc">launch the project app to check a change</span></div>
+          <div class="chip"><span class="flag">workflow-authoring</span><span class="desc">reference for multi-agent Workflow scripts</span></div>
+        </div>
+      </div>
+
+      <div class="tile" style="border-top:3px solid #7a3b3b;">
+        <h3 style="background:#7a3b3b;">Review &amp; reference</h3>
+        <div class="items">
+          <div class="chip"><span class="flag">code-review</span><span class="desc">review the current diff — bugs, effort levels</span><span class="via">⚠ ≠ /code-reviewer (repo skill, deep review)</span></div>
+          <div class="chip"><span class="flag">simplify</span><span class="desc">clean up, simplify, diff efficiency</span></div>
+          <div class="chip"><span class="flag">security-review</span><span class="desc">security review of the code</span></div>
+          <div class="chip"><span class="flag">claude-api</span><span class="desc">Claude API / Anthropic SDK reference</span></div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="personas">
+      <h3>Name clashes to keep straight</h3>
+      <div class="row">
+        <span class="pill"><b>code-review</b> (built-in) ≠ <b>code-reviewer</b> (repo)</span>
+        <span class="pill"><b>skill-creator</b> (built-in) ≠ <b>create-skill</b> (repo)</span>
+        <span class="pill"><b>imagine</b> (built-in) ≠ <b>imagine</b> (repo, Z-Image/HF)</span>
+      </div>
+    </div>
+  </div>
+  <footer class="pf"><span>Checked against this repo's own <code>skills/*/SKILL.md</code> — re-check after any new skill lands</span><span>4 / 5</span></footer>
+</div>
+
+<!-- ============ PAGE 5 — PRODUCT OWNER ============ -->
+<div class="page" style="--accent:#5b4b8a; --accent-soft:#ece8f5; --band:#211a33;">
+  <div class="band">
+    <div>
+      <h1>PRODUCT OWNER</h1>
+      <p class="sub">Scoping, backlog, delivery, decisions — a PO's daily toolkit, on top of team-dev.</p>
+    </div>
+    <div class="cmd">/skill-name · team-dev --mode</div>
+  </div>
+  <div class="body">
+    <div class="note">
+      <b>areopage</b> lays out views without deciding (neutral report). <b>gauntlet-council</b> judges a
+      deliverable's quality (5-judge verdict, costly, explicit call only). Two decision tools, opposite jobs.
+    </div>
+
+    <div class="tiles">
+
+      <div class="tile" style="border-top:3px solid #3f6b3a;">
+        <h3 style="background:#3f6b3a;">Scoping &amp; discovery</h3>
+        <div class="items">
+          <div class="chip"><span class="flag">/upfront-alignment</span><span class="desc">align intent, scope and risk before coding</span></div>
+          <div class="chip"><span class="flag">/new-app</span><span class="desc">scope an app idea, suggest features</span></div>
+          <div class="chip"><span class="flag">/analyst</span><span class="desc">needs research, project brief, personas</span></div>
+          <div class="chip"><span class="flag">/app-spec</span><span class="desc">compact bootstrap spec: pitch, screens, NFRs</span></div>
+          <div class="chip"><span class="flag">/brand-brief</span><span class="desc">brand identity: mission, tone, palette</span></div>
+        </div>
+      </div>
+
+      <div class="tile" style="border-top:3px solid #2c5f72;">
+        <h3 style="background:#2c5f72;">Spec &amp; backlog</h3>
+        <div class="items">
+          <div class="chip"><span class="flag">/product-manager</span><span class="desc">PRD, MoSCoW priority, user stories, roadmap</span></div>
+          <div class="chip"><span class="flag">/functional-analyst</span><span class="desc">functional specs, use cases, business rules</span></div>
+          <div class="chip"><span class="flag">/feature-backlog</span><span class="desc">Epic→Feature→Story backlog, MoSCoW + RICE</span></div>
+          <div class="chip"><span class="flag">/data-dictionary</span><span class="desc">business data dictionary, PII/GDPR</span></div>
+          <div class="chip"><span class="flag">/integrations-catalog</span><span class="desc">catalog of external systems, SSO, webhooks</span></div>
+          <div class="chip"><span class="flag">/sdd-specify</span><span class="desc">spec.md + constitution.md (Spec-Driven Dev)</span></div>
+          <div class="chip"><span class="flag">/sdd-tasks</span><span class="desc">tasks.md — testable tasks traced to the spec</span></div>
+        </div>
+      </div>
+
+      <div class="tile" style="border-top:3px solid #8a6a2b;">
+        <h3 style="background:#8a6a2b;">Delivery &amp; planning</h3>
+        <div class="items">
+          <div class="chip"><span class="flag">/scrum-master</span><span class="desc">DOR/INVEST refinement, RAID log, ceremonies</span></div>
+          <div class="chip"><span class="flag">/agile-coach</span><span class="desc">agile maturity check, Scrum/Kanban/SAFe choice</span></div>
+          <div class="chip"><span class="flag">/estimator</span><span class="desc">story points, poker planning, task breakdown</span></div>
+          <div class="chip"><span class="flag">/delivery-manager</span><span class="desc">flow management, capacity planning, DORA metrics</span></div>
+          <div class="chip"><span class="flag">/program-manager</span><span class="desc">multi-project coordination, WSJF, portfolio roadmap</span></div>
+          <div class="chip"><span class="flag">/project-manager</span><span class="desc">project plan, WBS, Gantt, RACI, risk register</span></div>
+          <div class="chip"><span class="flag">/task-tracker</span><span class="desc">Markdown task list (add/close)</span></div>
+          <div class="chip"><span class="flag">/meeting-notes</span><span class="desc">meeting notes outside Scrum</span></div>
+        </div>
+      </div>
+
+      <div class="tile" style="border-top:3px solid #6b4a7a;">
+        <h3 style="background:#6b4a7a;">Decision &amp; validation</h3>
+        <div class="items">
+          <div class="chip"><span class="flag">/areopage</span><span class="desc">panel of 5 profiles, neutral report, no verdict</span></div>
+          <div class="chip"><span class="flag">/gauntlet-council</span><span class="desc">cross-judged verdict on a deliverable, 5 expert judges</span><span class="via">costly — explicit call only</span></div>
+          <div class="chip"><span class="flag">/ai-visitor-simulation</span><span class="desc">AI visitors testing the app before release</span></div>
+          <div class="chip"><span class="flag">/octalysis-dnd</span><span class="desc">product gamification: 8 Core Drives × D&amp;D</span></div>
+        </div>
+      </div>
+
+      <div class="tile" style="border-top:3px solid #7a3b3b;">
+        <h3 style="background:#7a3b3b;">Compliance &amp; communication</h3>
+        <div class="items">
+          <div class="chip"><span class="flag">/legal-pages</span><span class="desc">terms, privacy, cookies (EU)</span></div>
+          <div class="chip"><span class="flag">/compliance-officer</span><span class="desc">GDPR / ISO 27001 / NIS2 audit</span></div>
+          <div class="chip"><span class="flag">/dpo-toolkit</span><span class="desc">processing register (RoPA) + real DPIAs</span><span class="via">depends on compliance-officer</span></div>
+          <div class="chip"><span class="flag">/tech-translator</span><span class="desc">tech jargon ⇄ management language</span></div>
+          <div class="chip"><span class="flag">/mail-writer</span><span class="desc">professional email drafts</span></div>
+          <div class="chip"><span class="flag">/brag</span><span class="desc">short launch video from the project</span></div>
+        </div>
+      </div>
+
+      <div class="tile" style="border-top:3px solid #475569;">
+        <h3 style="background:#475569;">team-dev for a PO</h3>
+        <div class="items">
+          <div class="chip"><span class="flag">--product</span> <span class="alias">-prj</span><span class="desc">full product scoping: brief → PRD → specs</span></div>
+          <div class="chip"><span class="flag">--bootstrap</span><span class="desc">full project bootstrap kit</span></div>
+          <div class="chip"><span class="flag">--sprint</span> <span class="alias">-sprint</span><span class="desc">sprint planning &amp; estimation</span></div>
+          <div class="chip"><span class="flag">--audit</span><span class="desc">read-only → ranked remediation plan</span></div>
+          <div class="chip"><span class="flag">--ask</span> <span class="alias">&lt;skill&gt;</span><span class="desc">call a named skill directly</span></div>
+          <div class="chip"><span class="flag">--query</span><span class="desc">ask the project graph an architecture question</span></div>
+          <div class="chip"><span class="flag">--project-map</span><span class="desc">interactive HTML map of the codebase</span></div>
+          <div class="chip"><span class="flag">/team-selector</span><span class="desc">pick which agents/skills to turn on</span></div>
+          <div class="chip"><span class="flag">/po-creator</span><span class="desc">create a custom "PO" agent</span></div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="usage">
+      <span class="lbl">Typical use</span>
+      /team-dev --product "redesign the sign-up flow"<br>
+      /gauntlet-council "verdict on this PRD before it goes to committee"
+    </div>
+  </div>
+  <footer class="pf"><span>Complementary decision personas (paid-consultant, mentor, ceo-decision, socratic-method, devils-advocate): page 1</span><span>5 / 5</span></footer>
+</div>
+
+</div>

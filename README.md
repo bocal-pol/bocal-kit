@@ -7,6 +7,9 @@ personal setup.
 
 Single entry point: `/team-dev <mode> [context]`
 
+Printable quick reference (A4, 5 pages — team-dev, ICT Director, standalone skills, built-in
+Claude Code tooling, Product Owner): [docs/quick-reference.html](docs/quick-reference.html).
+
 To contribute: [CONTRIBUTING.md](CONTRIBUTING.md) · Report a security issue:
 [SECURITY.md](SECURITY.md) · License: [MIT](LICENSE) · Sources of inspiration: [CREDITS.md](CREDITS.md)
 
@@ -63,6 +66,7 @@ For a clear single-domain request, invoke the Level 2 skill directly without goi
 | `documentation-agent` | `--documentation` | Tech writing + dev advocacy + knowledge management |
 | `infrastructure-agent` | `--infrastructure` | Platform Director — Linux/Docker/K8s/CI-CD/SRE/IaC/network |
 | `integration-agent` | `--integration` | REST/ESB Camel/Kafka/EDI, API lifecycle |
+| `cli-forge-agent` | `--cli-forge` | Makes a software agent-native — existing CLI (`cli-hub`) or Python/Click CLI harness (`cli-anything`, 7-phase SOP) |
 | `it-operations-agent` | `--it-operations` | L1-L3 support, ITIL Change/Problem, CMDB |
 | `frontend-agent` | `--frontend` | Frontend Director — Angular 21/React 18, --build/--update/--review |
 | `backend-agent` | `--backend` | Backend Director — Laravel 9+/.NET 10+, --build/--update/--review |

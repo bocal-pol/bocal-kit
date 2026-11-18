@@ -27,6 +27,7 @@ they port each file, and must cross-check against the names already listed here 
 | `consultant-agent` | `paid-consultant-agent` | |
 | `directeur-creatif-agent` | `creative-director-agent` | |
 | `formateur-agent` | `trainer-agent` | |
+| `forge-agent` | `cli-forge-agent` | New in this pass; `cli-anything` and `cli-hub` skills keep their names |
 | `frontend-agent` | `frontend-agent` | Already clear, unchanged |
 | `gutenberg-agent` | `documentation-agent` | |
 | `hermes-agent` | `integration-agent` | |
@@ -70,6 +71,11 @@ they port each file, and must cross-check against the names already listed here 
 | `ponytail` | `minimal-code-discipline` | |
 | `szikra-*` (7 skills) | `creativity-theory-*` | e.g. `szikra-zettelkasten` → `creativity-theory-zettelkasten` — full per-file mapping pending the skills porting pass |
 | `compostel-*` (7 skills) | `pilgrimage-*` | e.g. `compostel-route` → `pilgrimage-route` — full per-file mapping pending the skills porting pass |
+| `team-dev` | `team-dev` | Already English, kept as-is — confirmed ported with all flags translated |
+| `team-selector` | `team-selector` | Already English, kept as-is |
+| `unlazy` | `unlazy` | Already English, kept as-is |
+| `areopage` | `areopage` | Proper noun, kept as-is |
+| `dpo-toolkit` | `dpo-toolkit` | Already English, kept as-is |
 
 _Remaining skills (already clear in English, e.g. `laravel-developer`, `react-developer`,
 `code-review`) keep their name unchanged — only translated if their content was in French. This
