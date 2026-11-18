@@ -94,6 +94,16 @@ For each key scenario:
 4. `mcp__playwright__browser_take_screenshot` → capture the result
 5. Record: result (Pass/Fail), duration, screenshot path
 
+### Phase 4b — Fix loop until green
+
+If at least one scenario fails **and** fixing the code is allowed: call the Skill tool with
+`fix-until-green`, passing it the full-suite command (`npx playwright test` or equivalent), the
+editable scope and the environment URL. Never disable or loosen a scenario to make it pass. Report
+"green" only if the full suite passes; otherwise "not green" with the blocked causes. A failure caused by
+an unstable selector or a flaky test is fixed in the test (robust selector, explicit wait), not masked
+by a re-run. Fixing not allowed: report the failures as they are, without a loop.
+⚠️ Fallback: if `fix-until-green` is unavailable, apply the same loop by hand and note it.
+
 ### Phase 5 — Persistence (conditional)
 
 - **Standalone**:

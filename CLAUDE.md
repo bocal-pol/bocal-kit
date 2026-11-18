@@ -531,6 +531,24 @@ Adding an infra service (Redis, queue, MinIO, mailer…) is only done when:
 
 A service running with no consumer = an unfinished task.
 
+## Definition of "done" for tests — loop until green
+
+Any test run by an agent or a skill (unit, E2E, performance, adversarial, a project's suite) is not done
+until the full suite is green. A failure triggers the loop of `fix-until-green` (single source:
+[`skills/fix-until-green`](skills/fix-until-green/SKILL.md)): diagnose, fix the **product**, re-run the **whole**
+suite, repeat.
+
+- **Never cheat**: deleting, disabling (`skip`, `xfail`, `.only`), emptying or loosening a test, adding
+  `|| true` or `passWithNoTests` is forbidden. The skill's `integrity.mjs` guard checks it before each
+  commit; a blocking finding undoes the change.
+- **The loop has limits** (3 attempts per cause, 10 iterations, stagnation, regression): it stops and says
+  "not green" with what is still red. Never "green" with a red remaining.
+- **A test is fixed only if it is proven wrong** (it checks the implementation, contradicts a
+  specification, or is flaky) — and then rewritten, never deleted.
+- A suite that writes to a database or sends messages runs on a test environment, never in production.
+
+A red test reported as a finished deliverable = an unfinished task.
+
 ## Multi-service monorepos
 
 - Before copying a file from one service to another: propose extracting it to `shared/` (or a
