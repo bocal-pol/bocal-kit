@@ -18,6 +18,8 @@ be added or enriched without being a breaking change.
 
 ## [Unreleased]
 
+## [1.4.0] - 2026-11-18
+
 ### Added
 
 - `goodnight` — mode B, headless supervisor (`goodnight.sh supervise`): starts
