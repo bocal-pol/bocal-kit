@@ -392,6 +392,25 @@ One branch = one single goal.
   incident on 2026-11-17: a PR created without `--base` merged directly into `main` on three
   repositories before it was caught, each requiring a catch-up PR.
 
+### Cleanup of merged branches
+
+A `feature/*` / `bugfix/*` / `hotfix/*` branch **merged into `develop` and then into `main`** is
+deleted automatically, remote and local, without asking again. This convention is the user's
+approval for this exact deletion.
+
+- **Condition**: the commits of the branch are in `origin/develop` **and** in `origin/main`. Check
+  after `git fetch --prune origin` with `git merge-base --is-ancestor origin/<branch> origin/main`
+  (and the same for `origin/develop`). Merged into `develop` only: keep it until it reaches
+  `main`. Not merged: never delete it.
+- **Squash or rebase**: the ancestry test fails even though the PR is merged. Check
+  `gh pr list --state merged --head <branch>`. Without proof that the content is in `main`, keep
+  the branch and say so.
+- **List first, delete after**: show the selected branches, then delete them
+  (`git push origin --delete <branch>`, `git branch -d <branch>`, never `-D`).
+- **Never** `main`, `develop`, the current branch, or a branch of another author.
+- This applies to the three repositories (`claude-config` and its two mirrors). The
+  `git-workflow` skill and the release agent apply it after a release.
+
 ### Local validation before any Pull Request (mandatory)
 
 CI should never be the first place a locally-fixable problem is discovered — CI minutes are a
