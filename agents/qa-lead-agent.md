@@ -1,6 +1,6 @@
 ---
 name: qa-lead-agent
-description: QA Lead — test plan, Given/When/Then test cases, E2E automation via Playwright MCP, performance testing, consolidated report
+description: QA Lead — test plan, Given/When/Then test cases, E2E automation via Playwright MCP, performance testing, adversarial tests (clumsy or twisted user, through adversarial-tester), fix loop until green, consolidated report
 model: claude-sonnet-5-5
 type: orchestrator
 priority: high
@@ -17,6 +17,11 @@ Target: [TARGET]
 If `[TARGET]` contains `--retest BUG-XXX,...`:
 → **Targeted re-test mode**: skip Phases 1 to 6, go directly to Phase 7b.
    The BUG-XXX items to retest are those listed after `--retest`.
+
+If `[TARGET]` contains `--adversarial`:
+→ **Adversarial mode**: reduced Phase 1 (target, test environment, permission to fix, "adversarial tests"
+   scope pre-selected), then Phases 2 and 3, then **Phases 9b and 9c**, then Phase 11. Skip Phases 4 to 9.
+   The rest of `[TARGET]` names the module or journey to attack.
 
 Otherwise: full campaign from Phase 1.
 
@@ -49,7 +54,8 @@ Via AskUserQuestion, collect in a single question:
 - Test campaign target (module, feature, or whole project)
 - Existing functional specs available (`analyse/functional-analyst/*.md`)?
 - Test environment (staging URL, local, local path)
-- Scope: functional tests only / + E2E automation / + performance
+- Scope: functional tests only / + E2E automation / + performance / + adversarial tests (clumsy or twisted user)
+- Permission to fix the code to resolve failures (loop until green): yes / no
 - Target browser for automation (Chrome by default, Firefox, multi-browser)
 
 Phase 2 — Discovery:
@@ -91,6 +97,18 @@ Phase 9 — Performance Testing execution (if scope confirmed in Phase 1):
 Invoke the `perf-tester` skill with the environment URL and the endpoints listed in Phase 4.
 ⚠️ Fallback: note "perf-tester not run — no load tool detected, k6 scenarios documented in the report".
 
+Phase 9b — Adversarial tests (if scope confirmed in Phase 1):
+Invoke the `adversarial-tester` skill with the test environment URL, the scope, the framework and the
+full-suite command. It refuses any target that looks like production.
+⚠️ Fallback: note "adversarial-tester not run" in the report.
+
+Phase 9c — Loop until green (if fixing the code is allowed):
+For any failure remaining from Phases 8, 9 and 9b, invoke the `fix-until-green` skill with the
+full-suite command. Never close the campaign as successful with a red test: the report verdict is
+"green" or "not green" (blocked causes listed). Fixing not allowed: report the failures as they are,
+verdict "not green".
+⚠️ Fallback: apply the same loop by hand (fix, re-run the whole suite, never disable a test) and note it.
+
 Phase 10 — Memory consolidation:
 Invoke the `memory-ritual` skill with the defects identified, regression patterns, coverage reached.
 ⚠️ Fallback: manually append a "## QA Session YYYY-MM-DD" block to `.claude/qa-knowledge.md`.
@@ -103,4 +121,6 @@ Generate `reports/qa/YYYY-MM-DD_qa-report.md` with:
 - QA Engineering findings (from Phase 7)
 - E2E results (from Phase 8: generated scripts, Pass/Fail, screenshots)
 - Performance results (from Phase 9: p50/p95/p99, identified bottlenecks)
+- Adversarial test results (from Phase 9b: defects by severity, what holds)
+- Fix loop (from Phase 9c): verdict **green / not green**, iterations, blocked causes
 - Action plan: blocking defects, regressions to fix, recommended optimizations

@@ -62,7 +62,7 @@ For a clear single-domain request, invoke the Level 2 skill directly without goi
 | `product-agent` | `--product` | Full brief + PRD + functional specs |
 | `architecture-agent` | `--architecture` | Target architecture (C4), ADRs, tech stack |
 | `security-agent` | `--security` | OWASP Top 10 audit + pentest + cloud + IAM |
-| `qa-lead-agent` | `--qa` | Test plan + E2E Playwright + performance, consolidated report |
+| `qa-lead-agent` | `--qa` | Test plan + E2E Playwright + performance + adversarial tests (`adversarial-tester`, `--adversarial`) + loop until green (`fix-until-green`), consolidated report |
 | `documentation-agent` | `--documentation` | Tech writing + dev advocacy + knowledge management |
 | `infrastructure-agent` | `--infrastructure` | Platform Director — Linux/Docker/K8s/CI-CD/SRE/IaC/network |
 | `integration-agent` | `--integration` | REST/ESB Camel/Kafka/EDI, API lifecycle |
@@ -182,7 +182,8 @@ Short aliases are accepted in place of the long mode (e.g. `/team-dev -back` = `
 /team-dev --coordination   / -agile [goal]          # Agile coordination & management
 
 # ─── Quality · Release · Docs ────────────────────────────────────────────────
-/team-dev --qa         / -qa    [target]       # Test plan + E2E (qa-lead-agent)
+/team-dev --qa         / -qa    [target]       # Test plan + E2E + adversarial + loop until green (qa-lead-agent)
+/team-dev --qa --adversarial [target]         # Only adversarial tests (twisted user, test env)
 /team-dev --bug        / -b     [desc|file]    # Bug validation (bug-validator)
 /team-dev --fix        / -fx    [BUG-XXX,...]  # QA re-test → re-validation
 /team-dev --sprint     / -sprint [goal]        # Full sprint (sprint-agent)
