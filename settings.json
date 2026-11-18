@@ -38,6 +38,7 @@
     "baseRef": "head"
   },
   "includeCoAuthoredBy": false,
+  "statusLine": { "type": "command", "command": "node ~/.claude/skills/goodnight/scripts/statusline.mjs" },
   "theme": "dark",
   "hooks": {
     "SessionStart": [
@@ -66,6 +67,12 @@
         "matcher": "Skill",
         "hooks": [
           { "type": "command", "command": "bash ~/.claude/skill-log.sh" }
+        ]
+      },
+      {
+        "matcher": "*",
+        "hooks": [
+          { "type": "command", "command": "node ~/.claude/skills/goodnight/scripts/guard.mjs" }
         ]
       }
     ]
