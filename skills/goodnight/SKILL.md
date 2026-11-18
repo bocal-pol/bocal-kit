@@ -1,6 +1,6 @@
 ---
 name: goodnight
-description: "Overnight autonomous work: the user goes to sleep, Claude runs a plan step by step, tests after each step, decides alone and notes why, stops only for the irreversible or a change to the plan, and leaves a short morning report — without ever exhausting the subscription usage quota (hardware guard by hook + statusLine, stop at 80%). Invoke on: goodnight, good night, work tonight, finish this while I sleep, night mode, long autonomous session."
+description: "Overnight autonomous work: the user goes to sleep, Claude runs a plan step by step, tests after each step, decides alone and notes why, stops only for the irreversible or a change to the plan, and leaves a short morning report — without ever exhausting the subscription usage quota (two modes: interactive guard by hook + statusLine on Pro/Max/Ultra plans, headless supervisor on any plan including Team; stop at 80%). Invoke on: goodnight, good night, work tonight, finish this while I sleep, night mode, long autonomous session."
 model: claude-sonnet-5-5
 type: utility
 priority: medium
@@ -16,11 +16,25 @@ Human-only (`disable-model-invocation: true`). A multi-hour autonomous run never
 Inspired by the prompt "I'm done for today. You're not.": run the plan, test, decide alone, report the
 essentials in the morning.
 
-## What is guaranteed, and what is not
+## Two modes — the subscription plan decides
 
-A prompt cannot enforce a limit: the model cannot see its live counter, and no hook reads the quota
-(the only documented signal is `rate_limits` in the statusLine). The guard therefore has three parts,
-all checked by `selftest`:
+A prompt cannot enforce a limit: the model cannot see its live counter, and no hook reads the quota.
+Two signals exist, depending on the plan (`claude auth status` → `subscriptionType`):
+
+| | Mode A — interactive guard | Mode B — headless supervisor |
+| --- | --- | --- |
+| Plans | Pro, Max, Ultra (`rate_limits` field of the statusLine) | **All, including Team and Enterprise** |
+| Signal | percentage of the 5-hour and 7-day windows | `rate_limit_event` of the `stream-json` flow: `status` (`allowed` / `allowed_warning` / `rejected`), `utilization` if present, `isUsingOverage`; plus a measured token budget |
+| Session | interactive (`claude` terminal) | `claude -p`, started by the supervisor |
+| Stop | the hook refuses work tools; closing is possible | the supervisor **kills** the process; no close |
+| Start | `/goodnight` skill | `goodnight.sh supervise` (section "Mode B") |
+
+On a Team plan `rate_limits` does not exist (documented): mode A refuses to start, by design. Use
+mode B.
+
+## Mode A — interactive guard (Pro, Max, Ultra)
+
+The guard has three parts, all checked by `selftest`:
 
 - **statusLine** (`scripts/statusline.mjs`): copies the 5-hour and 7-day percentages to
   `~/.claude/goodnight/state.json`.
@@ -36,16 +50,18 @@ Known limits — tell the user at bedtime:
 - The guard refuses **tool calls**. It does not cut reasoning between two calls: hence the margin
   between 80% and 100%.
 - It needs an open **interactive session** (the statusLine does not run in `claude -p`). In headless
-  mode the guard would refuse everything for lack of signal: do not activate the night. Use the hard
-  bounds in "Headless variant".
+  mode the guard would refuse everything for lack of signal: do not activate the night. Use mode B.
 - The model could run `goodnight.mjs deactivate` to lift the guard. This skill forbids it, and the
   command is allowed only to close the night. This is a safety net against exhaustion, not a defense
   against a hostile agent.
 - If the user spends quota elsewhere during the night (another device or session), the percentage
   rises without Claude's doing: the guard still stops.
 
-## Preflight — mandatory, no exception
+## Preflight — mandatory, no exception (mode A)
 
+0. `claude auth status` → `subscriptionType`. `pro`, `max`, `ultra`: mode A is possible. Any other
+   (including `team`, `enterprise`): **mode B only** — jump to the "Mode B" section. Steps 1 to 4
+   below apply to mode A.
 1. `bash ~/.claude/skills/goodnight/scripts/goodnight.sh selftest` → all cases ✓. One ✗: stop,
    show the failure, start nothing.
 2. `bash ~/.claude/skills/goodnight/scripts/goodnight.sh status` → `ok: true`. Otherwise (state absent
@@ -56,7 +72,7 @@ Known limits — tell the user at bedtime:
 4. Ask once, at bedtime: the **plan file** (required — no plan, no night; suggest `cadrage` or
    `sdd-plan`), the **duration** (default 8 h), the **test commands**.
 
-## Start
+## Start (mode A)
 
 1. Create the branch from an up-to-date `develop`: `feature/goodnight-YYYY-MM-DD`. Never work on
    `main` or `develop`.
@@ -67,7 +83,7 @@ Known limits — tell the user at bedtime:
    A refusal is a hard stop: report the reason. Default thresholds `--warn 70 --stop 80`, ceiling 90.
 4. Apply `unlazy`: one observable gate per plan step.
 
-## Loop — one step at a time
+## Loop — one step at a time (modes A and B)
 
 Before **each** step, read `goodnight.mjs status`.
 
@@ -99,7 +115,7 @@ Forbidden at night, without exception: `git push`, opening or merging a PR, dele
 files outside the current work, `--no-verify`, installing an unlocked third-party package, touching
 `main`/`develop`, working around a guard refusal.
 
-## Close — always, even in stop mode
+## Close — always, even in stop mode (mode A)
 
 The guard lets only these pass: read, write the notes file, `git status/diff/log/add/commit` and the
 close command.
@@ -111,17 +127,52 @@ close command.
    working.
 4. End the reply with the same summary, in three lines.
 
-## Headless variant (no quota guard)
+## Mode B — headless supervisor (all plans, including Team)
 
-The statusLine does not run under `-p`: do not activate the night. Rely on the hard bounds of Claude
-Code, which bound turns and an **estimated** cost, not the subscription window:
+Do not `activate`: the hook would refuse everything for lack of a statusLine. A script
+(`supervise.mjs`) starts `claude -p --output-format stream-json`, reads the events live and **kills
+the process** as soon as one of them asks for a stop:
 
-```bash
-CLAUDE_CODE_RETRY_WATCHDOG=1 CLAUDE_CODE_RETRY_WATCHDOG_MAX_USAGE_LIMIT_WAIT_MS=600000 \
-  timeout 8h claude -p "<prompt>" --max-turns 150 --max-budget-usd 20 --no-session-persistence
-```
+| Event | Stop (code 4) |
+| --- | --- |
+| `rate_limit_event` with `status` = `allowed_warning` or `rejected` | yes |
+| `rate_limit_event` with `utilization` at or above the threshold (0.8 by default; fraction or percentage) | yes |
+| `rate_limit_event` with `isUsingOverage` true (beyond the included quota) | yes |
+| `system/api_retry` with `error: rate_limit` | yes |
+| Cumulative weighted tokens > `--max-tokens` (input + output + cache creation + 10% of cache reads; messages deduplicated by id) | yes |
+| `--hours` deadline reached | yes (code 5) |
 
-Present this as an indicative bound: it does not guarantee staying under the quota.
+Procedure:
+
+1. Write the prompt file `NIGHT-PROMPT.md` (outside the repository, `.claude/tmp/`): the plan, the
+   test commands, and the order "read `~/.claude/skills/goodnight/SKILL.md`: apply *Loop*, *When to
+   stop before the quota* and the prohibitions". Mandatory in the prompt: **one commit per finished
+   step** (the stop is abrupt: no close, no handoff note), notes written along the way in
+   `.claude/tmp/NIGHT-NOTES.md`, the `feature/goodnight-*` branch.
+2. Start:
+
+   ```bash
+   bash ~/.claude/skills/goodnight/scripts/goodnight.sh supervise \
+     --prompt-file .claude/tmp/NIGHT-PROMPT.md --hours 8 --max-tokens 3000000 --max-turns 150 \
+     -- --permission-mode acceptEdits --allowedTools "Bash(git *)" "Bash(npm test)"
+   ```
+
+   Everything after `--` goes to `claude`. `--dangerously-skip-permissions` is refused. Plan the
+   permissions that are needed: a session without a human cannot answer a prompt.
+3. Read the JSON summary (`outcome`, `reason`, `weighted_tokens`, `last_rate`, `log`). In the morning:
+   the branch `git log` and the notes; the raw log is in `~/.claude/goodnight/run-*.jsonl`.
+
+Known limits:
+
+- The stop is **abrupt**: uncommitted work is lost. Hence one commit per step.
+- The `allowed_warning` threshold is chosen by the platform and is **not documented**: the
+  supervisor stops as soon as it appears, without knowing at what usage level it happens. The
+  emission frequency of `rate_limit_event` is not documented either (one event per request was
+  observed in a test); `utilization` was not observed on a Team account.
+- The token budget is **yours**, not the Team quota: a ceiling that is too high can exceed the quota.
+  An empty session already uses about 100,000 tokens of context (measured: `CLAUDE.md`, tools,
+  memory); take it into account.
+- No per-tool guard in mode B: the supervisor watches the flow, it does not filter calls.
 
 ## Troubleshooting
 
@@ -132,6 +183,8 @@ Present this as an indicative bound: it does not guarantee staying under the quo
   under the Windows PowerShell tool `~` is not expanded, Node cannot find the script, and Claude Code
   treats the error as non-blocking — the guard would have stayed open (seen in a real test). The
   wrapper also denies if Node cannot start.
+- **Team or Enterprise plan**: `rate_limits` does not exist for the statusLine (documented), so
+  `status` will stay "state absent" whatever you do. Use mode B.
 - **VS Code extension**: no `state.json` was observed in an extension session after wiring the
   statusLine. Cause not established (session started before the wiring, or the extension does not
   run the statusLine). If `status` stays "state absent" after a first reply, start the night from the
