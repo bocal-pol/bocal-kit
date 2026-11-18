@@ -25,7 +25,7 @@ be added or enriched without being a breaking change.
   `rate_limit_event` with `allowed_warning`/`rejected`, `utilization` above the threshold, usage
   beyond the included quota (`isUsingOverage`), `api_retry` for a rate limit, a weighted-token
   budget exceeded or the deadline. The only mode usable on a Team plan, where the statusLine
-  `rate_limits` field (reserved for Pro/Max/Ultra) does not exist — observed on the maintainer's
+  `rate_limits` field (reserved for Pro/Max/Ultra) does not exist — observed on a Team
   account. Tested with a real `claude` (normal session and budget stop) and 22 more cases,
   including processes that are really killed (self-test at 71 cases). Limits documented in the
   skill: alert threshold and emission frequency not documented, abrupt stop, token budget owned by
@@ -96,6 +96,9 @@ be added or enriched without being a breaking change.
   invokes this skill in Phase 9c bis, alongside `iam-engineer` (Phase 9c).
 
 ### Fixed
+
+- `CHANGELOG.md`: generic wording for the account on which the Team-plan limitation of `goodnight`
+  was observed ("a Team account").
 
 - `goodnight`: the skill commands (`status`, `activate`, `deactivate`, `selftest`) and the
   instruction given to the user used `node ~/.claude/...`, which `cmd.exe` and the PowerShell tool
