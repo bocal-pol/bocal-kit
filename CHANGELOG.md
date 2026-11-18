@@ -84,6 +84,15 @@ be added or enriched without being a breaking change.
   `iam-engineer` (broad OAuth/RBAC detection) without replacing it. `security-agent` now
   invokes this skill in Phase 9c bis, alongside `iam-engineer` (Phase 9c).
 
+### Fixed
+
+- `goodnight`: the `PreToolUse` hook and the `statusLine` called `node ~/.claude/...`. Under the
+  Windows PowerShell tool `~` is not expanded: Node could not find the script and Claude Code
+  treated the error as non-blocking, so the guard let every call through — seen in a real test with
+  `claude -p`, invisible in the self-test. Replaced by `bash` wrappers (`guard.sh`, `statusline.sh`)
+  that deny if Node cannot start. Self-test grew from 39 to 45 cases (G9); verified end to end: call
+  refused at 95%, allowed at 5%.
+
 ## [1.3.0] - 2026-11-16
 
 ### Added
