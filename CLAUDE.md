@@ -27,7 +27,7 @@ for everyone — that belongs in this file.
 
 Every SKILL.md must follow:
 
-- `model`: full identifier required — `claude-opus-5` / `claude-sonnet-5` / `claude-haiku-4-5-20251001`
+- `model`: full identifier required — `claude-opus-5-5` / `claude-sonnet-5-5` / `claude-haiku-5-5`
 - **Never a `tools:` key in a SKILL.md**: that's an **agent** frontmatter key (`agents/*.md`),
   ignored by Claude Code in a skill. In a skill, `allowed-tools:` **pre-authorizes** the listed
   tools (removes the confirmation prompt, not a restriction) — use only with explicit justification;
@@ -94,7 +94,7 @@ skill, with the same values — without which nothing lets an agent be routed th
 ```yaml
 name: backend-agent               # same as the filename, without .md
 description: Principal Backend Director — orchestrates Laravel 9+ or .NET 10+.
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: orchestrator                # orchestrator | domain | specialized | utility (alias)
 priority: high                    # high | medium | low
 scope: backend
@@ -301,6 +301,25 @@ Application rules:
   is `~/.claude` — it doesn't make any MCP available in another project.
 - Also usable in **Claude.ai** by adding the same custom connectors (`huggingface.co/mcp?gradio=…`).
 
+## Playwright MCP — Advanced capabilities
+
+The `mcp__playwright__*` server exposes more than the navigation/click/screenshot tools already
+used by `qa-automation` and `argus-agent`. Four extra tool groups exist, opt-in per server config.
+Enable them only when the need appears, not after an error reveals a missing tool:
+
+- **`storage`** (cookies, `localStorage`, `sessionStorage`) — mechanical check of the cookie
+  consent banner required by the "Cookie policy" section below: read state before/after clicking
+  "Reject all", confirm no non-essential cookie is set before consent.
+- **`network`** (request interception and mocking) — deterministic E2E tests that do not depend on
+  a real third-party API; useful to `qa-automation` to stabilize otherwise flaky scenarios.
+- **`devtools`** (execution trace, video) — hard evidence attached to a QA report when a failure
+  does not reproduce on the first retry.
+- **`testing`** (native `browser_verify_*` assertions) — prefer this over a manual DOM check via
+  `browser_snapshot` for a simple assertion (presence, text, state).
+
+Do not enable these groups by default on a project with no current need for them — consistent with
+"MCP hygiene": an MCP tool loaded without a need adds dead weight to the session context.
+
 ## Sequential Thinking
 
 Use the **MCP server** `sequential-thinking` (not a skill: there is no
@@ -366,6 +385,31 @@ One branch = one single goal.
 - Push only the `feature/*` / `bugfix/*` / `hotfix/*` branch
 - Open a Pull Request toward `develop` (never merge locally)
 - **Forbidden**: `git push origin main`, `git push origin develop`, local merge into develop
+- **Always pass `--base develop` explicitly to `gh pr create`.** Without this flag, the command
+  silently targets the repository's default branch (`main`), not `develop`. Before any
+  `gh pr merge`, check `gh pr view <n> --json baseRefName` and merge only if the resolved base
+  is `develop` (except for an explicit `develop`→`main` catch-up PR the user requested). Real
+  incident on 2026-11-17: a PR created without `--base` merged directly into `main` on three
+  repositories before it was caught, each requiring a catch-up PR.
+
+### Cleanup of merged branches
+
+A `feature/*` / `bugfix/*` / `hotfix/*` branch **merged into `develop` and then into `main`** is
+deleted automatically, remote and local, without asking again. This convention is the user's
+approval for this exact deletion.
+
+- **Condition**: the commits of the branch are in `origin/develop` **and** in `origin/main`. Check
+  after `git fetch --prune origin` with `git merge-base --is-ancestor origin/<branch> origin/main`
+  (and the same for `origin/develop`). Merged into `develop` only: keep it until it reaches
+  `main`. Not merged: never delete it.
+- **Squash or rebase**: the ancestry test fails even though the PR is merged. Check
+  `gh pr list --state merged --head <branch>`. Without proof that the content is in `main`, keep
+  the branch and say so.
+- **List first, delete after**: show the selected branches, then delete them
+  (`git push origin --delete <branch>`, `git branch -d <branch>`, never `-D`).
+- **Never** `main`, `develop`, the current branch, or a branch of another author.
+- This applies to the three repositories (`claude-config` and its two mirrors). The
+  `git-workflow` skill and the release agent apply it after a release.
 
 ### Local validation before any Pull Request (mandatory)
 
@@ -777,12 +821,12 @@ Permanent rules to limit waste. The 5 levers below, from most to least impactful
   multi-file read needs to be isolated from the main context, or (c) the scope exceeds a context
   window. Otherwise, handle it directly.
 - **Mandatory model tiering** in the frontmatter (`model:`):
-  - `claude-haiku-4-5-20251001` — **mechanical, bounded** tasks: lookup, verification, formatting,
+  - `claude-haiku-5-5` — **mechanical, bounded** tasks: lookup, verification, formatting,
     search, deterministic routing, git operations, file consolidation (e.g. `changelog`,
     `project-graph`, `dependency-updater`, `estimator`).
-  - `claude-sonnet-5` — **default**: domain expertise, development, any persisted
+  - `claude-sonnet-5-5` — **default**: domain expertise, development, any persisted
     synthesis/judgment. Also the default `model` in `settings.json`.
-  - `claude-opus-5` — reserved for heavy orchestration + architecture (`team-dev`, `architect`,
+  - `claude-opus-5-5` — reserved for heavy orchestration + architecture (`team-dev`, `architect`,
     `security-audit`).
   - `claude-fable-5-1` — never the default (cost); activate on demand via `/model` for a one-off
     session.

@@ -1,7 +1,7 @@
 ---
 name: creativity-theory-boucle-retour
 description: "Why idea boxes fail (Robinson & Schroeder 2004, Fairbank & Williams 2001, Frese et al. 1999). Design the acknowledgment receipt, the mandatory rejection reason, decision-making close to the ground, response time as an indicator. Auto-invoke on: feedback loop, acknowledgment receipt, rejection reason, suggestion system, response time, validation committee, participation, small ideas, emptying idea box, submitter feedback."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: domain
 priority: medium
 scope: cross

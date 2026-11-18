@@ -10,7 +10,7 @@ description: >-
   toggle to that take"), or GRAB the code of a draft ("pull that variant's
   code"). For finding/installing existing components use the `21st-cli-use`
   skill; to publish your own, `21st-registry`.
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 type: framework
 priority: high

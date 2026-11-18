@@ -66,6 +66,7 @@ For a clear single-domain request, invoke the Level 2 skill directly without goi
 | `documentation-agent` | `--documentation` | Tech writing + dev advocacy + knowledge management |
 | `infrastructure-agent` | `--infrastructure` | Platform Director — Linux/Docker/K8s/CI-CD/SRE/IaC/network |
 | `integration-agent` | `--integration` | REST/ESB Camel/Kafka/EDI, API lifecycle |
+| `cli-forge-agent` | `--cli-forge` | Makes a software agent-native — existing CLI (`cli-hub`) or Python/Click CLI harness (`cli-anything`, 7-phase SOP) |
 | `it-operations-agent` | `--it-operations` | L1-L3 support, ITIL Change/Problem, CMDB |
 | `frontend-agent` | `--frontend` | Frontend Director — Angular 21/React 18, --build/--update/--review |
 | `backend-agent` | `--backend` | Backend Director — Laravel 9+/.NET 10+, --build/--update/--review |
@@ -441,6 +442,7 @@ To create your own: `/po-creator`, which adds the agent and its registry entry.
 | `memory-ritual` | Consolidates and reorganizes cross-session memory |
 | `project-graph` | Maps the project's architecture via Graphify |
 | `context7-mcp` | Up-to-date documentation via Context7 MCP (libraries, frameworks) |
+| `repomix-mcp` | Packs a third-party repo/monorepo into one file before analysis (CLI or MCP) |
 | `estimator` | Fibonacci story points, poker planning, risk identification |
 | `changelog` | CHANGELOG.md from commits (Conventional Commits / Keep a Changelog) |
 | `dependency-updater` | Outdated npm/pip/composer dependencies, breaking changes |

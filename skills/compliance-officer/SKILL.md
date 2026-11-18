@@ -1,7 +1,7 @@
 ---
 name: compliance-officer
 description: "Regulatory compliance audit — GDPR, ISO 27001, NIS2 — gap identification and remediation plan. Auto-invoke on mention of: GDPR, compliance, ISO 27001, NIS2, DPO, personal data, regulatory audit, privacy, data protection."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 type: domain
 priority: medium

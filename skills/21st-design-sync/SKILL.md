@@ -9,7 +9,7 @@ description: >-
   into the public theme library.
   NOTE: publishing is public only and requires an API key — warn the user if
   they have no key before proceeding.
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 type: utility
 priority: low

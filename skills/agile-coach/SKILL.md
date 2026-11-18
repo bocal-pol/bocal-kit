@@ -1,7 +1,7 @@
 ---
 name: agile-coach
 description: "Agile Coach — Agile maturity diagnosis, transformation plan, framework choice (Scrum/Kanban/SAFe/LeSS), coaching plan, optional SAFe/RTE dimension. Auto-invoke on mention of: agile coaching, agile transformation, agile maturity, agile fluency, SAFe, LeSS, PI planning, ART, Scrum of Scrums, agile anti-patterns, cargo cult agile, dark scrum."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 type: domain
 priority: medium

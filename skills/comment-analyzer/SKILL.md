@@ -1,7 +1,7 @@
 ---
 name: comment-analyzer
 description: "Audits code comments — accuracy against the real code, completeness on complex logic, comments that merely paraphrase, comment-rot risk, forgotten TODO/FIXME. Auto-invoke on: comment audit, comment rot, stale comment, lying comment, forgotten TODO, useless paraphrase. Read-only review, never a direct fix."
-model: claude-haiku-4-5-20251001
+model: claude-haiku-5-5
 user-invocable: true
 argument-hint: "[file|folder|glob|PR branch]"
 type: domain

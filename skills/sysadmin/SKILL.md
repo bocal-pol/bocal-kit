@@ -1,7 +1,7 @@
 ---
 name: sysadmin
 description: "Linux Sysadmin (Debian/RHEL) — kernel hardening, SSH/PAM, firewalld/iptables, idempotent Ansible playbooks, systemd service management. Auto-invoke on mention of: linux administration, debian, rhel, centos, linux hardening, sysctl, ansible playbook, iptables, firewalld, systemd, SSH hardening, PAM, linux package management, linux cron."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 type: framework
 priority: medium

@@ -1,7 +1,7 @@
 ---
 name: cloud-architect
 description: "Cloud Architect — cloud architecture design (AWS/Azure/GCP), network topology, HA/DR, FinOps, IaC. Auto-invoke on mention of: cloud architecture, VPC, subnets, managed services, multi-AZ, multi-region, Terraform, IaC, FinOps, RTO/RPO, ECS, AKS, Cloud Run, RDS."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 type: domain
 priority: high

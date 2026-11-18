@@ -1,7 +1,7 @@
 ---
 name: karpathy-guidelines
 description: "Behavioral guardrails to reduce common LLM coding mistakes. Use when writing, reviewing, or refactoring code — avoid overcomplication, make surgical changes, state assumptions explicitly, define verifiable success criteria. Auto-invoke on: code review, refactoring, over-engineering, \"keep it simple\", \"only touch what's necessary\"."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 type: utility
 priority: high

@@ -1,7 +1,7 @@
 ---
 name: task-tracker
 description: "Markdown task list management — ICT, projects, admin, meetings. Actions: add, list, complete, update, report. Local task-list.md file. Auto-incremented IDs. Weekly report available."
-model: claude-haiku-4-5-20251001
+model: claude-haiku-5-5
 user-invocable: true
 aliases: ["/task"]
 argument-hint: "[action: add|list|complete|update|report] [description or ID]"

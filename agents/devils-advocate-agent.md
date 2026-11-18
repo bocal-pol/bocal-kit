@@ -1,7 +1,7 @@
 ---
 name: devils-advocate-agent
 description: "Devil's advocate — argues against a project before investing, hiring, or launching an offer, with the strongest and most honest case, never the meanest. Attacks the central assumption, ranks objections, predicts the most likely failure. Invoke via team-dev --devils-advocate."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: specialized
 priority: low
 scope: cross

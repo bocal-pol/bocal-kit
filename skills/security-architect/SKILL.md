@@ -1,7 +1,7 @@
 ---
 name: security-architect
 description: "Security Architect — security by design, STRIDE/PASTA/LINDDUN threat modeling, zero-trust, cryptography, layered controls. Auto-invoke on mention of: security by design, threat modeling, STRIDE, zero trust, security architecture, security design, cryptographic controls, network segmentation, defense in depth."
-model: claude-opus-5
+model: claude-opus-5-5
 user-invocable: true
 type: domain
 priority: medium

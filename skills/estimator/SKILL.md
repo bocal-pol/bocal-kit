@@ -1,7 +1,7 @@
 ---
 name: estimator
 description: "Ticket estimation and scoping — Fibonacci story points, complex task breakdown, poker planning, risk identification. Auto-invoke on mention of: estimation, scoping, story points, poker planning, ticket complexity, effort."
-model: claude-haiku-4-5-20251001
+model: claude-haiku-5-5
 user-invocable: true
 type: utility
 priority: medium

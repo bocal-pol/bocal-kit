@@ -1,7 +1,7 @@
 ---
 name: app-spec
 description: "App Spec — compact application specification for project bootstrap (pitch, users, scope, features, key screens, technical & legal constraints, NFRs, risks). Auto-invoke on mention of: app spec, application specification, product scoping, project scope, application definition."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 type: utility
 priority: medium

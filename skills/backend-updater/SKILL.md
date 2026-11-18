@@ -1,7 +1,7 @@
 ---
 name: backend-updater
 description: "Backend Updater — Laravel and .NET technology watch, current vs. target version comparison, codebase scan for deprecated patterns, prioritized migration report (Breaking → Important → Recommended). Auto-invoke on: Laravel migration, .NET update, Laravel 9 10 11 12 upgrade, .NET 8 9 10, Laravel breaking changes, deprecated .NET API, PHP 8 upgrade, dotnet upgrade, backend technology watch."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 type: utility
 priority: low

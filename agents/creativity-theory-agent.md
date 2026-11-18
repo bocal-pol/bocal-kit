@@ -1,7 +1,7 @@
 ---
 name: creativity-theory-agent
 description: Creativity Theory Guardian — expert on idea-creation theories (Johnson, Koestler, Wallas, Luhmann, Robinson & Schroeder, Edmondson) and methodology guardian for idea-management / idea-box products. Orchestrates 7 creativity-theory-* skills. Invoke via team-dev --creativity-theory or from an orchestrator agent.
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: specialized
 priority: low
 scope: cross

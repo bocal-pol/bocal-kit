@@ -1,7 +1,7 @@
 ---
 name: software-deploy
 description: Enterprise Windows software deployment — Intune, SCCM, GPO Software Installation, MSI/EXE packages, PowerShell scripting. Testing and rollback. incident-pattern pre-check.
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 aliases: ["/deploy"]
 argument-hint: "<software> [target: machine|group|OU|domain] [mode: msi|exe|winget|intune|sccm|gpo]"

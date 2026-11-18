@@ -1,7 +1,7 @@
 ---
 name: ceo-decision-agent
 description: "CEO — settles a decision that's been dragging on too long (hiring, pricing, dropping a client): decision, why, what we stop doing, metric to watch, deadline. Decides even with missing information. Invoke via team-dev --ceo-decision."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: specialized
 priority: low
 scope: cross

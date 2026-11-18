@@ -1,7 +1,16 @@
 # ADR 0016 — Model tiering: Haiku / Sonnet / Opus
 
 - **Status**: accepted
-- **Date**: 2026-07-13 (infra audit) — revised 2026-08-21 — **revised 2026-09-17: moved to the Claude 5 generation**
+- **Date**: 2026-07-13 (infra audit) — revised 2026-08-21 — revised 2026-09-17 (moved to the
+  Claude 5 generation) — **revised 2026-11-17: moved to the Claude 5.5 generation**
+
+> **2026-11-17 revision.** Same drift as the 2026-09-17 revision, one generation later: 324
+> frontmatters (skills + agents) and `settings.json` still pinned
+> `claude-opus-5` / `claude-sonnet-5` / `claude-haiku-4-5-20251001` while the current generation is
+> `claude-opus-5-5` / `claude-sonnet-5-5` / `claude-haiku-5-5`. Mechanical migration (324 frontmatter
+> replacements, anchored on the exact `model:` line, zero false positive verified) plus prose fixes
+> in `CLAUDE.md`, `CONTRIBUTING.md`, and a few skills that cited these identifiers as examples. The
+> `model` in `settings.json` is `claude-sonnet-5-5`.
 
 > **2026-09-17 revision.** The machine was running `claude-fable-5-1` while 225 frontmatters still
 > pinned the 4.x generation (`claude-opus-4-7`, `claude-sonnet-4-6`): every subagent and skill was
@@ -20,9 +29,9 @@ Allocate models by task criticality:
 
 | Model | Use case |
 | ------ | ----------- |
-| `claude-haiku-4-5-20251001` | Mechanical, bounded tasks: lookups, verification, formatting, search, deterministic routing, git operations |
-| `claude-sonnet-5` | **Default**: domain expertise, development, any synthesis/judgment that gets persisted |
-| `claude-opus-5` | Reserved for heavy orchestration + architecture (`team-dev`, `architect`, `security-audit`) |
+| `claude-haiku-5-5` | Mechanical, bounded tasks: lookups, verification, formatting, search, deterministic routing, git operations |
+| `claude-sonnet-5-5` | **Default**: domain expertise, development, any synthesis/judgment that gets persisted |
+| `claude-opus-5-5` | Reserved for heavy orchestration + architecture (`team-dev`, `architect`, `security-audit`) |
 
 ### Arbitration rule when in doubt
 

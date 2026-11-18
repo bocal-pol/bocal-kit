@@ -1,7 +1,7 @@
 ---
 name: network-engineer
 description: "Multi-vendor Network Engineer — Cisco IOS, Huawei VRP, Juniper JunOS, Alcatel-Lucent AOS. VLAN, Spanning-Tree (MSTP/RSTP), LACP/Eth-channel, ACL, inter-VLAN routing. Design-First approach and systematic cross-vendor equivalences. Auto-invoke on mention of: network, switch, router, vlan, spanning tree, STP, MSTP, RSTP, LACP, eth-channel, trunk, access port, ACL, inter-vlan routing, cisco ios, huawei vrp, juniper junos, alcatel-lucent, omniswitch."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 type: framework
 priority: high

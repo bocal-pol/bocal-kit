@@ -1,7 +1,7 @@
 ---
 name: sdd-converge
 description: "Spec-Driven Development — Converge Phase. Compares delivered code against the spec.md / plan.md / tasks.md artifacts and produces a drift report. Invoke from sprint-agent at the end of a sprint. Auto-invoke on mention of: SDD convergence, sdd-converge, spec verification, spec drift."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 type: utility
 priority: medium

@@ -3,7 +3,7 @@ name: skillspector
 type: utility
 priority: high
 scope: security
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 dependencies: []
 conflicts: []
 description: >

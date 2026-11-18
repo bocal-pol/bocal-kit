@@ -1,7 +1,7 @@
 ---
 name: pilgrimage-gear
 description: Weighed backpack list for a multi-thousand-km pilgrimage with camping. Two variants (Solo, Duo). Base weight ≤ 8 kg solo / ≤ 6.5 kg per person in duo. Goal durability across the full distance, repairability, planned consumable replacement. Delegates to survival-logistics-agent for the Rule of 3 and calorie calculation.
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: framework
 priority: high
 scope: cross

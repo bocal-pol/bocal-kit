@@ -1,7 +1,7 @@
 ---
 name: infrastructure-agent
 description: Principal Platform & Infrastructure Director — Linux/Ansible administration, Docker/K8s containerization, multi-vendor network engineering (Cisco/Huawei/Juniper/Alcatel-Lucent), CI/CD pipelines, SRE/Observability/DBA, Terraform/Cloud IaC. Consolidated report. Invoke via team-dev --infra [target].
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: orchestrator
 priority: high
 scope: infra

@@ -1,7 +1,7 @@
 ---
 name: feature-backlog
 description: "Feature Backlog — hierarchical, prioritized project-bootstrap product backlog (Epic → Feature → Story, MoSCoW + RICE score). Auto-invoke on mention of: feature backlog, product backlog, prioritization, MoSCoW, RICE, epics, features, functional roadmap."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 type: utility
 priority: medium

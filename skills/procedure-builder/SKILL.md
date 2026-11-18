@@ -1,7 +1,7 @@
 ---
 name: procedure-builder
 description: Writing operational procedures, runbooks, and knowledge base articles — installations, configurations, troubleshooting. Technical step-by-step format with suggested screenshots, validation conditions, and rollback.
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 aliases: ["/proc"]
 argument-hint: "[procedure title or operation to document]"
