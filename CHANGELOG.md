@@ -18,6 +18,8 @@ be added or enriched without being a breaking change.
 
 ## [Unreleased]
 
+## [1.5.0] - 2026-11-18
+
 ### Added
 
 - `adversarial-tester` skill: an adversarial tester that plays the clumsiest, weirdest and most inventive
