@@ -2,7 +2,7 @@
 
 Structural decisions for this ecosystem and the cross-cutting conventions applied to every project.
 
-- **77 ADRs** — 0000 to 0076, one superseded (0032) and one partially superseded (0048 §2, by 0062)
+- **78 ADRs** — 0000 to 0077, one superseded (0032) and one partially superseded (0048 §2, by 0062)
 - **Template**: [0000-template.md](0000-template.md) — includes the "when an ADR is justified" rule
 - An ADR is never deleted: an abandoned decision moves to `superseded by` or `deprecated` status
 
@@ -90,6 +90,7 @@ Structural decisions for this ecosystem and the cross-cutting conventions applie
 | [0054](0054-project-specific-domain-skills.md) | Project-specific domain skills hosted in the global config | accepted | Domain-specific skills |
 | [0075](0075-worktree-isolation-level2-agents.md) | `worktree` isolation for Level-2 agents writing code in parallel | accepted | backend/frontend/mobile/infrastructure-agent |
 | [0076](0076-shared-country-md-jurisdiction.md) | `.claude/country.md`, a jurisdiction file shared between `legal-pages`/`compliance-officer`/`dpo-toolkit` | accepted | dpo-toolkit, legal-pages, project-bootstrap-agent |
+| [0077](0077-token-bucket-quota-and-business-model.md) | Token bucket quota and business model (free / freemium / paid) per application | accepted | upfront alignment, sales-offers-agent, laravel-api |
 
 ## Environment and configuration
 

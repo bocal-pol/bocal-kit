@@ -217,6 +217,22 @@ Declare `protected $connection` on any model that doesn't use the default connec
 
 Microsoft OAuth via Socialite: routes `/auth/microsoft/redirect` and `/auth/microsoft/callback`.
 
+## User quota — token bucket (ADR 0077)
+
+The `throttle` middleware and `Limit::perMinute()` use a **fixed window**. They allow nearly 2X
+calls at the window boundary. For a business quota (X uses per period Y), use a custom **token
+bucket** limiter:
+
+- capacity X; one token returned every **Y/X**; state in Redis, updated by an **atomic Lua script**
+  (never read then write in two calls);
+- key per user and per function; X and Y come from the administration backend, not from the code;
+- empty bucket: **429** response with a readable code (`quota_exhausted`, `upgrade_required`),
+  `Retry-After`, and the date of the next token;
+- function reserved for a tier: the refusal is **server-side**, tested with a user without the right;
+- rights service unreachable: short cache, then minimal free default — never full access.
+
+The location of the administration backend is not imposed: ask the user.
+
 ## OpenAPI documentation
 
 API docs are maintained in two places:
