@@ -140,6 +140,27 @@ function selftest() {
   writeJsonAtomic(path.join(tmp, 'active.json'), { ...act, deadline: now() + 3600 });
   const okRun = run('guard.mjs', hookIn);
   check('G1 real guard: allows at 5%', okRun.status === 0 && okRun.stdout === '');
+  // G9 — the bash wrapper of the hook (settings.json calls it): reliable launch, fail-closed
+  const sh = (env = {}, stdin = hookIn) =>
+    spawnSync('bash', [path.join(here, 'guard.sh')], {
+      input: stdin, encoding: 'utf8', env: { ...process.env, GOODNIGHT_HOME: tmp, ...env },
+    });
+  const shOk = sh();
+  check('G9 bash available for the wrapper', !shOk.error);
+  check('G9 wrapper: allows at 5%', shOk.status === 0 && shOk.stdout === '');
+  run('statusline.mjs', JSON.stringify({ rate_limits: { five_hour: { used_percentage: 95 } } }));
+  const shDeny = sh();
+  check('G9 wrapper: deny at 95%', /"deny"/.test(shDeny.stdout) && shDeny.status === 0);
+  const shNoNode = sh({ GOODNIGHT_NODE: path.join(tmp, 'node-not-found') });
+  check('G9 wrapper: Node not found => deny (fail-closed at launch)', /"deny"/.test(shNoNode.stdout) && shNoNode.status === 0);
+  fs.unlinkSync(path.join(tmp, 'active.json'));
+  const shInert = sh({ GOODNIGHT_NODE: path.join(tmp, 'node-not-found') });
+  check('G9 wrapper inert without active.json, even without Node', shInert.status === 0 && shInert.stdout === '');
+  const sline = spawnSync('bash', [path.join(here, 'statusline.sh')], {
+    input: JSON.stringify({ rate_limits: { five_hour: { used_percentage: 33 } } }),
+    encoding: 'utf8', env: { ...process.env, GOODNIGHT_HOME: tmp },
+  });
+  check('G9 statusLine wrapper: writes the state', /5h 33%/.test(sline.stdout) && readJson(path.join(tmp, 'state.json'))?.five_hour?.pct === 33);
   fs.rmSync(tmp, { recursive: true, force: true });
 
   let fail = 0;
