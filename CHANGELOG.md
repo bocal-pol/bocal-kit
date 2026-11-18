@@ -20,6 +20,12 @@ be added or enriched without being a breaking change.
 
 ### Added
 
+- ADR 0077 and the "Business model and access rights" rule: token bucket quota (X tokens, one token
+  returned every Y/X) instead of a fixed window, free / freemium / paid levels per application, an
+  administration backend whose location is asked from the user. Seventh axis of upfront alignment;
+  `sales-offers-agent` and `laravel-api` updated.
+- `sales-offers-agent`: eleven sales policies (value before price, three tiers at most, tax-inclusive
+  prices, no dark patterns, reminder before renewal, honest retention, remembered refusal).
 - Solar icons animated in React with the Animate UI mechanism (hover, click), one icon per file in
   `shared/`. Solar stays the standard.
 - `structure-humanizer` skill (source name `human`): rewrites the structure of a text so that it no

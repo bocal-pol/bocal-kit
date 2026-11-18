@@ -43,6 +43,13 @@ Ask questions **until every decision branch is resolved** — don't stop at the 
    implementation. For a structuring architectural decision rather than an isolated feature, prefer
    the `architect` skill's Phase 2bis (STRIDE threat modeling), which covers trust boundaries more
    thoroughly.
+7. **Business model and access rights** (ADR 0077) — only if the application has users: fully
+   free, freemium, or fully paid? Which functions are free, quota (X uses per period Y, token
+   bucket), or reserved for paid access? Is advertising internal or from a third-party network
+   ("marketing" consent required)? **Ask the user where the administration backend** of these rights
+   lives — in the application, in an existing rights service, or in a dedicated service. Never
+   assume it and never name a specific service. If the answer is "we'll see", it is an unresolved
+   branch.
 
 Conduct rules:
 - **Facts are the agent's job, decisions are the user's.** Anything verifiable in the environment (files, dependencies, config, current behavior) is looked up with `Grep`/`Glob`/`Read` — never asked of the user. Only **choices** are submitted to them.
