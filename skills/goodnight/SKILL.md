@@ -46,9 +46,9 @@ Known limits — tell the user at bedtime:
 
 ## Preflight — mandatory, no exception
 
-1. `node ~/.claude/skills/goodnight/scripts/goodnight.mjs selftest` → all cases ✓. One ✗: stop,
+1. `bash ~/.claude/skills/goodnight/scripts/goodnight.sh selftest` → all cases ✓. One ✗: stop,
    show the failure, start nothing.
-2. `node ~/.claude/skills/goodnight/scripts/goodnight.mjs status` → `ok: true`. Otherwise (state absent
+2. `bash ~/.claude/skills/goodnight/scripts/goodnight.sh status` → `ok: true`. Otherwise (state absent
    or stale) the statusLine is not wired in `settings.json` (`statusLine` key + `PreToolUse` `*`
    hook). Say so and do not start: without a reliable signal the limit is not guaranteed.
 3. Quota already at 70% or more: refuse the night (`activate` refuses by itself) and suggest waiting
@@ -63,7 +63,7 @@ Known limits — tell the user at bedtime:
 2. Create the notes file `.claude/tmp/NIGHT-NOTES.md` (git-ignored). Write the plan, the start time
    and the initial quota in it.
 3. Activate the guard:
-   `node ~/.claude/skills/goodnight/scripts/goodnight.mjs activate --notes .claude/tmp/NIGHT-NOTES.md --hours 8`
+   `bash ~/.claude/skills/goodnight/scripts/goodnight.sh activate --notes .claude/tmp/NIGHT-NOTES.md --hours 8`
    A refusal is a hard stop: report the reason. Default thresholds `--warn 70 --stop 80`, ceiling 90.
 4. Apply `unlazy`: one observable gate per plan step.
 
@@ -107,7 +107,7 @@ close command.
 1. Write the **Morning** section at the top of the notes: what is done, what is broken, where to
    start — short enough to read with a coffee (10 lines at most).
 2. Commit what works, with its CHANGELOG entry.
-3. `node ~/.claude/skills/goodnight/scripts/goodnight.mjs deactivate`, **last**, and never to keep
+3. `bash ~/.claude/skills/goodnight/scripts/goodnight.sh deactivate`, **last**, and never to keep
    working.
 4. End the reply with the same summary, in three lines.
 
@@ -125,6 +125,9 @@ Present this as an indicative bound: it does not guarantee staying under the quo
 
 ## Troubleshooting
 
+- **Skill commands**: always `bash ~/.claude/skills/goodnight/scripts/goodnight.sh <command>`, never
+  `node ~/...` (not expanded by `cmd.exe` nor by the PowerShell tool). From a `cmd.exe` terminal without
+  `bash`: `node "%USERPROFILE%.claudeskillsgoodnightscriptsgoodnight.mjs" status`.
 - **The hook and the statusLine go through `bash`** (`guard.sh`, `statusline.sh`), not `node ~/...`:
   under the Windows PowerShell tool `~` is not expanded, Node cannot find the script, and Claude Code
   treats the error as non-blocking — the guard would have stayed open (seen in a real test). The
