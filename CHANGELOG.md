@@ -18,6 +18,14 @@ be added or enriched without being a breaking change.
 
 ## [Unreleased]
 
+### Added
+
+- `structure-humanizer` skill (source name `human`): rewrites the structure of a text so that it no
+  longer shows AI authorship, based on the StoryScope study. It treats the stated moral, emotion played
+  by the body, a story that is too straight, vague allusions, filler settings, entrance portraits and the
+  ignored reader. Seven checks, one or two interventions per text. It complements `no-ai-slop`, which
+  treats the surface.
+
 ## [1.5.0] - 2026-11-18
 
 ### Added
