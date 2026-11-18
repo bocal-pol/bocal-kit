@@ -76,16 +76,18 @@ Known limits — tell the user at bedtime:
 
 1. Create the branch from an up-to-date `develop`: `feature/goodnight-YYYY-MM-DD`. Never work on
    `main` or `develop`.
-2. Create the notes file `.claude/tmp/NIGHT-NOTES.md` (git-ignored). Write the plan, the start time
+2. Create `.goodnight/` (`mkdir -p .goodnight && echo .goodnight/ >> .git/info/exclude`) and put the
+   notes file `NIGHT-NOTES.md` in it. Write the plan, the start time
    and the initial quota in it.
 3. Activate the guard:
-   `bash ~/.claude/skills/goodnight/scripts/goodnight.sh activate --notes .claude/tmp/NIGHT-NOTES.md --hours 8`
+   `bash ~/.claude/skills/goodnight/scripts/goodnight.sh activate --notes .goodnight/NIGHT-NOTES.md --hours 8`
    A refusal is a hard stop: report the reason. Default thresholds `--warn 70 --stop 80`, ceiling 90.
 4. Apply `unlazy`: one observable gate per plan step.
 
 ## Loop — one step at a time (modes A and B)
 
-Before **each** step, read `goodnight.mjs status`.
+Before **each** step, read `goodnight.sh status` (**mode A only**; in mode B do not run it: the
+supervisor stops the session, without any action from you).
 
 | `status` result | Action |
 | --- | --- |
@@ -144,16 +146,20 @@ the process** as soon as one of them asks for a stop:
 
 Procedure:
 
-1. Write the prompt file `NIGHT-PROMPT.md` (outside the repository, `.claude/tmp/`): the plan, the
-   test commands, and the order "read `~/.claude/skills/goodnight/SKILL.md`: apply *Loop*, *When to
-   stop before the quota* and the prohibitions". Mandatory in the prompt: **one commit per finished
-   step** (the stop is abrupt: no close, no handoff note), notes written along the way in
-   `.claude/tmp/NIGHT-NOTES.md`, the `feature/goodnight-*` branch.
+1. Create the working folder `.goodnight/` **inside the repository**, ignored locally:
+   `mkdir -p .goodnight && echo .goodnight/ >> .git/info/exclude`. Not `.claude/tmp/`: in a
+   non-interactive session `.claude/` is write-protected (seen in a trial: write refused, notes
+   lost). Put the prompt file `NIGHT-PROMPT.md` in it: the plan, the test commands, and the order
+   "read `~/.claude/skills/goodnight/SKILL.md`: apply *Loop*, *When to stop before the quota* and the
+   prohibitions". Mandatory in the prompt: **one commit per finished step** (the stop is abrupt: no
+   close, no handoff note), notes written along the way in `.goodnight/NIGHT-NOTES.md`, the
+   `feature/goodnight-*` branch, and **do not run `goodnight.sh status`** (mode A only: in mode B
+   there is no per-tool guard, and the call is refused for lack of permission).
 2. Start:
 
    ```bash
    bash ~/.claude/skills/goodnight/scripts/goodnight.sh supervise \
-     --prompt-file .claude/tmp/NIGHT-PROMPT.md --hours 8 --max-tokens 3000000 --max-turns 150 \
+     --prompt-file .goodnight/NIGHT-PROMPT.md --hours 8 --max-tokens 3000000 --max-turns 150 \
      -- --permission-mode acceptEdits --allowedTools "Bash(git *)" "Bash(npm test)"
    ```
 
@@ -167,11 +173,14 @@ Known limits:
 - The stop is **abrupt**: uncommitted work is lost. Hence one commit per step.
 - The `allowed_warning` threshold is chosen by the platform and is **not documented**: the
   supervisor stops as soon as it appears, without knowing at what usage level it happens. The
-  emission frequency of `rate_limit_event` is not documented either (one event per request was
-  observed in a test); `utilization` was not observed on a Team account.
+  emission frequency of `rate_limit_event` is not documented: **a single event was observed over a
+  17-turn session** (at the start), so it is probably emitted on a state change and not on every
+  request. The supervisor sees a mid-night alert only if the platform emits one; **the token budget
+  is the only continuously measured bound**. `utilization` was not observed on a Team account.
 - The token budget is **yours**, not the Team quota: a ceiling that is too high can exceed the quota.
-  An empty session already uses about 100,000 tokens of context (measured: `CLAUDE.md`, tools,
-  memory); take it into account.
+  Measured in a real trial: a trivial 2-step plan = 17 turns, about 196,000 weighted tokens, an
+  estimated $0.89, 141 s — about 11,500 weighted tokens per turn, on a base context of about 100,000
+  tokens (`CLAUDE.md`, tools, memory). Size `--max-tokens` on that rate.
 - No per-tool guard in mode B: the supervisor watches the flow, it does not filter calls.
 
 ## Troubleshooting
