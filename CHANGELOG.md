@@ -97,6 +97,16 @@ be added or enriched without being a breaking change.
 
 ### Fixed
 
+- `goodnight` — three defects found by the first real trial of mode B (2-step plan, real `claude`,
+  throwaway repository): (1) notes were written in `.claude/tmp/`, which is write-protected outside
+  an interactive session — write refused, notes lost; replaced by `.goodnight/` inside the
+  repository, ignored through `.git/info/exclude`; (2) the prompt made the model call
+  `goodnight.sh status`, which belongs to mode A and was refused for lack of permission; mode B now
+  says not to run it; (3) the doc claimed one `rate_limit_event` per request: a single event was
+  observed over 17 turns, so the token budget is the only continuously measured bound — fixed,
+  with the trial measurements (about 196,000 weighted tokens, an estimated $0.89, 141 s). Both
+  requested commits were made, with no push.
+
 - `CHANGELOG.md`: generic wording for the account on which the Team-plan limitation of `goodnight`
   was observed ("a Team account").
 
