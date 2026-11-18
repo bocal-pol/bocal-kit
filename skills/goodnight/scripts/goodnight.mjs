@@ -9,6 +9,10 @@ import {
   activePath, statePath, readJson, writeJsonAtomic, evaluate, decide, DEFAULTS,
 } from './lib.mjs';
 
+import {
+  SUPERVISE_DEFAULTS, consume, createState, normUtil, runSupervise, defaultLogFile,
+} from './supervise.mjs';
+
 const here = path.dirname(fileURLToPath(import.meta.url));
 const now = () => Math.floor(Date.now() / 1000);
 const [cmd, ...args] = process.argv.slice(2);
@@ -59,12 +63,46 @@ function activate() {
   console.log(JSON.stringify({ activated: true, quota_pct: pre.pct, remaining_pct: pre.remaining_pct }));
 }
 
+async function supervise() {
+  // usage: supervise --prompt-file <f> [--stop-util 0.8] [--max-tokens 3000000] [--hours 8]
+  //                  [--max-turns 150] [--log <f>] [-- <extra arguments for claude>]
+  const dd = args.indexOf('--');
+  const own = dd >= 0 ? args.slice(0, dd) : args;
+  const extra = dd >= 0 ? args.slice(dd + 1) : [];
+  const get = (name, def) => { const i = own.indexOf(`--${name}`); return i >= 0 ? own[i + 1] : def; };
+  const file = get('prompt-file');
+  if (!file || !fs.existsSync(file)) {
+    console.error('usage: supervise --prompt-file <existing file> [--stop-util 0.8] [--max-tokens N] [--hours 8] [--max-turns 150] [--log f] [-- claude args]');
+    process.exit(2);
+  }
+  const cfg = {
+    stopUtil: Number(get('stop-util', SUPERVISE_DEFAULTS.stopUtil)),
+    maxTokens: Number(get('max-tokens', SUPERVISE_DEFAULTS.maxTokens)),
+    hours: Number(get('hours', SUPERVISE_DEFAULTS.hours)),
+    maxTurns: Number(get('max-turns', SUPERVISE_DEFAULTS.maxTurns)),
+  };
+  if (!Object.values(cfg).every((v) => Number.isFinite(v) && v > 0) || cfg.stopUtil > 0.9) {
+    console.error('invalid parameters: numbers > 0 required, stop-util <= 0.9');
+    process.exit(2);
+  }
+  if (extra.some((a) => /dangerously-skip-permissions/.test(a))) {
+    console.error('REFUSED: --dangerously-skip-permissions is forbidden in supervised mode.');
+    process.exit(2);
+  }
+  const res = await runSupervise({
+    prompt: fs.readFileSync(file, 'utf8'), cfg, extraArgs: extra,
+    logFile: get('log', defaultLogFile()),
+  });
+  console.log(JSON.stringify(res));
+  process.exit(res.code);
+}
+
 function deactivate() {
   try { fs.unlinkSync(activePath()); } catch { /* already inactive */ }
   console.log(JSON.stringify({ activated: false }));
 }
 
-function selftest() {
+async function selftest() {
   const results = [];
   const check = (name, cond) => results.push({ name, ok: Boolean(cond) });
   const t = 1_000_000;
@@ -171,13 +209,80 @@ function selftest() {
   check('G9 CLI wrapper: status answers in JSON, without depending on ~', cj !== null && typeof cj.ok === 'boolean');
   fs.rmSync(tmp, { recursive: true, force: true });
 
+  // G10 — supervisor: pure decisions on simulated events
+  const cfg = { stopUtil: 0.8, maxTokens: 1000 };
+  const ev = (e, st = createState()) => consume(st, e, cfg);
+  const rl = (info) => ({ type: 'rate_limit_event', rate_limit_info: info });
+  check('G10 allowed => no stop', ev(rl({ status: 'allowed', rateLimitType: 'five_hour' })) === null);
+  check('G10 allowed_warning => stop', ev(rl({ status: 'allowed_warning' }))?.code === 'warning');
+  check('G10 rejected => stop', ev(rl({ status: 'rejected' }))?.code === 'rejected');
+  check('G10 utilization 0.85 (fraction) => stop', ev(rl({ status: 'allowed', utilization: 0.85 }))?.code === 'utilization');
+  check('G10 utilization 85 (percentage) => stop', ev(rl({ status: 'allowed', utilization: 85 }))?.code === 'utilization');
+  check('G10 utilization 0.5 => no stop', ev(rl({ status: 'allowed', utilization: 0.5 })) === null);
+  check('G10 utilization exactly at threshold => stop', ev(rl({ status: 'allowed', utilization: 0.8 }))?.code === 'utilization');
+  check('G10 overage in progress => stop', ev(rl({ status: 'allowed', isUsingOverage: true }))?.code === 'overage');
+  check('G10 api_retry rate_limit => stop', ev({ type: 'system', subtype: 'api_retry', error: 'rate_limit' })?.code === 'api_retry');
+  check('G10 api_retry other error => no stop', ev({ type: 'system', subtype: 'api_retry', error: 'overloaded' }) === null);
+  check('G10 unreadable events ignored', [null, 'x', 42, {}, { type: 'unknown' }].every((e) => ev(e) === null));
+  check('G10 normUtil rejects negative / NaN / text', normUtil(-1) === null && normUtil(NaN) === null && normUtil('0.9') === null);
+  const stT = createState();
+  const msg = (id, inp, out) => ({ type: 'assistant', message: { id, usage: { input_tokens: inp, output_tokens: out } } });
+  consume(stT, msg('a', 100, 10), cfg);
+  consume(stT, msg('a', 100, 50), cfg); // same message: max, not sum
+  check('G10 tokens: same message deduplicated (max)', Math.round(stT.tokens) === 150);
+  consume(stT, msg('b', 300, 100), cfg);
+  check('G10 tokens: messages accumulated', Math.round(stT.tokens) === 550);
+  check('G10 budget exceeded => stop', consume(stT, msg('c', 600, 0), cfg)?.code === 'budget');
+  check('G10 cache reads weighted at 10%', Math.round(createState().tokens + 0.1 * 1000) === 100);
+
+  // G10 — integration: fake "claude" that emits events then hangs
+  const fdir = fs.mkdtempSync(path.join(os.tmpdir(), 'goodnight-sup-'));
+  const fake = path.join(fdir, 'fake-claude.mjs');
+  fs.writeFileSync(fake, `
+import fs from 'node:fs';
+const mode = process.env.FAKE_MODE;
+fs.writeFileSync(process.env.FAKE_PIDFILE, String(process.pid));
+const out = (o) => process.stdout.write(JSON.stringify(o) + '\\n');
+out({ type: 'system', subtype: 'init' });
+out({ type: 'rate_limit_event', rate_limit_info: { status: 'allowed' } });
+if (mode === 'complete') { out({ type: 'result', subtype: 'success' }); process.exit(0); }
+if (mode === 'warn') { out({ type: 'rate_limit_event', rate_limit_info: { status: 'allowed_warning' } }); }
+setInterval(() => {}, 1000); // stays alive: only the supervisor can stop it
+`);
+  const supRun = async (mode, hours = 1) => {
+    const pidfile = path.join(fdir, `pid-${mode}.txt`);
+    process.env.GOODNIGHT_CLAUDE = `"${process.execPath}" "${fake}"`;
+    process.env.FAKE_MODE = mode;
+    process.env.FAKE_PIDFILE = pidfile;
+    const t0 = Date.now();
+    const r = await runSupervise({
+      prompt: 'test', cfg: { stopUtil: 0.8, maxTokens: 1e9, hours, maxTurns: 5 },
+      logFile: path.join(fdir, `run-${mode}.jsonl`),
+    });
+    delete process.env.GOODNIGHT_CLAUDE;
+    await new Promise((res) => setTimeout(res, 800));
+    let alive = true;
+    try { process.kill(Number(fs.readFileSync(pidfile, 'utf8')), 0); } catch { alive = false; }
+    return { ...r, alive, ms: Date.now() - t0 };
+  };
+  const rWarn = await supRun('warn');
+  check('G10 real: warning => stop (code 4)', rWarn.outcome === 'stopped' && rWarn.code === 4);
+  check('G10 real: the claude process is really killed', rWarn.alive === false);
+  check('G10 real: fast stop (< 15 s)', rWarn.ms < 15000);
+  const rDone = await supRun('complete');
+  check('G10 real: normal session => completed (code 0)', rDone.outcome === 'completed' && rDone.code === 0);
+  const rDead = await supRun('hang', 0.0006);
+  check('G10 real: deadline => deadline (code 5) and process killed', rDead.outcome === 'deadline' && rDead.code === 5 && rDead.alive === false);
+  check('G10 real: log written', fs.existsSync(path.join(fdir, 'run-warn.jsonl')) && /allowed_warning/.test(fs.readFileSync(path.join(fdir, 'run-warn.jsonl'), 'utf8')));
+  fs.rmSync(fdir, { recursive: true, force: true });
+
   let fail = 0;
   for (const r of results) { console.log(`${r.ok ? '✓' : '✗'} ${r.name}`); if (!r.ok) fail++; }
   console.log(fail ? `\n✗ ${fail} failure(s) out of ${results.length}` : `\n✓ ${results.length}/${results.length} cases passed`);
   process.exit(fail ? 1 : 0);
 }
 
-({ status, activate, deactivate, selftest }[cmd] ?? (() => {
-  console.error('usage: goodnight.mjs status | activate --notes <f> | deactivate | selftest');
+await ({ status, activate, deactivate, selftest, supervise }[cmd] ?? (() => {
+  console.error('usage: goodnight.mjs status | activate --notes <f> | deactivate | supervise --prompt-file <f> | selftest');
   process.exit(2);
 }))();
