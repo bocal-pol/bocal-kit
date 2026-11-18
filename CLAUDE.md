@@ -683,6 +683,17 @@ frontend and backend alike (e.g. Filament/Laravel, Angular components, React).
 - If no Solar icon exists for a precise need, flag it and propose the closest Solar alternative
   before using something else.
 
+**Animation (React only)** — Solar icons are animated with the **Animate UI** mechanism (`IconWrapper`,
+`AnimateIcon`). Its registry has no Solar icon: each animated icon is a file written once in `shared/`,
+with the Solar drawing unchanged. Outside React, the icon stays static.
+
+- **Hover** (`animateOnHover`) for the icon of a button, link or navigation item — wrap the whole target
+  with `<AnimateIcon animateOnHover asChild>`.
+- **Click** (`animateOnTap` + `completeOnStop`) for a confirmation or a toggle; the only trigger that
+  works on touch, pair it with hover on mobile.
+- **Controlled** (`animate`) for a state driven by code (loading, success). Avoid `animateOnView`.
+  Respect `prefers-reduced-motion`.
+
 ## Dependencies
 
 - When adding a package: check on Packagist/npm that the targeted version is on the maintained
