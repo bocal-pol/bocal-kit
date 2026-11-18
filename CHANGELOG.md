@@ -20,6 +20,12 @@ be added or enriched without being a breaking change.
 
 ### Added
 
+- "Cleanup of merged branches" convention (main instruction file, `git-workflow` skill, release
+  agent checklist): a `feature/*`/`bugfix/*`/`hotfix/*` branch merged into `develop` and then into
+  `main` is deleted (remote and local) without asking. Ancestry in `origin/develop` and
+  `origin/main` is checked first. List before delete. Use `git branch -d`, never `-D`. Never touch
+  `main`, `develop` or a branch of another author. Squash/rebase: proof through `gh pr list`, or keep it.
+
 - `cli-anything` (orchestrator, modes build/refine/test/validate), `cli-hub` (utility) and
   `cli-forge-agent` (`team-dev --cli-forge` mode): make a software agent-native. Look first for an
   existing CLI in the CLI-Anything registry. Otherwise build a Python/Click CLI harness (7-phase SOP,

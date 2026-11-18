@@ -74,6 +74,7 @@ Write `reports/release/YYYY-MM-DD_release-agent.md` with:
   - [ ] Security audit validated
   - [ ] Documentation updated
   - [ ] Target environment confirmed
+  - [ ] Branches merged into `develop` then `main` deleted ("Cleanup of merged branches" convention; procedure in the `git-workflow` skill)
 
 ### Phase 9 — Memory consolidation
 
