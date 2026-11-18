@@ -340,10 +340,13 @@ export const NAV_ITEMS: NavGroup[] = [
 
 ```tsx
 // Sidebar.tsx
-<button className="quick-action-btn" onClick={onQuickAction}>
-  <SolarIcon name="add-circle" />
-  {quickActionLabel}
-</button>
+// Animated Solar icon written in shared/ (see the Icons section of the root rules); the whole target triggers the animation
+<AnimateIcon animateOnHover animateOnTap completeOnStop asChild>
+  <button className="quick-action-btn" onClick={onQuickAction}>
+    <AddCircle />
+    {quickActionLabel}
+  </button>
+</AnimateIcon>
 ```
 
 ### Accented main item

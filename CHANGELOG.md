@@ -20,6 +20,8 @@ be added or enriched without being a breaking change.
 
 ### Added
 
+- Solar icons animated in React with the Animate UI mechanism (hover, click), one icon per file in
+  `shared/`. Solar stays the standard.
 - `structure-humanizer` skill (source name `human`): rewrites the structure of a text so that it no
   longer shows AI authorship, based on the StoryScope study. It treats the stated moral, emotion played
   by the body, a story that is too straight, vague allusions, filler settings, entrance portraits and the
