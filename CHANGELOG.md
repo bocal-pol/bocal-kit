@@ -18,6 +18,34 @@ be added or enriched without being a breaking change.
 
 ## [Unreleased]
 
+### Added
+
+- `adversarial-tester` skill: an adversarial tester that plays the clumsiest, weirdest and most inventive
+  user (absurd data, silly gestures, skipped steps, bypassed rules, diverted uses). Code review to find
+  the fragile assumptions, then an attack on the running application, **on a test environment only**:
+  `target-guard.mjs` refuses production, undesignated public domains and `prod`/`live`/`www` names, and
+  reads a `.env` without ever printing a value (self-test of 27 cases). Every defect is proven, gets a
+  regression test, then the fix loop runs until green, with a replay of the whole campaign. Playwright
+  MCP is the main tool (table mapping attack families to tools), with the MCP consent rule. Linked to the
+  test agent of `team-dev`: `qa-lead-agent` offers it in Phase 1, runs it in Phase 9b, then loops in Phase
+  9c; `/team-dev --qa-lead --adversarial [target]` plays only the adversarial campaign.
+- `fix-until-green` skill: single source of the "fix until green" loop for all tests — baseline, failures
+  grouped by cause, diagnosis through `debug`, product fix, re-run of the **whole** suite, one commit per
+  fix. Explicit limits (3 attempts per cause, 10 iterations, stagnation, regression undone) and an honest
+  "not green" report when they are reached. Integrity guard `integrity.mjs` (self-test of 13 cases):
+  blocks deleted tests, `skip`/`xfail`/`.only`, a lower test count, `|| true`, `passWithNoTests` and other
+  runner weakenings; flags changed or removed assertions for justification. Scripts are launched through
+  `bash` wrappers because `node ~/...` is not expanded by `cmd.exe` nor by the PowerShell tool.
+
+### Changed
+
+- Main instruction file: new section "Definition of "done" for tests — loop until green". Any test run by
+  an agent or a skill triggers `fix-until-green` on failure; a red test reported as a finished deliverable
+  is an unfinished task.
+- `qa-automation` (Phase 4b), `perf-tester` (loop on unmet thresholds) and `qa-lead-agent` (Phases 9b
+  adversarial tests and 9c loop; "green / not green" verdict in the report) call the loop instead of just
+  reporting failures.
+
 ## [1.4.0] - 2026-11-18
 
 ### Added
