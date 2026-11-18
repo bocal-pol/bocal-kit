@@ -38,7 +38,7 @@
     "baseRef": "head"
   },
   "includeCoAuthoredBy": false,
-  "statusLine": { "type": "command", "command": "node ~/.claude/skills/goodnight/scripts/statusline.mjs" },
+  "statusLine": { "type": "command", "command": "bash ~/.claude/skills/goodnight/scripts/statusline.sh" },
   "theme": "dark",
   "hooks": {
     "SessionStart": [
@@ -72,7 +72,7 @@
       {
         "matcher": "*",
         "hooks": [
-          { "type": "command", "command": "node ~/.claude/skills/goodnight/scripts/guard.mjs" }
+          { "type": "command", "command": "bash ~/.claude/skills/goodnight/scripts/guard.sh" }
         ]
       }
     ]
