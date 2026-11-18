@@ -125,6 +125,14 @@ Present this as an indicative bound: it does not guarantee staying under the quo
 
 ## Troubleshooting
 
+- **The hook and the statusLine go through `bash`** (`guard.sh`, `statusline.sh`), not `node ~/...`:
+  under the Windows PowerShell tool `~` is not expanded, Node cannot find the script, and Claude Code
+  treats the error as non-blocking — the guard would have stayed open (seen in a real test). The
+  wrapper also denies if Node cannot start.
+- **VS Code extension**: no `state.json` was observed in an extension session after wiring the
+  statusLine. Cause not established (session started before the wiring, or the extension does not
+  run the statusLine). If `status` stays "state absent" after a first reply, start the night from the
+  terminal (`claude`), where the statusLine is supported.
 - `selftest` fails: do not start the night, report the red case.
 - `status` returns "state stale" mid-night: the statusLine no longer updates. Close.
 - The guard refuses everything the next morning: the deadline passed and the night was not closed.
