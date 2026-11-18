@@ -20,6 +20,15 @@ be added or enriched without being a breaking change.
 
 ### Added
 
+- `goodnight` skill (human-only): overnight autonomous work under a subscription-quota ceiling. It
+  runs a plan step by step, tests after each step, decides alone and notes why, stops only for the
+  irreversible, and leaves a morning report. Hardware guard: a `statusLine` that relays
+  `rate_limits` to `~/.claude/goodnight/state.json` and a `PreToolUse` hook that refuses work tools
+  from 80% of the 5-hour or 7-day window, and fails closed when the signal is absent or stale.
+  Self-test of 39 cases (`goodnight.mjs selftest`). `settings.json`: `statusLine` key and
+  `PreToolUse` `*` hook. Limits are documented in the skill (no hook reads the quota; an
+  interactive session is required).
+
 - `docs/quick-reference.html`: printable A4 quick-reference sheet (`team-dev` modes, skills, Claude
   Code basics). It lists the `--cli-forge` mode.
 
