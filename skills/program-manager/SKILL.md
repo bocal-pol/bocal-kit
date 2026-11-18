@@ -1,7 +1,7 @@
 ---
 name: program-manager
 description: "Program Manager — multi-project coordination, inter-project dependencies, WSJF, program/portfolio roadmap, shared resources, executive reporting. Merges Program + Portfolio via a scope parameter. Auto-invoke on mention of: program manager, portfolio management, WSJF, program roadmap, inter-project dependencies, shared resources, executive reporting, lean portfolio management, multi-project coordination."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 type: domain
 priority: medium

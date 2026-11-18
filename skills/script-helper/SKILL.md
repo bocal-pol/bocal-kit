@@ -1,7 +1,7 @@
 ---
 name: script-helper
 description: Generation and debugging of PowerShell, Bash, and Python scripts for system administration. Automation of repetitive tasks, reporting, scheduling, deployment. Full unrestricted shell access.
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 aliases: ["/script"]
 argument-hint: "[language: ps|bash|python] [script goal]"

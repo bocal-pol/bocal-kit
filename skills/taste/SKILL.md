@@ -1,7 +1,7 @@
 ---
 name: taste
 description: "Anti-slop framework for interfaces — 3 dials (Design Variance, Motion Intensity, Visual Density 1-10) + a style pick among 50 active styles. Auto-invoke on: improve visual taste, generic interface, flat design, visual slop, lacking personality, glassmorphism style, brutalism, claymorphism, neumorphism, high-end, minimalist."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 type: domain
 priority: high

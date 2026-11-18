@@ -1,7 +1,7 @@
 ---
 name: ai-product-engineer
 description: "AI Product Engineer — LLM integration into products, RAG architecture (chunking/embedding/vector DB), prompt engineering with caching, RAGAS evaluation, fine-tuning vs RAG decision matrix, token cost optimization. Auto-invoke on: RAG, Retrieval Augmented Generation, LLM integration, LangChain, LlamaIndex, vector database, embedding, fine-tuning, prompt engineering, Claude API, OpenAI API, AI in product, intelligent chatbot, semantic search, RAGAS, token cost."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 type: specialized
 priority: high
@@ -172,7 +172,7 @@ def rag_query(question: str, context_chunks: list[str]) -> str:
     ])
 
     response = client.messages.create(
-        model="claude-sonnet-5",
+        model="claude-sonnet-5-5",
         max_tokens=1024,
         system=[
             {
@@ -257,11 +257,11 @@ print(result)
 ```python
 # Cost calculator
 PRICING = {
-    "claude-sonnet-5": {
-        "input": 3.0 / 1_000_000,       # $/token
-        "output": 15.0 / 1_000_000,
-        "cache_write": 3.75 / 1_000_000,
-        "cache_read": 0.30 / 1_000_000,  # 10x cheaper
+    "claude-sonnet-5-5": {
+        "input": 2.0 / 1_000_000,       # $/token
+        "output": 10.0 / 1_000_000,
+        "cache_write": 2.5 / 1_000_000,
+        "cache_read": 0.10 / 1_000_000,  # 20x cheaper
     }
 }
 
@@ -272,7 +272,7 @@ def estimate_rag_cost(
     avg_answer_tokens: int,
     cache_hit_rate: float = 0.85,  # Typical rate with prompt caching
 ) -> dict:
-    model = "claude-sonnet-5"
+    model = "claude-sonnet-5-5"
     p = PRICING[model]
 
     # Without cache

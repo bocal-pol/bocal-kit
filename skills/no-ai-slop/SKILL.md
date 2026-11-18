@@ -2,7 +2,7 @@
 name: no-ai-slop
 description: Prose editor — detects and removes generic AI writing patterns ("AI slop") without replacing the author's voice
 type: specialized
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 priority: medium
 scope: cross
 dependencies: []

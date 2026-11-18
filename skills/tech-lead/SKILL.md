@@ -1,7 +1,7 @@
 ---
 name: tech-lead
 description: "Tech Lead / Principal / Staff Engineer — development standards, Definition of Done, Tech Radar, technical debt. Auto-invoke on mention of: code standards, development conventions, definition of done, branching strategy, Tech Radar, technical debt, developer mentoring, coding norms, coding standards."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 type: orchestrator
 priority: high

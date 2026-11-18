@@ -1,7 +1,7 @@
 ---
 name: backend-agent
 description: Principal Backend Director — orchestrates Laravel 9+ or .NET 10+ development depending on the project. Invoke via team-dev --backend [target].
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: orchestrator
 priority: high
 scope: backend
@@ -117,6 +117,13 @@ Before declaring the deliverable done, check the security checklist:
 - [ ] Logs free of secrets (no password, hash, token, PII)
 - [ ] Uploads validated (mimes, size, storage outside public/)
 - [ ] No secret or private key versioned
+
+This checklist is declarative, not proof: after each implementation step touching a route, a
+middleware, a webhook, or an environment variable, invoke `security-agent` in watch mode
+(`security-agent.md` Phase 0b — reduced scope limited to that step's files, not a full audit).
+Don't declare the step done until the verdict is `CLOSED`: on `OPEN`, fix then re-check the same
+scope before continuing. This pass is mandatory for any file touching auth, payment, a webhook,
+or a public route; skippable for a purely cosmetic change (rename, typo) with no security impact.
 
 ⚠️ Fallback: if the skill is unavailable, document the conventions and generate manually.
 

@@ -1,7 +1,7 @@
 ---
 name: qa-lead-agent
 description: QA Lead — test plan, Given/When/Then test cases, E2E automation via Playwright MCP, performance testing, consolidated report
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: orchestrator
 priority: high
 scope: cross

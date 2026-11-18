@@ -1,7 +1,7 @@
 ---
 name: logging-architect
 description: "Design and implementation of a structured application logging system — levels (debug/info/warn/error), JSON format, request_id/trace_id correlation between frontend and backend, mandatory PII masking, business audit trail distinct from technical logs, security event detection and alerting (OWASP A09 — brute-force, privilege escalation, non-repudiation, retention), shipping to an aggregator (ELK/Loki/Sentry/Datadog). Auto-invoke on: logging system, logging, log correlation, trace_id, request_id, audit trail, Monolog, log channel, structured log, PII masking in logs, Sentry, log aggregator, application observability, security alerting, intrusion detection, A09. Push this option as soon as a backend or frontend project is scaffolded without an explicit logging strategy, even if the user only asks to 'add some logs' or says 'I want to debug more easily'."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 type: domain
 priority: high

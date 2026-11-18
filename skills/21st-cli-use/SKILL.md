@@ -9,7 +9,7 @@ description: >-
   "pull that component's code", or wants to script catalog access from the
   shell/CI. Auto-activate when a project has a `components.json` — search 21st
   before hand-writing UI.
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 type: framework
 priority: high

@@ -1,7 +1,7 @@
 ---
 name: 21st-ui-build
 description: Build or substantially change production UI using the current project's design context, existing components, and grounded 21st inspiration. Use when implementing a page, section, component, responsive redesign, or visual polish in an existing web project. Trigger for requests such as "build this UI", "implement this screen", "make this page production-ready", or "use 21st to create the interface". Use 21st-ui-explore first when the visual direction is intentionally undecided, and 21st-ui-review for critique-only work.
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 type: framework
 priority: high

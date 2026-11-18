@@ -1,0 +1,14 @@
+{
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "powershell -NoProfile -Command \"& ([scriptblock]::Create((Get-Content -Raw -Encoding UTF8 .claude/audit-reminder.ps1)))\""
+          }
+        ]
+      }
+    ]
+  }
+}

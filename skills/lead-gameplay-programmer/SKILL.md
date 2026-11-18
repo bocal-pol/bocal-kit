@@ -1,7 +1,7 @@
 ---
 name: lead-gameplay-programmer
 description: "Lead Gameplay Programmer — C#/GDScript expert specialized in movement, combat, inventory, and state machine systems. Systematic Object Pooling and component caching. Multi-platform input abstraction. Auto-invoke on: character movement, jump, dash, combat, inventory, player state machine, CharacterBody, Rigidbody, input binding."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 type: framework
 priority: high

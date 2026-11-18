@@ -1,7 +1,7 @@
 ---
 name: data-dictionary
 description: "Data Dictionary — project-bootstrap business data dictionary (entities, attributes, types, required, PII/GDPR, description, source, validation). Auto-invoke on mention of: data dictionary, data model, business entities, fields, PII, data catalog."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 type: utility
 priority: medium

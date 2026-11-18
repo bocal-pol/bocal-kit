@@ -1,7 +1,7 @@
 ---
 name: pilgrimage-route-agent
 description: Pilgrimage Route — guardian of the spirit of long-distance pilgrimage trails (e.g. the Camino de Santiago). Orchestrates the 7 pilgrimage-* skills (route, gear, lodging, food, poi, prep, planner) and validates on-the-ground realism for pilgrimage trip-planning projects (data models, seed data, pilgrim UX). Invoke via team-dev --pilgrimage-route or from an orchestrator agent.
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: specialized
 priority: low
 scope: cross

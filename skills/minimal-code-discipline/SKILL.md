@@ -1,7 +1,7 @@
 ---
 name: minimal-code-discipline
 description: "Minimal code discipline: before writing or modifying code, go down the decision ladder (does it need to exist? already there? stdlib? native? dependency present? one line? otherwise minimum), work in verifiable units, and apply measurable quality gates (CRAP < 10, duplication < 0.8, mutation testing) when tooling exists for the language. Use on any coding task (write, add, refactor, fix, review, choose a dependency) and when the user says \"minimal code\", \"be lazy\", \"minimal solution\", \"yagni\", \"do less\", or complains about over-engineering, boilerplate, or unnecessary dependencies. Don't use for non-code requests (prose, translation, summary)."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 argument-hint: "[lite|full|ultra]"
 type: utility

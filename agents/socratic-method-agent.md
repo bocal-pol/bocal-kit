@@ -1,7 +1,7 @@
 ---
 name: socratic-method-agent
 description: "Socratic guide — never gives the answer, leads to it through questions, one at a time. For settling a price, defending a decision, or stress-testing reasoning before presenting it. Invoke via team-dev --socratic-method."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 type: specialized
 priority: low
 scope: cross

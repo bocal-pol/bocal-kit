@@ -1,7 +1,7 @@
 ---
 name: error-journal
 description: "Error Journal — a living register of development errors (symptom, context, root cause, fix, prevention). Initialized at bootstrap, fed during development. Auto-invoke on mention of: error journal, error log, error register, technical lessons learned, bug history."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 type: utility
 priority: medium

@@ -1,7 +1,7 @@
 ---
 name: windows-admin
 description: Windows Server and enterprise workstation administration — GPO, WSUS, shares, services, registry, optimization, PowerShell administration scripts. Full, unrestricted access.
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 aliases: ["/winadm"]
 argument-hint: "[target: machine|server|domain] [action]"

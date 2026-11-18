@@ -1,7 +1,7 @@
 ---
 name: bug-validator
 description: "Bug Validator — presents each error reported by testers to the user for validation, generates a prevention rule in memory if validated, and produces a traceability report. Auto-invoke on mention of: tester error, bug report, validated bug, error validation, bug triage."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 type: utility
 priority: medium

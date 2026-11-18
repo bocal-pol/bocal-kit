@@ -1,7 +1,7 @@
 ---
 name: architect
 description: "Software & Solution Architect — target architecture design (C4 draw.io), tech stack, ADRs, technical stories, business alignment. Auto-invoke on mention of: technical architecture, tech stack choice, system design, C4, ADR, monolith vs microservices, application design, API design."
-model: claude-opus-5
+model: claude-opus-5-5
 user-invocable: true
 type: domain
 priority: high

@@ -1,7 +1,7 @@
 ---
 name: git-workflow
 description: "Installs the standard Git workflow in a project — commit-msg and pre-commit hooks, README Git Workflow section, optional commitlint + Husky, GitHub branch protection recommendations. Auto-invoke on: new git project, configure git workflow, install git hooks, conventional commits, branch protection, husky, commitlint."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 type: utility
 priority: medium
@@ -262,7 +262,28 @@ Rules:
 - ❌ `git push origin develop` — **forbidden**
 - ❌ Local merge into `develop` or `main` — **forbidden**
 - ✅ Always go through a GitHub Pull Request
+- 🧹 A branch merged into `develop` **and then** into `main` is deleted (remote and local)
 ```
+
+### Cleanup of merged branches
+
+Permanent convention (see "Cleanup of merged branches" in the main instruction file). Delete without
+asking a `feature/*` / `bugfix/*` / `hotfix/*` branch that is in both `origin/develop` and
+`origin/main`. List first, delete after:
+
+```bash
+git fetch --prune origin
+for b in $(git for-each-ref --format='%(refname:short)' 'refs/remotes/origin/feature/*' \
+    'refs/remotes/origin/bugfix/*' 'refs/remotes/origin/hotfix/*' | sed 's#^origin/##'); do
+  git merge-base --is-ancestor "origin/$b" origin/develop \
+    && git merge-base --is-ancestor "origin/$b" origin/main && echo "$b"
+done
+```
+
+Show this list, then for each branch run `git push origin --delete <branch>` and
+`git branch -d <branch>` (never `-D`). Never touch `main`, `develop`, the current branch or the
+branch of another author. Branch merged by squash or rebase: the ancestry test fails. Check
+`gh pr list --state merged --head <branch>`. Without proof that the content is in `main`, keep it.
 
 ### Step 7 — GitHub Branch Protection recommendations
 

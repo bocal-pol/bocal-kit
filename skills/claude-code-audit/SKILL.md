@@ -3,7 +3,7 @@ name: claude-code-audit
 type: utility
 priority: medium
 scope: cross
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 dependencies: []
 conflicts: []
 description: >

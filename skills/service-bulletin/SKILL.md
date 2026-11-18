@@ -1,7 +1,7 @@
 ---
 name: service-bulletin
 description: Writing and managing the daily service bulletin — daily intervention log. Modes append (add an intervention), finalize (close out the day), view (read), report (period summary).
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 aliases: ["/sb"]
 argument-hint: "[mode: append|finalize|view|report] [optional date]"

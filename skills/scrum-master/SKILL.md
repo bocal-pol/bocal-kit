@@ -1,7 +1,7 @@
 ---
 name: scrum-master
 description: "Scrum Master / Delivery Facilitator — backlog refinement (DOR/INVEST), ceremony artifacts, RAID log, sprint metrics, unblocking impediments. Auto-invoke on mention of: scrum master, sprint facilitation, backlog refinement, RAID log, burndown, velocity, retrospective, sprint planning, daily scrum, sprint review, DOR, definition of ready."
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 type: domain
 priority: high

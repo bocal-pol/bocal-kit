@@ -1,7 +1,7 @@
 ---
 name: mail-writer
 description: Writing professional emails in a formal/administrative register — hierarchy, suppliers, colleagues, partners. Formal / neutral / urgent registers depending on context.
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 user-invocable: true
 aliases: []
 argument-hint: "[email subject]"
