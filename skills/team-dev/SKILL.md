@@ -42,7 +42,8 @@ context).
 /team-dev --dev-tools [up|down|ps|logs|track|check] ← PostHog/Uptime Kuma dev-only (observability)
 /team-dev --deps                        ← dependency updates
 /team-dev --versions [target]           ← checks language/framework versions, proposes an upgrade plan
-/team-dev --qa-lead [target]            ← tests, E2E automation, perf
+/team-dev --qa-lead [target]            ← tests, E2E automation, perf, adversarial tests (adversarial-tester), loop until green
+/team-dev --qa-lead --adversarial [target] ← only the adversarial campaign: clumsy or twisted user, on a test environment
 /team-dev --bug [file|description]      ← error validation + memory rules
 /team-dev --fix [BUG-XXX,...]           ← cycle: re-test QA → re-validation by the user
 /team-dev --investigate [description]   ← structured 4-phase root-cause analysis (hypotheses → logs → minimal fix)
@@ -990,8 +991,15 @@ AskUserQuestion to invoke `version-updater` to produce the update plan.
 
 Dispatch: `Agent(subagent_type: "qa-lead-agent", prompt: "TARGET: <value provided — otherwise "current project">")` — see *Dispatch convention* (Phase 2).
 
-**Expected output**: a consolidated `reports/qa/YYYY-MM-DD_qa-report.md` report
-**⚠️ Fallback**: if the agent file isn't found or the agent fails, invoke the `qa-engineer` skill directly
+With `--adversarial`: pass the flag as is in `TARGET`; `qa-lead-agent` then plays only the adversarial
+tests (`adversarial-tester`, Playwright MCP and direct requests) followed by the `fix-until-green` loop,
+on a test environment only.
+
+Without this flag, the full `qa-lead-agent` campaign also offers the "adversarial tests" scope (Phase 1)
+and ends with the loop until green (Phase 9c): a red test is never delivered.
+
+**Expected output**: a consolidated `reports/qa/YYYY-MM-DD_qa-report.md` report (verdict **green / not green**)
+**⚠️ Fallback**: if the agent file isn't found or the agent fails, invoke the `qa-engineer` skill directly; for adversarial tests alone, invoke `adversarial-tester` directly
 
 #### `--bug [file or description]`
 

@@ -111,6 +111,14 @@ Indicative thresholds: p95 < 200ms ✅ | 200-500ms ⚠️ | > 500ms ❌
 - Rising error rate → resource limits (threads, connections, memory)
 - p99 >> p95 → outlier requests (GC pause, lock contention)
 
+**Loop until green**: a threshold not met (❌) is a red test. If fixing the code is allowed, call the
+Skill tool with `fix-until-green`, passing it the k6 or locust scenario command, the editable scope and
+the threshold to reach; the loop fixes the cause of the bottleneck (index, N+1, cache, pool), re-runs the
+scenario **and** the functional suite (an optimization must not break anything). Forbidden: raising the
+threshold or removing the endpoint to "pass". Report "green" only when the thresholds are met, otherwise
+"not green" with the measurement obtained.
+⚠️ Fallback: if `fix-until-green` is unavailable, apply the same loop by hand.
+
 ### Phase 5bis — Client-side rendering under constraint (CPU/network throttling)
 
 > Different angle from the previous phases: k6/JMeter/Locust measure **server load** (how many
