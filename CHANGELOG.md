@@ -20,6 +20,9 @@ be added or enriched without being a breaking change.
 
 ### Added
 
+- `docs/quick-reference.html`: printable A4 quick-reference sheet (`team-dev` modes, skills, Claude
+  Code basics). It lists the `--cli-forge` mode.
+
 - "Cleanup of merged branches" convention (main instruction file, `git-workflow` skill, release
   agent checklist): a `feature/*`/`bugfix/*`/`hotfix/*` branch merged into `develop` and then into
   `main` is deleted (remote and local) without asking. Ancestry in `origin/develop` and

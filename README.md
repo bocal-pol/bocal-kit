@@ -7,6 +7,9 @@ personal setup.
 
 Single entry point: `/team-dev <mode> [context]`
 
+Printable quick reference (A4, 5 pages — team-dev, ICT Director, standalone skills, built-in
+Claude Code tooling, Product Owner): [docs/quick-reference.html](docs/quick-reference.html).
+
 To contribute: [CONTRIBUTING.md](CONTRIBUTING.md) · Report a security issue:
 [SECURITY.md](SECURITY.md) · License: [MIT](LICENSE) · Sources of inspiration: [CREDITS.md](CREDITS.md)
 
