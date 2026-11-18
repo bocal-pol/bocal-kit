@@ -68,6 +68,7 @@ they port each file, and must cross-check against the names already listed here 
 | `bulletin-analyser` | `bulletin-analyzer` | |
 | `visiteurs` | `ai-visitor-simulation` | |
 | `croquis-editorial` | `editorial-sketch` | |
+| `human` | `structure-humanizer` | Rewrites the structure of a text, not its surface (that is `no-ai-slop`) |
 | `ponytail` | `minimal-code-discipline` | |
 | `szikra-*` (7 skills) | `creativity-theory-*` | e.g. `szikra-zettelkasten` → `creativity-theory-zettelkasten` — full per-file mapping pending the skills porting pass |
 | `compostel-*` (7 skills) | `pilgrimage-*` | e.g. `compostel-route` → `pilgrimage-route` — full per-file mapping pending the skills porting pass |
