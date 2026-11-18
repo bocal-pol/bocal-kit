@@ -715,12 +715,25 @@ before marking a task as "done":
 - **Retry with backoff**: calls to third-party services use exponential backoff + jitter + max
   attempts
 - **Rate limiting**: every exposed public endpoint must be protected (Laravel throttle, middleware,
-  API Gateway)
+  API Gateway). A per-user business quota (X uses per period Y) uses a **token bucket**: X tokens at most, one token returned every Y/X, shared atomic state (Redis). Never use a fixed window: it allows 2X calls at the boundary. Detail and business model: [ADR 0077](docs/adr/0077-token-bucket-quota-and-business-model.md)
 - **Cache**: frequently-read cold data cached (Redis, in-memory) with a reasonable TTL
 - **Graceful degradation**: if a secondary service is down (mail, notifications), the main flow
   must not fail — circuit breaker or explicit fallback
 
 If any point on this checklist isn't covered, flag it explicitly rather than shipping silently.
+
+## Business model and access rights — cross-cutting rule for all projects
+
+Each application declares its level **during alignment**: **fully free** (can carry advertising to the paid applications), **freemium** (free, quota, or reserved functions), or **fully paid**. Detail and reasoning: [ADR 0077](docs/adr/0077-token-bucket-quota-and-business-model.md).
+
+- **An administration backend declares everything**: application level, access per function (free, quota X/Y, reserved), and advertising (internal or third-party network). Nothing is hard-coded.
+- **Ask where to put it**: the location of this backend is never imposed. Ask the user through `AskUserQuestion`. Never name a specific service in a rule or a skill.
+- **Server-side enforcement only**, with a short cache of the rights and a default behavior when the rights service is unreachable (minimal free access, never full access).
+- **A paywall is a response, not an error**: readable code (`quota_exhausted`, `upgrade_required`), date of the next token, proposed action.
+- **No loss on expiry**: read access and export of the user data stay possible.
+- **Third-party advertising**: only after "marketing" consent (see "Cookie policy"). Internal advertising without trackers stays possible.
+
+**Definition of "done"**: a restricted function is done only when an automated test proves the server-side refusal for a user without the right, and the readable response when the bucket is empty. The deferred topics (conversion measurement, advertising cap, free trial, multiple accounts) are listed in the ADR.
 
 ## Upfront Alignment — cross-cutting rule for all projects
 
@@ -744,7 +757,7 @@ branch **before** implementing. Source: [`skills/upfront-alignment`](skills/upfr
 
 ### What the alignment pass does
 
-A 6-axis interview via `AskUserQuestion` before any implementation:
+A 7-axis interview via `AskUserQuestion` before any implementation:
 
 1. **Intent** — what real problem, for whom, what observable success?
 2. **Scope** — what's in / explicitly out, constraints?
@@ -753,6 +766,7 @@ A 6-axis interview via `AskUserQuestion` before any implementation:
 5. **Unknowns** — what's undecided and blocks implementation?
 6. **Security risks** (OWASP A04) — does the feature touch auth, permissions, personal data,
    payment, or user input? If so, the most obvious abuse case + the control that prevents it.
+7. **Business model and access rights** — if the application has users: fully free, freemium, or fully paid? Which functions are free, quota, or reserved? Where must the administration backend of these rights live (ask the question, never assume)?
 
 A vague answer = an unresolved branch → keep digging. Don't move forward while a decision stays
 "we'll see."
