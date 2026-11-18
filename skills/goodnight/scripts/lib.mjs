@@ -78,7 +78,7 @@ const GIT_WRAPUP = /^git\s+(status|diff|log|add|commit)\b/;
 const SHELL_EXEC = /(`|\$|\n|\r)/;
 // Forbidden outside the commit message: chaining, pipe, redirection.
 const SHELL_META = /(;|&|\||>|<)/;
-const CLOSE_NIGHT = /^node\s+("[^"\n]*"|'[^'\n]*'|[^\s"'`$;&|<>]+)goodnight\.mjs\s+deactivate$/;
+const CLOSE_NIGHT = /^(node|bash)\s+("[^"\n]*"|'[^'\n]*'|[^\s"'`$;&|<>]+)goodnight\.(mjs|sh)\s+deactivate$/;
 // Git options that write elsewhere or run a program.
 const GIT_RISKY = /--output|--ext-diff|--textconv|--exec|\s-c\s|--upload-pack|--receive-pack/;
 
@@ -107,7 +107,7 @@ export function denyReason(reason) {
   return (
     `Quota guard (goodnight): ${reason}. No new work tool is allowed. ` +
     `Write the handoff note in the notes file, commit what works (git add / git commit), ` +
-    `close the night with "node <skill>/scripts/goodnight.mjs deactivate", then end your reply. ` +
+    `close the night with "bash <skill>/scripts/goodnight.sh deactivate", then end your reply. ` +
     `Do not try to work around this refusal.`
   );
 }

@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Wrapper of the goodnight CLI — "node ~/..." is not expanded by cmd.exe nor by the PowerShell
+# tool; "bash ~/..." is. Usage: bash ~/.claude/skills/goodnight/scripts/goodnight.sh status
+D="$(cd "$(dirname "$0")" && pwd)"
+exec node "$D/goodnight.mjs" "$@"

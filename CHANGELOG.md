@@ -86,6 +86,12 @@ be added or enriched without being a breaking change.
 
 ### Fixed
 
+- `goodnight`: the skill commands (`status`, `activate`, `deactivate`, `selftest`) and the
+  instruction given to the user used `node ~/.claude/...`, which `cmd.exe` and the PowerShell tool
+  do not expand ("Cannot find module"). Added the `goodnight.sh` wrapper: the skill now calls
+  `bash ~/.claude/skills/goodnight/scripts/goodnight.sh <command>`, and the guard accepts it as the
+  close command. A `cmd.exe` command is documented in the skill. Self-test at 49 cases.
+
 - `goodnight`: the `PreToolUse` hook and the `statusLine` called `node ~/.claude/...`. Under the
   Windows PowerShell tool `~` is not expanded: Node could not find the script and Claude Code
   treated the error as non-blocking, so the guard let every call through — seen in a real test with
