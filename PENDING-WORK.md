@@ -15,11 +15,15 @@ context.
       and `public-procurement-agent` had internal personal-profile folder paths
       (`ProfilTechnique/`, `ProfilReseau/`, `ProfilDirICT/`) replaced with generic placeholders.
 - [ ] Port all skills into `skills/*/SKILL.md`, renamed per `RENAME-MAP.md`, translated to English.
-- [ ] Port `skills/.router.json` and `skills/SKILLS_INDEX.md`, updated with the new names.
+- [ ] Port `skills/.router.json` and `skills/SKILLS_INDEX.md`, updated with the new names. The index
+      must include the five Codex skills (`codex-bridge`, `codex-delegate`, `codex-review`,
+      `codex-explore`, `transfer`).
 - [ ] Port `docs/adr/*.md`, translated to English, numbering preserved.
 - [ ] Port `image-templates/` (~30 markdown files for the `imagine` skill).
 - [ ] Port or rewrite `install.ps1` (627 lines) — deferred to avoid a rushed translation of a script
-      with real system effects.
+      with real system effects. When ported, it must also include Phase 4c (Codex in WSL, helper
+      `Add-ClaudePlugin`, and the boxed ChatGPT login walkthrough `Write-CodexLoginHelp` with the six
+      steps of `skills/codex-bridge/SKILL.md`) that exists in the source repository.
 - [ ] Final cross-reference verification: grep the whole repo for any stale reference to an old
       (source-repo) name, once agents and skills exist.
 - [ ] Re-add the OpenSEO and codebase-mapping-plugin sections to `INSTALL.md` once (and if) their

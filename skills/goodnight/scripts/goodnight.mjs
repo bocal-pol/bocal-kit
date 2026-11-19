@@ -12,6 +12,7 @@ import {
 import {
   SUPERVISE_DEFAULTS, consume, createState, normUtil, runSupervise, defaultLogFile,
 } from './supervise.mjs';
+import { buildHandoffPrompt, runHandoff } from './handoff.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const now = () => Math.floor(Date.now() / 1000);
@@ -93,8 +94,26 @@ async function supervise() {
     prompt: fs.readFileSync(file, 'utf8'), cfg, extraArgs: extra,
     logFile: get('log', defaultLogFile()),
   });
+  // --handoff-codex: consent given at launch; only a stop for quota (code 4) triggers the handoff.
+  if (own.includes('--handoff-codex') && res.code === 4) {
+    res.handoff = runHandoff({
+      repo: '.', plan: fs.readFileSync(file, 'utf8'), notes: get('notes', '.goodnight/NIGHT-NOTES.md'),
+    });
+  }
   console.log(JSON.stringify(res));
   process.exit(res.code);
+}
+
+// Mode A: when an interactive night stopped for quota closes, hand over to Codex.
+function handoff() {
+  const plan = opt('plan');
+  if (!plan || !fs.existsSync(plan)) {
+    console.error('usage: handoff --plan <existing plan file> [--notes .goodnight/NIGHT-NOTES.md]');
+    process.exit(2);
+  }
+  const r = runHandoff({ repo: '.', plan: fs.readFileSync(plan, 'utf8'), notes: opt('notes', '.goodnight/NIGHT-NOTES.md') });
+  console.log(JSON.stringify(r));
+  process.exit(r.handoff === 'done' ? 0 : 6);
 }
 
 function deactivate() {
@@ -276,13 +295,27 @@ setInterval(() => {}, 1000); // stays alive: only the supervisor can stop it
   check('G10 real: log written', fs.existsSync(path.join(fdir, 'run-warn.jsonl')) && /allowed_warning/.test(fs.readFileSync(path.join(fdir, 'run-warn.jsonl'), 'utf8')));
   fs.rmSync(fdir, { recursive: true, force: true });
 
+  // G11 — handoff to Codex: prompt and fallback, with a fake bridge (no real call)
+  const hp = buildHandoffPrompt({ plan: '1. step A\n2. step B', notes: 'A done' });
+  check('G11 prompt: contains the plan and the notes', /step B/.test(hp) && /A done/.test(hp));
+  check('G11 prompt: forbids commit, push and secrets', /git commit/.test(hp) && /git push/.test(hp) && /\.env/.test(hp));
+  const hdir = fs.mkdtempSync(path.join(os.tmpdir(), 'gn-handoff-'));
+  const fakeBridge = path.join(hdir, 'bridge.mjs');
+  fs.writeFileSync(fakeBridge, 'console.log(JSON.stringify({ok:false,code:11,kind:"not-logged-in",detail:"test"}));process.exit(11);');
+  const hnotes = path.join(hdir, 'NOTES.md');
+  fs.writeFileSync(hnotes, '# notes\n');
+  const hr = runHandoff({ repo: hdir, plan: 'p', notes: hnotes, bridge: fakeBridge });
+  check('G11 Codex not logged in => handoff skipped, no error', hr.handoff === 'skipped' && hr.reason === 'not-logged-in');
+  check('G11 the reason is noted for the morning', /handoff not done/.test(fs.readFileSync(hnotes, 'utf8')));
+  fs.rmSync(hdir, { recursive: true, force: true });
+
   let fail = 0;
   for (const r of results) { console.log(`${r.ok ? '✓' : '✗'} ${r.name}`); if (!r.ok) fail++; }
   console.log(fail ? `\n✗ ${fail} failure(s) out of ${results.length}` : `\n✓ ${results.length}/${results.length} cases passed`);
   process.exit(fail ? 1 : 0);
 }
 
-await ({ status, activate, deactivate, selftest, supervise }[cmd] ?? (() => {
-  console.error('usage: goodnight.mjs status | activate --notes <f> | deactivate | supervise --prompt-file <f> | selftest');
+await ({ status, activate, deactivate, selftest, supervise, handoff }[cmd] ?? (() => {
+  console.error('usage: goodnight.mjs status | activate --notes <f> | deactivate | supervise --prompt-file <f> [--handoff-codex] | handoff --plan <f> | selftest');
   process.exit(2);
 }))();
