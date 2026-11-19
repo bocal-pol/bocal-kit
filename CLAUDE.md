@@ -703,15 +703,21 @@ frontend and backend alike (e.g. Filament/Laravel, Angular components, React).
   before using something else.
 
 **Animation (React only)** — Solar icons are animated with the **Animate UI** mechanism (`IconWrapper`,
-`AnimateIcon`). Its registry has no Solar icon: each animated icon is a file written once in `shared/`,
-with the Solar drawing unchanged. Outside React, the icon stays static.
+`AnimateIcon`). Its registry has no Solar icon. A shared module (`shared/animated-icons`) supplies them: one
+file per icon, Solar drawing unchanged, **same names as `solar-icon-set`** (`CloseCircleLinear`...). In React,
+import the icons from that module instead of `solar-icon-set`. Outside React, the icon stays static.
 
-- **Hover** (`animateOnHover`) for the icon of a button, link or navigation item — wrap the whole target
-  with `<AnimateIcon animateOnHover asChild>`.
-- **Click** (`animateOnTap` + `completeOnStop`) for a confirmation or a toggle; the only trigger that
-  works on touch, pair it with hover on mobile.
-- **Controlled** (`animate`) for a state driven by code (loading, success). Avoid `animateOnView`.
-  Respect `prefers-reduced-motion`.
+- **Do not write an icon file by hand.** Add the Solar name to the module's `scripts/icon-list.json`, then run
+  its `scripts/generate.mjs`. Put a hand-tuned, piece-by-piece animation in `scripts/presets.mjs`.
+- **Triggers**: the buttons of the design system that carry an icon animate it already. For a native link or
+  button that contains an icon, wrap it with the `InteractiveIcons` helper that the module exports (it can be
+  disabled). A purely informative icon stays static.
+- **Hover** (`animateOnHover`) for the icon of a button, link or navigation item. The whole target triggers
+  the animation, not only the icon.
+- **Click** (`animateOnTap` + `completeOnStop`) for a confirmation or a toggle. It is the only trigger that
+  works on touch: pair it with hover on mobile.
+- **Controlled** (`animate`) for a state driven by code (loading, success). Never animate continuously.
+  Avoid `animateOnView`. Respect `prefers-reduced-motion`.
 
 ## Dependencies
 

@@ -18,6 +18,12 @@ be added or enriched without being a breaking change.
 
 ## [Unreleased]
 
+### Changed
+
+- Icons rule (root rules, `frontend-agent`): in React, import the animated Solar icons from the shared icon
+  module (same names as `solar-icon-set`). Do not write an icon file by hand. Design-system buttons animate
+  their icons already. A helper wraps native links and buttons.
+
 ### Fixed
 
 - `INSTALL.md`: `context7` and `sequential-thinking` are registered at user scope (`--scope user`).

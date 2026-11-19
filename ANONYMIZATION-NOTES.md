@@ -130,3 +130,8 @@ drops the specific national/institutional identifier.
   five index rows when those two files are ported.
 - No doubtful passage found: no email, institution hint, personal path or machine identifier in the
   ported text.
+
+### Animated icons rule (frontend-agent, root rules)
+The source rule names the private monorepo's shared icon module by its package scope and mentions its design
+system package by name. The mirror says "shared icon module" and "design system" instead, and shows the import
+path as a placeholder.
