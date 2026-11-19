@@ -340,13 +340,16 @@ export const NAV_ITEMS: NavGroup[] = [
 
 ```tsx
 // Sidebar.tsx
-// Animated Solar icon written in shared/ (see the Icons section of the root rules); the whole target triggers the animation
-<AnimateIcon animateOnHover animateOnTap completeOnStop asChild>
+// Animated Solar icon from the shared icon module (see the Icons section of the root rules).
+// The whole target triggers the animation, on hover and click only.
+import { AddCircleLinear, InteractiveIcons } from '<shared icon module>';
+
+<InteractiveIcons>
   <button className="quick-action-btn" onClick={onQuickAction}>
-    <AddCircle />
+    <AddCircleLinear />
     {quickActionLabel}
   </button>
-</AnimateIcon>
+</InteractiveIcons>
 ```
 
 ### Accented main item
