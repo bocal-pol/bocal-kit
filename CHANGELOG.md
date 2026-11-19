@@ -18,6 +18,11 @@ be added or enriched without being a breaking change.
 
 ## [Unreleased]
 
+### Fixed
+
+- `INSTALL.md`: `context7` and `sequential-thinking` are registered at user scope (`--scope user`).
+  Without it, they only exist for the folder where the command ran, and are missing in other projects.
+
 ### Added
 
 - Delegation to Codex (OpenAI, installed in WSL: under native Windows its sandbox blocks reads and

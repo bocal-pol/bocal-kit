@@ -78,7 +78,7 @@ Provides live library documentation (React, Laravel, Angular…), instead of pot
 training data.
 
 ```bash
-claude mcp add context7 -- npx -y @upstash/context7-mcp
+claude mcp add --scope user context7 -- npx -y @upstash/context7-mcp
 ```
 
 ### Sequential Thinking — structured reasoning
@@ -86,8 +86,12 @@ claude mcp add context7 -- npx -y @upstash/context7-mcp
 Enables multi-step reasoning for architecture decisions, complex debugging, and sprint planning.
 
 ```bash
-claude mcp add sequential-thinking -- npx -y @modelcontextprotocol/server-sequential-thinking
+claude mcp add --scope user sequential-thinking -- npx -y @modelcontextprotocol/server-sequential-thinking
 ```
+
+> **`--scope user` is required**, as for the servers in the next section. Without it, `claude mcp add`
+> registers the server for the current folder only. The server is then missing in all other projects.
+> Check from a folder outside the repo: `cd ~ && claude mcp list`.
 
 ---
 
