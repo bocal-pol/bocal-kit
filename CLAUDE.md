@@ -326,35 +326,54 @@ Use the **MCP server** `sequential-thinking` (not a skill: there is no
 `skills/sequential-thinking/`) for any complex multi-step reasoning — architecture decisions,
 difficult debugging, sprint planning, complexity estimation.
 
-## MCP consent — propose, remember, never re-ask a refusal
+## MCP and plugin consent — propose, remember, never re-ask a refusal
 
-Before the very first use of an `mcp__<server>__*` tool in a session, if that server has no
-decision recorded yet for this project, Claude must **stop and ask** via `AskUserQuestion` (never
-a silent call) — not a shell hook, which can only allow/block with no way to ask a question: it's
-the model's job to detect the situation and stop before invoking the tool.
+A **component** is an MCP server (`mcp__<server>__*`), a Claude Code plugin
+(`/<plugin>:<command>`, for example `floorplan`), or an external CLI tool that a skill calls (for
+example Codex in WSL, see `codex-bridge`), together with the CLI tool they may depend on.
+
+Before the very first use of a component in a session, if that component has no decision recorded
+yet for this project, Claude must **stop and ask** via `AskUserQuestion` (never a silent call) — not
+a shell hook, which can only allow/block with no way to ask a question: it's the model's job to
+detect the situation and stop before invoking the tool.
+
+**Component required but absent.** When a skill or an agent of this repository needs a component that
+the user has not installed (absent from `claude mcp list` or `claude plugin list`), Claude **always
+offers to install it** via `AskUserQuestion`, with the exact command and what the component sends
+outside. The exception is a refusal already recorded. In that case Claude falls back to the
+alternative of the skill (or says there is none) and does not ask again.
 
 **Choice registry**: `.claude/mcp-choices.json` at the project root, **gitignored** (a personal,
-machine-specific choice, never shared or pushed to any repo). Format:
+machine-specific choice, never shared or pushed to any repo). The file name is historical: it also
+covers plugins, with keys prefixed `plugin:`. Format:
 
 ```json
 {
   "context7": { "decision": "accepted", "decided_at": "2026-11-04" },
-  "hf-image": { "decision": "declined", "decided_at": "2026-11-04" }
+  "hf-image": { "decision": "declined", "decided_at": "2026-11-04" },
+  "plugin:floorplan": { "decision": "accepted", "decided_at": "2026-11-18" }
 }
 ```
 
 **Rules**:
 
-- A server already in `.mcp.json` (project scope) or configured with `--scope user` is considered
-  "declared" — proposing its **use** doesn't mean installing it, it already is. For a server that
-  isn't yet declared, an acceptance triggers the matching install action
-  (`claude mcp add --scope user ...` or an addition to `.mcp.json` depending on the intended scope)
-  before continuing the task that needed it.
+- **Every component that a skill or an agent of this repository uses is added to `install.ps1` and to
+  `INSTALL.md`** in the same PR. The script installs it in an idempotent way (helper
+  `Add-McpServer` for an MCP, `Add-ClaudePlugin` for a plugin). A component that a skill cites but
+  the install script does not contain is a gap to fix.
+
+- A server already in `.mcp.json` (project scope) or configured with `--scope user`, or a plugin
+  already listed by `claude plugin list`, is considered "declared" — proposing its **use** doesn't
+  mean installing it, it already is. For a component that isn't yet declared, an acceptance triggers
+  the matching install action (`claude mcp add --scope user ...`, an addition to `.mcp.json`
+  depending on the intended scope, or `claude plugin marketplace add` then `claude plugin install`)
+  before continuing the task that needed it. A plugin is active only after `/reload-plugins` or a
+  restart of the session: tell the user.
 - An **acceptance** is recorded, then the tool is used normally in every following session with no
   further asking.
 - A **refusal** is recorded and **respected silently** in every following session — that specific
-  server is never proposed again, with the single exception below.
-- **Exception**: an update that significantly changes what an already-refused server does (a new
+  component is never proposed again, with the single exception below.
+- **Exception**: an update that significantly changes what an already-refused component does (a new
   exposed tool, a change in data scope, a change of provider) justifies asking again — never a
   plain periodic re-ask with no real change.
 - If `.claude/mcp-choices.json` doesn't exist yet, create it on the first decision rather than

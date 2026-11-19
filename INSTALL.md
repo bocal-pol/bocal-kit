@@ -155,6 +155,64 @@ python -m graphify install --platform claude
 
 ---
 
+## 4c. Codex — second opinion and task delegation (OpenAI)
+
+Used by the skills `codex-delegate` (small bug, broken test), `codex-review` (review → inconsistency
+report), `codex-explore` (read-only exploration), `transfer` (hand over when Claude reaches its
+limit) and the mode `/team-dev --codex`. **Codex is optional.** Without it, Claude does the work
+itself.
+
+> ⚠️ **Privacy.** The code you give to Codex is sent to OpenAI. Each send asks for your consent. Do
+> not use it on a repository that contains secrets or code that must not leave your machine.
+
+### Why WSL
+
+Under native Windows, the sandbox of Codex blocks reading and writing files (observed). Codex must
+therefore run **inside WSL** (Ubuntu). These skills use neither the Windows Codex nor the official
+plugin `codex@openai-codex`: the plugin always starts the Windows Codex.
+
+### Installation
+
+The script `install.ps1` is not yet ported into this repository (see `PENDING-WORK.md`). Install
+Codex by hand, in Ubuntu:
+
+```bash
+npm install -g --prefix "$HOME/.local" @openai/codex
+```
+
+Prerequisites: WSL with Ubuntu (`wsl --install`), Node.js and npm inside Ubuntu.
+
+### ⚠️ Login — the step people miss
+
+**The installation is not enough: you must log in once, with a ChatGPT account** (the free plan is
+enough, with limited quotas). A script cannot do it for you, because the login is interactive.
+
+1. **Enable device code login in ChatGPT**: *Settings → Security* → allow the device code for Codex.
+   **Without this setting, the login fails** with a red message.
+2. Open Ubuntu: `wsl`.
+3. Run: `~/.local/bin/codex login --device-auth`. A code appears.
+4. Open the address shown **in your browser** and type the code **on the web page**, not in the
+   terminal. The terminal must only wait. Click *Continue*.
+5. Check: `~/.local/bin/codex login status` must show `Logged in using ChatGPT`.
+
+Until this is done, the `codex-*` skills say so clearly and Claude works alone. Never copy the file
+`~/.codex/auth.json` from Windows to WSL: log in inside WSL.
+
+### Quota
+
+If Codex reaches its limit, Claude takes the task back automatically and tries Codex again at the next
+use. The state is in `~/.claude/codex/state.json` (local, ignored by git).
+
+### Verify
+
+```bash
+bash ~/.claude/skills/codex-bridge/scripts/codex-bridge.sh check
+```
+
+Or `/team-dev --codex status`.
+
+---
+
 ## 5. Verify the installation
 
 ```bash
