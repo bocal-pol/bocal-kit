@@ -42,6 +42,7 @@ context).
 /team-dev --dev-tools [up|down|ps|logs|track|check] ← PostHog/Uptime Kuma dev-only (observability)
 /team-dev --deps                        ← dependency updates
 /team-dev --versions [target]           ← checks language/framework versions, proposes an upgrade plan
+/team-dev --codex <fix|review|explore|status> [context] ← delegates to Codex (OpenAI, via WSL): small bug/broken test, review → report → fix, read-only exploration; falls back to Claude if Codex is unavailable
 /team-dev --qa-lead [target]            ← tests, E2E automation, perf, adversarial tests (adversarial-tester), loop until green
 /team-dev --qa-lead --adversarial [target] ← only the adversarial campaign: clumsy or twisted user, on a test environment
 /team-dev --bug [file|description]      ← error validation + memory rules
@@ -108,7 +109,7 @@ Accept either the alias or the long mode interchangeably: `/team-dev -back` is e
 | `-front` | `--frontend` | `-data` | `--data` |
 | `-mob` | `--mobile` | `-integ` | `--integration` |
 | `-infra` | `--infrastructure` | `-ops` | `--it-operations` |
-| `-agile` | `--coordination` | | |
+| `-agile` | `--coordination` | `-cdx` | `--codex` |
 
 The routing modes (`--auto`, `--full`, `--audit`, `--bootstrap`) and the utilities (`--ask`,
 `--query`, `--graph-impact`) have no alias: write them out in full.
@@ -986,6 +987,31 @@ AskUserQuestion to invoke `version-updater` to produce the update plan.
 **Expected output**: `reports/version-checker/YYYY-MM-DD_version-checker.md`, then
 `reports/version-updater/YYYY-MM-DD_version-updater.md` if the plan is requested
 **⚠️ Fallback**: display `⚠️ version-checker unavailable`
+
+#### `--codex <fix|review|explore|status> [context]`
+
+Delegate to Codex (OpenAI, installed in WSL) the work that suits it. **Never block the work.** If Codex
+is unavailable (not logged in, quota exhausted), Claude does the task itself. Every send to Codex needs
+the consent of the user, because the code goes to OpenAI. The `codex-bridge` skill holds the details
+(login, consent, fallback, worktree).
+
+| Sub-mode | Skill called (Skill tool, one call) | Use |
+| --- | --- | --- |
+| `fix [description]` | `codex-delegate` | Small local bug, broken test, boilerplate tests. Codex works in an isolated worktree. Claude reviews, tests and commits |
+| `review [report\|second-opinion\|docs] [target]` | `codex-review` | Read-only review → inconsistency report → Claude verifies and fixes. `second-opinion` before a PR. `docs` checks the documentation against the code |
+| `explore <question>` | `codex-explore` | Question about a large repository, short summary with verified references |
+| `status` | `codex-bridge` (`check` command) | Is Codex ready, logged in, under quota? Shows the complete **Login block** if it is not |
+
+Without a sub-mode: ask with `AskUserQuestion` which of the four.
+
+**Choose Codex or Claude.** Delegate to Codex what is bounded, verifiable by one command and low risk
+(see "What we delegate" in `codex-delegate`). Keep authentication, access rights, secrets and
+architecture for Claude. When in doubt, do not delegate. The transfer of the session to Codex
+(`/transfer`) is human-only. Never invoke it from here. Offer it to the user.
+
+**Expected output**: `fix` — short report in the reply; `review` — `reports/codex-review/YYYY-MM-DD_<mode>.md`; `explore` — verified summary in the reply; `status` — summarized state as JSON
+**⚠️ Fallback**: display `⚠️ codex-bridge unavailable` and handle the request with Claude (`code-reviewer`
+for a review, `Grep`/`Read` for an exploration, direct fix for a bug)
 
 #### `--qa-lead [target]`
 

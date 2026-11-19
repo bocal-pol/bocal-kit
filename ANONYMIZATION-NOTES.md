@@ -115,3 +115,18 @@ drops the specific national/institutional identifier.
   `ProfilDirICT/`) used to organize the source's own multi-profile ICT setup. Replaced with generic
   placeholder names (`<technical-profile>/`, `<network-profile>/`, `<director-profile>/`) and a note
   that these only matter if the adopting project runs multiple ICT sub-profiles.
+
+## Codex delegation port — additional decisions
+
+- **`codex-bridge.mjs` comment on 8.3 short names**: the source comment used a localized Windows
+  user-folder short name as the example. Replaced by the neutral example `USERNA~1`. The behavior of
+  the code is unchanged.
+- **"observed on this workstation" wording** (sandbox blocked under native Windows): the source said
+  the observation was made on the maintainer's machine. Reworded to "observed" with no machine
+  reference.
+- **Not ported: `install.ps1` Phase 4c and `skills/SKILLS_INDEX.md` rows.** Neither file exists in
+  this repository yet (both are listed in `PENDING-WORK.md`). The Codex login walkthrough is ported to
+  `skills/codex-bridge/SKILL.md` and `INSTALL.md` (section 4c). Port the `install.ps1` box and the
+  five index rows when those two files are ported.
+- No doubtful passage found: no email, institution hint, personal path or machine identifier in the
+  ported text.

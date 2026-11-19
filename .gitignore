@@ -36,6 +36,12 @@ CLAUDE.local.md
 # ─── Ephemeral working files (unlazy gates, scratch) ──────────────────────────
 .claude/tmp/
 
+# ─── Local state of the Codex bridge (quota exhausted / return), machine-specific ──
+/codex/
+
+# ─── Local registry of MCP / plugin choices (accepted or declined), machine-specific ─
+.claude/mcp-choices.json
+
 # ─── Isolated session/subagent worktrees (isolation: worktree) ────────────────
 .claude/worktrees/
 

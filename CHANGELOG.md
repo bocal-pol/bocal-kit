@@ -20,6 +20,18 @@ be added or enriched without being a breaking change.
 
 ### Added
 
+- Delegation to Codex (OpenAI, installed in WSL: under native Windows its sandbox blocks reads and
+  writes, observed). Skills: `codex-bridge` (bridge, consent before each send, fallback to Claude when
+  the quota is exhausted with a re-check at the next use, isolated worktree), `codex-delegate` (small
+  bug, broken test, boilerplate tests), `codex-review` (review → report → fix by Claude; modes report,
+  second-opinion, docs), `codex-explore` (read-only) and `transfer` (hand over when Claude reaches
+  its limit). Mode `/team-dev --codex` (alias `-cdx`). Option `goodnight --handoff-codex` (Codex
+  continues the plan when the quota stops Claude). The ChatGPT login, a step the installation cannot
+  do, is explained in full by the skill and in `INSTALL.md` (section 4c). The official plugin is not
+  used: it starts the Windows Codex.
+- Rule "MCP and plugin consent": a component (MCP or plugin) that a skill requires but that is absent
+  is always offered for installation, unless a refusal is already recorded. Every component a skill
+  uses must appear in `install.ps1` and `INSTALL.md`.
 - ADR 0077 and the "Business model and access rights" rule: token bucket quota (X tokens, one token
   returned every Y/X) instead of a fixed window, free / freemium / paid levels per application, an
   administration backend whose location is asked from the user. Seventh axis of upfront alignment;

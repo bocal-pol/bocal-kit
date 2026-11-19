@@ -183,6 +183,31 @@ Known limits:
   tokens (`CLAUDE.md`, tools, memory). Size `--max-tokens` on that rate.
 - No per-tool guard in mode B: the supervisor watches the flow, it does not filter calls.
 
+## Option — hand over to Codex when the quota stops Claude
+
+When the quota of Claude is exhausted, another assistant (Codex, OpenAI) can continue the plan in an
+**isolated worktree**. This option is explicit. It is never the default, because the code goes to
+OpenAI.
+
+- **Consent at bedtime**: offer the option in one question (`AskUserQuestion`). Say that the code of
+  the repository goes to OpenAI. Without a "yes", enable nothing. The "yes" is valid for this night and
+  this worktree only.
+- **Prerequisite**: Codex is installed and logged in inside WSL. Run
+  `bash ~/.claude/skills/codex-bridge/scripts/codex-bridge.sh check` **before you leave**. For code 10,
+  11 or 21, show the complete **Login block** of the `codex-bridge` skill. Do not promise the handoff
+  until the problem is solved. In the middle of the night nobody can log in. It is too late then.
+- **Mode B (supervisor)**: add `--handoff-codex` to `goodnight.sh supervise`. A stop for quota (code 4)
+  then starts the handoff. A deadline (code 5) or a normal end does not.
+- **Mode A (interactive)**: when you close a night that the quota stopped, run
+  `bash ~/.claude/skills/goodnight/scripts/goodnight.sh handoff --plan <plan file> --notes .goodnight/NIGHT-NOTES.md`.
+- **Effect**: Codex resumes the plan at the first unfinished step, in `.claude/worktrees/codex-night-<date>`.
+  It **does not commit or push**. Its report is in `.goodnight/CODEX-RESULT.md`. The handoff (done,
+  skipped or stopped) is noted in `NIGHT-NOTES.md`.
+- **If Codex is unavailable** (not logged in, quota exhausted): the handoff is skipped **without
+  error**. The reason is noted for the morning. The night closes as usual.
+- **In the morning**: read the diff of the worktree, run the complete suite, then commit and merge by
+  hand (or discard the worktree). The night bans apply to Codex as they do to Claude.
+
 ## Troubleshooting
 
 - **Skill commands**: always `bash ~/.claude/skills/goodnight/scripts/goodnight.sh <command>`, never

@@ -77,6 +77,11 @@ they port each file, and must cross-check against the names already listed here 
 | `unlazy` | `unlazy` | Already English, kept as-is |
 | `areopage` | `areopage` | Proper noun, kept as-is |
 | `dpo-toolkit` | `dpo-toolkit` | Already English, kept as-is |
+| `codex-bridge` | `codex-bridge` | New (Codex delegation). Already English, kept as-is |
+| `codex-delegate` | `codex-delegate` | New (Codex delegation). Already English, kept as-is |
+| `codex-review` | `codex-review` | New (Codex delegation). Already English, kept as-is |
+| `codex-explore` | `codex-explore` | New (Codex delegation). Already English, kept as-is |
+| `transfer` | `transfer` | New (Codex delegation). Already English, kept as-is |
 
 _Remaining skills (already clear in English, e.g. `laravel-developer`, `react-developer`,
 `code-review`) keep their name unchanged — only translated if their content was in French. This
