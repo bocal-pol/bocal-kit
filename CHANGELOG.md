@@ -20,6 +20,10 @@ be added or enriched without being a breaking change.
 
 ### Changed
 
+- **Icons: Lucide replaces Solar** (root rules, `frontend-agent`, `backend-agent`, ADR 0007 revised). `solar-icon-set`
+  is under GPL-3.0, and the animated icons copied its drawings. Lucide is under ISC. In React, the animated icons
+  come from the shared icon module under the name `<LucideName>Icon` (141 Animate UI versions, 81 generated). Outside
+  React, the Lucide icon stays static.
 - Icons rule (root rules, `frontend-agent`): in React, import the animated Solar icons from the shared icon
   module (same names as `solar-icon-set`). Do not write an icon file by hand. Design-system buttons animate
   their icons already. A helper wraps native links and buttons.

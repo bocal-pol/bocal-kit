@@ -198,7 +198,7 @@ Reference: the "Sidebar — Information architecture" rule in `CLAUDE.md`.
 // ✅ By business intent
 NavigationGroup::make('Request processing')
     ->items([...])
-    ->icon('heroicon-o-...')  // Solar equivalent via custom icon set
+    ->icon('lucide-...')  // Lucide via the blade-lucide-icons package
     ->collapsed(false),
 
 // ❌ To avoid
@@ -219,7 +219,7 @@ protected static ?int $navigationSort = 1; // 1 = main feature, 99 = Settings
 
 ```php
 // Main resource
-protected static ?string $navigationIcon = 'solar-bolt-bold'; // bold icon = visual accent
+protected static ?string $navigationIcon = 'lucide-zap'; // main icon = visual accent
 protected static ?int $navigationSort = 1;
 protected static ?string $navigationBadge = 'Main'; // optional
 

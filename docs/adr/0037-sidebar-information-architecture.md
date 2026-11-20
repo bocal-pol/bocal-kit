@@ -28,7 +28,7 @@ Recommended slot order:
 ### 3. Highlighting the primary feature
 
 Two combined mechanisms:
-- **A position-1 item** with distinct visual treatment (accent color, a slightly larger Solar icon, a permanent selection background)
+- **A position-1 item** with distinct visual treatment (accent color, a slightly larger Lucide icon, a permanent selection background)
 - **A fixed quick-action button** pinned at the top (`+ New request`, `+ Create a user`…) — the operator acts without navigating first
 
 ## Positive consequences

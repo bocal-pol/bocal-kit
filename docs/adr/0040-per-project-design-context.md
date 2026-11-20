@@ -13,7 +13,7 @@ Design agents (`design-agent`, `ux-designer`, `artifact-design`) rediscovered th
 
 Scaffolded by `project-bootstrap-agent` or `/init`, read directly by design agents before any work:
 
-- **`DESIGN.md`** — color palette (OKLCH recommended), typography stack, component-kit rules, critical visual constraints, icon library (Solar, see ADR 0007)
+- **`DESIGN.md`** — color palette (OKLCH recommended), typography stack, component-kit rules, critical visual constraints, icon library (Lucide, see ADR 0007)
 - **`PRODUCT.md`** — target audience, success metrics, brand voice, accessibility floor (WCAG AA minimum)
 
 If missing, the design agent creates them in Phase 1 — it doesn't start without them.
