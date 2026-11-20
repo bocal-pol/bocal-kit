@@ -30,7 +30,7 @@ Structural decisions for this ecosystem and the cross-cutting conventions applie
 | --- | --- | --- | --- |
 | [0003](0003-ui-states-4-mandatory-states.md) | 4 mandatory UI states for every asynchronous render | accepted — canonical | Frontend |
 | [0005](0005-error-messages-3-parts.md) | Mandatory 3-part error messages | accepted | UI + API |
-| [0007](0007-solar-icons.md) | Solar icon library: the single standard | accepted | All projects |
+| [0007](0007-solar-icons.md) | Icon library: the single standard (Lucide, replaces Solar) | accepted, revised | All projects |
 | [0010](0010-ikea-effect-progressive-ownership.md) | IKEA effect: progressive ownership | accepted | B2C |
 | [0011](0011-saveme-pattern-feedback-non-modal.md) | SaveMe: non-modal feedback for reversible actions | accepted | UI |
 | [0012](0012-impact-radar-cascading-deletion.md) | Impact radar: transparency for cascading deletions | accepted | UI + back |

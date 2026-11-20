@@ -305,21 +305,21 @@ export const NAV_ITEMS: NavGroup[] = [
   {
     id: 'main',
     label: 'Dashboard',   // main feature — always at index 0
-    icon: 'solar:bolt-bold',
+    icon: 'lucide:zap',
     route: '/dashboard',
     accent: true,               // distinct visual treatment
   },
   {
     id: 'processing',
     label: 'Request processing',  // intent, not model
-    icon: 'solar:checklist-bold',
+    icon: 'lucide:list-checks',
     children: [...]
   },
   // ... max 5 additional groups
   {
     id: 'settings',
     label: 'Settings',        // always last
-    icon: 'solar:settings-bold',
+    icon: 'lucide:settings',
     route: '/settings',
   },
 ]
@@ -331,7 +331,7 @@ export const NAV_ITEMS: NavGroup[] = [
 ```ts
 // sidebar.component.html
 <button class="quick-action-btn" (click)="onQuickAction()">
-  <solar-icon name="add-circle" />
+  <svg lucideCirclePlus></svg>
   {{ quickActionLabel }}  <!-- "New request", "Create a case"... -->
 </button>
 ```
@@ -340,13 +340,13 @@ export const NAV_ITEMS: NavGroup[] = [
 
 ```tsx
 // Sidebar.tsx
-// Animated Solar icon from the shared icon module (see the Icons section of the root rules).
+// Animated Lucide icon from the shared icon module (see the Icons section of the root rules).
 // The whole target triggers the animation, on hover and click only.
-import { AddCircleLinear, InteractiveIcons } from '<shared icon module>';
+import { CirclePlusIcon, InteractiveIcons } from '<shared icon module>';
 
 <InteractiveIcons>
   <button className="quick-action-btn" onClick={onQuickAction}>
-    <AddCircleLinear />
+    <CirclePlusIcon />
     {quickActionLabel}
   </button>
 </InteractiveIcons>

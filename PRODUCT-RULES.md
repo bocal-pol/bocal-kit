@@ -107,7 +107,7 @@ Two mandatory, combined mechanisms:
 **Main item first, visually distinct:**
 
 - Position 1 at the top of the sidebar
-- Differentiated visual treatment: accent color, a slightly larger Solar icon, or a permanent
+- Differentiated visual treatment: accent color, a slightly larger Lucide icon, or a permanent
   selection background
 - Never bury the main feature in a subgroup
 
@@ -116,7 +116,7 @@ Two mandatory, combined mechanisms:
 - A `+ [New main action]` button pinned at the top of the sidebar, always visible
 - Independent of navigation — the operator can create without navigating first
 - Example: `+ New request`, `+ New case`, `+ Create a user`
-- Style: primary button (accent color), Solar `add` or `add-circle` icon
+- Style: primary button (accent color), Lucide `plus` or `circle-plus` icon
 
 ```text
 ┌─────────────────────────┐
@@ -400,7 +400,7 @@ Presentation rules:
 
 - **Always real names** — never "3 tasks" alone with no identification
 - **Grouped by entity type** (Tasks, Files, Users, Contracts…)
-- **Alert icon** (⚠️ or Solar equivalent) to visually mark the impact zone
+- **Alert icon** (⚠️ or Lucide equivalent, e.g. `triangle-alert`) to visually mark the impact zone
 - **Read-only** — the user reviews it, they can't modify the deletion scope from the radar
 - **Truncation** beyond 5 items per group: show the first 5 + "… and N more" (no infinite scroll in
   a modal)
