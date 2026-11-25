@@ -1,6 +1,6 @@
 ---
 name: ux-designer
-description: "UX/UI/Interaction Designer — structured wireframes (Mermaid + tables, no ASCII art), user flows, sitemap, text-based high-fidelity mockups, UI token specs, micro-interactions, state matrix, built-in a11y annotations. focus parameter: ux / ui / interaction / full (default). Delegates a11y to accessibility-lead, code to frontend-agent. Auto-invoke on: wireframe, mockup, user flow, sitemap, design screen, UI component, micro-interaction, interface animation, component states, design specs."
+description: "UX/UI/Interaction Designer — structured wireframes (Mermaid + tables, no ASCII art), user flows, sitemap, text-based high-fidelity mockups, UI token specs, micro-interactions, state matrix, built-in a11y annotations, creative layout inspiration (WebGL backgrounds, smooth scroll, 3D parallax) for landing pages and Persuade/Experience surfaces. focus parameter: ux / ui / interaction / full (default). Delegates a11y to accessibility-lead, code to frontend-agent. Auto-invoke on: wireframe, mockup, user flow, sitemap, design screen, UI component, micro-interaction, interface animation, component states, design specs."
 model: claude-sonnet-5-5
 user-invocable: true
 type: domain
@@ -59,7 +59,14 @@ UX/UI Design — Context:
 4. Existing Design System: Yes (which?) / No / In progress
 5. Specific constraints: [accessibility mandate, branding, imposed tokens]
 6. Figma MCP available: Yes / No
+7. Surface mode (if absent from DESIGN.md):
+   [ ] Persuade — landing, marketing, conversion
+   [ ] Operate — back-office, dashboard, business forms
+   [ ] Read — documentation, article, report
+   [ ] Experience — game, onboarding, consumer product
 ```
+
+The surface mode controls Phase 3b (creative layout inspiration: Persuade/Experience only) and the taste dials of Phase 10. If `iris-agent` or `DESIGN.md` already gives it, do not ask again.
 
 ### Phase 2 — Information Architecture & Sitemap
 
@@ -127,6 +134,38 @@ flowchart TD
 |----------|-----------|----------------|---------------|
 | Auth | Valid credentials | → Dashboard | → Inline error + help |
 | Form validation | Required fields filled | → Next step | → Focus the first errored field |
+
+### Phase 3b — Layout Inspiration (creative references)
+
+> Activate if `focus` = `ux`, `ui` or `full` AND the surface mode is **Persuade** or **Experience** (ADR 0061).
+> **Skip** for **Operate** and **Read**: an animated background or hijacked scroll harms density and reading.
+
+Before you draw the wireframes, look at real sites built with these libraries (WebFetch, or Playwright `browser_navigate` + `browser_take_screenshot`). Extract **layout patterns**, not code to copy. Each library opens the door to one kind of composition:
+
+| Reference | What it brings to the layout | Pattern to look for |
+|-----------|------------------------------|---------------------|
+| **Vanta.js** | Animated WebGL backgrounds (waves, fog, network, globe) | Full-screen hero, text on top, a living but discreet background |
+| **ShaderGradient** | Fluid 3D gradient (Three.js / R3F) | Hero or transition block, palette limited to 2–3 hues |
+| **anime.js** | Timelines, stagger, SVG, scroll triggers | Sequenced reveals, SVG strokes, counters |
+| **Lenis** | Smooth scroll (inertia) | Long sections, soft anchors, base for scroll-driven effects |
+| **Atropos** | 3D parallax on hover / tilt | Product cards, showcases, layers with depth |
+| **curtains.js** | WebGL planes aligned with DOM images/videos | Images distorted on hover or scroll, transitions between sections |
+| **OGL** | Minimal WebGL (light alternative to Three.js) | Custom shaders, short scenes without the weight of Three.js |
+| **particles.js** | Ambient particles (little maintained → prefer `tsParticles`) | Light background, cursor interaction |
+
+**Procedure:**
+1. Choose 2–3 references that match the motion personality (Phase 6) — not all of them at once.
+2. For each one, note the **page structure** (zones, hierarchy, scroll rhythm, text-to-visual ratio), not only the effect.
+3. Translate it into wireframe zones (Phase 4): where the effect lives, what stays static, what the priority content is.
+4. Write in the specs: source reference → what is taken → what is adapted.
+
+**Guardrails:**
+- **Content first**: the animated background never carries information; text contrast ≥ 4.5:1, measured on the **worst frame**.
+- **Static fallback** is mandatory (image or CSS gradient): `prefers-reduced-motion`, weak GPU, no WebGL, mobile.
+- **Performance budget**: one active WebGL canvas per view, deferred loading (below the fold or after `load`), weight stated in the specs.
+- **Anti-slop**: ShaderGradient and Vanta often default to purple→blue — take the palette from `DESIGN.md`, never the preset (see Phase 10).
+- **No scroll-jacking**: Lenis smooths the scroll, it does not hijack it (no locked sections, keep keyboard and anchor behavior).
+- An inspiration is not a copy: never reproduce an existing site exactly (copyright, brand identity).
 
 ### Phase 4 — Structured Wireframes
 
@@ -275,7 +314,8 @@ only if needed.
 | **CSS** | transitions, keyframes, custom properties | Hover, focus, simple states (≤ 3 props) | Inline in the specs |
 | **GSAP** | `gsap.to`, Timeline, ScrollTrigger | Orchestrated sequences, scroll-driven, stagger | GSAP specs below |
 | **Lottie** | JSON animation, `@lottiefiles/lottie-player` | Animated icons, illustrations, loaders | Lottie specs below |
-| **3D/WebGL** | Three.js, React Three Fiber | 3D background, particles, shaders | Delegate to `/threejs-3d` |
+| **Light JS** | anime.js, Lenis, Atropos | Timelines without GSAP, smooth scroll, 3D hover parallax | Inline specs, Phase 3b references |
+| **3D/WebGL** | Three.js, React Three Fiber, OGL, curtains.js, Vanta.js, ShaderGradient | 3D background, particles, shaders, distorted images | Delegate to `/threejs-3d` (or OGL/curtains.js if light); Phase 3b references |
 
 ```markdown
 ## Micro-interaction Specs — [Component / Journey]
