@@ -446,6 +446,18 @@ burns that budget for nothing.
   job that never started) after a clean local check: say so explicitly before any workaround
   (`--admin`), never assume it without having verified it.
 - A project with no local check equivalent to the CI check: flag it rather than pushing blind.
+- **Run every check BEFORE the first push.** CI and review confirm a result. They do not find the
+  defects. For a visual change, run the full matrix locally: each themed app × light and dark × 390
+  and 1440 px × each screen the change touches. Add the CI checks of the repository that run locally.
+  A regression test is valid only if you saw it fail without the fix.
+- **One branch and one pull request for each work item.** Group the corrections. Do not run the
+  full chain (branch → PR → merge → PR to `main`) for each small correction: each PR starts the whole
+  CI again.
+- **Bump a submodule pointer one time**, at the end of the batch. Do not bump it after each PR of
+  the submodule: a bump PR starts as many jobs as any other PR.
+- **If the CI does not start**, read the job annotation (`gh api repos/<repo>/check-runs/<id>/annotations`)
+  before you conclude. A blocked billing account is not a defect of the content, but many PRs is what
+  uses the budget.
 
 ### Commit convention (strict Conventional Commits)
 

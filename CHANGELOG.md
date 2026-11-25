@@ -20,6 +20,10 @@ be added or enriched without being a breaking change.
 
 ### Changed
 
+- **Git workflow (`CLAUDE.md`): batched local validation before push.** Run every check locally before the first
+  push (full matrix for a visual change: app × theme × width × screen). Use one branch and one pull request for
+  each work item. Bump a submodule pointer one time, at the end of the batch. Read the annotation of a CI job
+  that does not start.
 - **`ux-designer`: creative layout inspiration phase.** New Phase 3b draws on Vanta.js, ShaderGradient, anime.js,
   Lenis, Atropos, curtains.js, OGL and particles.js for Persuade and Experience surfaces, with guardrails (contrast,
   static fallback, performance budget, palette not taken from a preset). Phase 1 asks for the surface mode when
