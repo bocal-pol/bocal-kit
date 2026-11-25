@@ -39,6 +39,7 @@ be added or enriched without being a breaking change.
 
 ### Added
 
+- **`ux-details-audit` skill**: hunt for small UX defects on the real rendering. A script (`scripts/ux-details.js`) measures the DOM with Playwright at 1440 and 390 px (edges, touch targets, orphans, split units, cut icons, emoji icons, overflows, fields without a label). Each candidate is then judged on a screenshot and ranked. Wired into `design-agent` (step 4h-3) and into Phase 10 of `ux-designer`. Method inspired by Stageshow (benjitaylor/skills, MIT), credited in `CREDITS.md`.
 - Delegation to Codex (OpenAI, installed in WSL: under native Windows its sandbox blocks reads and
   writes, observed). Skills: `codex-bridge` (bridge, consent before each send, fallback to Claude when
   the quota is exhausted with a re-check at the next use, isolated worktree), `codex-delegate` (small

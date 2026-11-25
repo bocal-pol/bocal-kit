@@ -21,6 +21,7 @@ experiments).
 | [lucasmarkes/hairline](https://github.com/bocal-pol/hairline) | `hairline-create`, `hairline-adopt` | Interactive isometric figures, adapted into a generation skill |
 | [helloianneo/ian-xiaohei-illustrations](https://github.com/helloianneo/ian-xiaohei-illustrations) | `editorial-sketch` | Editorial illustration style convention |
 | [zanwei/design-dna](https://github.com/zanwei/design-dna) | `design-dna` | Persistent stylistic fingerprint concept |
+| [benjitaylor/skills](https://github.com/bocal-pol/benjitaylor) (Stageshow skill, MIT licence) | `ux-details-audit` | Verification method: detectors that measure CSS boxes, then judgment on an image, fresh-eye review, "what you see / what you do" table. Detectors rewritten for real interfaces, no code reused |
 | [CloudAI-X/threejs-skills](https://github.com/bocal-pol/threejs-skills) | `threejs-3d` | Base of the Three.js skill |
 | [cloudflare/security-audit-skill](https://github.com/bocal-pol/security-audit-skill) | `ai-agent-security`, `protocol-security` | Multi-phase audit methodology with verified findings |
 | [public-apis/public-apis](https://github.com/bocal-pol/public-apis) | `api-finder` | Source catalog (maintained fork, static snapshot — see ADR 0066) |

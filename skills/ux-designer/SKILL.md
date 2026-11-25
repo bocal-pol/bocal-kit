@@ -626,6 +626,10 @@ standalone).
 > ⚠️ If `impeccable` is unavailable → display `⚠️ impeccable unavailable — manual anti-slop check
 > only`
 
+**4. When a rendering exists** (HTML mockup, application being implemented, URL passed): call the `ux-details-audit` skill to measure the small defects on the real rendering (edges, touch targets, orphans, cut icons). Without a rendering, its checkpoints serve as a manual review of the specs. This skill audits and does not fix: fixes go back into the specs or to `frontend-agent`.
+
+> ⚠️ If `ux-details-audit` is unavailable → display `⚠️ ux-details-audit unavailable — manual review of finishing touches only`
+
 ### Phase 11 — Memory
 
 > ⚠️ Skip if invoked from `design-agent`.
