@@ -125,6 +125,22 @@ claude mcp login hf-t2v
 > itself. Without `--scope user`, `imagine` and `animate` find no HF server in a real project.
 > Verify with: `claude mcp list` should show `hf-image` and `hf-t2v` from any folder.
 
+### Notion — report publishing (`skill-gap-analyzer` skill)
+
+Hosted MCP server from Notion, browser **OAuth** authentication. No local install: a Notion account is enough.
+The skill creates a private draft page with its report. Without Notion, it writes a local file.
+
+**Step 1 — Register the server** (done by `install.ps1`):
+
+```bash
+claude mcp add --transport http notion https://mcp.notion.com/mcp --scope user
+```
+
+**Step 2 — Authenticate** (once): in Claude Code, run `/mcp`, pick `notion`, then `Authenticate`.
+
+> What Notion receives: the report content only (short excerpts, secrets masked).
+> Verify with: `cd ~ && claude mcp list` should show `notion`.
+
 ### Playwright — interactive E2E tests
 
 Required by the `qa-automation` skill for real-time navigation and screenshots.

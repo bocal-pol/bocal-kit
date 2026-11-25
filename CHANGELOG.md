@@ -39,6 +39,10 @@ be added or enriched without being a breaking change.
 
 ### Added
 
+- **`skill-gap-analyzer` skill**: analyze the transcripts of all projects over a period and propose skills to create or to
+  change, with masked evidence and SKILL.md drafts. A script (`scripts/extract.mjs`, Node, no dependency) counts repeated
+  prompts, corrections, tool sequences and skill usage. The report goes to Notion as a private draft (fallback:
+  `.claude/tmp/`). The `notion` MCP server is added to `install.ps1`. Not the same as `friction-retro`, which covers one session only.
 - **13 `instagram-*` skills** (`instagram-reel`, `-viral`, `-caption`, `-carousel`, `-story`, `-profile`, `-plan`, `-humanizer`, `-comment`, `-reply`, `-dm`, `-repurpose`, `-audit`), from instagram-agent-skill by Jake Schincariol (MIT; licence kept in `docs/third-party/`, credit in `CREDITS.md`). Six Python scripts (standard library only, no network): hook scoring, beat sheet, caption lint, humanizer, detection panel, swipe file. Nothing is posted by these skills. The `yt-dlp` commands of the research skill are removed. The French adaptation exists only in the private source repository.
 - **`ux-details-audit` skill**: hunt for small UX defects on the real rendering. A script (`scripts/ux-details.js`) measures the DOM with Playwright at 1440 and 390 px (edges, touch targets, orphans, split units, cut icons, emoji icons, overflows, fields without a label). Each candidate is then judged on a screenshot and ranked. Wired into `design-agent` (step 4h-3) and into Phase 10 of `ux-designer`. Method inspired by Stageshow (benjitaylor/skills, MIT), credited in `CREDITS.md`.
 - Delegation to Codex (OpenAI, installed in WSL: under native Windows its sandbox blocks reads and
