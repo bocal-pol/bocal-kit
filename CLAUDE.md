@@ -880,6 +880,8 @@ duplicating the instruction in each file would create a divergence risk that a s
 The `Stop` hook (`stop.sh`) automatically shows a grouped, prioritized report of accumulated
 `pending` observations at the end of each session — no action is required to trigger it.
 
+The `UserPromptSubmit` hook (`friction-nudge.sh`) relays this rule: when a message starts with a correction ("no", "not that", "stop", "I still see..."), it reminds the model to call `friction-retro` for a short capture. A prose rule alone did not hold: 6 corrections for 2 calls over 14 days.
+
 ## Token & cost optimization
 
 Permanent rules to limit waste. The 5 levers below, from most to least impactful.

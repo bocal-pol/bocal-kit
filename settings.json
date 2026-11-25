@@ -49,6 +49,16 @@
         ]
       }
     ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash ~/.claude/friction-nudge.sh"
+          }
+        ]
+      }
+    ],
     "Stop": [
       {
         "hooks": [
