@@ -39,6 +39,21 @@ be added or enriched without being a breaking change.
 
 ### Added
 
+- **`ship-chain` skill** and `team-dev --ship` mode: chained delivery (local check, commit, `develop` PR, merge, `main` PR, then
+  both mirrors with translation, RENAME-MAP and `noreply` identity, then branch cleanup). A stop point before each merge; no
+  merge to `main` without an explicit request. Wired at the end of `team-dev` (D7, Phase 0c).
+- **`sync-claude-home` skill**: reconciles `~/.claude` and the working clone through a branch and a PR, with proof by equal `HEAD`.
+- **`friction-nudge.sh` hook** (`UserPromptSubmit`): reminds the model to call `friction-retro` when a message corrects the approach.
+- **`goodnight`: short call** (`/goodnight b 2h local --plan PLAN.md`) and prompt template `scripts/night-prompt.template.md`.
+- **`team-dev`: `upfront-alignment` becomes an entry gate** (Phase 0d) for modes that create or transform product. In `--full`, B1
+  now calls the `upfront-alignment` skill (the row pointed to `sprint-agent`, which plans a sprint and does not align); planning
+  becomes B1.5. `ship-chain` is D7 of `--full`.
+- **`frontend-agent` and `ux-designer`**: look at the rendering (Playwright captures at 1440 and 390 px) before declaring a screen
+  done; animation budget (one highlight animation per screen).
+- **`skill-gap-analyzer` skill**: analyze the transcripts of all projects over a period and propose skills to create or to
+  change, with masked evidence and SKILL.md drafts. A script (`scripts/extract.mjs`, Node, no dependency) counts repeated
+  prompts, corrections, tool sequences and skill usage. The report goes to Notion as a private draft (fallback:
+  `.claude/tmp/`). The `notion` MCP server is added to `install.ps1`. Not the same as `friction-retro`, which covers one session only.
 - **13 `instagram-*` skills** (`instagram-reel`, `-viral`, `-caption`, `-carousel`, `-story`, `-profile`, `-plan`, `-humanizer`, `-comment`, `-reply`, `-dm`, `-repurpose`, `-audit`), from instagram-agent-skill by Jake Schincariol (MIT; licence kept in `docs/third-party/`, credit in `CREDITS.md`). Six Python scripts (standard library only, no network): hook scoring, beat sheet, caption lint, humanizer, detection panel, swipe file. Nothing is posted by these skills. The `yt-dlp` commands of the research skill are removed. The French adaptation exists only in the private source repository.
 - **`ux-details-audit` skill**: hunt for small UX defects on the real rendering. A script (`scripts/ux-details.js`) measures the DOM with Playwright at 1440 and 390 px (edges, touch targets, orphans, split units, cut icons, emoji icons, overflows, fields without a label). Each candidate is then judged on a screenshot and ranked. Wired into `design-agent` (step 4h-3) and into Phase 10 of `ux-designer`. Method inspired by Stageshow (benjitaylor/skills, MIT), credited in `CREDITS.md`.
 - Delegation to Codex (OpenAI, installed in WSL: under native Windows its sandbox blocks reads and

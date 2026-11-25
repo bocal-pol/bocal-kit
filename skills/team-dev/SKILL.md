@@ -37,6 +37,7 @@ context).
 /team-dev --pr-review [files]           ← code review / PR
 /team-dev --sprint [goal]               ← sprint planning & backlog
 /team-dev --release [version]           ← changelog & release
+/team-dev --ship [--stop-at develop]    ← chained delivery: develop PR, main PR, mirrors (ship-chain skill)
 /team-dev --onboarding                  ← project onboarding guide
 /team-dev --project-map [target]        ← interactive HTML codebase map (Floorplan plugin)
 /team-dev --dev-tools [up|down|ps|logs|track|check] ← PostHog/Uptime Kuma dev-only (observability)
@@ -271,6 +272,8 @@ Two built-in commands are invoked automatically at the right moments, regardless
   `pending` observations — no manual invocation needed to see there's something to handle.
 - **⚠️ Fallback**: if `friction-retro` is unavailable, log frictions by hand in the observation log.
 
+**`ship-chain`** — chained delivery: at the end of a mode that produced committed code (tests green, gates proven), offer the delivery (`develop`, then a PR to `main`, then the mirrors if the shared surface is touched) by calling the Skill tool with `ship-chain`. The skill asks its own questions before each merge. **No merge to `main` without an explicit user request in the session.** Skip if nothing is committed or if the user said not to ship. **⚠️ Fallback**: if `ship-chain` is unavailable, apply the "Global Git Workflow" of `CLAUDE.md` by hand.
+
 ### Phase 0d — Coding discipline (`karpathy-guidelines` + `ponytail`)
 
 Before any mode that generates or modifies code (`--backend`, `--frontend`, `--mobile`, the
@@ -292,9 +295,16 @@ otherwise minimal. Lazy about solutions, never about reading (trace the real flo
 never trimmed: validation, error handling, security, a11y. Also minimize the **interface** (deep
 modules), not just the lines.
 
-**Ahead of a significant change**: call the Skill tool with `upfront-alignment` (an alignment
-interview + a shared `CONTEXT.md` / `CONTEXT-MAP.md` vocabulary + an ADR) **before** implementing.
-Skip if the change is trivial.
+**Alignment gate (entry)**: before launching the agent of a mode that creates or transforms product (`--backend`, `--frontend`, `--mobile`, `--infra`, `--integration`, `--data`, `--design`, `--product`, `--auto`), call the Skill tool with `upfront-alignment` (an alignment interview + a shared `CONTEXT.md` / `CONTEXT-MAP.md` vocabulary + an ADR) **before** implementing. Alignment is mandatory when the request is one of these cases:
+
+| Case | Example |
+| --- | --- |
+| New feature | "add a PDF export", "a booking page" |
+| Rework or architecture change | "move auth to SSO", "split this service" |
+| Structuring decision (stack, pattern, integration) | "Redis or an SQL queue?" |
+| Scope, edge cases or alternatives not defined | any request whose limit nobody can state |
+
+Skip, and say so in one line in the plan: rename or an obvious isolated fix, a mechanical change with no ambiguity (dependency bump, typo), alignment already done in this session for this task. When in doubt between "fix" and "feature", align: an unneeded alignment costs one question, a missing one costs a rework. `--full` calls `upfront-alignment` in B1: do not double it.
 
 **For bug fixes** (`--fix`, or a dev fixing something): call the Skill tool with `debug` —
 reproduce → minimize → ranked hypotheses → instrument → fix → regression test → cleanup.
@@ -534,7 +544,8 @@ selection_A: { core: [product-agent, architecture-agent, backend-agent, qa-lead-
 | Step | Agent / Skill | Status | Deliverables | Timestamp | Note |
 | --- | --- | --- | --- | --- | --- |
 | B0 | project-bootstrap-agent | done | intake/app-spec.md, intake/feature-backlog.md | 14:05 | |
-| B1 | sprint-agent | done | planning/sprint-01.md | 14:12 | |
+| B1 | upfront-alignment | done | CONTEXT.md, docs/adr/0001-*.md | 14:09 | |
+| B1.5 | sprint-agent | done | planning/sprint-01.md | 14:12 | |
 | B2 | product-agent | failed | — | 14:30 | Agent interrupted (context) |
 | B3 | design-agent | pending | | | |
 | C.1 | qa-lead / compliance / security | pending | | | iteration 1 |
@@ -632,7 +643,8 @@ file; each step moves through `running` → `done` / `failed` / `skipped` in tha
 | # | Group | Agent / Skill | Triggered | If unavailable |
 |---|--------|--------------|-----------|-----------------|
 | B0 | Bootstrap / Intake | `project-bootstrap-agent` | Always | ⚠️ Skip |
-| B1 | Scoping | `sprint-agent` | Always | ⚠️ Skip |
+| B1 | Alignment (interview, `CONTEXT.md`, ADR) | `upfront-alignment` | Always in `--full` — Call the Skill tool with `upfront-alignment`, passing the B0 intake. Only skip: alignment already done in this session for this task | ⚠️ Apply the 7 axes of `CLAUDE.md` by hand (AskUserQuestion), **never** a silent skip |
+| B1.5 | Sprint planning | `sprint-agent` | Always | ⚠️ Skip |
 | B2 | Product | `product-agent` | Always | ⛔ Stop |
 | B3 | Design | `design-agent` | Always | ⚠️ Skip |
 | B3.5 | SEO / GEO / LLM discovery | `open-seo` → `seo-geo` | Always (`open-seo` if selected in A0, otherwise `seo-geo`) | ⚠️ Skip + note |
@@ -764,6 +776,7 @@ Two invocation mechanisms depending on the step's nature — don't confuse them:
 | D4 | Memory | `memory-ritual` | Always — Call the Skill tool with `memory-ritual` | ⚠️ Skip |
 | D5 | Pedagogical wrap-up | `explain-diff` | Always — Call the Skill tool with `explain-diff`, passing it the mode used, the agents launched, and the decisions made during the run | ⚠️ Skip |
 | D6 | Environment retrospective (consolidation — continuous capture already active in phases B/C) | `friction-retro` | Always — Call the Skill tool with `friction-retro` | ⚠️ Skip |
+| D7 | Chained delivery | `ship-chain` | Always in `--full` when code is committed — Call the Skill tool with `ship-chain` (merge to `main` on explicit request only) | ⚠️ Skip + commands by hand |
 
 **D0 and the rest of loop C**: if `threat-intelligence` (D0) finds an active CVE (an affected
 version overlapping the stack in place), it's logged in `BACKLOG.md` (SEC section) as an ordinary
@@ -791,6 +804,7 @@ row is an execution bug, not a legitimate skip: replay it before closing the run
 | # | Group | Status | Deliverables |
 |---|--------|--------|-----------|
 | B1 | Scoping | ✅/⏭️ | ... |
+| B1.5 | Sprint planning | ✅/⏭️ | ... |
 ...
 
 ## Phase C — Quality loop
@@ -811,6 +825,7 @@ row is an execution bug, not a legitimate skip: replay it before closing the run
 | D4 | Memory | ✅/⏭️/❌ | ... |
 | D5 | Pedagogical wrap-up | ✅/⏭️/❌ | ... |
 | D6 | Environment retrospective | ✅/⏭️/❌ | ... |
+| D7 | Chained delivery (`ship-chain`) | ✅/⏭️/❌ | ... |
 
 ## Residual P2/P3 findings (non-blocking)
 [List with estimated effort — to plan via --sprint]
@@ -933,6 +948,13 @@ Dispatch: `Agent(subagent_type: "sprint-agent", prompt: "Goal: <value provided>"
 
 **Expected output**: an estimated backlog + deliverable tracking
 **⚠️ Fallback**: invoke `estimator` directly then note the missing skills
+
+#### `--ship [--stop-at develop|main]`
+
+Call the Skill tool with `ship-chain` (arguments passed as is). Do not delegate to an agent: the skill holds its own stop points.
+
+**Expected output**: table repository · develop PR · main PR · deleted branches · open points
+**⚠️ Fallback**: apply the "Global Git Workflow" of `CLAUDE.md` by hand, with no unrequested merge to `main`
 
 #### `--release [version]`
 

@@ -357,6 +357,9 @@ To create your own: `/po-creator`, which adds the agent and its registry entry.
 | `ux-researcher` | User testing, behavioral personas, journey maps, Nielsen heuristics |
 | `ux-designer` | Mermaid wireframes, user flows, UI token specs, micro-interactions, a11y |
 | `ux-details-audit` | Small UX defect hunt on the real rendering: text on edges, touch targets, orphans, cut icons, overflows |
+| `skill-gap-analyzer` | Analysis of past sessions: missing skills, skills to change, Notion report |
+| `ship-chain` | Chained delivery: develop PR, main PR, mirrors, branch cleanup (`team-dev --ship`) |
+| `sync-claude-home` | Reconcile `~/.claude` and the working clone through a branch and a PR |
 | `ux-writer` | Voice & tone, microcopy, actionable error messages, in-app onboarding |
 | `design-system` | 3-tier tokens, P0/P1/P2 component catalog, theming, Storybook |
 | `service-designer` | Service blueprint, ecosystem map, moments of truth, bottlenecks |
