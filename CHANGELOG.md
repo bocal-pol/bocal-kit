@@ -20,6 +20,10 @@ be added or enriched without being a breaking change.
 
 ### Changed
 
+- **`ux-designer`: creative layout inspiration phase.** New Phase 3b draws on Vanta.js, ShaderGradient, anime.js,
+  Lenis, Atropos, curtains.js, OGL and particles.js for Persuade and Experience surfaces, with guardrails (contrast,
+  static fallback, performance budget, palette not taken from a preset). Phase 1 asks for the surface mode when
+  `DESIGN.md` does not give it.
 - **Icons: Lucide replaces Solar** (root rules, `frontend-agent`, `backend-agent`, ADR 0007 revised). `solar-icon-set`
   is under GPL-3.0, and the animated icons copied its drawings. Lucide is under ISC. In React, the animated icons
   come from the shared icon module under the name `<LucideName>Icon` (141 Animate UI versions, 81 generated). Outside
