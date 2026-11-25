@@ -16,6 +16,16 @@
 
 ## Entries
 
+### 2026-11-24 — A named Docker volume can show inconsistent views between two consecutive `docker exec` calls
+
+- **Context**: on a backend service whose code lives in a named volume (not a bind mount), writing a test file with `docker exec -i ... tee` and reading it back with `docker exec ... ls`, `find` or `php -r 'file_exists(...)'` gave results that changed from one call to the next, with no action in between. Sometimes the file was present, sometimes absent, sometimes another file took its place. `ls` and `php` in the **same** `docker exec` agreed with each other but disagreed with the next call. `MSYS_NO_PATHCONV=1` was already set, so this was not the usual Git Bash path trap. A `docker restart` fixed only half of it: the view became stable, but the missing file stayed missing after a new write, and writes through `docker exec ... tee` did not persist reliably between two separate calls.
+- **Lesson**: on this workstation, write a file into a container with `docker cp` (Docker API, relative source path, `MSYS_NO_PATHCONV=1`). Do not use `docker exec ... tee` or `> file` for a named volume. `docker cp` stayed reliable over several consecutive calls. If consecutive reads of one path in a container contradict each other while nothing else writes there, stop looking at the command. Run `docker inspect <container> --format '{{range .Mounts}}...'` to confirm named volume or bind mount, then use `docker cp` instead of `docker exec` for every write.
+
+### 2026-11-23 — Under Git Bash, a lowercase drive letter in `cd` loads vitest twice
+
+- **Context**: on a Windows workstation, `cd c:/Projects/app/...` (lowercase drive letter, as produced by an automatic `cd` from the harness) made ALL tests fail with `Error: Vitest failed to find the current suite`. This included an unmodified file and the clean HEAD commit that was green before, replayed through `git stash` to rule out my own code. Clearing the `node_modules/.vite` cache, killing orphan node processes and checking for npm duplicates changed nothing. A web search found the real cause: Vite and vitest mix `C:` and `c:` in their internal module paths. When the process starts from a lowercase-drive path, vitest loads twice as two distinct modules (documented in Shopify/hydrogen#2579 and otomatty/stella#234).
+- **Lesson**: on this workstation, always `cd` to a Windows path with an UPPERCASE drive letter (`cd "C:/Projects/..."`) before you run `vitest` or `vite` in Git Bash. Never `cd "c:/..."`. If a vitest suite fails in bulk with this exact message, check the case of the `cd` first, before you suspect the code or the npm environment.
+
 ### 2026-10-26 — PATH-based tool detection is frozen at session startup
 
 - **Context**: `git` was not on the PATH at session startup. After making it callable mid-session,
