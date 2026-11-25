@@ -83,6 +83,7 @@ they port each file, and must cross-check against the names already listed here 
 | `codex-explore` | `codex-explore` | New (Codex delegation). Already English, kept as-is |
 | `transfer` | `transfer` | New (Codex delegation). Already English, kept as-is |
 | `ux-details-audit` | `ux-details-audit` | New (UX details audit). Already English, kept as-is |
+| `instagram-*` (13 skills) | `instagram-*` | New (Instagram pack). Already English, kept as-is |
 
 _Remaining skills (already clear in English, e.g. `laravel-developer`, `react-developer`,
 `code-review`) keep their name unchanged — only translated if their content was in French. This

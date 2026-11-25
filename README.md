@@ -361,6 +361,23 @@ To create your own: `/po-creator`, which adds the agent and its registry entry.
 | `design-system` | 3-tier tokens, P0/P1/P2 component catalog, theming, Storybook |
 | `service-designer` | Service blueprint, ecosystem map, moments of truth, bottlenecks |
 
+### Social media — Instagram
+
+Thirteen skills from [instagram-agent-skill](https://github.com/Jakeschincariol/instagram-agent-skill) (MIT). Python scripts use the standard library only and make no network call. Nothing is posted: the skills write, the user posts.
+
+| Skill | Description |
+| ------- | ------------- |
+| `instagram-plan` | The week: post types, formats, times, engagement list |
+| `instagram-reel` | A Reel from an idea: 26 scored hook formulas, script, on-screen text, beat sheet |
+| `instagram-carousel` | Carousel: cover, slide copy, files |
+| `instagram-caption` | Caption linted against the feed cut, one ask, search terms |
+| `instagram-story` | Story sequence, stickers, DM funnel |
+| `instagram-humanizer` | Strips the machine fingerprint, five-check panel |
+| `instagram-viral` | Research: reels that beat their own account, swipe file |
+| `instagram-profile` | Profile score out of 100 and rewrite |
+| `instagram-comment` · `instagram-reply` · `instagram-dm` | Engagement: comments, replies, direct messages |
+| `instagram-repurpose` · `instagram-audit` | One source into a week of posts; post-mortem of what was posted |
+
 ### Documentation
 
 | Skill | Description |
