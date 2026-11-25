@@ -448,6 +448,14 @@ if ($claudeExe) {
         'playwright', 'npx', '@playwright/mcp@latest', '--scope', 'user'
     )
 
+    # Notion — hosted MCP server (HTTP, browser OAuth). Used by the skill-gap-analyzer skill to
+    # publish its report to the user's Notion. No local install: a Notion account is enough, and
+    # authentication happens once through /mcp in Claude Code.
+    Add-McpServer -Name 'notion' -AddArgs @(
+        '--transport', 'http', 'notion', 'https://mcp.notion.com/mcp', '--scope', 'user'
+    )
+    Write-Step INFO "Notion: open Claude Code, run /mcp, pick 'notion' then 'Authenticate' (browser OAuth, once)."
+
     # Phase 3b — ICT MCPs (filesystem + optional ssh)
     Write-Host ''
     Write-Host '--- Phase 3b: ICT MCP servers ---' -ForegroundColor Magenta
