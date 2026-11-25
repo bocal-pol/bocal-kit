@@ -373,6 +373,14 @@ Invoke the `impeccable` skill with the `critique` then `audit` commands on the p
 - **Expected output**: list of critical findings + fixes applied or to apply
 - **⚠️ Fallback**: if skill unavailable → display `⚠️ impeccable unavailable — manual anti-slop review recommended before delivery`
 
+**4h-3: Small UX defect hunt**
+
+Invoke the `ux-details-audit` skill:
+- **Input**: wireframes/specs from `ux-designer`; if a URL or a dev server is already reachable (HTML mockup, application being implemented), pass it with the surface mode
+- **Action**: rendered mode (measure at 1440 and 390 px, judgment on screenshot) if a URL exists, otherwise static mode on the specs
+- **Expected output**: ranked list of defects (layout, hierarchy, interaction, finishing touches), candidates judged intentional, what was not checked
+- **⚠️ Fallback**: if the skill is unavailable → display `⚠️ ux-details-audit unavailable — manual review of finishing touches recommended before delivery`
+
 ### Phase 5 — Accessibility audit delegation
 
 Invoke the `accessibility-lead` skill (Quality group) passing the wireframes/specs produced by `ux-designer`.
@@ -430,6 +438,7 @@ Figma: [Yes/No] | Canva: [Yes/No]
 |-----------|-------|---------|--------|
 | Research | ux-researcher | design/ux-researcher/... | ✅ |
 | Wireframes | ux-designer | design/ux-designer/... | ✅ |
+| UX details | ux-details-audit | design/ux-details-audit/... | ✅ |
 | Visual DNA | design-dna | design/design-dna/..._dna.json | ✅ |
 | 3D / WebGL | threejs-3d | design/threejs-3d/... | ✅ |
 ...
