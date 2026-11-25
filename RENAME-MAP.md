@@ -84,6 +84,8 @@ they port each file, and must cross-check against the names already listed here 
 | `transfer` | `transfer` | New (Codex delegation). Already English, kept as-is |
 | `ux-details-audit` | `ux-details-audit` | New (UX details audit). Already English, kept as-is |
 | `skill-gap-analyzer` | `skill-gap-analyzer` | New (session gap analysis). Already English, kept as-is |
+| `ship-chain` | `ship-chain` | New (chained delivery). Already English, kept as-is |
+| `sync-claude-home` | `sync-claude-home` | New (home/work clone sync). Already English, kept as-is |
 | `instagram-*` (13 skills) | `instagram-*` | New (Instagram pack). Already English, kept as-is |
 
 _Remaining skills (already clear in English, e.g. `laravel-developer`, `react-developer`,

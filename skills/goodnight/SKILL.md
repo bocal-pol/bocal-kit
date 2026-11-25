@@ -6,6 +6,7 @@ type: utility
 priority: medium
 scope: cross
 disable-model-invocation: true
+argument-hint: "[a|b] [<N>h] [local] [--plan file] [--tests \"command\"]"
 dependencies: []
 conflicts: []
 ---
@@ -31,6 +32,20 @@ Two signals exist, depending on the plan (`claude auth status` → `subscription
 
 On a Team plan `rate_limits` does not exist (documented): mode A refuses to start, by design. Use
 mode B.
+
+## Short call
+
+Without this short call, the overnight prompt is pasted by hand each time. These arguments are enough:
+
+| Argument | Meaning | Default |
+| --- | --- | --- |
+| `a` or `b` | mode from the table above | from `subscriptionType` (Team, Enterprise: `b`) |
+| `<N>h` (e.g. `2h`) | maximum duration | `8h` |
+| `local` | local commits only: no `git push`, no PR, no outgoing network call | off |
+| `--plan <file>` | plan file, mandatory | ask |
+| `--tests "<command>"` | test command after each step | ask |
+
+`/goodnight b 2h local --plan PLAN.md` therefore reads: mode B, two hours, local only. For mode B, generate `.goodnight/NIGHT-PROMPT.md` from `~/.claude/skills/goodnight/scripts/night-prompt.template.md`. Replace each `{{...}}` (`LOCAL_RULES` gets "Do not push, do not open a PR, do not call an external service." if `local`, otherwise nothing). Then follow the "Mode B" section. A missing argument with no default is asked in a single question (see Preflight, step 4).
 
 ## Mode A — interactive guard (Pro, Max, Ultra)
 

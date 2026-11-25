@@ -46,6 +46,10 @@ $staged    = @(& $git -C $repo diff --cached --name-only -- $paths 2>$null)
 $untracked = @(& $git -C $repo ls-files --others --exclude-standard -- $paths 2>$null)
 $changed = @($modified + $staged + $untracked | Sort-Object -Unique)
 
+# Only prompt text files count (.md). A script (.mjs, .ps1, .sh) or a data file under skills/ is not
+# prompt surface: auditing it loaded the very heavy claude-api skill for nothing.
+$changed = @($changed | Where-Object { $_ -like '*.md' })
+
 if ($changed.Count -eq 0) {
     exit 0
 }
