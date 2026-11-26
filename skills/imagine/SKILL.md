@@ -1,9 +1,9 @@
 ---
 name: imagine
-description: "High-quality image generation via Hugging Face Z-Image-Turbo: wave-based interview, personal templates (characters/styles), + a bundled catalog of 27 structural formats (blueprint, xray, explodedview, infographic, tinyworkers...) and ~290 aesthetic modifiers (ghibli, cyberpunk, watercolor...), combinable with each other. Auto-invoke on: generate an image, illustration, visual, concept art, image template, image prompt, character sheet, Z-Image, blueprint, xray, infographic."
+description: "High-quality image prompts. By DEFAULT it writes a prompt ready to paste into Gemini and generates nothing. It generates the image with Hugging Face Z-Image-Turbo, or targets another tool (Midjourney, Flux, SDXL), only on explicit request. Wave-based interview, personal templates (characters/styles), + a bundled catalog of 27 structural formats (blueprint, xray, explodedview, infographic, tinyworkers...) and ~290 aesthetic modifiers (ghibli, cyberpunk, watercolor...), combinable with each other. Auto-invoke on: image prompt, prompt for Gemini, illustration, visual, concept art, image template, character sheet, blueprint, xray, infographic; generate an image (real generation only when asked: \"generate\", \"render it\", Z-Image)."
 model: claude-sonnet-5-5
 user-invocable: true
-argument-hint: "[quick|deep|template <name>|list-templates|format <name>|list-formats|modifier <name>|list-modifiers [category]]"
+argument-hint: "[quick|deep|template <name>|list-templates|format <name>|list-formats|modifier <name>|list-modifiers [category]] [generate|for <tool>]"
 type: specialized
 priority: high
 scope: cross
@@ -13,9 +13,7 @@ conflicts: []
 
 # imagine — High-quality image generation (Claude Code)
 
-An extreme prompt-crafting skill for generating very high-quality images. Interviews the user in
-successive waves (up to 15 questions) to extract the exact intent, then generates the image via HF
-(Z-Image-Turbo, free), or provides a copy-paste prompt if HF is unavailable.
+An extreme prompt-crafting skill for very high-quality images. It interviews the user in successive waves (up to 15 questions) to extract the exact intent. Then it **delivers by default a prompt ready to paste into Gemini**: the user makes the illustration. Real generation (HF Z-Image-Turbo, free) and the other targets (Midjourney, Flux, SDXL) happen only on explicit request.
 
 Three template families coexist in `~/.claude/image-templates/`:
 - **Personal** (`character`/`style`/`scene`/`pack`, no prefix): created by the user, to replay a
@@ -33,11 +31,11 @@ prompt.
 
 | # | Rule |
 |---|---|
-| 1 | **Never generate automatically.** Always present the final prompt, wait for user validation before generating (CLAUDE.md rule). |
+| 1 | **Default output = Gemini prompt. Never generate.** Generate an image (HF) only if the user asks for it explicitly ("generate", "render it", `generate`). Even then, show the final prompt and wait for validation before the call (CLAUDE.md rule). A request like "give me a prompt" or "do not generate" never opens generation. |
 | 2 | **Interview first, prompt second.** In `deep` mode, waves aren't skipped without explicit consent. In `format`/`modifier` mode, only the loaded template's variables are asked (Phase 2bis) — never the full interview. |
-| 3 | **Every final prompt = saved seed + params** for later rerolling, even if the user doesn't save a template. |
+| 3 | **Every final prompt = saved params** for later rerolling, even if the user does not save a template. A seed exists only if an HF generation took place. |
 | 4 | **Personal templates are versioned.** If a template already exists, propose `<name>-v2.md` or an appended `## History` section. Never a silent overwrite. |
-| 5 | **Backends**: 1) **HF `hf-image`** (free, default) → `mcp__hf-image__gr1_z_image_turbo_generate` (inline rendering); 2) **prompt-only** if HF is unavailable. |
+| 5 | **Output targets**: 1) **Gemini prompt** (default, no tool called); 2) **another target** on request (`for <tool>`, for example Midjourney, Flux, SDXL, ComfyUI); 3) **HF `hf-image`** on a generation request → `mcp__hf-image__gr1_z_image_turbo_generate` (inline rendering). If HF is unavailable: fall back to the Gemini prompt. |
 | 6 | **Templates stored in `~/.claude/image-templates/`** — a global folder shared by all Claude Code projects. |
 | 7 | **`format-` and `modifiers-` prefixes are reserved** for the skill's bundled files. A personal template must never start with these prefixes (avoids any collision). |
 | 8 | **English** in all questions and deliverables; positive/negative prompts and format/modifier fragments stay in English (better rendering on the engines). |
@@ -73,6 +71,16 @@ Read the argument passed via `argument-hint`.
 | `list-modifiers [category]` | With no argument: `Glob` on `modifiers-*.md`, show the list of categories with a row count. With an argument: show the full table of `modifiers-<category>.md`. Stop here. |
 | `format <name1> modifier <name2> [subject]` | Explicit combination: load the format and the modifier, merge in Phase 3 (see that phase). |
 | `<slug>` (shorthand, e.g. `blueprint my bike`) | If the first word exactly matches a `format-*.md` slug or a row in a `modifiers-*.md`, route as `format <slug> [rest]` or `modifier <slug> [rest]` respectively. If several bundled slugs follow each other at the start of the argument (e.g. `blueprint cyberpunk my bike`), load them all and treat the rest as the subject. |
+
+**Output target** (independent of the interview mode; read it in the argument or in the user message):
+
+| Signal | Target |
+|---|---|
+| nothing specific, "a prompt", "for Gemini", "do not generate" | **Gemini** (default) — Phase 4, route 1 |
+| `for <tool>`, "for Midjourney / Flux / SDXL / ComfyUI" | that tool — Phase 4, route 2 |
+| `generate`, "generate", "render it", "Z-Image", "make the image" | **HF generation** — Phase 4, route 3 |
+
+If the request is ambiguous ("make me an illustration"), stay on Gemini and say in one line that HF generation is available on request.
 
 ### Phase 2 — Wave-based interview (`deep` mode)
 
@@ -149,15 +157,20 @@ Produce a structured block:
 
 **Suggested params**:
 - Ratio: `[value]`
-- Guidance / CFG: `[value]`
-- Steps: `[value]`
-- Seed: `[to generate randomly or inherit from the template]`
+- Guidance / CFG: `[value]` *(HF/SDXL only)*
+- Steps: `[value]` *(HF/SDXL only)*
+- Seed: `[to generate randomly or inherit from the template]` *(HF only)*
 
-**Ready-to-paste variants**:
+**Gemini prompt** *(default deliverable)*:
+`[one or two paragraphs in English, natural descriptive sentences: subject, action, setting, style/medium, light, framing; the ratio said in words ("wide 16:9 composition"); the exclusions of the negative reworded as positives or at the end ("no text, no watermark")]`
+
+**Variants on request** (only if `for <tool>` was asked):
 - Midjourney v6+: `[compact reformulation + --ar --stylize]`
 - Flux (dev/schnell): `[rich natural-language phrase]`
 - SDXL: `[comma-separated tokens]`
 ```
+
+Gemini has no negative prompt field, no seed and no CFG. Do not give it parameter syntax (`--ar`, `--no`). Everything goes in natural language. The Positive/Negative block above stays the source material. It is never the Gemini deliverable as it is.
 
 **If a format and/or a modifier are active** (Phase 1/2bis), build the **Positive** prompt as
 follows:
@@ -171,23 +184,21 @@ follows:
 4. If no format is active but a modifier is, insert its fragment into the Style/Medium slot of the
    standard Phase 3 skeleton (subject comes from Wave B or the inline argument).
 
-### Phase 4 — Image generation
+### Phase 4 — Delivery
 
-Ask for validation before generating (Directive 1). Then, **in order — the first available backend
-wins**:
+Pick the route from the **output target** (Phase 1). No route moves to the next one by itself.
 
-1. **HF `hf-image` (free, default)** — call `mcp__hf-image__gr1_z_image_turbo_generate` with:
-   - `prompt` = Phase 3 positive prompt (append the negative's exclusions at the end as "Avoid:
-     …")
-   - `resolution` = the value matching the chosen ratio (e.g. `1248x832 ( 3:2 )`, `832x1248 ( 2:3
-     )`, `1280x720 ( 16:9 )`, `720x1280 ( 9:16 )`)
+1. **Gemini prompt (default)** — display the "Gemini prompt" block of Phase 3, ready to copy, with the ratio and the exclusions reworded in natural language. No tool is called and there is no validation to wait for: nothing is generated. End with one line that offers HF generation or another target if needed.
+
+2. **Other target (on request)** — display the requested variant (Midjourney / Flux / SDXL / ComfyUI) of the Phase 3 block.
+
+3. **HF `hf-image` generation (on explicit generation request)** — show the final prompt, wait for validation (Directive 1), then call `mcp__hf-image__gr1_z_image_turbo_generate` with:
+   - `prompt` = Phase 3 positive prompt (append the negative's exclusions at the end as "Avoid: …")
+   - `resolution` = the value matching the chosen ratio (e.g. `1248x832 ( 3:2 )`, `832x1248 ( 2:3 )`, `1280x720 ( 16:9 )`, `720x1280 ( 9:16 )`)
    - `steps` = 8 (Z-Image-Turbo default)
-   The image comes back as **inline rendering + URL**. Note the returned **seed** (for coherent
-   rerolling).
+   The image comes back as **inline rendering + URL**. Note the returned **seed** (for coherent rerolling).
    ⚠️ Anonymous HF = limited ZeroGPU quotas; an `HF_TOKEN` (hf.co/settings/mcp) raises the limits.
-
-2. **Prompt-only (fallback)** — if `hf-image` is unavailable: display the Phase 3 block to paste
-   into Midjourney / Flux / SDXL / ComfyUI.
+   **Fallback**: if `hf-image` is unavailable, say that generation could not take place and deliver the Gemini prompt (route 1).
 
 ### Phase 5 — Saving a personal template (optional)
 
@@ -324,7 +335,7 @@ category: <category>
 
 ## Global fallback
 
-- **`hf-image` HF unavailable** → prompt-only mode, the user copy-pastes elsewhere.
+- **`hf-image` HF unavailable** (generation requested) → Gemini prompt, the user copy-pastes. The default no longer needs HF.
 - **`~/.claude/image-templates/` absent, or `format-*`/`modifiers-*` not yet synced** →
   create/bootstrap the folder on first personal access; for a `format`/`modifier` call on a missing
   bundled file, inform the user (the `bocal-kit` repo needs pulling) and fall back to classic

@@ -285,7 +285,7 @@ raises the limits):
 
 Use HF when the task requires **producing a visual or media asset**:
 
-- `imagine`: dedicated **image** skill (wave-based interview + templates) → `hf-image`
+- `imagine`: dedicated **image** skill (wave-based interview + templates) → default Gemini prompt; `hf-image` only on explicit generation request
 - `animate`: dedicated **video** skill (motion, camera, duration) → `hf-t2v`
 - `design-agent` · `ux-designer` · `technical-artist` · `game-dev-agent` ·
   `public-communications-agent` · `dev-advocate`: mockups, assets, concept art, campaign visuals

@@ -1,9 +1,9 @@
 ---
 name: threat-intelligence
-description: "Security watch: detects OWASP Top 10 changes (a new version, a modified category) and new CVEs/security advisories affecting the technologies actually in use (the current project's stack, or a global ecosystem list). Auto-invoke on: security watch, CVE watch, new flaw, what's new in security, new OWASP version, security advisory. Referenced by web-search as a consumer of contextual research."
+description: "Security watch: detects OWASP Top 10 changes (a new version, a modified category) and new CVEs/security advisories affecting the technologies actually in use (the current project's stack, or a global ecosystem list). Three modes: project, ecosystem, scheduled (an agent that runs alone at each run, short report sorted by priority, reports only what is new). Auto-invoke on: security watch, CVE watch, new flaw, what's new in security, new OWASP version, security advisory, security watcher, at each run, scheduled watch. Referenced by web-search as a consumer of contextual research."
 model: claude-sonnet-5-5
 user-invocable: true
-argument-hint: "[project|ecosystem]"
+argument-hint: "[project|ecosystem|scheduled]"
 type: utility
 priority: medium
 scope: security
@@ -31,8 +31,9 @@ Doesn't update dependencies: that's `dependency-updater`/`version-updater`'s rol
 If the project's stack is already known (output from `version-checker` or `architecture-agent`),
 receive it directly and skip Phase 1.
 
-## Two modes
+## Three modes
 
+- **`scheduled`** (requested explicitly, or triggered by "watcher", "at each run", or when the skill runs in a scheduled routine or agent with no user present): autonomous run, see "Scheduled mode" below. It takes priority over the two other modes.
 - **`project`** (default if run from a project directory): detects the real stack via
   `version-checker` and cross-references it with recent advisories. Exact scope, never noise outside
   it.
@@ -177,6 +178,24 @@ Rewrite the state file (Phase 2) with `last_check` = today's date for every chec
 `cves_seen` enriched with the found identifiers (so they aren't re-reported identically next pass —
 only **changes** to an already-known CVE, such as an updated CVSS severity, are re-flagged in that
 case, not the CVE itself).
+
+## Scheduled mode (agent with no user)
+
+A scheduled agent (cloud routine or cron) starts from a blank session at each run: no `~/.claude/memory/`, no `.claude/`, and nobody to answer. Phases 2 to 7 change as follows:
+
+1. **Technology list**: the one the caller gives (routine prompt or argument). If none, the list of Phase 1b. Never ask the user (`AskUserQuestion` is forbidden).
+2. **State**: read the last report in the routine repository — `security/veille/.last-check.json` if it exists. If it is missing, or if the run has no repository, do not look for a state: use a **fixed window** equal to the routine cadence (7 days by default, never less). The same advisory can then appear again from one run to the next. This is accepted: a duplicate is better than a gap.
+3. **Search**: Phases 3 and 4 unchanged (sources and mandatory version filtering).
+4. **Short report**, sorted by priority, in the agent answer (no file if no repository can be written):
+   - one head line: `Watch <date> — <n> active alert(s), <m> to monitor`
+   - **Priority 0**: CVSS ≥ 7 or publicly exploited, version in use affected
+   - **Priority 1**: version in use affected, CVSS < 7
+   - **To monitor**: advisory on a listed technology with no known version, or an OWASP change
+   - For each entry: identifier, severity, affected versions → fixed version, one sentence, source link
+   - Nothing new: one single line `Watch <date> — no new alert (<list of technologies checked>)`
+5. **No backlog write** (Phase 6 skipped: no target project, no human validation). Priority 0 alerts are flagged at the top of the report so that a human can register them.
+6. **No memorization** (Memory section skipped). If a repository can be written, update `security/veille/.last-check.json` as in Phase 7.
+7. **Fallback**: `web-search` unavailable → one-line report `⚠️ Watch not run — web-search unavailable`, never an empty report presented as "no alert".
 
 ## Invocation from `team-dev`
 
