@@ -16,6 +16,7 @@ experiments).
 | [Leonxlnx/unlazy](https://github.com/Leonxlnx/unlazy) | `unlazy` | Acceptance-gates discipline, adapted to this ecosystem's multi-agent context |
 | [Leonxlnx/taste-skill](https://github.com/bocal-pol/taste-skill) | `taste` | Generic anti-slop principle, reused and extended |
 | [DietrichGebert/ponytail](https://github.com/bocal-pol/ponytail) | `minimal-code-discipline` | Minimal-code discipline, decision ladder |
+| [gabrielle-pch/reslop](https://github.com/bocal-pol/reslop) (MIT licence) | `slop-score` | Scoring table of 17 AI-slop patterns and the list of slop flavors, kept for detection. The upstream skill that *makes* slop is not included |
 | [unclebob/ub-mode](https://github.com/bocal-pol/ub-mode), `crapper`, `dryer`, `mutator` | `minimal-code-discipline`, `karpathy-guidelines` | Quality metrics (CRAP, duplication, mutation testing) referenced as target thresholds |
 | [multica-ai/andrej-karpathy-skills](https://github.com/multica-ai/andrej-karpathy-skills) | `karpathy-guidelines` | Anti-over-engineering behavioral guardrails |
 | [lucasmarkes/hairline](https://github.com/bocal-pol/hairline) | `hairline-create`, `hairline-adopt` | Interactive isometric figures, adapted into a generation skill |
