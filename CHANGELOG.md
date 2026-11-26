@@ -18,8 +18,14 @@ be added or enriched without being a breaking change.
 
 ## [Unreleased]
 
+### Added
+
+- **`slop-score` skill: AI-slop score out of 100 for a frontend.** It is read-only. It checks 17 patterns with fixed points, and each pattern needs a file and line as proof. It names the dominant slop flavor and has a before/after mode. `design-agent` (Anti-AI Audit mode) calls it in Phase A2 and A4. `impeccable` lists seven more slop indicators and points to it. Scoring table derived from gabrielle-pch/reslop (MIT).
+
 ### Changed
 
+- **`imagine`: Gemini prompt by default.** The skill now writes a prompt ready to paste into Gemini and generates nothing. HF generation and other targets (Midjourney, Flux, SDXL) need an explicit request.
+- **`threat-intelligence`: scheduled mode.** A new mode for an agent that runs alone at each run: fixed window when no state exists, short report sorted by priority, no backlog write, no question to the user.
 - **Git workflow (`CLAUDE.md`): batched local validation before push.** Run every check locally before the first
   push (full matrix for a visual change: app × theme × width × screen). Use one branch and one pull request for
   each work item. Bump a submodule pointer one time, at the end of the batch. Read the annotation of a CI job

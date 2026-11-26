@@ -1,4 +1,4 @@
-<!-- layout: 5 A4 posters (team-dev / ICT Director / standalone skills / built-in Claude Code / Product Owner), title band + category tile grid, built for a desk wall and for printing -->
+<!-- layout: 6 A4 posters (team-dev / ICT Director / standalone skills / built-in Claude Code / Product Owner), title band + category tile grid, built for a desk wall and for printing -->
 <meta name="claude:viewport-fit-sides" content="cover">
 <title>Claude Code Quick Reference</title>
 <style>
@@ -218,7 +218,7 @@
       /team-dev -sec "audit before production release"
     </div>
   </div>
-  <footer class="pf"><span>Agents outside team-dev by design: <code>/ict-director</code> and <code>/procurement</code> — see page 2</span><span>1 / 5</span></footer>
+  <footer class="pf"><span>Agents outside team-dev by design: <code>/ict-director</code> and <code>/procurement</code> — see page 2</span><span>1 / 6</span></footer>
 </div>
 
 <!-- ============ PAGE 2 — ICT DIRECTOR ============ -->
@@ -306,7 +306,7 @@
       /ict-director -sup "VPN down for a field agent"
     </div>
   </div>
-  <footer class="pf"><span>Same pattern as <code>/procurement</code> (contracts, specs, orders) — standalone agent, outside team-dev</span><span>2 / 5</span></footer>
+  <footer class="pf"><span>Same pattern as <code>/procurement</code> (contracts, specs, orders) — standalone agent, outside team-dev</span><span>2 / 6</span></footer>
 </div>
 
 <!-- ============ PAGE 3 — STANDALONE SKILLS ============ -->
@@ -388,7 +388,7 @@
       /areopage "should I take this job or not?"
     </div>
   </div>
-  <footer class="pf"><span>Full index: <code>skills/SKILLS_INDEX.md</code></span><span>3 / 5</span></footer>
+  <footer class="pf"><span>Full index: <code>skills/SKILLS_INDEX.md</code></span><span>3 / 6</span></footer>
 </div>
 
 <!-- ============ PAGE 4 — ALREADY IN CLAUDE CODE ============ -->
@@ -483,7 +483,7 @@
       </div>
     </div>
   </div>
-  <footer class="pf"><span>Checked against this repo's own <code>skills/*/SKILL.md</code> — re-check after any new skill lands</span><span>4 / 5</span></footer>
+  <footer class="pf"><span>Checked against this repo's own <code>skills/*/SKILL.md</code> — re-check after any new skill lands</span><span>4 / 6</span></footer>
 </div>
 
 <!-- ============ PAGE 5 — PRODUCT OWNER ============ -->
@@ -586,7 +586,52 @@
       /gauntlet-council "verdict on this PRD before it goes to committee"
     </div>
   </div>
-  <footer class="pf"><span>Complementary decision personas (paid-consultant, mentor, ceo-decision, socratic-method, devils-advocate): page 1</span><span>5 / 5</span></footer>
+  <footer class="pf"><span>Complementary decision personas (paid-consultant, mentor, ceo-decision, socratic-method, devils-advocate): page 1</span><span>5 / 6</span></footer>
+</div>
+
+<div class="page" style="--accent:#c2410c; --accent-soft:#fdeadb; --band:#3a1a0a;">
+  <div class="band">
+    <div>
+      <h1>ADDITIONS</h1>
+      <p class="sub">Supplement page: standalone commands that pages 1 to 5 do not list. Slip it behind the pages you already printed.</p>
+    </div>
+    <div class="cmd">supplement of 2026-11-26</div>
+  </div>
+  <div class="body">
+    <div class="tiles">
+
+      <div class="tile" style="border-top:3px solid #7a3b3b;">
+        <h3 style="background:#7a3b3b;">Standalone commands — security &amp; quality</h3>
+        <div class="items">
+          <div class="chip"><span class="flag">/security-audit</span><span class="desc">full security audit: OWASP, dependencies, config, dynamic tests</span></div>
+          <div class="chip"><span class="flag">/strix</span><span class="desc">local agentic pentest, exploits flaws with proof</span></div>
+          <div class="chip"><span class="flag">/gitleaks</span><span class="desc">secret detection: files, git index, history</span></div>
+          <div class="chip"><span class="flag">/ci-scan</span><span class="desc">security scan in CI/CD (SAST, secrets, dependencies)</span></div>
+          <div class="chip"><span class="flag">/silent-failure-hunter</span><span class="desc">swallowed errors, empty catch, I/O with no timeout</span></div>
+          <div class="chip"><span class="flag">/perf-tester</span><span class="desc">k6/JMeter load, p50/p95/p99, bottlenecks</span></div>
+          <div class="chip"><span class="flag">/refacto</span><span class="desc">cross-stack refactoring of existing code</span></div>
+          <div class="chip"><span class="flag">/slop-score</span><span class="desc">0-100 AI-slop score of a frontend, before/after an anti-AI audit</span></div>
+        </div>
+      </div>
+
+      <div class="tile" style="border-top:3px solid #6b4a7a;">
+        <h3 style="background:#6b4a7a;">Standalone commands — design, context &amp; session</h3>
+        <div class="items">
+          <div class="chip"><span class="flag">/impeccable</span><span class="desc">UI quality review: 24 commands, anti-slop rules</span></div>
+          <div class="chip"><span class="flag">/taste</span><span class="desc">anti-slop: 3 dials + 50 visual styles</span></div>
+          <div class="chip"><span class="flag">/design-dna</span><span class="desc">extract and re-apply the visual DNA of a design</span></div>
+          <div class="chip"><span class="flag">/error-journal</span><span class="desc">living error log: root cause, prevention</span></div>
+          <div class="chip"><span class="flag">/project-graph</span><span class="desc">project map through Graphify, saved in memory</span></div>
+          <div class="chip"><span class="flag">/api-finder</span><span class="desc">look for a public API before you build one</span></div>
+          <div class="chip"><span class="flag">/explain-diff</span><span class="desc">turn the session diff into a learning document</span></div>
+          <div class="chip"><span class="flag">/claude-code-audit</span><span class="desc">audit of the Claude Code config (settings, hooks, MCP)</span></div>
+          <div class="chip"><span class="flag">/i-have-adhd</span><span class="desc">action-first answers: numbered steps, no filler</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <footer class="pf"><span>Pages 1 to 5 stay valid: this page only adds to them</span><span>6 / 6</span></footer>
 </div>
 
 </div>
