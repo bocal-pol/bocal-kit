@@ -458,6 +458,12 @@ burns that budget for nothing.
 - **If the CI does not start**, read the job annotation (`gh api repos/<repo>/check-runs/<id>/annotations`)
   before you conclude. A blocked billing account is not a defect of the content, but many PRs is what
   uses the budget.
+- **If the quota or billing is used up** (not a content problem), stop. Do not start another GitHub
+  run on purpose: no new push, no new PR, no extra merge that starts the push workflow on `main` or
+  `develop`. Wait until the user confirms that the quota is available again. This applies even if
+  each local check stays clean. A push or a merge also uses the quota of other workflows started by
+  the same paths (for example, a secret scan of the whole repository). Group the remaining work into
+  a minimum number of pushes and merges. Do not run several separate PR → merge → promotion cycles.
 
 ### Commit convention (strict Conventional Commits)
 
