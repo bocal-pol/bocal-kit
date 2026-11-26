@@ -13,7 +13,7 @@ Every `SKILL.md` must include a strict YAML frontmatter with 7 mandatory fields:
 
 ```yaml
 name: laravel-developer       # unique kebab-case identifier
-model: claude-sonnet-4-6      # full identifier mandatory
+model: claude-sonnet-5-5      # full identifier mandatory
 type: framework               # orchestrator|framework|domain|utility|context|specialized
 priority: high                # high|medium|low
 scope: backend                # backend|frontend|infra|mobile|data|security|cross
@@ -23,7 +23,7 @@ conflicts:
   - dotnet-developer
 ```
 
-- `model`: always a full identifier (`claude-sonnet-4-6`, never bare `sonnet`)
+- `model`: always a full identifier (`claude-sonnet-5-5`, never bare `sonnet`)
 - `dependencies`: check availability before invoking, warn if missing
 - `conflicts`: never activate two conflicting skills in the same session
 - `scope: cross`: reserved for cross-cutting skills
