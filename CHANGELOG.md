@@ -24,6 +24,8 @@ be added or enriched without being a breaking change.
 
 ### Changed
 
+- **`imagine`: Gemini prompt by default.** The skill now writes a prompt ready to paste into Gemini and generates nothing. HF generation and other targets (Midjourney, Flux, SDXL) need an explicit request.
+- **`threat-intelligence`: scheduled mode.** A new mode for an agent that runs alone at each run: fixed window when no state exists, short report sorted by priority, no backlog write, no question to the user.
 - **Git workflow (`CLAUDE.md`): batched local validation before push.** Run every check locally before the first
   push (full matrix for a visual change: app × theme × width × screen). Use one branch and one pull request for
   each work item. Bump a submodule pointer one time, at the end of the batch. Read the annotation of a CI job
