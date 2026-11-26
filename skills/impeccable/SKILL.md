@@ -149,6 +149,15 @@ After any UI file modification, check these anti-patterns:
 - Pure black (`#000000`) or pure gray (`#808080`) — use tinted shades
 - Card inside a card inside a card (nesting ≥ 3 levels)
 - All colors saturated at 100%
+- Gradient text (`bg-clip-text` + `text-transparent`, `background-clip: text`)
+- Decorative frosted glass (`backdrop-filter` on a translucent surface) with no function (legibility over a real layer)
+- Large decorative blurred blobs (`blur-3xl`, `filter: blur(60px)` or more)
+- A 3-column grid of icon + title + text cards built from one template
+- A floating pill navigation bar (`rounded-full`, inset from the edges)
+- An infinite marquee of logos or items, decorative `✦` / `✨` sparkles
+
+For a number that you can compare over time (score out of 100, file and line), call the Skill tool
+with `slop-score`. Single source of the scoring table: `skills/slop-score/references/rubric.md`.
 
 **General quality:**
 - Line length > 80ch (body text readability)

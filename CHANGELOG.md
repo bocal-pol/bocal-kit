@@ -18,6 +18,10 @@ be added or enriched without being a breaking change.
 
 ## [Unreleased]
 
+### Added
+
+- **`slop-score` skill: AI-slop score out of 100 for a frontend.** It is read-only. It checks 17 patterns with fixed points, and each pattern needs a file and line as proof. It names the dominant slop flavor and has a before/after mode. `design-agent` (Anti-AI Audit mode) calls it in Phase A2 and A4. `impeccable` lists seven more slop indicators and points to it. Scoring table derived from gabrielle-pch/reslop (MIT).
+
 ### Changed
 
 - **Git workflow (`CLAUDE.md`): batched local validation before push.** Run every check locally before the first
